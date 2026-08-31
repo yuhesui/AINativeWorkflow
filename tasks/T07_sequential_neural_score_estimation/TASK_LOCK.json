@@ -1,0 +1,62 @@
+{
+  "benchmark": "PaperBench",
+  "frozen_identity": "sequential-neural-score-estimation",
+  "qualification": {
+    "blockers": [
+      "Native rubric judge cannot be qualified without an operator-supplied GRADER_OPENAI_API_KEY.",
+      "Docker has no NVIDIA runtime, and full target GPU feasibility is unqualified on the 6 GiB device."
+    ],
+    "candidate_agent_used": false,
+    "evidence": [
+      "oracle_runs/unit-tests.xml",
+      "oracle_runs/container-build"
+    ],
+    "qualification_date": "2026-08-31",
+    "schema_version": 1,
+    "scored_run_created": false,
+    "status": "BLOCKED"
+  },
+  "resource_policy_sha256": "5f6cf12183000d9887eef9cbbb6e3deed88726c2060aabb2cdc34fc5e95a1fa5",
+  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "schema_version": 1,
+  "sources": [
+    {
+      "commit": "51052cede8cc608f95bb00346635e03759013e5a",
+      "commit_date": "2026-04-21T16:53:31-04:00",
+      "kind": "git+LFS",
+      "paper_pdf_lfs_oid_sha256": "4161e45352ce3a8a247dce0841c2a90f0445653872b9616ca1954ebfaa81a57c",
+      "task_path": "project/paperbench/data/papers/sequential-neural-score-estimation",
+      "url": "https://github.com/openai/frontier-evals.git"
+    }
+  ],
+  "surfaces": {
+    "original_task": {
+      "bytes": 92841066,
+      "file_count": 785,
+      "tree_sha256": "95d25e96ae2c5e54384ef932fcb34ba6a844ac87b5acbfee96e3b0b983cd462b"
+    },
+    "private_eval": {
+      "bytes": 1230553,
+      "file_count": 80,
+      "tree_sha256": "dcad5611f94103cb1732ccf97996dc7b3a436731c1d8b44424bdf5a55ba3954d"
+    },
+    "reference_agent_visible": {
+      "bytes": 4053918,
+      "file_count": 13,
+      "tree_sha256": "07e00bb8c1fe95a7ef8f881a88349a5d3f1feea88decf127d5497692e4eea92a"
+    },
+    "reference_provenance_only": {
+      "bytes": 156,
+      "file_count": 1,
+      "tree_sha256": "67557495c2c5ccd782e0084d6aa3d9976efd503191126954be3595c9bbc6435d"
+    },
+    "test_repo": {
+      "bytes": 4603276,
+      "file_count": 143,
+      "tree_sha256": "a15df362c5c2ea817605dbe75c3a3418e4fe32eb67aba199b027c954197f9313"
+    }
+  },
+  "task_id": "T07",
+  "task_prompt_sha256": "53ee1cdcbcd31c64e1834254cf6358a4b12e565f6acd2a77ad4271069cdd0a97",
+  "visibility_manifest_sha256": "3a91bcdabb96665333dfc32d9c03c62d1ef5215825d71be84192a12a54f0cf89"
+}

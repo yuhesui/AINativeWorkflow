@@ -1,0 +1,62 @@
+{
+  "benchmark": "MLGym",
+  "frozen_identity": "rlMetaMazeMisc",
+  "qualification": {
+    "blockers": [
+      "Frozen authoritative config requests 64 evaluation environments but the shipped evaluator hard-codes 256."
+    ],
+    "candidate_agent_used": false,
+    "evidence": [
+      "oracle_runs/baseline_01",
+      "requirements.lock.txt",
+      "private_eval/rlMetaMaze.yaml",
+      "private_eval/evaluate.py"
+    ],
+    "qualification_date": "2026-08-31",
+    "schema_version": 1,
+    "scored_run_created": false,
+    "status": "BLOCKED"
+  },
+  "resource_policy_sha256": "c883ac10d0b6afed1e3d46c5ca9cf3a6d05de3380bb6479eb2c9130b8b32a9a8",
+  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "schema_version": 1,
+  "sources": [
+    {
+      "authoritative_config": "configs/tasks/rlMetaMaze.yaml",
+      "commit": "9d40c1b5035202018cd7091fb4e83a9c68b377c0",
+      "commit_date": "2025-08-10T12:47:54-07:00",
+      "kind": "git",
+      "url": "https://github.com/facebookresearch/MLGym.git"
+    }
+  ],
+  "surfaces": {
+    "original_task": {
+      "bytes": 3582074,
+      "file_count": 245,
+      "tree_sha256": "098856a1059143d48950365dc4f467dbe48e3d21f8d3d97ec719aae7d4d3e9b5"
+    },
+    "private_eval": {
+      "bytes": 8565,
+      "file_count": 2,
+      "tree_sha256": "846f211fd0d387ab02d84fdb09c3bc991fc10c8bc7dd40c3416706164280e5fc"
+    },
+    "reference_agent_visible": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reference_provenance_only": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_repo": {
+      "bytes": 602924,
+      "file_count": 140,
+      "tree_sha256": "5023be6ceaeb68b2d295ccb17f806a88a2e22c8142c5c20eccd983ce936f96e6"
+    }
+  },
+  "task_id": "T05",
+  "task_prompt_sha256": "1cf8f9589513faceaaf784f030546444775d27c98f2cf1aecad7183167589afd",
+  "visibility_manifest_sha256": "55824111d9a4bb5c8d8a176301eb37d984794450d401a2e0bd8e0a069681631c"
+}

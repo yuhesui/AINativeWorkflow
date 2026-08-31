@@ -1,0 +1,1613 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.0.2"
+        },
+        "summary": {
+            "tests": 137,
+            "passed": 136,
+            "failed": 0,
+            "skipped": 1,
+            "pending": 0,
+            "other": 0,
+            "start": 1788120893741,
+            "stop": 1788120925339
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_create_table",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788120894613,
+                "stop": 1788120894793,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_add_column",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788120894793,
+                "stop": 1788120894985,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_operations",
+                "status": "passed",
+                "duration": 187,
+                "start": 1788120894986,
+                "stop": 1788120895173,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_skip_already_applied",
+                "status": "passed",
+                "duration": 193,
+                "start": 1788120895174,
+                "stop": 1788120895367,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_single_column",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788120895367,
+                "stop": 1788120895572,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserve_data",
+                "status": "passed",
+                "duration": 201,
+                "start": 1788120895572,
+                "stop": 1788120895773,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_drop_columns",
+                "status": "passed",
+                "duration": 190,
+                "start": 1788120895773,
+                "stop": 1788120895963,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserves_existing_data",
+                "status": "passed",
+                "duration": 198,
+                "start": 1788120895963,
+                "stop": 1788120896161,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_foreign_keys_disabled_during_drop_column",
+                "status": "skipped",
+                "duration": 1,
+                "start": 1788120896162,
+                "stop": 1788120896163,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py', 436, 'Skipped: Applies only to checkpoints 1-2')"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_primary_key",
+                "status": "passed",
+                "duration": 185,
+                "start": 1788120896163,
+                "stop": 1788120896348,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_unique_and_not_null_constraints",
+                "status": "passed",
+                "duration": 185,
+                "start": 1788120896348,
+                "stop": 1788120896533,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_default_values_various_types",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788120896533,
+                "stop": 1788120896725,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_with_default_to_populated_table",
+                "status": "passed",
+                "duration": 187,
+                "start": 1788120896726,
+                "stop": 1788120896913,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_complex_data_preservation",
+                "status": "passed",
+                "duration": 193,
+                "start": 1788120896913,
+                "stop": 1788120897106,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_add_not_null_with_default",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120897106,
+                "stop": 1788120897288,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_create_multiple_tables",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120897289,
+                "stop": 1788120897465,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_reserved_word_identifiers_are_quoted",
+                "status": "passed",
+                "duration": 181,
+                "start": 1788120897466,
+                "stop": 1788120897647,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_mixed_operations_all_types",
+                "status": "passed",
+                "duration": 188,
+                "start": 1788120897647,
+                "stop": 1788120897835,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_non_sequential_versions",
+                "status": "passed",
+                "duration": 202,
+                "start": 1788120897835,
+                "stop": 1788120898037,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_create_table_multiple_primary_keys_rejected",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788120898037,
+                "stop": 1788120898215,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_requires_integer_primary_key",
+                "status": "passed",
+                "duration": 175,
+                "start": 1788120898215,
+                "stop": 1788120898390,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_rejects_invalid_identifier",
+                "status": "passed",
+                "duration": 171,
+                "start": 1788120898390,
+                "stop": 1788120898561,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_missing_table",
+                "status": "passed",
+                "duration": 172,
+                "start": 1788120898561,
+                "stop": 1788120898733,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_table_exists",
+                "status": "passed",
+                "duration": 177,
+                "start": 1788120898733,
+                "stop": 1788120898910,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_missing_migration_file",
+                "status": "passed",
+                "duration": 166,
+                "start": 1788120898910,
+                "stop": 1788120899076,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_json",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788120899076,
+                "stop": 1788120899254,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_schema_missing_operations",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788120899254,
+                "stop": 1788120899432,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_table_missing_for_add_column",
+                "status": "passed",
+                "duration": 181,
+                "start": 1788120899432,
+                "stop": 1788120899613,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_column_already_exists",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120899613,
+                "stop": 1788120899789,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_column_missing_for_drop",
+                "status": "passed",
+                "duration": 174,
+                "start": 1788120899789,
+                "stop": 1788120899963,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_only_column",
+                "status": "passed",
+                "duration": 201,
+                "start": 1788120899963,
+                "stop": 1788120900164,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_primary_key_column",
+                "status": "passed",
+                "duration": 197,
+                "start": 1788120900164,
+                "stop": 1788120900361,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_identifier_rejected",
+                "status": "passed",
+                "duration": 185,
+                "start": 1788120900361,
+                "stop": 1788120900546,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_column_type_rejected",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788120900546,
+                "stop": 1788120900752,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_unique_constraint_prevents_duplicates",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788120900752,
+                "stop": 1788120900991,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_version_zero_rejected",
+                "status": "passed",
+                "duration": 189,
+                "start": 1788120900991,
+                "stop": 1788120901180,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_version_negative_rejected",
+                "status": "passed",
+                "duration": 196,
+                "start": 1788120901180,
+                "stop": 1788120901376,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_version_string_rejected",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120901376,
+                "stop": 1788120901558,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_removes_unique_index_on_dropped_column",
+                "status": "passed",
+                "duration": 398,
+                "start": 1788120901558,
+                "stop": 1788120901956,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data",
+                "status": "passed",
+                "duration": 211,
+                "start": 1788120901957,
+                "stop": 1788120902168,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data",
+                "status": "passed",
+                "duration": 209,
+                "start": 1788120902168,
+                "stop": 1788120902377,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_transform_data",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788120902377,
+                "stop": 1788120902583,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_complete_column_migration",
+                "status": "passed",
+                "duration": 203,
+                "start": 1788120902583,
+                "stop": 1788120902786,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_overwrites_existing_values",
+                "status": "passed",
+                "duration": 195,
+                "start": 1788120902786,
+                "stop": 1788120902981,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_default_value_for_null",
+                "status": "passed",
+                "duration": 199,
+                "start": 1788120902981,
+                "stop": 1788120903180,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data_without_where_updates_all",
+                "status": "passed",
+                "duration": 227,
+                "start": 1788120903180,
+                "stop": 1788120903407,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_transformations_applied_in_order",
+                "status": "passed",
+                "duration": 243,
+                "start": 1788120903407,
+                "stop": 1788120903650,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_transform_then_backfill_uses_transformed_values",
+                "status": "passed",
+                "duration": 250,
+                "start": 1788120903650,
+                "stop": 1788120903900,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_where_filters_rows",
+                "status": "passed",
+                "duration": 189,
+                "start": 1788120903900,
+                "stop": 1788120904089,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_value_expression",
+                "status": "passed",
+                "duration": 218,
+                "start": 1788120904089,
+                "stop": 1788120904307,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_null_without_default",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788120904307,
+                "stop": 1788120904487,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_column_not_exists",
+                "status": "passed",
+                "duration": 350,
+                "start": 1788120904487,
+                "stop": 1788120904837,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_invalid_expression",
+                "status": "passed",
+                "duration": 186,
+                "start": 1788120904837,
+                "stop": 1788120905023,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migration_rolls_back_on_failure",
+                "status": "passed",
+                "duration": 193,
+                "start": 1788120905024,
+                "stop": 1788120905217,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_from_column",
+                "status": "passed",
+                "duration": 197,
+                "start": 1788120905217,
+                "stop": 1788120905414,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_to_column",
+                "status": "passed",
+                "duration": 188,
+                "start": 1788120905415,
+                "stop": 1788120905603,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_with_numeric_constant",
+                "status": "passed",
+                "duration": 201,
+                "start": 1788120905604,
+                "stop": 1788120905805,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_transform_target_column_not_exists",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120905805,
+                "stop": 1788120905987,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_table_not_exists",
+                "status": "passed",
+                "duration": 170,
+                "start": 1788120905987,
+                "stop": 1788120906157,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_table_not_exists",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120906157,
+                "stop": 1788120906333,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_invalid_where_clause",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120906334,
+                "stop": 1788120906510,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py::test_transform_table_not_exists",
+                "status": "passed",
+                "duration": 179,
+                "start": 1788120906510,
+                "stop": 1788120906689,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788120906689,
+                "stop": 1788120906895,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_create_index",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788120906895,
+                "stop": 1788120907095,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_add_check_constraint",
+                "status": "passed",
+                "duration": 172,
+                "start": 1788120907095,
+                "stop": 1788120907267,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_complex_migration",
+                "status": "passed",
+                "duration": 174,
+                "start": 1788120907268,
+                "stop": 1788120907442,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_create_unique_index",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120907442,
+                "stop": 1788120907618,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index",
+                "status": "passed",
+                "duration": 326,
+                "start": 1788120907618,
+                "stop": 1788120907944,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key",
+                "status": "passed",
+                "duration": 322,
+                "start": 1788120907945,
+                "stop": 1788120908267,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint",
+                "status": "passed",
+                "duration": 492,
+                "start": 1788120908267,
+                "stop": 1788120908759,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_on_delete_set_null",
+                "status": "passed",
+                "duration": 175,
+                "start": 1788120908759,
+                "stop": 1788120908934,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key_on_empty_table_enforces_future_writes",
+                "status": "passed",
+                "duration": 171,
+                "start": 1788120908934,
+                "stop": 1788120909105,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_action",
+                "status": "passed",
+                "duration": 164,
+                "start": 1788120909105,
+                "stop": 1788120909269,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name_other_table",
+                "status": "passed",
+                "duration": 327,
+                "start": 1788120909269,
+                "stop": 1788120909596,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key_missing",
+                "status": "passed",
+                "duration": 170,
+                "start": 1788120909596,
+                "stop": 1788120909766,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint_missing",
+                "status": "passed",
+                "duration": 168,
+                "start": 1788120909767,
+                "stop": 1788120909935,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_with_restrict",
+                "status": "passed",
+                "duration": 179,
+                "start": 1788120909935,
+                "stop": 1788120910114,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_violation_existing_data",
+                "status": "passed",
+                "duration": 168,
+                "start": 1788120910115,
+                "stop": 1788120910283,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_table",
+                "status": "passed",
+                "duration": 162,
+                "start": 1788120910283,
+                "stop": 1788120910445,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_column",
+                "status": "passed",
+                "duration": 171,
+                "start": 1788120910445,
+                "stop": 1788120910616,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_referencing_column_missing",
+                "status": "passed",
+                "duration": 168,
+                "start": 1788120910616,
+                "stop": 1788120910784,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_column_count_mismatch",
+                "status": "passed",
+                "duration": 165,
+                "start": 1788120910784,
+                "stop": 1788120910949,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_circular_foreign_key_dependencies",
+                "status": "passed",
+                "duration": 165,
+                "start": 1788120910949,
+                "stop": 1788120911114,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name",
+                "status": "passed",
+                "duration": 317,
+                "start": 1788120911114,
+                "stop": 1788120911431,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index_missing",
+                "status": "passed",
+                "duration": 167,
+                "start": 1788120911432,
+                "stop": 1788120911599,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_check_constraint_violation_on_add",
+                "status": "passed",
+                "duration": 163,
+                "start": 1788120911599,
+                "stop": 1788120911762,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py::test_transactional_rollback_on_failure",
+                "status": "passed",
+                "duration": 170,
+                "start": 1788120911762,
+                "stop": 1788120911932,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_simple_rollback",
+                "status": "passed",
+                "duration": 173,
+                "start": 1788120911932,
+                "stop": 1788120912105,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple",
+                "status": "passed",
+                "duration": 177,
+                "start": 1788120912105,
+                "stop": 1788120912282,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_to_version",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120912282,
+                "stop": 1788120912464,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120912464,
+                "stop": 1788120912646,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_data_migration",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788120912647,
+                "stop": 1788120912827,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column",
+                "status": "passed",
+                "duration": 184,
+                "start": 1788120912827,
+                "stop": 1788120913011,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_create_index",
+                "status": "passed",
+                "duration": 179,
+                "start": 1788120913011,
+                "stop": 1788120913190,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788120913191,
+                "stop": 1788120913369,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_check_constraint",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788120913370,
+                "stop": 1788120913550,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint",
+                "status": "passed",
+                "duration": 181,
+                "start": 1788120913550,
+                "stop": 1788120913731,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_foreign_key",
+                "status": "passed",
+                "duration": 183,
+                "start": 1788120913731,
+                "stop": 1788120913914,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key",
+                "status": "passed",
+                "duration": 179,
+                "start": 1788120913914,
+                "stop": 1788120914093,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_migrations_store_operations",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788120914093,
+                "stop": 1788120914271,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple_ops_one_migration",
+                "status": "passed",
+                "duration": 181,
+                "start": 1788120914272,
+                "stop": 1788120914453,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_only_one_migration",
+                "status": "passed",
+                "duration": 188,
+                "start": 1788120914453,
+                "stop": 1788120914641,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_non_sequential_versions",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788120914641,
+                "stop": 1788120914823,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_column_drops_column_and_loses_data",
+                "status": "passed",
+                "duration": 526,
+                "start": 1788120914823,
+                "stop": 1788120915349,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback_operations_override_automatic_rollback",
+                "status": "passed",
+                "duration": 521,
+                "start": 1788120915350,
+                "stop": 1788120915871,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_default_and_not_null",
+                "status": "passed",
+                "duration": 519,
+                "start": 1788120915871,
+                "stop": 1788120916390,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_unique_constraint",
+                "status": "passed",
+                "duration": 530,
+                "start": 1788120916390,
+                "stop": 1788120916920,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index_restores_unique_definition",
+                "status": "passed",
+                "duration": 525,
+                "start": 1788120916921,
+                "stop": 1788120917446,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key_restores_actions",
+                "status": "passed",
+                "duration": 526,
+                "start": 1788120917446,
+                "stop": 1788120917972,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint_restores_expression",
+                "status": "passed",
+                "duration": 706,
+                "start": 1788120917973,
+                "stop": 1788120918679,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_removes_migration_records",
+                "status": "passed",
+                "duration": 551,
+                "start": 1788120918679,
+                "stop": 1788120919230,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_no_migrations",
+                "status": "passed",
+                "duration": 187,
+                "start": 1788120919230,
+                "stop": 1788120919417,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_version_not_found",
+                "status": "passed",
+                "duration": 216,
+                "start": 1788120919417,
+                "stop": 1788120919633,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_transform_data_no_rollback_ops",
+                "status": "passed",
+                "duration": 216,
+                "start": 1788120919633,
+                "stop": 1788120919849,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_backfill_data_no_rollback_ops",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788120919849,
+                "stop": 1788120920041,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_transactional_on_failure",
+                "status": "passed",
+                "duration": 375,
+                "start": 1788120920042,
+                "stop": 1788120920417,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_fails_with_dependent_index",
+                "status": "passed",
+                "duration": 482,
+                "start": 1788120920417,
+                "stop": 1788120920899,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_simple_dependency",
+                "status": "passed",
+                "duration": 208,
+                "start": 1788120920899,
+                "stop": 1788120921107,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all",
+                "status": "passed",
+                "duration": 214,
+                "start": 1788120921107,
+                "stop": 1788120921321,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_complex_dependency",
+                "status": "passed",
+                "duration": 228,
+                "start": 1788120921322,
+                "stop": 1788120921550,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_parallel_dependencies",
+                "status": "passed",
+                "duration": 220,
+                "start": 1788120921550,
+                "stop": 1788120921770,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_validate_command",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788120921770,
+                "stop": 1788120921950,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_circular_dependency",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788120921950,
+                "stop": 1788120922126,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_forward_dependency",
+                "status": "passed",
+                "duration": 203,
+                "start": 1788120922126,
+                "stop": 1788120922329,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_missing_dependency",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788120922329,
+                "stop": 1788120922534,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_duplicate_version_numbers",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788120922534,
+                "stop": 1788120922734,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_self_dependency",
+                "status": "passed",
+                "duration": 217,
+                "start": 1788120922734,
+                "stop": 1788120922951,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_validate_without_migrations_dir",
+                "status": "passed",
+                "duration": 214,
+                "start": 1788120922951,
+                "stop": 1788120923165,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_empty_depends_on_array",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788120923165,
+                "stop": 1788120923357,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_transitive_dependencies",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788120923358,
+                "stop": 1788120923563,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_skips_already_applied_dependencies",
+                "status": "passed",
+                "duration": 391,
+                "start": 1788120923564,
+                "stop": 1788120923955,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_missing_dependency",
+                "status": "passed",
+                "duration": 196,
+                "start": 1788120923955,
+                "stop": 1788120924151,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_validate_duplicate_versions",
+                "status": "passed",
+                "duration": 188,
+                "start": 1788120924151,
+                "stop": 1788120924339,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_future_dependency",
+                "status": "passed",
+                "duration": 197,
+                "start": 1788120924340,
+                "stop": 1788120924537,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_circular_dependency",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788120924537,
+                "stop": 1788120924729,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_invalid_json",
+                "status": "passed",
+                "duration": 194,
+                "start": 1788120924729,
+                "stop": 1788120924923,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_skips_applied",
+                "status": "passed",
+                "duration": 400,
+                "start": 1788120924924,
+                "stop": 1788120925324,
+                "retries": 0,
+                "file_path": "tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            }
+        ]
+    }
+}

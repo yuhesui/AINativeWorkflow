@@ -1,0 +1,20 @@
+{
+  "attempt_id": "attempt-01",
+  "condition": "DIRECT",
+  "created_utc": "2026-08-30T20:53:34.795596+00:00",
+  "finalized_utc": "2026-08-30T20:54:00.473893+00:00",
+  "invalidation_reason": "qualification-only structural dry run",
+  "non_scored": true,
+  "qualification_root": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_dry",
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_dry\\runs\\dry_direct\\repo_final",
+  "repo_final_tree_sha256": "bf0bf1a2babe5a82763f72d2a5e1d652a021613c0abf379110ebb6abea17c307",
+  "repo_initial_tree_sha256": "66257245361f126cd5480e3f5bea15fd8e4046980cba065764201daea9907b6b",
+  "run_id": "dry_direct",
+  "schema_version": 1,
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\test_repo",
+  "source_test_repo_tree_sha256": "0d4db72c159d2d71934c09f8f5fdc1b47dce308e23ca4d8df9fc6fabf95dfc95",
+  "status": "FINALIZED",
+  "task_id": "T03",
+  "validity": "INVALID_INFRASTRUCTURE",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_dry\\runs\\dry_direct\\workspace"
+}

@@ -1,0 +1,18 @@
+{
+  "golden_median_s": 0.45997639998677187,
+  "golden_times_s": [
+    0.4549669999978505,
+    0.45997639998677187,
+    0.4646111999754794
+  ],
+  "host": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.2"
+  },
+  "measured_utc": "2026-08-30T20:15:06.827557+00:00",
+  "method": "one unoptimized execution; median of three golden executions; immutable read-only SQLite",
+  "schema_version": 1,
+  "timeout_s": 900.0,
+  "unoptimized_s": 344.38577819999773,
+  "unoptimized_to_golden_ratio": 748.703146965587
+}

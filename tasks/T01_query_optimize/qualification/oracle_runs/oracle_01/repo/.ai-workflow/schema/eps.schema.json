@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Execution Prompt Stack",
+  "type": "object",
+  "required": ["schema", "id", "dic_id", "phase_id", "executor", "disposable", "nodes"],
+  "properties": {
+    "schema": {"const": "ai-native-workflow/eps/2"},
+    "disposable": {"const": true},
+    "executor": {"enum": ["Main", "Theory", "Experiment"]},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "plan_node_id", "depends_on", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "plan_node_id": {"type": "string"},
+          "depends_on": {"type": "array", "items": {"type": "string"}},
+          "parallel_group": {"type": ["string", "null"]},
+          "subagent": {"type": "boolean"},
+          "prompt_file": {"type": "string"},
+          "status": {"type": "string"}
+        }
+      }
+    }
+  }
+}

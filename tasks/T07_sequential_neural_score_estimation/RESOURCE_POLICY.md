@@ -1,0 +1,3 @@
+# Resource policy — T07
+
+Matched per-condition ceiling: 24 hours wall time; 400 Main interaction turns; 720 executor-minutes; at most two concurrent executors; 8 CPU cores; 32 GiB RAM; one local NVIDIA GPU with at least 6 GiB VRAM for at most 12 GPU-hours; 100 GiB writable disk. At most six full reproduction executions may be started; all partial and failed artifacts are retained. Network permits package indexes, official documentation, and primary literature subject to `paper/blacklist.txt`; benchmark solutions and blacklisted resources are forbidden. The mixed research resource menu is exactly `protocol/04_MODEL_POLICY.md`; every route is logged. T7m loss is the first stable Main-to-executor handoff after 12 elapsed hours.

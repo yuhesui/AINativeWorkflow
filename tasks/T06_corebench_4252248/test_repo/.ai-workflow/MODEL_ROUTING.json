@@ -1,0 +1,26 @@
+{
+  "policy": "Quality-first routing; the active workstream orchestrates its own bounded execution.",
+  "routes": {
+    "Main": {
+      "default": "GPT-5.6 Pro",
+      "responsibility": "authority, architecture, integration, publication"
+    },
+    "Theory": {
+      "default": "GPT-5.6 Pro",
+      "responsibility": "formal reasoning, literature, novelty, counterexamples"
+    },
+    "Experiment": {
+      "default": "GPT-5.6 Pro",
+      "responsibility": "methods, implementation, experiments, statistics"
+    }
+  },
+  "independent_review": {
+    "trigger": "material evidence, claim freeze, or release/submission boundary",
+    "model": "independent frontier model when available",
+    "required_independence": "fresh context and no authorship of audited artifact"
+  },
+  "aliases": {
+    "Orchestrator": "Main",
+    "Researcher": "Theory (or Experiment for empirical research)"
+  }
+}

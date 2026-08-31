@@ -1,0 +1,2920 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.0.2"
+        },
+        "summary": {
+            "tests": 255,
+            "passed": 255,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1788121223598,
+            "stop": 1788121338686
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_no_args_shows_help_text",
+                "status": "passed",
+                "duration": 326,
+                "start": 1788121224490,
+                "stop": 1788121224816,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_command_dispatch_top_level",
+                "status": "passed",
+                "duration": 302,
+                "start": 1788121224816,
+                "stop": 1788121225118,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_subcommand_dispatch",
+                "status": "passed",
+                "duration": 1070,
+                "start": 1788121225118,
+                "stop": 1788121226188,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_help_rewrite",
+                "status": "passed",
+                "duration": 583,
+                "start": 1788121226188,
+                "stop": 1788121226771,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_help_rewrite_for_multi_level_command",
+                "status": "passed",
+                "duration": 582,
+                "start": 1788121226771,
+                "stop": 1788121227353,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_version_rewrite",
+                "status": "passed",
+                "duration": 462,
+                "start": 1788121227353,
+                "stop": 1788121227815,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_positional_arg_parsing",
+                "status": "passed",
+                "duration": 901,
+                "start": 1788121227815,
+                "stop": 1788121228716,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestCore::test_unrecognized_command_error",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121228716,
+                "stop": 1788121228955,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_missing_required_positional_shows_usage",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121228955,
+                "stop": 1788121229189,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_excess_positional_args_error",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121229189,
+                "stop": 1788121229426,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_unknown_associative_with_suggestion",
+                "status": "passed",
+                "duration": 253,
+                "start": 1788121229426,
+                "stop": 1788121229679,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_unknown_associative_no_suggestion",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121229679,
+                "stop": 1788121229918,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_multiple_parameter_errors_collected",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121229918,
+                "stop": 1788121230153,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestErrors::test_unrecognized_subcommand_error",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121230153,
+                "stop": 1788121230386,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_help_alphabetical_ordering_case_insensitive",
+                "status": "passed",
+                "duration": 307,
+                "start": 1788121230386,
+                "stop": 1788121230693,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_help_column_alignment",
+                "status": "passed",
+                "duration": 298,
+                "start": 1788121230693,
+                "stop": 1788121230991,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_parent_command_no_handler_shows_subcommands",
+                "status": "passed",
+                "duration": 238,
+                "start": 1788121230991,
+                "stop": 1788121231229,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_synonym_suggestion_trash_to_delete",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121231229,
+                "stop": 1788121231466,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_subcommand_synonym_example_allows_optional_delete_suggestion",
+                "status": "passed",
+                "duration": 238,
+                "start": 1788121231466,
+                "stop": 1788121231704,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_synonym_checked_before_levenshtein",
+                "status": "passed",
+                "duration": 462,
+                "start": 1788121231704,
+                "stop": 1788121232166,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_synonym_only_when_target_registered",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121232166,
+                "stop": 1788121232400,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_levenshtein_suggestion_within_distance_2",
+                "status": "passed",
+                "duration": 230,
+                "start": 1788121232400,
+                "stop": 1788121232630,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_levenshtein_no_suggestion_beyond_distance_2",
+                "status": "passed",
+                "duration": 232,
+                "start": 1788121232630,
+                "stop": 1788121232862,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_levenshtein_tiebreaker_sort_order",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121232862,
+                "stop": 1788121233098,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_optional_modifier",
+                "status": "passed",
+                "duration": 1282,
+                "start": 1788121233098,
+                "stop": 1788121234380,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_repeating_modifier_accepts_multiple",
+                "status": "passed",
+                "duration": 306,
+                "start": 1788121234381,
+                "stop": 1788121234687,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_no_flag_sets_false",
+                "status": "passed",
+                "duration": 308,
+                "start": 1788121234687,
+                "stop": 1788121234995,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_required_associative_missing_error",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121234995,
+                "stop": 1788121235236,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_required_associative_empty_value_is_rejected",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121235236,
+                "stop": 1788121235475,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_error_messages_to_stderr",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121235475,
+                "stop": 1788121235712,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_exit_code_1_on_error",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121235713,
+                "stop": 1788121235947,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_help_for_specific_command",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121235947,
+                "stop": 1788121236244,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_generic_token_classification",
+                "status": "passed",
+                "duration": 883,
+                "start": 1788121236244,
+                "stop": 1788121237127,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py::TestFunctionality::test_default_value_for_optional_arg",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121237128,
+                "stop": 1788121237425,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_config_precedence_changes_observable_behavior",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121237425,
+                "stop": 1788121237658,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_config_runtime_overrides_project",
+                "status": "passed",
+                "duration": 301,
+                "start": 1788121237658,
+                "stop": 1788121237959,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_config_project_overrides_global",
+                "status": "passed",
+                "duration": 307,
+                "start": 1788121237959,
+                "stop": 1788121238266,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_config_global_defaults_apply",
+                "status": "passed",
+                "duration": 288,
+                "start": 1788121238266,
+                "stop": 1788121238554,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_alias_invocation_applies_connection_params",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121238554,
+                "stop": 1788121238788,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_all_broadcast_alphabetical_order",
+                "status": "passed",
+                "duration": 228,
+                "start": 1788121238788,
+                "stop": 1788121239016,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_all_broadcast_case_insensitive_alphabetical_order",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121239016,
+                "stop": 1788121239257,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestCore::test_disabled_command_error",
+                "status": "passed",
+                "duration": 260,
+                "start": 1788121239257,
+                "stop": 1788121239517,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestErrors::test_unknown_alias_error",
+                "status": "passed",
+                "duration": 232,
+                "start": 1788121239517,
+                "stop": 1788121239749,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestErrors::test_unknown_alias_with_suggestion",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121239749,
+                "stop": 1788121239990,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestErrors::test_all_no_aliases_error",
+                "status": "passed",
+                "duration": 226,
+                "start": 1788121239990,
+                "stop": 1788121240216,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestErrors::test_alias_group_invalid_member_error",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121240217,
+                "stop": 1788121240451,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestErrors::test_unwritable_config_error",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121240451,
+                "stop": 1788121240684,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_project_config_local_yml_priority",
+                "status": "passed",
+                "duration": 298,
+                "start": 1788121240684,
+                "stop": 1788121240982,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_project_config_local_yml_priority_overrides_project_disabled_command",
+                "status": "passed",
+                "duration": 1234,
+                "start": 1788121240982,
+                "stop": 1788121242216,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_project_config_upward_search",
+                "status": "passed",
+                "duration": 296,
+                "start": 1788121242217,
+                "stop": 1788121242513,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_project_config_search_stops_at_first_matching_directory",
+                "status": "passed",
+                "duration": 1262,
+                "start": 1788121242513,
+                "stop": 1788121243775,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_yaml_inherit_depth_first",
+                "status": "passed",
+                "duration": 284,
+                "start": 1788121243775,
+                "stop": 1788121244059,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_yaml_merge_arrays_appended",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121244059,
+                "stop": 1788121244290,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_yaml_merge_arrays_not_deduplicated",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121244290,
+                "stop": 1788121244521,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_auto_creation_locale_and_installer_version",
+                "status": "passed",
+                "duration": 329,
+                "start": 1788121244521,
+                "stop": 1788121244850,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_global_config_from_env_var",
+                "status": "passed",
+                "duration": 340,
+                "start": 1788121244850,
+                "stop": 1788121245190,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_global_config_default_path",
+                "status": "passed",
+                "duration": 318,
+                "start": 1788121245191,
+                "stop": 1788121245509,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_deprecated_param_emits_warning",
+                "status": "passed",
+                "duration": 292,
+                "start": 1788121245510,
+                "stop": 1788121245802,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_strict_args_mode",
+                "status": "passed",
+                "duration": 1465,
+                "start": 1788121245802,
+                "stop": 1788121247267,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_hidden_param_excluded_from_help_but_functional",
+                "status": "passed",
+                "duration": 298,
+                "start": 1788121247267,
+                "stop": 1788121247565,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_runtime_alias_overrides_file_alias",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121247565,
+                "stop": 1788121247800,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_unknown_alias_does_not_suggest_far_match",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121247800,
+                "stop": 1788121248036,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_alias_name_regex_validation",
+                "status": "passed",
+                "duration": 1265,
+                "start": 1788121248036,
+                "stop": 1788121249301,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_alias_group_deduplication_first_appearance",
+                "status": "passed",
+                "duration": 244,
+                "start": 1788121249301,
+                "stop": 1788121249545,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_local_path_absolutization",
+                "status": "passed",
+                "duration": 1263,
+                "start": 1788121249545,
+                "stop": 1788121250808,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_ssh_uri_schemes_recognized",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121250808,
+                "stop": 1788121251049,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_ssh_pre_cmd_injected_before_remote_command",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121251049,
+                "stop": 1788121251285,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_ssh_exit_255_error",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121251285,
+                "stop": 1788121251521,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_packages_dir_from_env",
+                "status": "passed",
+                "duration": 288,
+                "start": 1788121251522,
+                "stop": 1788121251810,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_all_auto_registered_when_aliases_exist",
+                "status": "passed",
+                "duration": 1278,
+                "start": 1788121251810,
+                "stop": 1788121253088,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py::TestFunctionality::test_explicit_all_alias_is_not_overridden_by_auto_registration",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121253089,
+                "stop": 1788121253326,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_table_format_default",
+                "status": "passed",
+                "duration": 1228,
+                "start": 1788121253326,
+                "stop": 1788121254554,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_json_format_4_space_indent",
+                "status": "passed",
+                "duration": 1252,
+                "start": 1788121254554,
+                "stop": 1788121255806,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_field_single_value_raw_output",
+                "status": "passed",
+                "duration": 1333,
+                "start": 1788121255806,
+                "stop": 1788121257139,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_quiet_suppresses_info_and_success",
+                "status": "passed",
+                "duration": 319,
+                "start": 1788121257140,
+                "stop": 1788121257459,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_error_to_stderr",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121257459,
+                "stop": 1788121257694,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestCore::test_debug_elapsed_time_format",
+                "status": "passed",
+                "duration": 292,
+                "start": 1788121257695,
+                "stop": 1788121257987,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestErrors::test_invalid_field_name_error",
+                "status": "passed",
+                "duration": 1276,
+                "start": 1788121257988,
+                "stop": 1788121259264,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestErrors::test_invalid_json_stdin_error",
+                "status": "passed",
+                "duration": 229,
+                "start": 1788121259264,
+                "stop": 1788121259493,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestErrors::test_confirmation_prompt_non_y_aborts",
+                "status": "passed",
+                "duration": 1138,
+                "start": 1788121259493,
+                "stop": 1788121260631,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestErrors::test_invalid_fields_plural_error",
+                "status": "passed",
+                "duration": 1302,
+                "start": 1788121260631,
+                "stop": 1788121261933,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_formats_preserve_same_underlying_values",
+                "status": "passed",
+                "duration": 3263,
+                "start": 1788121261933,
+                "stop": 1788121265196,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_csv_format_quoting",
+                "status": "passed",
+                "duration": 1672,
+                "start": 1788121265196,
+                "stop": 1788121266868,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_csv_serializes_complex_values_as_json_strings",
+                "status": "passed",
+                "duration": 1664,
+                "start": 1788121266868,
+                "stop": 1788121268532,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_yaml_format_output",
+                "status": "passed",
+                "duration": 1659,
+                "start": 1788121268533,
+                "stop": 1788121270192,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_count_format_integer",
+                "status": "passed",
+                "duration": 1672,
+                "start": 1788121270192,
+                "stop": 1788121271864,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_ids_format_space_separated",
+                "status": "passed",
+                "duration": 1672,
+                "start": 1788121271864,
+                "stop": 1788121273536,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_fields_restricts_and_orders_columns",
+                "status": "passed",
+                "duration": 1859,
+                "start": 1788121273536,
+                "stop": 1788121275395,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_fields_case_insensitive",
+                "status": "passed",
+                "duration": 3241,
+                "start": 1788121275395,
+                "stop": 1788121278636,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_color_auto_mode",
+                "status": "passed",
+                "duration": 381,
+                "start": 1788121278636,
+                "stop": 1788121279017,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_no_color_disables_formatting",
+                "status": "passed",
+                "duration": 380,
+                "start": 1788121279018,
+                "stop": 1788121279398,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_warning_to_stderr",
+                "status": "passed",
+                "duration": 382,
+                "start": 1788121279398,
+                "stop": 1788121279780,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_success_to_stdout_suppressed_by_quiet",
+                "status": "passed",
+                "duration": 387,
+                "start": 1788121279780,
+                "stop": 1788121280167,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_debug_group_filtering",
+                "status": "passed",
+                "duration": 388,
+                "start": 1788121280167,
+                "stop": 1788121280555,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_debug_group_prefix_format",
+                "status": "passed",
+                "duration": 391,
+                "start": 1788121280555,
+                "stop": 1788121280946,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_file_logging_timestamp_format",
+                "status": "passed",
+                "duration": 387,
+                "start": 1788121280947,
+                "stop": 1788121281334,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_file_logging_separator_per_invocation",
+                "status": "passed",
+                "duration": 733,
+                "start": 1788121281334,
+                "stop": 1788121282067,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_sensitive_error_not_logged",
+                "status": "passed",
+                "duration": 302,
+                "start": 1788121282067,
+                "stop": 1788121282369,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_json_stdin_supplies_missing_positional_argument",
+                "status": "passed",
+                "duration": 312,
+                "start": 1788121282369,
+                "stop": 1788121282681,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_yes_bypasses_confirmation",
+                "status": "passed",
+                "duration": 1477,
+                "start": 1788121282681,
+                "stop": 1788121284158,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_confirmation_accepts_trimmed_uppercase_y",
+                "status": "passed",
+                "duration": 1377,
+                "start": 1788121284159,
+                "stop": 1788121285536,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_confirmation_blank_response_cancels",
+                "status": "passed",
+                "duration": 244,
+                "start": 1788121285536,
+                "stop": 1788121285780,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_quiet_suppresses_cancellation_warning",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121285781,
+                "stop": 1788121286018,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_quiet_does_not_suppress_debug_output",
+                "status": "passed",
+                "duration": 308,
+                "start": 1788121286018,
+                "stop": 1788121286326,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py::TestFunctionality::test_complex_values_json_serialized_in_table",
+                "status": "passed",
+                "duration": 1274,
+                "start": 1788121286326,
+                "stop": 1788121287600,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestCore::test_detailed_execution_captures_all_fields",
+                "status": "passed",
+                "duration": 300,
+                "start": 1788121287600,
+                "stop": 1788121287900,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestCore::test_success_only_execution_returns_boolean",
+                "status": "passed",
+                "duration": 525,
+                "start": 1788121287901,
+                "stop": 1788121288426,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestCore::test_cache_read_hit_returns_content",
+                "status": "passed",
+                "duration": 304,
+                "start": 1788121288427,
+                "stop": 1788121288731,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestCore::test_cache_read_expired_deletes_and_misses",
+                "status": "passed",
+                "duration": 2,
+                "start": 1788121288731,
+                "stop": 1788121288733,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestCore::test_cache_key_sanitization_non_url",
+                "status": "passed",
+                "duration": 293,
+                "start": 1788121288734,
+                "stop": 1788121289027,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestErrors::test_unsupported_archive_format_error",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121289027,
+                "stop": 1788121289263,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestErrors::test_non_writable_file_extraction_warning_then_error",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121289263,
+                "stop": 1788121289502,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestErrors::test_exit_code_negative_1_warning",
+                "status": "passed",
+                "duration": 3771,
+                "start": 1788121289502,
+                "stop": 1788121293273,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestErrors::test_cache_dir_creation_failure_silent",
+                "status": "passed",
+                "duration": 296,
+                "start": 1788121293273,
+                "stop": 1788121293569,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_sensitive_arg_obfuscation_in_debug",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121293570,
+                "stop": 1788121293867,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tool_redispatch_stdout_mode",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121293867,
+                "stop": 1788121294104,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tool_redispatch_stderr_mode",
+                "status": "passed",
+                "duration": 301,
+                "start": 1788121294104,
+                "stop": 1788121294405,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tool_redispatch_return_code_mode",
+                "status": "passed",
+                "duration": 232,
+                "start": 1788121294406,
+                "stop": 1788121294638,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tool_redispatch_all_mode",
+                "status": "passed",
+                "duration": 245,
+                "start": 1788121294638,
+                "stop": 1788121294883,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tool_redispatch_json_parse_mode",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121294883,
+                "stop": 1788121295118,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_write_stores_content",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121295118,
+                "stop": 1788121295354,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_miss_returns_false",
+                "status": "passed",
+                "duration": 2,
+                "start": 1788121295354,
+                "stop": 1788121295356,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_fresh_entry_not_expired",
+                "status": "passed",
+                "duration": 300,
+                "start": 1788121295356,
+                "stop": 1788121295656,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_cleanup_expire_pass",
+                "status": "passed",
+                "duration": 2,
+                "start": 1788121295656,
+                "stop": 1788121295658,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_cleanup_size_enforcement",
+                "status": "passed",
+                "duration": 2,
+                "start": 1788121295658,
+                "stop": 1788121295660,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_eviction_tiebreaker_alphabetical",
+                "status": "passed",
+                "duration": 2,
+                "start": 1788121295660,
+                "stop": 1788121295662,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_cache_key_sanitization_url",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121295662,
+                "stop": 1788121295899,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_archive_extraction_zip",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121295899,
+                "stop": 1788121296134,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_archive_extraction_overwrites_existing_writable_file",
+                "status": "passed",
+                "duration": 240,
+                "start": 1788121296134,
+                "stop": 1788121296374,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_non_writable_nested_archive_entry_warns_with_relative_path",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121296374,
+                "stop": 1788121296616,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_non_writable_archive_entry_does_not_stop_other_files",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121296616,
+                "stop": 1788121296862,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_archive_extraction_tar_gz",
+                "status": "passed",
+                "duration": 247,
+                "start": 1788121296862,
+                "stop": 1788121297109,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py::TestFunctionality::test_tar_gz_fallback_to_external_command",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121297109,
+                "stop": 1788121297346,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestCore::test_db_auto_create_with_tables",
+                "status": "passed",
+                "duration": 298,
+                "start": 1788121297347,
+                "stop": 1788121297645,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestCore::test_option_read_missing_returns_false",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121297646,
+                "stop": 1788121297943,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestCore::test_option_write_insert_then_read",
+                "status": "passed",
+                "duration": 315,
+                "start": 1788121297943,
+                "stop": 1788121298258,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestCore::test_option_upsert_overwrites",
+                "status": "passed",
+                "duration": 304,
+                "start": 1788121298258,
+                "stop": 1788121298562,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestErrors::test_db_connection_failure_error",
+                "status": "passed",
+                "duration": 223,
+                "start": 1788121298562,
+                "stop": 1788121298785,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestErrors::test_table_creation_failure_error",
+                "status": "passed",
+                "duration": 520,
+                "start": 1788121298785,
+                "stop": 1788121299305,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migration_history_records_store_required_metadata",
+                "status": "passed",
+                "duration": 299,
+                "start": 1788121299305,
+                "stop": 1788121299604,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migration_history_table_starts_empty",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121299604,
+                "stop": 1788121299901,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migration_skipped_if_already_recorded",
+                "status": "passed",
+                "duration": 585,
+                "start": 1788121299901,
+                "stop": 1788121300486,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_all_values_stored_as_strings",
+                "status": "passed",
+                "duration": 306,
+                "start": 1788121300486,
+                "stop": 1788121300792,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_empty_string_value_is_not_treated_as_missing",
+                "status": "passed",
+                "duration": 589,
+                "start": 1788121300792,
+                "stop": 1788121301381,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_existing_empty_store_file_gets_required_tables",
+                "status": "passed",
+                "duration": 593,
+                "start": 1788121301382,
+                "stop": 1788121301975,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migration_timestamps_are_machine_parseable",
+                "status": "passed",
+                "duration": 309,
+                "start": 1788121301975,
+                "stop": 1788121302284,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migrations_table_schema",
+                "status": "passed",
+                "duration": 296,
+                "start": 1788121302284,
+                "stop": 1788121302580,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_options_table_schema",
+                "status": "passed",
+                "duration": 299,
+                "start": 1788121302580,
+                "stop": 1788121302879,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_parameterized_queries",
+                "status": "passed",
+                "duration": 303,
+                "start": 1788121302879,
+                "stop": 1788121303182,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_migration_record_can_be_removed_after_rollback",
+                "status": "passed",
+                "duration": 307,
+                "start": 1788121303182,
+                "stop": 1788121303489,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py::TestFunctionality::test_existing_db_opens_without_recreating",
+                "status": "passed",
+                "duration": 600,
+                "start": 1788121303489,
+                "stop": 1788121304089,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_5.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_container_status_running",
+                "status": "passed",
+                "duration": 248,
+                "start": 1788121304089,
+                "stop": 1788121304337,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_container_status_exited",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121304338,
+                "stop": 1788121304580,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_container_status_false_not_exists",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121304580,
+                "stop": 1788121304826,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_compose_merge_base_always_first",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121304826,
+                "stop": 1788121305072,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_project_naming_prefix",
+                "status": "passed",
+                "duration": 473,
+                "start": 1788121305072,
+                "stop": 1788121305545,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestCore::test_volume_creation_with_labels",
+                "status": "passed",
+                "duration": 244,
+                "start": 1788121305546,
+                "stop": 1788121305790,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestErrors::test_container_runtime_not_installed_error",
+                "status": "passed",
+                "duration": 232,
+                "start": 1788121305790,
+                "stop": 1788121306022,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestErrors::test_network_connect_failure_raises",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121306022,
+                "stop": 1788121306264,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestErrors::test_compose_custom_file_not_found_warning",
+                "status": "passed",
+                "duration": 243,
+                "start": 1788121306264,
+                "stop": 1788121306507,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_boot_container_exited_starts",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121306507,
+                "stop": 1788121306753,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_boot_container_running_noop",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121306753,
+                "stop": 1788121306990,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_boot_container_not_exists_creates",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121306990,
+                "stop": 1788121307236,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_compose_custom_compose_single_file",
+                "status": "passed",
+                "duration": 250,
+                "start": 1788121307236,
+                "stop": 1788121307486,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_configured_custom_compose_applies_after_base",
+                "status": "passed",
+                "duration": 240,
+                "start": 1788121307486,
+                "stop": 1788121307726,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_compose_empty_custom_scans_directory",
+                "status": "passed",
+                "duration": 249,
+                "start": 1788121307726,
+                "stop": 1788121307975,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_compose_directory_non_yml_ignored",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121307975,
+                "stop": 1788121308216,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_compose_directory_ignores_non_compose_files_in_call_order",
+                "status": "passed",
+                "duration": 246,
+                "start": 1788121308216,
+                "stop": 1788121308462,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_compose_legacy_custom_appended_last",
+                "status": "passed",
+                "duration": 243,
+                "start": 1788121308462,
+                "stop": 1788121308705,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_missing_custom_compose_warns_and_falls_back_to_base",
+                "status": "passed",
+                "duration": 245,
+                "start": 1788121308705,
+                "stop": 1788121308950,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_skip_tty_string_truthy_disables_tty",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121308950,
+                "stop": 1788121309189,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_skip_tty_flag_passed",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121309189,
+                "stop": 1788121309431,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_service_inspection_lists_names",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121309431,
+                "stop": 1788121309670,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_volume_skip_volume_true_skipped",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121309670,
+                "stop": 1788121309906,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_volume_existing_is_silently_skipped",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121309906,
+                "stop": 1788121310147,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_volume_already_exists_silently_skipped",
+                "status": "passed",
+                "duration": 243,
+                "start": 1788121310147,
+                "stop": 1788121310390,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_volume_mount_linux_uses_name",
+                "status": "passed",
+                "duration": 237,
+                "start": 1788121310390,
+                "stop": 1788121310627,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_volume_mount_macos_uses_symlink",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121310627,
+                "stop": 1788121310869,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_network_create_with_label",
+                "status": "passed",
+                "duration": 242,
+                "start": 1788121310869,
+                "stop": 1788121311111,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_network_connect_success_message",
+                "status": "passed",
+                "duration": 241,
+                "start": 1788121311111,
+                "stop": 1788121311352,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_network_disconnect_success_log",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121311352,
+                "stop": 1788121311587,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_network_disconnect_failure_warning",
+                "status": "passed",
+                "duration": 466,
+                "start": 1788121311588,
+                "stop": 1788121312054,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_site_delete_tears_down_containers_networks_and_volumes",
+                "status": "passed",
+                "duration": 245,
+                "start": 1788121312054,
+                "stop": 1788121312299,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py::TestFunctionality::test_platform_specific_volume_skip",
+                "status": "passed",
+                "duration": 238,
+                "start": 1788121312299,
+                "stop": 1788121312537,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_6.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestCore::test_migration_discovery_and_ascending_sort",
+                "status": "passed",
+                "duration": 292,
+                "start": 1788121312537,
+                "stop": 1788121312829,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestCore::test_migration_execution_creates_record",
+                "status": "passed",
+                "duration": 297,
+                "start": 1788121312829,
+                "stop": 1788121313126,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestCore::test_migration_failure_triggers_batch_rollback",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121313126,
+                "stop": 1788121313357,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestCore::test_disk_space_check_blocks_upgrade",
+                "status": "passed",
+                "duration": 170,
+                "start": 1788121313357,
+                "stop": 1788121313527,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestCore::test_image_version_comparison_exact_string",
+                "status": "passed",
+                "duration": 248,
+                "start": 1788121313527,
+                "stop": 1788121313775,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestErrors::test_migration_rollback_deletes_records",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121313775,
+                "stop": 1788121314008,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestErrors::test_image_pull_failure_error",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121314008,
+                "stop": 1788121314241,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestErrors::test_overall_upgrade_failure_error",
+                "status": "passed",
+                "duration": 300,
+                "start": 1788121314241,
+                "stop": 1788121314541,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestErrors::test_migration_file_not_found_error",
+                "status": "passed",
+                "duration": 301,
+                "start": 1788121314542,
+                "stop": 1788121314843,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_disk_space_exact_threshold_allows_upgrade",
+                "status": "passed",
+                "duration": 229,
+                "start": 1788121314844,
+                "stop": 1788121315073,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_disk_space_failure_blocks_upgrade_mutations",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788121315074,
+                "stop": 1788121315256,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_runtime_disk_space_failure_blocks_upgrade_mutations",
+                "status": "passed",
+                "duration": 176,
+                "start": 1788121315257,
+                "stop": 1788121315433,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_rollback_strict_reverse_order",
+                "status": "passed",
+                "duration": 230,
+                "start": 1788121315434,
+                "stop": 1788121315664,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_rollback_undo_failure_logged_continues",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121315664,
+                "stop": 1788121315899,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_rollback_no_undo_skipped",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121315900,
+                "stop": 1788121316134,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_migration_file_pattern_matching",
+                "status": "passed",
+                "duration": 303,
+                "start": 1788121316134,
+                "stop": 1788121316437,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_migration_already_recorded_excluded",
+                "status": "passed",
+                "duration": 611,
+                "start": 1788121316437,
+                "stop": 1788121317048,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_no_pending_migrations_do_not_duplicate_history",
+                "status": "passed",
+                "duration": 589,
+                "start": 1788121317048,
+                "stop": 1788121317637,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_container_migrations_after_db_migrations",
+                "status": "passed",
+                "duration": 300,
+                "start": 1788121317638,
+                "stop": 1788121317938,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_image_pulls_sequential",
+                "status": "passed",
+                "duration": 243,
+                "start": 1788121317938,
+                "stop": 1788121318181,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_skip_on_demand_images",
+                "status": "passed",
+                "duration": 244,
+                "start": 1788121318181,
+                "stop": 1788121318425,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_global_upgrade_compose_backup_restore",
+                "status": "passed",
+                "duration": 240,
+                "start": 1788121318425,
+                "stop": 1788121318665,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_global_upgrade_only_changed_images",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121318665,
+                "stop": 1788121318904,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_per_project_upgrade_temporary_containers",
+                "status": "passed",
+                "duration": 239,
+                "start": 1788121318904,
+                "stop": 1788121319143,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_per_project_unchanged_skipped",
+                "status": "passed",
+                "duration": 240,
+                "start": 1788121319144,
+                "stop": 1788121319384,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_compose_tool_upgrade_semver",
+                "status": "passed",
+                "duration": 244,
+                "start": 1788121319384,
+                "stop": 1788121319628,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_compose_tool_upgrade_rollback",
+                "status": "passed",
+                "duration": 249,
+                "start": 1788121319628,
+                "stop": 1788121319877,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_post_upgrade_saves_versions",
+                "status": "passed",
+                "duration": 254,
+                "start": 1788121319877,
+                "stop": 1788121320131,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_post_upgrade_prune_nonfatal",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121320131,
+                "stop": 1788121320366,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py::TestFunctionality::test_container_migration_failure_blocks_image_pulls",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121320366,
+                "stop": 1788121320601,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_7.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_sysreq_exponential_backoff_retries",
+                "status": "passed",
+                "duration": 1872,
+                "start": 1788121320602,
+                "stop": 1788121322474,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_sysreq_bypass_for_cli_commands",
+                "status": "passed",
+                "duration": 498,
+                "start": 1788121322474,
+                "stop": 1788121322972,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_first_run_creates_db_and_migrates",
+                "status": "passed",
+                "duration": 310,
+                "start": 1788121322972,
+                "stop": 1788121323282,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_version_newer_binary_triggers_migration",
+                "status": "passed",
+                "duration": 592,
+                "start": 1788121323282,
+                "stop": 1788121323874,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_cli_version_prints_version",
+                "status": "passed",
+                "duration": 238,
+                "start": 1788121323874,
+                "stop": 1788121324112,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_cli_has_command_registered_exits_0",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121324112,
+                "stop": 1788121324343,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestCore::test_cli_has_command_unregistered_exits_1",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121324344,
+                "stop": 1788121324575,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py"
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestErrors::test_sysreq_all_attempts_fail_error",
+                "status": "passed",
+                "duration": 3746,
+                "start": 1788121324575,
+                "stop": 1788121328321,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestErrors::test_older_binary_non_cli_error",
+                "status": "passed",
+                "duration": 511,
+                "start": 1788121328321,
+                "stop": 1788121328832,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestErrors::test_cli_self_uninstall_requires_runtime_dependencies",
+                "status": "passed",
+                "duration": 226,
+                "start": 1788121328833,
+                "stop": 1788121329059,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_sysreq_compose_tool_installed_check",
+                "status": "passed",
+                "duration": 300,
+                "start": 1788121329059,
+                "stop": 1788121329359,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_sysreq_compose_version_minimum",
+                "status": "passed",
+                "duration": 234,
+                "start": 1788121329359,
+                "stop": 1788121329593,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_first_run_success_message",
+                "status": "passed",
+                "duration": 291,
+                "start": 1788121329593,
+                "stop": 1788121329884,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_older_binary_cli_warning",
+                "status": "passed",
+                "duration": 519,
+                "start": 1788121329884,
+                "stop": 1788121330403,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_nightly_always_triggers_migration",
+                "status": "passed",
+                "duration": 291,
+                "start": 1788121330403,
+                "stop": 1788121330694,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_auto_update_check_interval",
+                "status": "passed",
+                "duration": 291,
+                "start": 1788121330694,
+                "stop": 1788121330985,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_auto_update_disabled_via_env",
+                "status": "passed",
+                "duration": 291,
+                "start": 1788121330985,
+                "stop": 1788121331276,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_runtime_binary_resolution_precedence",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121331276,
+                "stop": 1788121331512,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_info_json_first_run_remains_valid_json",
+                "status": "passed",
+                "duration": 230,
+                "start": 1788121331512,
+                "stop": 1788121331742,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_info_list_format_field_order",
+                "status": "passed",
+                "duration": 229,
+                "start": 1788121331742,
+                "stop": 1788121331971,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_info_single_item_vertical_format",
+                "status": "passed",
+                "duration": 232,
+                "start": 1788121331972,
+                "stop": 1788121332204,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_info_json_format_keys",
+                "status": "passed",
+                "duration": 334,
+                "start": 1788121332204,
+                "stop": 1788121332538,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_check_update_last_filter_wins",
+                "status": "passed",
+                "duration": 494,
+                "start": 1788121332538,
+                "stop": 1788121333032,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_check_update_no_updates_success",
+                "status": "passed",
+                "duration": 364,
+                "start": 1788121333033,
+                "stop": 1788121333397,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_check_update_table_format_no_updates_success",
+                "status": "passed",
+                "duration": 268,
+                "start": 1788121333397,
+                "stop": 1788121333665,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_check_update_filtered_no_updates_mentions_filter",
+                "status": "passed",
+                "duration": 236,
+                "start": 1788121333665,
+                "stop": 1788121333901,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_update_requires_confirmation",
+                "status": "passed",
+                "duration": 228,
+                "start": 1788121333901,
+                "stop": 1788121334129,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_update_yes_bypasses_prompt",
+                "status": "passed",
+                "duration": 230,
+                "start": 1788121334129,
+                "stop": 1788121334359,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_has_command_hierarchical_path_exits_0",
+                "status": "passed",
+                "duration": 229,
+                "start": 1788121334359,
+                "stop": 1788121334588,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_param_dump_alphabetical",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121334588,
+                "stop": 1788121334821,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_param_dump_with_values_reflects_runtime_config",
+                "status": "passed",
+                "duration": 231,
+                "start": 1788121334821,
+                "stop": 1788121335052,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_info_packages_path_null_when_missing",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121335052,
+                "stop": 1788121335287,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_cmd_dump_alphabetical",
+                "status": "passed",
+                "duration": 227,
+                "start": 1788121335287,
+                "stop": 1788121335514,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_aliases_matches_cli_alias",
+                "status": "passed",
+                "duration": 456,
+                "start": 1788121335514,
+                "stop": 1788121335970,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_self_uninstall_without_yes_prompts",
+                "status": "passed",
+                "duration": 603,
+                "start": 1788121335971,
+                "stop": 1788121336574,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_first_run_machine_readable_cli_outputs_stay_clean",
+                "status": "passed",
+                "duration": 891,
+                "start": 1788121336574,
+                "stop": 1788121337465,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_cli_param_dump_var_export_output",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121337466,
+                "stop": 1788121337701,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_tab_completion_sorted_alphabetically",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121337702,
+                "stop": 1788121337937,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_zsh_completions_include_descriptions",
+                "status": "passed",
+                "duration": 235,
+                "start": 1788121337937,
+                "stop": 1788121338172,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_tab_completion_includes_aliases",
+                "status": "passed",
+                "duration": 233,
+                "start": 1788121338172,
+                "stop": 1788121338405,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py::TestFunctionality::test_tab_completion_suppresses_file_logging",
+                "status": "passed",
+                "duration": 265,
+                "start": 1788121338405,
+                "stop": 1788121338670,
+                "retries": 0,
+                "file_path": "tasks/T04_recli/qualification/private_eval/tests/test_checkpoint_8.py",
+                "tags": [
+                    "functionality"
+                ]
+            }
+        ]
+    }
+}

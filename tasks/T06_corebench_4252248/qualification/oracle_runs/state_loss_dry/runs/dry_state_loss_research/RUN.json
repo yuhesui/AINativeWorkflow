@@ -1,0 +1,15 @@
+{
+  "attempt_id": "qualification-only",
+  "condition": "AI_NATIVE",
+  "created_utc": "2026-08-30T21:06:38.322775+00:00",
+  "non_scored": true,
+  "qualification_root": "D:\\Projects\\AI Native Workflow\\tasks\\T06_corebench_4252248\\qualification\\oracle_runs\\state_loss_dry",
+  "repo_initial_tree_sha256": "2747f254e842348944e2fe203be3da753cca9a0899d88d6e1317b6540a900c5b",
+  "run_id": "dry_state_loss_research",
+  "schema_version": 1,
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T06_corebench_4252248\\test_repo",
+  "source_test_repo_tree_sha256": "2747f254e842348944e2fe203be3da753cca9a0899d88d6e1317b6540a900c5b",
+  "status": "MATERIALIZED_NOT_STARTED",
+  "task_id": "T06",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T06_corebench_4252248\\qualification\\oracle_runs\\state_loss_dry\\runs\\dry_state_loss_research\\workspace"
+}

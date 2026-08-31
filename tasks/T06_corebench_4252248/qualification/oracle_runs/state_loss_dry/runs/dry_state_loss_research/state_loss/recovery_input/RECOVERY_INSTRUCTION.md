@@ -1,0 +1,1 @@
+The previous Main session is unavailable. Recover the current project state from the repository alone and continue the original task using the permitted resources. Do not assume access to the prior conversation or any unstored intent. First establish what is complete, what evidence exists, what remains valid, and what should happen next; then continue autonomously.

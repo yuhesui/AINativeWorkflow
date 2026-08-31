@@ -1,0 +1,14 @@
+{
+  "blockers": [],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/full_01",
+    "oracle_runs/state_loss_dry",
+    "private_eval/expected_answer.json",
+    "private_eval/grade_answer.py"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "QUALIFIED"
+}

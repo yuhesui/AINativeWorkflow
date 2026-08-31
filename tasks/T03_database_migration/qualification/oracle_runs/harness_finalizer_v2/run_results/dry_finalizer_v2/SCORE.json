@@ -1,0 +1,14 @@
+{
+  "condition": "DIRECT",
+  "grader_raw": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_finalizer_v2\\run_results\\dry_finalizer_v2\\GRADER_RAW.json",
+  "grader_raw_sha256": "7be56a1c4ada7c862f40da1dde8de270a1c64ec728da058477559d7330f5619e",
+  "invalidation_reason": null,
+  "native_primary_metric": 1.0,
+  "normalized_completion_score": 1.0,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_finalizer_v2\\runs\\dry_finalizer_v2\\repo_final",
+  "repo_final_tree_sha256": "66257245361f126cd5480e3f5bea15fd8e4046980cba065764201daea9907b6b",
+  "run_id": "dry_finalizer_v2",
+  "schema_version": 1,
+  "task_id": "T03",
+  "validity": "VALID"
+}

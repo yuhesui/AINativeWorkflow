@@ -1,0 +1,50 @@
+# `.ai-workflow/` — Machine Runtime v5.6.35
+
+Copy this whole directory into the target repository root.
+
+## Canonical hierarchical runtime
+
+```text
+.ai-workflow/
+├── STATE.json                    authoritative small index
+├── runtime/
+│   └── plans/<plan>/phases/<phase>/
+│       ├── DIC/                  one multi-view durable Phase contract
+│       ├── EPS/                  JIT execution-stack/run instances
+│       ├── actions/
+│       ├── logs/
+│       ├── evidence/
+│       ├── reports/              always present; flat; <=10 files by default
+│       └── optional lanes/       minor/research/verification/checkpoints
+├── aw_hierarchy.py               canonical hierarchy CLI wrapper
+├── aw/hierarchy.py               canonical hierarchy implementation
+├── docs/PHASE_DIC_EPS_STRUCTURE.md
+└── tests/
+```
+
+The durable DIC views are `README.md`, `REQUESTS.md`, and the actual execution `PLAN.md`; `ARCHITECTURE.md`, `TEST_MATRIX.md`, and arbitrary user-defined Markdown views are added when useful. The Plan may describe tens or hundreds of prompt nodes, parallel subagents and conditional branches. EPS instantiates those nodes just in time.
+
+Optional Phase lanes use `off | auto | on`. `reports/` is mandatory and non-nestable.
+
+## Compatibility runtime
+
+`aw.py`, the older Goal/Structured phase CLI, legacy Orchestrator/Worker naming, and older templates are retained where inexpensive for v5.6.31-style repositories. They are compatibility surfaces rather than competing sources of Plan/Phase authority.
+
+For new long-horizon work, read in this order:
+
+```text
+STATE.json
+active Plan/Phase state
+active Phase/DIC/README.md
+active Phase/DIC/REQUESTS.md
+active Phase/DIC/PLAN.md
+active Phase/reports/REPORT.md
+relevant evidence/project artifacts
+```
+
+Validation:
+
+```bash
+PYTHONPATH=.ai-workflow pytest -q .ai-workflow/tests
+python .ai-workflow/aw_hierarchy.py --root . recover
+```

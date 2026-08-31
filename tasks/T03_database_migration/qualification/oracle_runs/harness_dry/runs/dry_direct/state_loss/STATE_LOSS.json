@@ -1,0 +1,14 @@
+{
+  "captured_utc": "2026-08-30T20:53:52.294928+00:00",
+  "elapsed_hours": null,
+  "old_main_transcript_transferred": false,
+  "recovery_files": {
+    "ORIGINAL_TASK.md": "9b0ad9d700780172737979600d581da10dc7239f9ce21c7cda1892fa01422689",
+    "RECOVERY_INSTRUCTION.md": "2810a3d893361f3830cb318d530910c14f8d3ee109d3766a64914254f5fb56fe",
+    "RESOURCE_POLICY.md": "f644ba02b3f57e0f162acce4899bf8977742d812004e67e68e92c9ae00d1d0ae"
+  },
+  "repo_surviving_tree_sha256": "bf0bf1a2babe5a82763f72d2a5e1d652a021613c0abf379110ebb6abea17c307",
+  "run_id": "dry_direct",
+  "schema_version": 1,
+  "task_id": "T03"
+}

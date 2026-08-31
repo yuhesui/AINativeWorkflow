@@ -1,0 +1,165 @@
+schema_version = "1.1"
+
+artifacts = []
+
+[task]
+name = "gabeorlanski/recli"
+description = "CLI framework with hierarchical command dispatch, argument validation, YAML configuration with inheritance, aliases, output formatting, file caching, SQLite persistence, container orchestration, version upgrade infrastructure, and system requirement checks."
+authors = [{ name = "Gabriel Orlanski" }]
+keywords = [
+  "cli-tools",
+  "configuration",
+  "yaml",
+  "argument-parsing",
+  "sqlite",
+  "caching",
+  "docker",
+  "version-management",
+  "output-formatting",
+  "scb-problem",
+  "multi-step",
+  "pytest",
+]
+
+[metadata]
+difficulty = "hard"
+category = "developer-tools"
+tags = [
+  "cli-tools",
+  "configuration",
+  "yaml",
+  "argument-parsing",
+  "sqlite",
+  "caching",
+  "docker",
+  "version-management",
+  "output-formatting",
+]
+source = "scb-problems"
+source_problem = "recli"
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+allow_internet = true
+workdir = "/app"
+
+[environment.env]
+COLUMNS = "240"
+LINES = "60"
+PYTHONUNBUFFERED = "1"
+TERM = "xterm"
+
+[agent]
+timeout_sec = 7200.0
+
+[verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_1"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_2"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_3"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_4"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_5"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_6"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_7"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+[[steps]]
+name = "checkpoint_8"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 750.0
+
+# revision: v5

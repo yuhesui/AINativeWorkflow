@@ -1,0 +1,68 @@
+{
+  "baseline_equivalent_s": 339.6902864176144,
+  "baseline_lock": {
+    "golden_median_s": 0.45997639998677187,
+    "golden_times_s": [
+      0.4549669999978505,
+      0.45997639998677187,
+      0.4646111999754794
+    ],
+    "host": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.2"
+    },
+    "measured_utc": "2026-08-30T20:15:06.827557+00:00",
+    "method": "one unoptimized execution; median of three golden executions; immutable read-only SQLite",
+    "schema_version": 1,
+    "timeout_s": 900.0,
+    "unoptimized_s": 344.38577819999773,
+    "unoptimized_to_golden_ratio": 748.703146965587
+  },
+  "candidate_sha256": "4da1885d56b3ffa7b7b22b422996d018795611f6963499d551582881b74b84fd",
+  "continuous_metric": "semantic-gated log-runtime progress",
+  "continuous_score": 100.0,
+  "database_sha256": "89eab7555b6b86a74b8e0ee5a7db7beec0b2575a45cd2b22fe132eae79f5ad5a",
+  "format_errors": [],
+  "gates": {
+    "database_integrity": true,
+    "exact_columns": true,
+    "exact_rows_ordered": true,
+    "format": true,
+    "required_files": true,
+    "semantic_correctness": true,
+    "valid_sql": true
+  },
+  "iterations": 7,
+  "medians": {
+    "candidate_s": 0.45228810000116937,
+    "golden_s": 0.4537048999918625
+  },
+  "native_metric": "official verifier pass",
+  "native_pass": true,
+  "native_performance_threshold_ratio": 1.05,
+  "optimization_progress": 1.0,
+  "raw_timings": {
+    "candidate_s": [
+      0.43231900001410395,
+      0.4512723000079859,
+      0.4716975000046659,
+      0.45228810000116937,
+      0.45644990002620034,
+      0.44500569999217987,
+      0.46124619999318384
+    ],
+    "golden_s": [
+      0.43419569998513907,
+      0.43861509999260306,
+      0.46501980000175536,
+      0.445603400003165,
+      0.455796599999303,
+      0.47578079998493195,
+      0.4537048999918625
+    ]
+  },
+  "row_count": 500,
+  "schema_version": 1,
+  "task_id": "T01",
+  "valid": true
+}

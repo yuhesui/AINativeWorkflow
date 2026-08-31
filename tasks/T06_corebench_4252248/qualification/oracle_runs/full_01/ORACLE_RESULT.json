@@ -1,0 +1,12 @@
+{
+  "capsule_exit_code": 0,
+  "container_image": "registry.codeocean.com/published/0012b3fb-3cf2-41fa-9b8d-6cc055b53ca2:v1",
+  "container_image_digest": "sha256:cde83cedfb51150e20b442cd2f988f62f92864f8d661979c11f7f035c4b156f5",
+  "expected_value": 0.4929241,
+  "generated_artifact": "capsule/results/NEW_PR_ctrpv2_lincs_ATC(CHEMBL).pdf",
+  "native_correct_questions": 1,
+  "native_total_questions": 1,
+  "observed_value": 0.4929241,
+  "qualification_only": true,
+  "scored_trajectory": false
+}

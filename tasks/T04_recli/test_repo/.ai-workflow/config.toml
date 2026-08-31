@@ -1,0 +1,57 @@
+workflow_version = "5.6.35"
+specification_revision = "5.6"
+mode = "goal"
+execution_level = "mid"
+research_level = "none"
+test_profile = "affected"
+routing_profile = "all"
+current_phase = ""
+auto_continue_after_go = true
+approval_phrase = "GO"
+
+[models]
+available = []
+surfaces = ["chatgpt", "claude_code", "codex", "copilot_cli"]
+record_actual_model = true
+
+[repository]
+root_mode = "auto"
+root = ""
+env_var = "AW_REPO_ROOT"
+insert_into_prompts = true
+
+[minor]
+approval = "auto"
+
+[phase_lanes]
+minor = "auto"
+research = "auto"
+verification = "auto"
+checkpoints = "auto"
+
+[dic_views]
+readme = "on"
+requests = "on"
+plan = "on"
+architecture = "auto"
+test_matrix = "auto"
+allow_custom = true
+
+[templates]
+copy_full_set = true
+structured_architecture = true
+
+[testing]
+policy = "risk_adaptive"
+default_profile = "affected"
+
+[reports]
+policy = "compact_raw"
+flat = true
+max_files = 10
+max_summary_files = 10
+include_key_raw_results = true
+
+[update]
+prompt_statuses = ["planned", "ready"]
+include_root_files = true

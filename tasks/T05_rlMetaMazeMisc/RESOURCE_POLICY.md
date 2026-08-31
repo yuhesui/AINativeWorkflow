@@ -1,0 +1,3 @@
+# Resource policy — T05
+
+Matched per-condition ceiling: 12 hours wall time; 240 Main interaction turns; 480 executor-minutes; at most two concurrent executors; 8 CPU cores; 32 GiB RAM; one local NVIDIA GPU with at least 6 GiB VRAM for at most 8 GPU-hours; 40 GiB writable disk. At most ten full training attempts may be started, each retaining configuration and outcome; the official five-checkpoint evaluation is separate. Network permits package indexes, official documentation, and primary literature, but not benchmark solutions. The mixed research resource menu is exactly `protocol/04_MODEL_POLICY.md`; every route is logged. T5m loss is the first stable Main-to-executor handoff after 6 elapsed hours.

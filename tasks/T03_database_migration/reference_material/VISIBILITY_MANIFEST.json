@@ -1,0 +1,6 @@
+{
+  "task_id": "T03",
+  "agent_visible": [],
+  "provenance_only": [],
+  "reason": "Checkpoint instructions are delivered progressively by the harness; later instructions and all evaluator/solution material are private."
+}

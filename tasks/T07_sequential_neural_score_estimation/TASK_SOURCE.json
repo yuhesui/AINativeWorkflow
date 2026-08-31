@@ -1,0 +1,31 @@
+{
+  "authoritative_sources": [
+    {
+      "commit": "51052cede8cc608f95bb00346635e03759013e5a",
+      "commit_date": "2026-04-21T16:53:31-04:00",
+      "kind": "git+LFS",
+      "paper_pdf_lfs_oid_sha256": "4161e45352ce3a8a247dce0841c2a90f0445653872b9616ca1954ebfaa81a57c",
+      "task_path": "project/paperbench/data/papers/sequential-neural-score-estimation",
+      "url": "https://github.com/openai/frontier-evals.git"
+    }
+  ],
+  "benchmark": "PaperBench",
+  "frozen_identity": "sequential-neural-score-estimation",
+  "license": "MIT (frontier-evals/PaperBench license retained); paper copyright remains with its authors/publisher.",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T07",
+  "technical_adaptations": [
+    "hydrated the exact target Git LFS objects",
+    "preserved project/paperbench plus its required project/common sibling at the pinned revision",
+    "copied the official paper/addendum/blacklist/assets into test_repo",
+    "isolated rubric and judge",
+    "created an empty submission surface without a reference implementation"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

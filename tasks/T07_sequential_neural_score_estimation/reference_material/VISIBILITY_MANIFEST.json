@@ -1,0 +1,37 @@
+{
+  "task_id": "T07",
+  "agent_visible": [
+    {
+      "path": "agent_visible/paper.pdf",
+      "mounted_at": "test_repo/paper/paper.pdf",
+      "role": "PaperBench source paper"
+    },
+    {
+      "path": "agent_visible/paper.md",
+      "mounted_at": "test_repo/paper/paper.md",
+      "role": "official text rendering"
+    },
+    {
+      "path": "agent_visible/addendum.md",
+      "mounted_at": "test_repo/paper/addendum.md",
+      "role": "official task addendum"
+    },
+    {
+      "path": "agent_visible/blacklist.txt",
+      "mounted_at": "test_repo/paper/blacklist.txt",
+      "role": "official prohibited-resource list"
+    },
+    {
+      "path": "agent_visible/assets/**",
+      "mounted_at": "test_repo/paper/assets/**",
+      "role": "official paper assets"
+    }
+  ],
+  "provenance_only": [
+    {
+      "path": "provenance_only/config.yaml",
+      "role": "PaperBench task metadata; not needed in the scored workspace"
+    }
+  ],
+  "private": ["../qualification/private_eval/rubric.json", "../qualification/private_eval/paperbench/judge"]
+}

@@ -1,0 +1,159 @@
+\documentclass{article}
+% Offline fallback style retained in this package. Before submission Phase 01 must
+% replace/verify neurips_2026.sty against the official 2026 author kit and use the
+% double-blind workshop option required by the official style.
+\usepackage{neurips_2026}
+\input{preamble}
+\providecommand{\workshoptitle}[1]{}
+\workshoptitle{Managing Agents that Manage Agents}
+\title{Persistent Contracts for Managing Long-Horizon Language-Agent Work}
+\author{Anonymous Authors}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Meta-agents increasingly decompose objectives, dispatch workers, revise plans, and supervise compound language-agent systems. The difficult failure mode is often not a single bad action but gradual loss of intent, authority, evidence, or dependency validity across many runs and fresh contexts. We present AI-Native Workflow, a package-resident management protocol that separates human governance from machine execution. A human approves a multi-phase Plan; a persistent Main coordinates Theory and Experiment workstreams; each Phase is governed by one durable multi-view contract (DIC) whose Requests state concrete goals and whose Plan records prompt dependencies, parallel subagents, merge points, and repair branches. Disposable execution prompt stacks (EPS) instantiate those planned nodes just in time. Evidence gates return accept, repair, replan, or escalate. Under complete dependency declarations and version-bound evidence, we show that a repair need invalidate only the dynamic dependency cone and that this cone is worst-case tight; imperfect verification admits a simple survival bound, while evidence aliasing yields an impossibility result. The reference implementation records reconstructable lineage and periodic human checkpoints. We pre-register a resource-constrained proof-of-concept evaluation on five Harbor tasks using ChatGPT as Main and Claude Code as bounded executor. No comparative benchmark result is claimed before those runs are completed; the present paper contributes the system, formal analysis, and a falsifiable evaluation design.
+\end{abstract}
+
+\section{Introduction}
+Long-running language-agent work increasingly resembles management rather than a single call to a model. A manager interprets an objective, decomposes it, delegates bounded work, integrates outputs, checks evidence, and decides whether a failure should be repaired locally or should change the plan. Existing work already demonstrates planning and search \citep{yao2023react,yao2023tot,besta2024got,prasad2024adapt,zhou2024lats}, role-based compound agents \citep{wu2023autogen,li2023camel,chen2024agentverse,hong2024metagpt}, externalized context \citep{packer2023memgpt,wang2024hiagent}, and automated harness optimization \citep{khattab2024dspy,hu2025adas}. Accordingly, our claim is not that ``agents can manage agents'' or that hierarchy itself is new.
+
+We focus on a narrower systems problem: \emph{what durable management objects should survive when a task spans many model contexts, workers, files, tests, scientific claims, and human review cycles?} A local worker can be competent while the overall programme fails because the original request was silently weakened, a downstream artifact still depends on an invalidated upstream result, a verification signal is stale, or a manager changes a publication/release objective without human authority.
+
+AI-Native Workflow treats these as control and state-management failures. Its canonical refinement chain is
+\[
+\text{Goal}\succeq\text{Plan}\succeq\text{Phase}\succeq\text{DIC}\succeq\text{EPS}\succeq\text{Prompt/Run}\succeq\text{Action}.
+\]
+A Plan is the human-approved programme. A Phase is a coherent machine milestone. A \emph{durable intent contract} (DIC) is one multi-view Phase package: \texttt{README.md} gives the summary, \texttt{REQUESTS.md} enumerates concrete goals and acceptance targets, and \texttt{PLAN.md} records the actual prompt graph, dependencies, parallel subagent batches, merge nodes, and conditional branches. Optional architecture, test-matrix, and user-defined views add other angles on the same contract. An EPS does not replace this plan; it is a disposable instantiation of planned prompt/run nodes against the current repository state and attempt.
+
+The design deliberately separates two timescales. Humans approve a Plan and review periodic or material checkpoints. Ordinary machine phases, prompt runs, local tests, and repairs do not each require approval. Main retains integration and publication authority; Theory and Experiment are persistent specialist workstreams; coding or research subagents are bounded executors rather than independent authorities.
+
+Our contributions are:
+\begin{enumerate}
+  \item a concrete management protocol and reference runtime for persistent intent, bounded delegation, evidence lineage, periodic checkpoints, and explicit repair/replan/escalate outcomes;
+  \item a formal characterization of when refinement and dependency-local recovery are sound, including a worst-case tightness statement, an imperfect-verifier bound, and an evidence-observability limit;
+  \item a small, falsifiable workshop evaluation that compares a competent flat ChatGPT+Claude-Code workflow with the full hierarchy on five evolving/stateful/scientific Harbor tasks, rather than claiming performance from engineering unit tests.
+\end{enumerate}
+
+\section{Management problem and design principles}
+\paragraph{Persistent intent.} A manager needs a stable description of what is being optimized, what may not change, and what evidence closes the task. Chat history is insufficient because fresh contexts and tool agents do not share a single reliable memory surface.
+
+\paragraph{Bounded delegation.} A worker should receive the smallest sufficient context, write scope, acceptance test, and return path. Delegation transfers execution, not the authority to redefine the objective.
+
+\paragraph{Evidence before completion.} ``Done'' is not a linguistic state. A request is closed only when its declared evidence/acceptance relation is satisfied. The framework therefore treats test outputs, artifact hashes, benchmark rewards, citations, and human decisions as first-class state.
+
+\paragraph{Local repair before global restart.} If a failure affects only a subset of declared dependencies, the manager should preserve independent work. Conversely, incomplete dependency declarations make locality unsafe.
+
+\paragraph{Human governance at the right scale.} Requiring approval after every phase defeats autonomous execution; never escalating lets the system silently change objectives or external state. The default is Plan approval, periodic review after several phases, and immediate escalation for material objective, authority, protocol, scientific-claim, destructive/external, credential, paid-compute, release, or submission changes.
+
+\section{Contracted hierarchy}
+\subsection{Plan, Phase, and multi-view DIC}
+A Plan is a DAG of machine-managed Phases plus human governance metadata. A Phase is not normally a chat session: one Phase can legitimately contain tens of prompt/runs and several subagents.
+
+Each Phase has exactly one DIC package. The core views are complementary rather than sequential:
+\begin{itemize}
+  \item \texttt{README.md}: general summary, current state, owner, authority, and read order;
+  \item \texttt{REQUESTS.md}: specific goals and acceptance targets, independent of execution ordering;
+  \item \texttt{PLAN.md}: durable execution graph---prompt IDs, dependencies, parallel batches, assigned subagents, merge/review nodes, and conditional repair branches.
+\end{itemize}
+\texttt{ARCHITECTURE.md} specifies a target repository/system architecture only when the Phase changes it; \texttt{TEST\_MATRIX.md} specifies concrete software, theory-audit, or experiment combinations. Users may add arbitrary registered DIC views such as a theorem map, data contract, venue requirements, or release contract.
+
+This distinction matters operationally. If a proof route fails but the Phase still seeks the same theorem-or-obstruction answer, the durable Request remains unchanged while the execution plan/EPS can be repaired. If the theorem target itself must be weakened, the DIC changes and the alteration is visible.
+
+\subsection{EPS and prompt/run materialization}
+The EPS is a just-in-time realization of the durable plan. For a node $p$, the EPS records the current attempt, exact context inputs, executor/model profile, dependencies, output path, local acceptance, and stop conditions. A failed attempt can be superseded by a new EPS instance without overwriting the original trace. Stable prompt IDs remain useful for dependencies and postmortem analysis even though the human does not approve each prompt.
+
+Parallelism is explicit. Two workers may run concurrently only when their dependencies are satisfied, write scopes are compatible, their failures can be recovered independently, and a merge node is named. The manager remains responsible for integration.
+
+\subsection{Persistent state and reports}
+\texttt{.ai-workflow/STATE.json} is a small canonical index for active Plan/Phase state, roles, checkpoints, escalations, DIC/EPS paths, and evidence pointers. Substantive outputs remain in their natural repository locations. Every Phase has a mandatory flat \texttt{reports/} surface, capped at ten files by default, combining concise human synthesis with key merged raw results. ``Merged raw'' permits lossless collation and provenance but not averaging, favorable-case selection, or paraphrase of failed outputs.
+
+This design allows a fresh Main to reconstruct authority and progress from the package alone rather than relying on an earlier conversation.
+
+\section{Verification-gated management}
+Let a verifier consume the relevant DIC, current state, and evidence and return
+\[
+\mathcal V\in\{\mathsf{accept},\mathsf{repair},\mathsf{replan},\mathsf{escalate}\}.
+\]
+\textsf{Accept} closes the local request/phase boundary. \textsf{Repair} preserves the durable contract and regenerates/re-executes affected operations. \textsf{Replan} changes the durable execution decomposition while staying within authorized intent. \textsf{Escalate} stops autonomy at a human boundary.
+
+Verification is layered rather than synonymous with a separate ``Verifier agent.'' Local checks occur near the action (unit tests, compilation, schema validation, artifact reopen, numerical sanity checks). Milestone checks summarize several prompt nodes or close a DIC Request. Fresh-context independent review is reserved for theorem-level claims, frozen empirical evidence, or release/submission boundaries where epistemic independence is worth the cost. Reflection-style additional inference \citep{shinn2023reflexion} is therefore only one possible implementation of a verification gate.
+
+\section{Formal analysis}
+\subsection{Refinement and composition}
+Associate every hierarchy object $X$ with a set of admitted traces $\llbracket X\rrbracket$. Given an abstraction map $\rho$, define $X\preceq Y$ when
+\[
+\rho(\llbracket X\rrbracket)\subseteq\llbracket Y\rrbracket.
+\]
+A chain of hierarchy labels alone does not preserve intent: the abstraction maps and inclusions must actually be sound. For a Plan DAG, standard contract composition follows if each Phase satisfies a sound pre/post contract, predecessor postconditions imply successor preconditions, unordered writes are noninterfering, and terminal postconditions imply the global goal. We include this result to expose assumptions, not as a novel program-logic theorem \citep{hoare1969axiomatic}.
+
+\subsection{Dependency-local recovery}
+Let Phase or prompt node $v$ declare read keys $R_v$ and write keys $W_v$; dependency edges include every possible information flow. If repair changes keys $\Delta$, define
+\[
+B(\Delta)=\{v:R_v\cap\Delta\neq\varnothing\},\qquad
+\mathcal I(\Delta)=\Reach(B(\Delta)).
+\]
+\begin{theorem}[Dependency-local recovery]
+If outputs/evidence depend only on declared inputs, predecessor outputs, recorded tool/version parameters and recorded randomness; dependencies are complete; and evidence is bound to artifact versions, then completed outputs outside $\mathcal I(\Delta)$ remain contract-valid after the repair.
+\end{theorem}
+\begin{proof}[Proof sketch]
+A node outside the cone neither reads a changed key nor depends on a changed predecessor. Topological induction therefore preserves all declared inputs and the validity of its version-bound evidence. The detailed statement/proof is in the technical report.
+\end{proof}
+The cone is worst-case tight given footprint information alone: a direct reader can copy a changed bit and every descendant can propagate it. This is an adaptation of dependency/incremental-build locality \citep{mokhov2018build,acar2009selfadjusting}, not a claim that dependency graphs are new.
+
+\subsection{Imperfect verification and observability}
+If a persisting observable fault is missed at each gate with conditional probability at most $\alpha<1$, survival through $k$ gates is at most $\alpha^k$ and expected detection delay is at most $1/(1-\alpha)$ gate intervals. A separate stationary checkpoint-cost model yields a square-root trade-off between checking cost and expected repair cost, analogous to checkpoint/restart analysis \citep{young1974first,daly2006higher}.
+
+There is also a hard limit. Let $O(s)$ be the evidence observation and $G(s)$ the goal predicate. If $O(s_+)=O(s_-)$ but $G(s_+)\neq G(s_-)$, every verifier using only $O$ must make the same decision on both states and therefore incur either a false acceptance or false rejection. More management hierarchy cannot recover information missing from the evidence channel.
+
+\section{Reference implementation}
+The standard-library runtime records Plan approval, dependency-aware phase progression, one multi-view DIC per Phase, EPS prompt/run lineage, role normalization, periodic checkpoints, material escalations, verification outcomes, and package-only recovery. Optional \texttt{minor/}, \texttt{research/}, \texttt{verification/}, and \texttt{checkpoints/} lanes use \texttt{off|auto|on}; \texttt{reports/} is mandatory and flat. Legacy Orchestrator/Researcher terminology is retained only as compatibility aliases to Main/Theory capabilities.
+
+The current conformance suite tests one Plan authorizing several phases, autonomous ordinary progression, checkpoint triggering, material escalation, reconstructable lineage, Main/Theory/Experiment ownership, package-only recovery, multi-view DIC/custom views, parallel EPS nodes, report invariants, and v5.6.x migration surfaces. These are engineering tests: they establish that the protocol is implemented, not that it improves agent performance.
+
+\section{Targeted workshop evaluation}
+\subsection{Resource-constrained design}
+We pre-register a deliberately small paired study because the available evaluation budget is one ChatGPT Plus account and two Claude Pro accounts. ChatGPT is Main in every run. Claude Code authenticated through Pro A is the primary bounded executor; Pro B is reserved for pre-declared replication on the two most mechanism-relevant tasks. We compare only two conditions so that the study measures a meaningful system difference rather than spreading credit across a large ablation matrix.
+
+\textbf{F (Flat)} is a competent baseline using the same ChatGPT Main + Claude Code stack. Main may make one ordinary plan, inspect tests, debug, and iterate, but does not instantiate DIC/EPS lineage, a persistent Request ledger, dependency-local invalidation, or the four-outcome verification state machine. \textbf{W (Workflow)} uses the full package hierarchy. Thus F is not a one-shot straw man.
+
+\begin{table}[t]
+\centering\small
+\caption{Frozen candidate task set. No score in this table is a result.}
+\label{tab:tasks}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+ID & Task & Intended stressor\\\midrule
+T1 & \texttt{env\_manager} & 5-step easier evolving-spec control; hierarchy overhead\\
+T2 & \texttt{database\_migration} & 5-step dependencies, rollback, backfills, cycle handling\\
+T3 & \texttt{recli} & 8-step hard evolving CLI; late regression/architecture erosion\\
+T4 & \texttt{live-database-cutover} & live state, consistency, monitoring, safe cutover\\
+T5 & \texttt{certified-sparse-regression} & scientific optimization/certification transfer\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+T1--T3 come from SlopCodeBench's iterative specification-refinement tasks \citep{orlanski2026slopcodebench}; T4 is a current Terminal-Bench task \citep{merrill2026terminalbench}; T5 is from Terminal-Bench-Science \citep{terminalbenchscience2026}. Primary runs consist of F/W on all five tasks with Claude Pro A (10 runs). T2 and T3 receive F/W replications with Pro B (4 runs), for 14 scored runs total. Exact task versions are locked before execution and oracles are used only for isolated environment qualification.
+
+Primary evidence is the official reward, SlopCodeBench strict pass rate by checkpoint, regression/erosion, rework/repair scope, model-run counts, Main turns, and wall time. Because subscription UIs may not expose reliable token counts, we do not claim strict token matching; both conditions receive the same benchmark timeout and tool/account surface, and resource differences are reported. With five task families, the analysis is descriptive: all runs, paired differences, checkpoint curves, and independent-account replications are shown rather than converted into broad population-level $p$-value claims.
+
+\paragraph{Falsifiability.} The workflow can fail this test. T1 may expose pure overhead. T2/T3 may show no improvement in late-checkpoint retention. T4 may demonstrate that explicit verification does not prevent unsafe state transitions. T5 may show that the architecture does not transfer to scientific workflows. Null or negative outcomes are retained in the evidence store and manuscript.
+
+\paragraph{Current evidence boundary.} At the time of this draft, the 14 scored runs have not been executed. No table or abstract claim should be upgraded from ``pre-registered evaluation'' to ``improves'' until generated directly from raw Harbor/verifier evidence.
+
+\section{Related work}
+Our hierarchy is compatible with plan/search agents such as ReAct, Tree/Graph of Thoughts, ReWOO, ADaPT, and LATS \citep{yao2023react,yao2023tot,besta2024got,xu2023rewoo,prasad2024adapt,zhou2024lats}. Compound-agent frameworks demonstrate role specialization and inter-agent communication \citep{wu2023autogen,li2023camel,chen2024agentverse,hong2024metagpt}; our focus is the persistent authority/evidence layer around such execution. MemGPT and HiAgent externalize or hierarchize context \citep{packer2023memgpt,wang2024hiagent}; here external state is tied to acceptance and invalidation. DSPy and automated agent design optimize prompts/graphs \citep{khattab2024dspy,hu2025adas}; AI-Native Workflow governs how a chosen or evolving harness is authorized, audited, and repaired. Verification and oversight work motivates process checks, debate, recursive oversight, and weak-to-strong supervision \citep{lightman2023verify,irving2018debate,leike2018recursive,burns2024weakstrong}; our contribution is to connect evidence gates to explicit recovery scope and governance outcomes.
+
+\section{Limitations}
+The protocol introduces overhead and can be counterproductive on short tasks. DIC/Plan quality remains model- and operator-dependent. Dependency-local recovery is unsound when hidden state or undeclared information flows exist. Verification rates may be correlated and evidence may be adversarial or simply irrelevant to the true goal. A package-resident state machine is not a sandbox or security boundary; agent-security benchmarks expose separate failure modes \citep{ruan2024toolemu,debenedetti2024agentdojo}. The current empirical programme is intentionally small and cannot support a universal benchmark claim. Finally, using ChatGPT Main plus Claude Code makes the first study a system instantiation rather than a model-agnostic proof; cross-backend replication is future work.
+
+\section{Responsible-use statement}
+Meta-agent infrastructure can amplify both productive and harmful objectives by coordinating multiple agents, retaining long-lived state, and automating repair. The same management features that reduce accidental drift could make unwanted objectives more persistent. We therefore make external/destructive actions, credentials/private systems, paid compute, release/submission changes, and material scientific/objective changes explicit authority boundaries; preserve audit lineage and failed attempts; and recommend sandboxing and least privilege for executors. These controls reduce accidental misuse but do not guarantee alignment or security, and they should not be treated as authorization to deploy autonomous agents in high-stakes environments without domain-specific oversight.
+
+\section{Conclusion}
+Long-horizon agent management needs more than a stronger prompt to the next worker. AI-Native Workflow makes persistent intent, execution structure, evidence, recovery scope, and human authority explicit in the repository that the agents modify. The formal results identify the assumptions under which local recovery is safe and the evidence limitations that no hierarchy can remove. The next question is empirical and deliberately falsifiable: on a small set of evolving and stateful tasks, does this extra structure preserve more prior work and reduce regressions enough to justify its overhead?
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

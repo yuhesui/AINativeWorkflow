@@ -1,0 +1,43 @@
+{
+  "authoritative_sources": [
+    {
+      "commit": "624df069c505c5ddd21d2d78467dd5579020db95",
+      "commit_date": "2026-08-29T16:27:45-07:00",
+      "kind": "git",
+      "task_path": "tasks/archive/query-optimize",
+      "task_tree_git_sha1": "c04a867b98a03f27199ebd6c40d54a2f97d807ae",
+      "url": "https://github.com/harbor-framework/terminal-bench.git"
+    },
+    {
+      "content_digest": "sha256:169496ea6843cb403b0860132675baf7aa0df0ac8b86221068e27d86395260f4",
+      "harbor_version_used": "0.22.0",
+      "kind": "Harbor OCI task",
+      "name": "query-optimize",
+      "registry": "terminal-bench"
+    },
+    {
+      "bytes": 50606080,
+      "kind": "dataset asset",
+      "revision": "84e42d43436afd2c21b4d3f94c05383fd3a6f78e",
+      "sha256": "89eab7555b6b86a74b8e0ee5a7db7beec0b2575a45cd2b22fe132eae79f5ad5a",
+      "url": "https://huggingface.co/datasets/pimpalgaonkar/terminalbench-sqlite-db/resolve/84e42d43436afd2c21b4d3f94c05383fd3a6f78e/oewn.sqlite"
+    }
+  ],
+  "benchmark": "Terminal-Bench",
+  "frozen_identity": "query-optimize",
+  "license": "See upstream task/repository notices; OEWN database license provenance is retained by the authoritative dataset source.",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T01",
+  "technical_adaptations": [
+    "pre-fetched the immutable OEWN SQLite asset",
+    "moved official tests/golden/solution to private_eval",
+    "added a semantic-gated continuous transform while retaining native verifier output"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

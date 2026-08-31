@@ -1,0 +1,24 @@
+{
+  "execution_tier": {
+    "openai": {
+      "main": "ChatGPT GPT-5.6 Sol highest actually available",
+      "executor": "Codex GPT-5.6 Terra xhigh"
+    },
+    "anthropic": {
+      "main": "Claude Opus 5 high",
+      "executor": "Claude Code Sonnet 5 high"
+    }
+  },
+  "research_tier": {
+    "routing": "autonomous Main selection from identical pool",
+    "pool": [
+      "Main reasoning",
+      "Codex Terra xhigh",
+      "Claude Code Sonnet 5 high",
+      "Claude Opus 5 high research/reasoning",
+      "web/primary literature",
+      "local terminal/Python/CPU/GPU"
+    ]
+  },
+  "record_exact_runtime_identifiers": true
+}

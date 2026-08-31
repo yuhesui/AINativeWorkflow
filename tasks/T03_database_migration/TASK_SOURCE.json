@@ -1,0 +1,30 @@
+{
+  "authoritative_sources": [
+    {
+      "content_digest": "sha256:15a6ac32fc6e2ac000df7e634d6f21899aed228418fdb277725ee93790f0d25f",
+      "embedded_source_revision": "4d38d30-dirty",
+      "harbor_version_used": "0.22.0",
+      "kind": "Harbor OCI task",
+      "name": "gabeorlanski/database_migration",
+      "registry": "slop-code-bench",
+      "task_revision": "v5"
+    }
+  ],
+  "benchmark": "SlopCodeBench",
+  "frozen_identity": "gabeorlanski/database_migration",
+  "license": "No standalone license was distributed in the official task payload; retain upstream notices and restrict this internal copy to evaluation.",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T03",
+  "technical_adaptations": [
+    "isolated all tests/solutions and checkpoints 2\u20135",
+    "checkpoint 1 is the sole initial prompt",
+    "added frozen state-loss gate after accepted checkpoint 3 and before checkpoint 4 reveal"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

@@ -1,0 +1,883 @@
++ ln -s ../results output
++ ln -s ../data Data
++ Rscript main-ctrpv.R
+
+Attaching package: ‘apcluster’
+
+The following object is masked from ‘package:stats’:
+
+    heatmap
+
+Loading required package: rcdklibs
+Loading required package: rJava
+Loading required package: methods
+Loading required package: AnnotationDbi
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:rJava’:
+
+    anyDuplicated, duplicated, sort, unique
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:PharmacoGx’:
+
+    featureNames
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:fingerprint’:
+
+    fold
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:fingerprint’:
+
+    distance
+
+Loading required package: XML
+
+Loading required package: gplots
+
+Attaching package: ‘gplots’
+
+The following object is masked from ‘package:IRanges’:
+
+    space
+
+The following object is masked from ‘package:S4Vectors’:
+
+    space
+
+The following object is masked from ‘package:stats’:
+
+    lowess
+
+Loading required package: survival
+Loading required package: prodlim
+
+Attaching package: ‘proxy’
+
+The following object is masked from ‘package:IRanges’:
+
+    as.matrix
+
+The following object is masked from ‘package:S4Vectors’:
+
+    as.matrix
+
+The following objects are masked from ‘package:stats’:
+
+    as.dist, dist
+
+The following object is masked from ‘package:base’:
+
+    as.matrix
+
+[1] 239  28
+[1] 645 239
+[1] 978 239
+[1] 239
+[1] 239
+Using TARGET_NAME as value column: use value.var to override.
+c.indexes values from each layer vs. the benchmark: 
+ integration:  0.8852975 
+ structure:  0.7076697 
+ perturbation:  0.6352601 
+ sensitivity:  0.8274693 
+ Iorio:  0.6022871 
+ Iskar:  0.6486795p-vals from the c.index comparison of integration layer vs. 
+ structure:  2.246358e-38 
+ perturbation:  4.402931e-58 
+ sensitivity:  5.901561e-06 
+ Iorio:  2.390301e-63 
+ Iskar:  3.163333e-38null device 
+          1 
+null device 
+          1 
+Using ATC_CODE as value column: use value.var to override.
+[1] 51 51
+c.indexes values from each layer vs. the benchmark: 
+ integration:  0.7565174 
+ structure:  0.71459 
+ perturbation:  0.5768675 
+ sensitivity:  0.6001511 
+ Iorio:  0.6320103 
+ Iskar:  0.5220177 
+ superPred: p-vals from the c.index comparison of integration layer vs. 
+ structure:  0.01204663 
+ perturbation:  1.947636e-17 
+ sensitivity:  1.811841e-13 
+ Iorio:  7.282443e-08 
+ Iskar:  8.466578e-21 
+ superPred: null device 
+          1 
+null device 
+          1 
++ Rscript main-nci.R
+
+Attaching package: ‘apcluster’
+
+The following object is masked from ‘package:stats’:
+
+    heatmap
+
+Loading required package: rcdklibs
+Loading required package: rJava
+Loading required package: methods
+Loading required package: AnnotationDbi
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:rJava’:
+
+    anyDuplicated, duplicated, sort, unique
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:PharmacoGx’:
+
+    featureNames
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:fingerprint’:
+
+    fold
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:fingerprint’:
+
+    distance
+
+Loading required package: XML
+
+Loading required package: gplots
+
+Attaching package: ‘gplots’
+
+The following object is masked from ‘package:IRanges’:
+
+    space
+
+The following object is masked from ‘package:S4Vectors’:
+
+    space
+
+The following object is masked from ‘package:stats’:
+
+    lowess
+
+Loading required package: survival
+Loading required package: prodlim
+
+Attaching package: ‘proxy’
+
+The following object is masked from ‘package:IRanges’:
+
+    as.matrix
+
+The following object is masked from ‘package:S4Vectors’:
+
+    as.matrix
+
+The following objects are masked from ‘package:stats’:
+
+    as.dist, dist
+
+The following object is masked from ‘package:base’:
+
+    as.matrix
+
+[1] 238  28
+[1] 238  66
+[1]  60 238
+[1] 978 238
+[1] 238
+Warning message:
+In cor(sensDat, method = "pearson", use = "pairwise.complete.obs") :
+  the standard deviation is zero
+[1] 238 238
+[1] 238 238
+[1] 238 238
+[1] 238 238
+Using TARGET_NAME as value column: use value.var to override.
+[1] 86 86
+c.indexes values from each layer vs. the benchmark: 
+ integration:  0.8705888 
+ structure:  0.8008195 
+ perturbation:  0.6152793 
+ sensitivity:  0.801298 
+ Iorio:  0.5931049 
+ Iskar:  0.6938335p-vals from the c.index comparison of integration layer vs. 
+ structure:  9.429156e-05 
+ perturbation:  2.159365e-23 
+ sensitivity:  0.0004273956 
+ Iorio:  3.208553e-25 
+ Iskar:  5.383033e-12null device 
+          1 
+null device 
+          1 
+Using ATC_CODE as value column: use value.var to override.
+[1] 72 72
+c.indexes values from each layer vs. the benchmark: 
+ integration:  0.8365921 
+ structure:  0.7719791 
+ perturbation:  0.6148427 
+ sensitivity:  0.6846815 
+ Iorio:  0.6188197 
+ Iskar:  0.5405954 
+ superPred: p-vals from the c.index comparison of integration layer vs. 
+ structure:  0.0001028223 
+ perturbation:  6.89308e-26 
+ sensitivity:  6.381895e-20 
+ Iorio:  9.215455e-22 
+ Iskar:  4.516295e-36 
+ superPred: null device 
+          1 
+null device 
+          1 
+Using TARGET_NAME as value column: use value.var to override.
++ Rscript main-network-generation.R
+Loading required package: methods
+
+Attaching package: ‘igraph’
+
+The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+
+The following object is masked from ‘package:base’:
+
+    union
+
+
+Attaching package: ‘apcluster’
+
+The following object is masked from ‘package:igraph’:
+
+    similarity
+
+The following object is masked from ‘package:stats’:
+
+    heatmap
+
+$g
+IGRAPH d20c77d UNW- 57 1596 -- 
++ attr: name (v/c), label (v/c), weight (e/n), label (e/n)
++ edges from d20c77d (vertex names):
+ [1] ABIRATERONE--ZSTK474         ABIRATERONE--YM155          
+ [3] ABIRATERONE--TRIFLUOPERAZINE ABIRATERONE--TPCA1          
+ [5] ABIRATERONE--TIVANTINIB      ABIRATERONE--TG101348       
+ [7] ABIRATERONE--TENIPOSIDE      ABIRATERONE--TEMSIROLIMUS   
+ [9] ABIRATERONE--TEMOZOLOMIDE    ABIRATERONE--SN38           
+[11] ABIRATERONE--SITAGLIPTIN     ABIRATERONE--SELUMETINIB    
+[13] ABIRATERONE--SB431542        ABIRATERONE--QS11           
+[15] ABIRATERONE--PRIMA1MET       ABIRATERONE--PIPERLONGUMINE 
++ ... omitted several edges
+
+$layout
+             [,1]        [,2]
+ [1,]  2.59920192  0.11983161
+ [2,] -1.14143182 -0.26258104
+ [3,]  2.17221425  3.91089619
+ [4,]  0.54303894  0.77024551
+ [5,]  0.42146315 -2.35780945
+ [6,]  0.56579622 -2.77308112
+ [7,]  0.76669629  0.62133380
+ [8,]  2.10615809  3.75850247
+ [9,] -0.82579042  0.81307892
+[10,]  0.74610189  1.21826127
+[11,] -1.44410116 -1.77202041
+[12,] -0.56927688 -2.88106937
+[13,] -0.49112345 -2.37850889
+[14,] -0.43141978 -3.52468265
+[15,]  1.08330740  1.92966010
+[16,]  1.34645289  2.44770506
+[17,]  1.40491785  2.71000960
+[18,] -0.48778997  0.55704580
+[19,]  2.05803496  2.14499880
+[20,] -0.46078231 -0.67737080
+[21,] -1.66835682  0.07014744
+[22,]  1.09449155  0.60898857
+[23,]  0.01928052  1.39805443
+[24,]  0.31741115  0.52335547
+[25,] -0.83148832 -1.18493318
+[26,] -1.46786038 -1.07254730
+[27,] -0.26008104  1.50914726
+[28,] -2.41264016 -1.07277531
+[29,]  0.63412026  1.76358040
+[30,]  2.34036523  0.18560726
+[31,] -2.93199257 -1.00803069
+[32,]  0.93732178 -2.47918947
+[33,] -0.21301130 -1.48737344
+[34,]  1.24061906  2.24955807
+[35,] -3.29424843 -0.91533542
+[36,] -0.55936950 -1.56811356
+[37,] -1.14649932 -1.48686051
+[38,]  1.47310603  3.09546607
+[39,]  1.78725137  3.57214131
+[40,] -1.71669846 -0.77349735
+[41,]  0.99920283  0.17390087
+[42,]  0.84435168  1.56626400
+[43,] -0.32555806 -2.00387400
+[44,]  1.37912748  0.50768527
+[45,] -1.81106060 -1.15348280
+[46,] -0.67439147 -0.59810784
+[47,] -0.78100513 -3.02644491
+[48,] -1.92340829 -2.16203542
+[49,]  1.85013205  0.33906650
+[50,]  0.14349617 -2.18501595
+[51,] -2.03020194 -2.26600229
+[52,] -0.06346614  0.26898186
+[53,]  0.17894442  1.10525563
+[54,] -0.30970911 -0.19150615
+[55,] -0.38777741 -3.84712091
+[56,]  1.63944229  3.37133548
+[57,]  0.47001621 -2.53811928
+
+$vertex.color
+              ABIRATERONE                  AFATINIB                 ALVOCIDIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 APICIDIN                   AZD6482                   AZD8055 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 BIX01294                 BMS345541                 BMS754807 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               BORTEZOMIB              BRDK01737880              BRDK02492147 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+             BRDK27224038              BRDK33514849              BRDK94991378 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                   CD1530                      COL3                CRIZOTINIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+         CYCLOPHOSPHAMIDE                DABRAFENIB                 DASATINIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               DECITABINE                 DOCETAXEL                ENTINOSTAT 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 ETOMOXIR                   GMX1778                 GW843682X 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 IMATINIB         ISOLIQUIRITIGENIN ISONICOTINOHYDROXAMICACID 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                   KI8751                   KU60019                LOVASTATIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               MANUMYCINA                   MGCD265                  MYRIOCIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               NAVITOCLAX               NICLOSAMIDE                   OUABAIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                     PAC1                     PF750            PIPERLONGUMINE 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                PRIMA1MET                      QS11                  SB431542 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+              SELUMETINIB               SITAGLIPTIN                      SN38 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+             TEMOZOLOMIDE              TEMSIROLIMUS                TENIPOSIDE 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 TG101348                TIVANTINIB                     TPCA1 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+          TRIFLUOPERAZINE                     YM155                   ZSTK474 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+
+$edge.color
+   [1] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+   [9] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [17] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [25] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [33] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [41] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [49] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [57] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [65] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [73] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [81] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [89] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+  [97] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [105] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [113] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [121] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [129] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [137] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [145] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [153] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [161] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [169] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [177] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [185] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [193] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [201] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [209] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [217] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [225] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [233] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [241] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [249] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [257] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [265] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [273] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [281] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [289] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [297] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [305] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [313] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [321] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [329] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [337] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [345] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [353] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [361] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [369] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [377] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [385] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [393] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [401] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [409] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [417] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [425] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [433] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [441] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [449] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [457] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [465] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [473] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [481] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [489] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [497] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [505] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [513] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [521] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [529] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [537] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [545] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [553] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [561] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [569] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [577] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [585] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [593] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [601] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [609] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [617] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [625] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [633] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [641] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [649] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [657] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [665] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [673] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [681] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [689] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [697] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [705] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [713] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [721] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [729] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [737] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [745] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [753] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [761] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [769] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [777] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [785] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [793] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [801] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [809] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [817] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [825] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [833] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [841] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [849] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [857] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [865] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [873] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [881] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [889] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [897] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [905] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [913] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [921] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [929] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [937] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [945] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [953] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [961] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [969] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [977] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [985] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+ [993] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1001] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1009] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1017] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1025] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1033] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1041] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1049] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1057] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1065] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1073] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1081] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1089] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1097] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1105] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1113] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1121] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1129] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1137] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1145] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1153] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1161] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1169] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1177] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1185] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1193] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1201] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1209] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1217] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1225] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1233] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1241] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1249] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1257] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1265] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1273] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1281] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1289] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1297] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1305] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1313] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1321] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1329] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1337] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1345] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1353] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1361] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1369] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1377] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1385] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1393] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1401] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1409] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1417] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1425] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1433] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1441] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1449] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1457] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1465] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1473] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1481] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1489] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1497] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1505] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1513] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1521] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1529] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+[1537] "gray95" "gray95" "gray95" "gray95" "black"  "black"  "black"  "black" 
+[1545] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1553] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1561] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1569] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1577] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1585] "black"  "black"  "black"  "black"  "black"  "black"  "black"  "black" 
+[1593] "black"  "black"  "black"  "black" 
+
+$vertex.size
+              ABIRATERONE                  AFATINIB                 ALVOCIDIB 
+                      4.5                      12.0                       6.0 
+                 APICIDIN                   AZD6482                   AZD8055 
+                      6.0                       4.5                       6.0 
+                 BIX01294                 BMS345541                 BMS754807 
+                      7.5                       6.0                       7.5 
+               BORTEZOMIB              BRDK01737880              BRDK02492147 
+                      4.5                       7.5                       7.5 
+             BRDK27224038              BRDK33514849              BRDK94991378 
+                      9.0                       7.5                       3.0 
+                   CD1530                      COL3                CRIZOTINIB 
+                      7.5                       9.0                       6.0 
+         CYCLOPHOSPHAMIDE                DABRAFENIB                 DASATINIB 
+                      7.5                       4.5                       6.0 
+               DECITABINE                 DOCETAXEL                ENTINOSTAT 
+                      4.5                       6.0                       9.0 
+                 ETOMOXIR                   GMX1778                 GW843682X 
+                      4.5                       6.0                       6.0 
+                 IMATINIB         ISOLIQUIRITIGENIN ISONICOTINOHYDROXAMICACID 
+                      4.5                       6.0                       4.5 
+                   KI8751                   KU60019                LOVASTATIN 
+                      7.5                       6.0                       6.0 
+               MANUMYCINA                   MGCD265                  MYRIOCIN 
+                      4.5                       7.5                       4.5 
+               NAVITOCLAX               NICLOSAMIDE                   OUABAIN 
+                      4.5                       6.0                       4.5 
+                     PAC1                     PF750            PIPERLONGUMINE 
+                      9.0                       7.5                      10.5 
+                PRIMA1MET                      QS11                  SB431542 
+                      7.5                       6.0                       3.0 
+              SELUMETINIB               SITAGLIPTIN                      SN38 
+                      3.0                       6.0                       6.0 
+             TEMOZOLOMIDE              TEMSIROLIMUS                TENIPOSIDE 
+                      4.5                       7.5                       6.0 
+                 TG101348                TIVANTINIB                     TPCA1 
+                      4.5                       6.0                       7.5 
+          TRIFLUOPERAZINE                     YM155                   ZSTK474 
+                     10.5                       6.0                       6.0 
+
+$edge.arrow.size
+[1] 0.3
+
+$vertex.label.cex
+[1] 0.45
+
+$vertex.label
+ [1] "ABIRATERONE"               "AFATINIB"                 
+ [3] "ALVOCIDIB"                 "APICIDIN"                 
+ [5] "AZD6482"                   "AZD8055"                  
+ [7] "BIX01294"                  "BMS345541"                
+ [9] "BMS754807"                 "BORTEZOMIB"               
+[11] "BRDK01737880"              "BRDK02492147"             
+[13] "BRDK27224038"              "BRDK33514849"             
+[15] "BRDK94991378"              "CD1530"                   
+[17] "COL3"                      "CRIZOTINIB"               
+[19] "CYCLOPHOSPHAMIDE"          "DABRAFENIB"               
+[21] "DASATINIB"                 "DECITABINE"               
+[23] "DOCETAXEL"                 "ENTINOSTAT"               
+[25] "ETOMOXIR"                  "GMX1778"                  
+[27] "GW843682X"                 "IMATINIB"                 
+[29] "ISOLIQUIRITIGENIN"         "ISONICOTINOHYDROXAMICACID"
+[31] "KI8751"                    "KU60019"                  
+[33] "LOVASTATIN"                "MANUMYCINA"               
+[35] "MGCD265"                   "MYRIOCIN"                 
+[37] "NAVITOCLAX"                "NICLOSAMIDE"              
+[39] "OUABAIN"                   "PAC1"                     
+[41] "PF750"                     "PIPERLONGUMINE"           
+[43] "PRIMA1MET"                 "QS11"                     
+[45] "SB431542"                  "SELUMETINIB"              
+[47] "SITAGLIPTIN"               "SN38"                     
+[49] "TEMOZOLOMIDE"              "TEMSIROLIMUS"             
+[51] "TENIPOSIDE"                "TG101348"                 
+[53] "TIVANTINIB"                "TPCA1"                    
+[55] "TRIFLUOPERAZINE"           "YM155"                    
+[57] "ZSTK474"                  
+
+$lab.color
+[1] "black"
+
+$lab.dist
+[1] 5
+
+$vertex.frame.color
+              ABIRATERONE                  AFATINIB                 ALVOCIDIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 APICIDIN                   AZD6482                   AZD8055 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 BIX01294                 BMS345541                 BMS754807 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               BORTEZOMIB              BRDK01737880              BRDK02492147 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+             BRDK27224038              BRDK33514849              BRDK94991378 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                   CD1530                      COL3                CRIZOTINIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+         CYCLOPHOSPHAMIDE                DABRAFENIB                 DASATINIB 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               DECITABINE                 DOCETAXEL                ENTINOSTAT 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 ETOMOXIR                   GMX1778                 GW843682X 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 IMATINIB         ISOLIQUIRITIGENIN ISONICOTINOHYDROXAMICACID 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                   KI8751                   KU60019                LOVASTATIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               MANUMYCINA                   MGCD265                  MYRIOCIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+               NAVITOCLAX               NICLOSAMIDE                   OUABAIN 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                     PAC1                     PF750            PIPERLONGUMINE 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                PRIMA1MET                      QS11                  SB431542 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+              SELUMETINIB               SITAGLIPTIN                      SN38 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+             TEMOZOLOMIDE              TEMSIROLIMUS                TENIPOSIDE 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+                 TG101348                TIVANTINIB                     TPCA1 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+          TRIFLUOPERAZINE                     YM155                   ZSTK474 
+               "darkgrey"                "darkgrey"                "darkgrey" 
+
+$edge.width
+   [1] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+  [19] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+  [37] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+  [55] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+  [73] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+  [91] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [109] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [127] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [145] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [163] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [181] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [199] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [217] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [235] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [253] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [271] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [289] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [307] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [325] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [343] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [361] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [379] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [397] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [415] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [433] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [451] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [469] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [487] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [505] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [523] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [541] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [559] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [577] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [595] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [613] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [631] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [649] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [667] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [685] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [703] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [721] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [739] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [757] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [775] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [793] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [811] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [829] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [847] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [865] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [883] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [901] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [919] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [937] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [955] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [973] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+ [991] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1009] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1027] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1045] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1063] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1081] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1099] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1117] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1135] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1153] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1171] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1189] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1207] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1225] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1243] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1261] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1279] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1297] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1315] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1333] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1351] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1369] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1387] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1405] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1423] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1441] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1459] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1477] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1495] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1513] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5
+[1531] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0
+[1549] 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0
+[1567] 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0
+[1585] 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0
+
+$bg
+[1] "white"
+
+$edge.label
+[1] NA
+
+attr(,"class")
+[1] "netbiov"
+null device 
+          1 

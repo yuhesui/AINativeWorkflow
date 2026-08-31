@@ -1,0 +1,79 @@
+{
+  "schema_version": "5.6.35",
+  "package_root": ".",
+  "authority": {
+    "source": ".ai-workflow/STATE.json",
+    "principle": "package state overrides chat recollection"
+  },
+  "roles": {
+    "canonical": [
+      "Main",
+      "Theory",
+      "Experiment"
+    ],
+    "aliases": {
+      "main": "Main",
+      "orchestrator": "Main",
+      "manager": "Main",
+      "theory": "Theory",
+      "theorist": "Theory",
+      "researcher": "Theory",
+      "experiment": "Experiment",
+      "experimentalist": "Experiment",
+      "engineer": "Experiment"
+    }
+  },
+  "governance": {
+    "checkpoint_interval": 7,
+    "ordinary_autonomy": true,
+    "human_approval_boundary": "Plan plus periodic/material checkpoints",
+    "machine_execution_boundary": "Phase/DIC/EPS/Prompt/Action",
+    "material_escalation_kinds": [
+      "authority_change",
+      "credentials_or_private_system",
+      "destructive_external",
+      "objective_change",
+      "protocol_change",
+      "purchase_or_paid_compute",
+      "release_change",
+      "scientific_claim_change",
+      "submission_change"
+    ],
+    "phase_lanes": {
+      "minor": "auto",
+      "research": "auto",
+      "verification": "auto",
+      "checkpoints": "auto"
+    },
+    "dic_views": {
+      "README.md": "on",
+      "REQUESTS.md": "on",
+      "PLAN.md": "on",
+      "ARCHITECTURE.md": "auto",
+      "TEST_MATRIX.md": "auto"
+    },
+    "reports": {
+      "always_present": true,
+      "flat": true,
+      "max_files": 10,
+      "include_human_report": true,
+      "include_key_raw_results": true
+    }
+  },
+  "active_plan_id": null,
+  "plans": {},
+  "checkpoints": [],
+  "escalations": [],
+  "evidence_index": {},
+  "legacy": {
+    "migration_sources": [],
+    "aliases_enabled": true
+  },
+  "events": [
+    {
+      "kind": "experiment_task_runtime_seed",
+      "at": "2026-08-31T00:00:00+00:00"
+    }
+  ],
+  "updated_at": "2026-08-31T00:00:00+00:00"
+}

@@ -1,0 +1,49 @@
+{
+  "blocked_capabilities": [
+    "PaperBench native API judge credential not supplied",
+    "NVIDIA Docker runtime absent"
+  ],
+  "frozen_utc_date": "2026-08-31",
+  "host": {
+    "docker_compose": "2.40.3",
+    "docker_engine": "29.1.3",
+    "docker_runtimes": [
+      "runc",
+      "io.containerd.runc.v2"
+    ],
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_vram_gib": 6,
+    "nvidia_container_runtime": false,
+    "nvidia_driver": "596.58",
+    "os": "Windows 11 with WSL2 Ubuntu 24.04.3 LTS",
+    "timezone": "Asia/Shanghai",
+    "windows_python": "3.13.2",
+    "wsl_python": "3.12.3"
+  },
+  "network_policy": "No network for T1; package/literature access only where the task resource policy permits it. All scored conditions use the same task-specific policy.",
+  "qualified_stacks": {
+    "corebench_image": {
+      "digest": "sha256:cde83cedfb51150e20b442cd2f988f62f92864f8d661979c11f7f035c4b156f5",
+      "reference": "registry.codeocean.com/published/0012b3fb-3cf2-41fa-9b8d-6cc055b53ca2:v1"
+    },
+    "mlgym": {
+      "lock_file": "tasks/T05_rlMetaMazeMisc/qualification/requirements.lock.txt",
+      "python": "3.12.3",
+      "required_environment": {
+        "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+      }
+    },
+    "paperbench": {
+      "lock_file": "tasks/T07_sequential_neural_score_estimation/original_task/project/paperbench/uv.lock",
+      "package_count": 202,
+      "pb_env_image_id": "sha256:9b80c1bce02930470851d1ee5ec7b21e5d19f95377913b89dd65d57c992ef956",
+      "pb_reproducer_image_id": "sha256:86f0f081db56e1f10d677bdbda7a73aa4dd052dccb6131bf4d33b7e9a7c1a921",
+      "python": "3.11.15"
+    },
+    "slopcodebench": {
+      "pytest": "9.0.2",
+      "python": "3.12.3"
+    }
+  },
+  "schema_version": 1
+}

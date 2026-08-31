@@ -1,0 +1,13 @@
+{
+  "blockers": [],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/checkpoint_5",
+    "oracle_runs/harness_dry",
+    "oracle_runs/harness_finalizer_v2"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "QUALIFIED"
+}

@@ -1,0 +1,32 @@
+{
+  "task_id": "T06",
+  "agent_visible": [
+    {
+      "path": "agent_visible/SOURCE_PAPER.md",
+      "mounted_at": "test_repo/reference/SOURCE_PAPER.md",
+      "role": "source-paper citation and authoritative links",
+      "why_visible": "CORE-Bench permits access to the associated publication and the task resource policy permits primary literature"
+    },
+    {
+      "path": "agent_visible/supplementary_methods.docx",
+      "mounted_at": "test_repo/reference/supplementary_methods.docx",
+      "role": "official publisher supplement",
+      "license": "CC BY 4.0",
+      "why_visible": "official public source-paper supplement"
+    },
+    {
+      "path": "agent_visible/supplementary_figures.pdf",
+      "mounted_at": "test_repo/reference/supplementary_figures.pdf",
+      "role": "official publisher supplement",
+      "license": "CC BY 4.0",
+      "why_visible": "official public source-paper supplement"
+    },
+    {
+      "path": "../test_repo/capsule-4252248",
+      "role": "complete official Code Ocean capsule",
+      "why_visible": "the capsule is the native CORE-Bench workspace"
+    }
+  ],
+  "provenance_only": [],
+  "private": ["../qualification/private_eval/expected_answer.json", "../qualification/private_eval/core-bench-harness"]
+}

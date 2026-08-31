@@ -1,0 +1,16 @@
+{
+  "blockers": [
+    "Frozen authoritative config requests 64 evaluation environments but the shipped evaluator hard-codes 256."
+  ],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/baseline_01",
+    "requirements.lock.txt",
+    "private_eval/rlMetaMaze.yaml",
+    "private_eval/evaluate.py"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "BLOCKED"
+}

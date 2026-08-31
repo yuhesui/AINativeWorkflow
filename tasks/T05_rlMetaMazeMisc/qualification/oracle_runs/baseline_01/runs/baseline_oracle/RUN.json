@@ -1,0 +1,15 @@
+{
+  "attempt_id": "attempt-01",
+  "condition": "DIRECT",
+  "created_utc": "2026-08-30T20:43:15.250147+00:00",
+  "non_scored": true,
+  "qualification_root": "D:\\Projects\\AI Native Workflow\\tasks\\T05_rlMetaMazeMisc\\qualification\\oracle_runs\\baseline_01",
+  "repo_initial_tree_sha256": "2a508f03979c7a50307e5598cd9f2481caf360392096f2fd583fc7c738d4157f",
+  "run_id": "baseline_oracle",
+  "schema_version": 1,
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T05_rlMetaMazeMisc\\test_repo",
+  "source_test_repo_tree_sha256": "5023be6ceaeb68b2d295ccb17f806a88a2e22c8142c5c20eccd983ce936f96e6",
+  "status": "MATERIALIZED_NOT_STARTED",
+  "task_id": "T05",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T05_rlMetaMazeMisc\\qualification\\oracle_runs\\baseline_01\\runs\\baseline_oracle\\workspace"
+}

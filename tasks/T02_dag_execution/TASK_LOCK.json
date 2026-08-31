@@ -1,0 +1,60 @@
+{
+  "benchmark": "SlopCodeBench",
+  "frozen_identity": "gabeorlanski/dag_execution",
+  "qualification": {
+    "blockers": [],
+    "candidate_agent_used": false,
+    "evidence": [
+      "oracle_runs/checkpoint_1",
+      "oracle_runs/checkpoint_3"
+    ],
+    "qualification_date": "2026-08-31",
+    "schema_version": 1,
+    "scored_run_created": false,
+    "status": "QUALIFIED"
+  },
+  "resource_policy_sha256": "de168df905c7b553ebb0f6e6c3f370787b794f3213c0a04de20aebcc6168deac",
+  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "schema_version": 1,
+  "sources": [
+    {
+      "content_digest": "sha256:39aaaeea8576649f6defa53584f234d4873f2cdb8eea806123279909b57ff36c",
+      "embedded_source_revision": "4d38d30-dirty",
+      "harbor_version_used": "0.22.0",
+      "kind": "Harbor OCI task",
+      "name": "gabeorlanski/dag_execution",
+      "registry": "slop-code-bench",
+      "task_revision": "v5"
+    }
+  ],
+  "surfaces": {
+    "original_task": {
+      "bytes": 608449,
+      "file_count": 83,
+      "tree_sha256": "569dfdc765274e48a44930ce4dc8ee89c59d4357662e82f87e7910cddb46dc56"
+    },
+    "private_eval": {
+      "bytes": 607072,
+      "file_count": 82,
+      "tree_sha256": "a2b72d9dd97da215e5e1b5879f5f2d55454c4e90bcda71e96df2cdf0a25cc24c"
+    },
+    "reference_agent_visible": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reference_provenance_only": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_repo": {
+      "bytes": 556038,
+      "file_count": 130,
+      "tree_sha256": "20eb245b0359a4a3b4efedab72710c8e79ffa98a8c678e945a995e2fd455b873"
+    }
+  },
+  "task_id": "T02",
+  "task_prompt_sha256": "ee7d40120c75c7a21abf435e487af8502ffebda5edc0c4595d316fd2924819ee",
+  "visibility_manifest_sha256": "c739aa00e88754bdfa93d803fdcf35a84a779b0a168f6a84c8310f04f9facfe0"
+}

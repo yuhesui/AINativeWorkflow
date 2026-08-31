@@ -1,0 +1,12 @@
+{
+  "blockers": [],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/oracle_01/GRADER_RAW_7.json",
+    "private_eval/BASELINE_LOCK.json"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "QUALIFIED"
+}

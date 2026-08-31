@@ -1,0 +1,7 @@
+{
+  "question": "Report the overall AUC from the PR curve generated with the CTRPv2 sensitivity dataset, tested against ATC annotations and drug-target information from CHEMBL.",
+  "expected_answer": 0.4929241,
+  "comparison": "numeric_exact_after_decimal_normalization",
+  "visibility": "private_evaluator_only",
+  "source": "CORE-Bench benchmark_utils/capsules.csv at frozen harness revision"
+}

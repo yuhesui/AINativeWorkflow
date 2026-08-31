@@ -1,0 +1,29 @@
+{
+  "authoritative_sources": [
+    {
+      "authoritative_config": "configs/tasks/rlMetaMaze.yaml",
+      "commit": "9d40c1b5035202018cd7091fb4e83a9c68b377c0",
+      "commit_date": "2025-08-10T12:47:54-07:00",
+      "kind": "git",
+      "url": "https://github.com/facebookresearch/MLGym.git"
+    }
+  ],
+  "benchmark": "MLGym",
+  "frozen_identity": "rlMetaMazeMisc",
+  "license": "MIT (MLGym LICENSE retained).",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T05",
+  "technical_adaptations": [
+    "excluded unrelated historical benchmark trajectories whose path lengths are not Windows-compatible",
+    "copied target starter and read-only evaluator into test_repo",
+    "kept native five-checkpoint held-out mean reward metric",
+    "added the frozen non-prescriptive research-report requirement"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

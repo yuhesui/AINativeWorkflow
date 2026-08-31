@@ -1,0 +1,130 @@
+schema_version = "1.1"
+
+artifacts = []
+
+[task]
+name = "gabeorlanski/database_migration"
+description = "SQLite migration CLI. Starts with basic DDL (create table, add/drop columns), adds data transformations and backfills, then foreign keys/indexes/check constraints with rollback support, and finally dependency management with topological sorting and cycle detection."
+authors = [{ name = "Albert Ge" }]
+keywords = [
+  "cli-tools",
+  "database",
+  "sqlite",
+  "schema-migration",
+  "data-transformation",
+  "transaction-management",
+  "foreign-keys",
+  "constraints",
+  "rollback",
+  "dependency-resolution",
+  "graph-algorithms",
+  "scb-problem",
+  "multi-step",
+  "pytest",
+]
+
+[metadata]
+difficulty = "medium"
+category = "databases"
+tags = [
+  "cli-tools",
+  "database",
+  "sqlite",
+  "schema-migration",
+  "data-transformation",
+  "transaction-management",
+  "foreign-keys",
+  "constraints",
+  "rollback",
+  "dependency-resolution",
+  "graph-algorithms",
+]
+source = "scb-problems"
+source_problem = "database_migration"
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+allow_internet = true
+workdir = "/app"
+
+[environment.env]
+COLUMNS = "240"
+LINES = "60"
+PYTHONUNBUFFERED = "1"
+TERM = "xterm"
+
+[agent]
+timeout_sec = 7200.0
+
+[verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_1"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_2"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_3"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_4"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_5"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+# revision: v5

@@ -1,0 +1,13 @@
+{
+  "condition": "DIRECT",
+  "grader_raw": null,
+  "invalidation_reason": "qualification-only structural dry run",
+  "native_primary_metric": null,
+  "normalized_completion_score": null,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\oracle_runs\\harness_dry\\runs\\dry_direct\\repo_final",
+  "repo_final_tree_sha256": "bf0bf1a2babe5a82763f72d2a5e1d652a021613c0abf379110ebb6abea17c307",
+  "run_id": "dry_direct",
+  "schema_version": 1,
+  "task_id": "T03",
+  "validity": "INVALID_INFRASTRUCTURE"
+}

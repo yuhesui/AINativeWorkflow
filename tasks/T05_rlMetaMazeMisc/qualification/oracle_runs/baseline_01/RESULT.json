@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "qualification_only": true,
+  "candidate_agent_used": false,
+  "gpu_detected": "NVIDIA GeForce RTX 4050 Laptop GPU, 6 GiB",
+  "environment": "qualification/requirements.lock.txt; XLA_PYTHON_CLIENT_PREALLOCATE=false",
+  "completed_training_seeds": 1,
+  "checkpoint": {
+    "path": "runs/baseline_oracle/workspace/checkpoints/config-42-0.pkl",
+    "bytes": 573191,
+    "sha256": "48c77b1532ca0aae26d95e20b9e6d34c1821880f7c1c640daa4870acf7e428d4"
+  },
+  "second_seed": {
+    "status": "INTENTIONALLY_INTERRUPTED",
+    "progress_fraction": 0.35,
+    "reason": "One complete native seed established GPU training; the independent frozen evaluator mismatch already blocks scientific qualification."
+  },
+  "native_full_evaluation_run": false,
+  "status": "INFRASTRUCTURE_SMOKE_PASSED_TASK_BLOCKED"
+}

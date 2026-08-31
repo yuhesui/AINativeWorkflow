@@ -1,0 +1,15 @@
+{
+  "blockers": [
+    "Native rubric judge cannot be qualified without an operator-supplied GRADER_OPENAI_API_KEY.",
+    "Docker has no NVIDIA runtime, and full target GPU feasibility is unqualified on the 6 GiB device."
+  ],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/unit-tests.xml",
+    "oracle_runs/container-build"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "BLOCKED"
+}

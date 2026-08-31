@@ -1,0 +1,34 @@
+metadata_version: 1
+name: 'Integrative Cancer Pharmacogenomics to Infer Large-Scale Drug Taxonomy [PMID:
+  28314784]'
+description: Identification of drug targets and mechanism of action (MoA) for new
+  and uncharacterized anticancer drugs is important for optimization of treatment
+  efficacy. Current MoA prediction largely relies on prior information including side
+  effects, therapeutic indication, and chemoinformatics. Such information is not transferable
+  or applicable for newly identified, previously uncharacterized small molecules.
+  Therefore, a shift in the paradigm of MoA predictions is necessary toward development
+  of unbiased approaches that can elucidate drug relationships and efficiently classify
+  new compounds with basic input data. We propose here a new integrative computational
+  pharmacogenomic approach, referred to as Drug Network Fusion (DNF), to infer scalable
+  drug taxonomies that rely only on basic drug characteristics toward elucidating
+  drug-drug relationships. DNF is the first framework to integrate drug structural
+  information, high-throughput drug perturbation, and drug sensitivity profiles, enabling
+  drug classification of new experimental compounds with minimal prior information.
+  DNF taxonomy succeeded in identifying pertinent and novel drug-drug relationships,
+  making it suitable for investigating experimental drugs with potential new targets
+  or MoA. The scalability of DNF facilitated identification of key drug relationships
+  across different drug categories, providing a flexible tool for potential clinical
+  applications in precision medicine. Our results support DNF as a valuable resource
+  to the cancer research community by providing new hypotheses on compound MoA and
+  potential insights for drug repurposing.
+tags:
+- cancer
+- drugs
+- pharmacogenomics
+authors:
+- name: George-Alexandru Adam
+  affiliations:
+  - name: University of Toronto
+corresponding_contributor:
+  name: Benjamin Haibe-Kains
+  email: benjamin.haibe.kains@utoronto.ca

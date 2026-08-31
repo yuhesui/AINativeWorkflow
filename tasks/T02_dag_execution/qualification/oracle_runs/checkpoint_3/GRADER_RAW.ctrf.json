@@ -1,0 +1,583 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.0.2"
+        },
+        "summary": {
+            "tests": 51,
+            "passed": 49,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1788120800163,
+            "stop": 1788120848080
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_basic",
+                "status": "passed",
+                "duration": 1167,
+                "start": 1788120800782,
+                "stop": 1788120801949,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_arrays",
+                "status": "passed",
+                "duration": 710,
+                "start": 1788120801949,
+                "stop": 1788120802659,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_bool_params",
+                "status": "passed",
+                "duration": 712,
+                "start": 1788120802659,
+                "stop": 1788120803371,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_string_concat",
+                "status": "passed",
+                "duration": 754,
+                "start": 1788120803371,
+                "stop": 1788120804125,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_branch_if",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 843,
+                "start": 1788120804126,
+                "stop": 1788120804969,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "trace": "entrypoint_argv = ['/home/yuhesui/.cache/ainw-scb-qual/bin/python', '/home/yuhesui/.cache/t2-oracle/launch.py']\n\n    def test_branch_if(entrypoint_argv):\n        \"\"\"Core: If conditional branching - true branch taken.\"\"\"\n        result, working, output = run_pipeline(\n            entrypoint_argv, BRANCH_IF_PIPELINE, BRANCH_IF_CONFIG\n        )\n    \n        assert result.returncode == 0, f\"Expected exit 0: {result.stderr}\"\n    \n        jobs = parse_jsonl(output.get(\"jobs.jsonl\", \"\"))\n        task_names = [j.get(\"task\") for j in jobs]\n    \n        # B succeeds (exit 0), so A should be called\n        assert \"B\" in task_names\n>       assert \"A\" in task_names\nE       AssertionError: assert 'A' in ['B', 'E', 'F', 'main']\n\ntasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py:564: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_branch_elif",
+                "status": "passed",
+                "duration": 755,
+                "start": 1788120804969,
+                "stop": 1788120805724,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_branch_else",
+                "status": "passed",
+                "duration": 758,
+                "start": 1788120805725,
+                "stop": 1788120806483,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_array_indexing",
+                "status": "passed",
+                "duration": 796,
+                "start": 1788120806483,
+                "stop": 1788120807279,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_for_requires",
+                "status": "passed",
+                "duration": 841,
+                "start": 1788120807279,
+                "stop": 1788120808120,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_while_requires",
+                "status": "passed",
+                "duration": 838,
+                "start": 1788120808120,
+                "stop": 1788120808958,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_working_dirs",
+                "status": "passed",
+                "duration": 853,
+                "start": 1788120808959,
+                "stop": 1788120809812,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_existing_dir",
+                "status": "passed",
+                "duration": 716,
+                "start": 1788120809812,
+                "stop": 1788120810528,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_arithmetic_ops",
+                "status": "passed",
+                "duration": 783,
+                "start": 1788120810528,
+                "stop": 1788120811311,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_exists_function",
+                "status": "passed",
+                "duration": 733,
+                "start": 1788120811312,
+                "stop": 1788120812045,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_float_params",
+                "status": "passed",
+                "duration": 825,
+                "start": 1788120812046,
+                "stop": 1788120812871,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_nested_loops",
+                "status": "passed",
+                "duration": 973,
+                "start": 1788120812871,
+                "stop": 1788120813844,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_stderr_validation",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 766,
+                "start": 1788120813844,
+                "stop": 1788120814610,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/home/yuhesui/.cache/ainw-scb-qual/bin/python', '/home/yuhesui/.cache/t2-oracle/launch.py']\n\n    @pytest.mark.functionality\n    def test_stderr_validation(entrypoint_argv):\n        \"\"\"Functionality: stderr contains() and equals() validation.\"\"\"\n        result, working, output = run_pipeline(\n            entrypoint_argv, STDERR_VALIDATION_PIPELINE, STDERR_VALIDATION_CONFIG\n        )\n    \n>       assert result.returncode == 0, f\"Expected exit 0: {result.stderr}\"\nE       AssertionError: Expected exit 0: \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/home/yuhesui/.cache/ainw-scb-qual/bin/python', '/home/yuhesui/.cache/t2-oracle/launch.py', '/...sk\": \"ExitCodeTest\", \"parent\": 1}\\n{\"event\": \"TASK_FAILED\", \"job_id\": 1, \"task\": \"main\", \"parent\": null}\\n', stderr='').returncode\n\ntasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py:1271: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_string_params",
+                "status": "passed",
+                "duration": 739,
+                "start": 1788120814611,
+                "stop": 1788120815350,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_timeout",
+                "status": "passed",
+                "duration": 2042,
+                "start": 1788120815351,
+                "stop": 1788120817393,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_circular_dependency",
+                "status": "passed",
+                "duration": 623,
+                "start": 1788120817393,
+                "stop": 1788120818016,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_default_param_order",
+                "status": "passed",
+                "duration": 648,
+                "start": 1788120818016,
+                "stop": 1788120818664,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_missing_required_arg",
+                "status": "passed",
+                "duration": 693,
+                "start": 1788120818664,
+                "stop": 1788120819357,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_multiline_success_no_return",
+                "status": "passed",
+                "duration": 741,
+                "start": 1788120819357,
+                "stop": 1788120820098,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_no_main",
+                "status": "passed",
+                "duration": 649,
+                "start": 1788120820099,
+                "stop": 1788120820748,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_recursive_call",
+                "status": "passed",
+                "duration": 674,
+                "start": 1788120820748,
+                "stop": 1788120821422,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_entry_call_with_params",
+                "status": "passed",
+                "duration": 670,
+                "start": 1788120821422,
+                "stop": 1788120822092,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_clean_cwd_default_false",
+                "status": "passed",
+                "duration": 677,
+                "start": 1788120822092,
+                "stop": 1788120822769,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_env_default_type_cast_bool",
+                "status": "passed",
+                "duration": 679,
+                "start": 1788120822769,
+                "stop": 1788120823448,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_requires_failure_stops",
+                "status": "passed",
+                "duration": 965,
+                "start": 1788120823448,
+                "stop": 1788120824413,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_type_mismatch_invalid_pipe",
+                "status": "passed",
+                "duration": 824,
+                "start": 1788120824413,
+                "stop": 1788120825237,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_undefined_task_invalid_pipe",
+                "status": "passed",
+                "duration": 676,
+                "start": 1788120825237,
+                "stop": 1788120825913,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_bad_toml_syntax",
+                "status": "passed",
+                "duration": 659,
+                "start": 1788120825913,
+                "stop": 1788120826572,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py::test_edge_empty_success_block",
+                "status": "passed",
+                "duration": 689,
+                "start": 1788120826573,
+                "stop": 1788120827262,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_basic_cache",
+                "status": "passed",
+                "duration": 667,
+                "start": 1788120827262,
+                "stop": 1788120827929,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_file_change",
+                "status": "passed",
+                "duration": 545,
+                "start": 1788120827930,
+                "stop": 1788120828475,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_cache_exclude",
+                "status": "passed",
+                "duration": 518,
+                "start": 1788120828475,
+                "stop": 1788120828993,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_ttl_strategy",
+                "status": "passed",
+                "duration": 2597,
+                "start": 1788120828993,
+                "stop": 1788120831590,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_cascade_invalidation",
+                "status": "passed",
+                "duration": 589,
+                "start": 1788120831590,
+                "stop": 1788120832179,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_global_cache_disabled",
+                "status": "passed",
+                "duration": 523,
+                "start": 1788120832180,
+                "stop": 1788120832703,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_force_refresh_skips_cache",
+                "status": "passed",
+                "duration": 536,
+                "start": 1788120832703,
+                "stop": 1788120833239,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py::test_always_strategy_ignores_input_change",
+                "status": "passed",
+                "duration": 547,
+                "start": 1788120833240,
+                "stop": 1788120833787,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_ttl_override_basic",
+                "status": "passed",
+                "duration": 2575,
+                "start": 1788120833787,
+                "stop": 1788120836362,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_strategy_override",
+                "status": "passed",
+                "duration": 486,
+                "start": 1788120836363,
+                "stop": 1788120836849,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_full_object_replacement",
+                "status": "passed",
+                "duration": 2558,
+                "start": 1788120836849,
+                "stop": 1788120839407,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_noop_override",
+                "status": "passed",
+                "duration": 490,
+                "start": 1788120839407,
+                "stop": 1788120839897,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_disable_cache_override",
+                "status": "passed",
+                "duration": 533,
+                "start": 1788120839898,
+                "stop": 1788120840431,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_partial_override_preserves_defaults",
+                "status": "passed",
+                "duration": 1544,
+                "start": 1788120840431,
+                "stop": 1788120841975,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_multiple_overrides_same_task",
+                "status": "passed",
+                "duration": 1578,
+                "start": 1788120841976,
+                "stop": 1788120843554,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_multiple_param_override",
+                "status": "passed",
+                "duration": 1542,
+                "start": 1788120843554,
+                "stop": 1788120845096,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_ttl_object_replacement_drops_base",
+                "status": "passed",
+                "duration": 2515,
+                "start": 1788120845096,
+                "stop": 1788120847611,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_cached_param_cache_error",
+                "status": "passed",
+                "duration": 459,
+                "start": 1788120847612,
+                "stop": 1788120848071,
+                "retries": 0,
+                "file_path": "tasks/T02_dag_execution/qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            }
+        ]
+    }
+}

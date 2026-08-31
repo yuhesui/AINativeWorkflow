@@ -1,0 +1,19 @@
+schema_version: 4
+project: "{{PROJECT_NAME}}"
+workflow_version: "5.6.35"
+specification_revision: "5.6"
+workflow_root: ".ai-workflow"
+repository_root: "{{REPO_ROOT}}"
+current_phase: ""
+default_mode: "{{MODE}}"
+default_execution_level: "{{EXECUTION_LEVEL}}"
+default_research_level: "{{RESEARCH_LEVEL}}"
+default_test_profile: "{{TEST_PROFILE}}"
+routing_profile: "{{ROUTING_PROFILE}}"
+main_role: "persistent chat-style intent and major-decision owner"
+orchestrator_role: "runtime planning, prompt generation, model routing and integration"
+verifier_role: "sole formal gate evaluator and request-completion owner"
+minor_location: "phase"
+auto_continue_after_go: true
+public_release_authorized: false
+submission_authorized: false

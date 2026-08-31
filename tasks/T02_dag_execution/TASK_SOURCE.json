@@ -1,0 +1,30 @@
+{
+  "authoritative_sources": [
+    {
+      "content_digest": "sha256:39aaaeea8576649f6defa53584f234d4873f2cdb8eea806123279909b57ff36c",
+      "embedded_source_revision": "4d38d30-dirty",
+      "harbor_version_used": "0.22.0",
+      "kind": "Harbor OCI task",
+      "name": "gabeorlanski/dag_execution",
+      "registry": "slop-code-bench",
+      "task_revision": "v5"
+    }
+  ],
+  "benchmark": "SlopCodeBench",
+  "frozen_identity": "gabeorlanski/dag_execution",
+  "license": "No standalone license was distributed in the official task payload; retain upstream notices and restrict this internal copy to evaluation.",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T02",
+  "technical_adaptations": [
+    "isolated all tests/solutions and checkpoints 2\u20133",
+    "checkpoint 1 is the sole initial prompt",
+    "later prompts are revealed only after accepted cumulative grading"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

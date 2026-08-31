@@ -1,0 +1,11 @@
+{
+  "blockers": [],
+  "candidate_agent_used": false,
+  "evidence": [
+    "oracle_runs/checkpoint_8"
+  ],
+  "qualification_date": "2026-08-31",
+  "schema_version": 1,
+  "scored_run_created": false,
+  "status": "QUALIFIED"
+}

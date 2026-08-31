@@ -1,0 +1,6 @@
+{
+  "task_id": "T01",
+  "agent_visible": [],
+  "provenance_only": [],
+  "reason": "The official Terminal-Bench task supplies the database and query, not a separate reference packet."
+}

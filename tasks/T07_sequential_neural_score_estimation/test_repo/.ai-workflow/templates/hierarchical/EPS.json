@@ -1,0 +1,25 @@
+{
+  "schema": "ai-native-workflow/eps/2",
+  "id": "eps-...",
+  "dic_id": "dic-...",
+  "phase_id": "phase-...",
+  "executor": "Theory",
+  "disposable": true,
+  "nodes": [
+    {
+      "id": "P11A-run2",
+      "plan_node_id": "P11A",
+      "depends_on": [],
+      "parallel_group": "B1",
+      "subagent": true,
+      "prompt_file": "EPS/prompts/eps-...__p11a-run2.md",
+      "status": "pending"
+    }
+  ],
+  "stop_conditions": [
+    "DIC requests accepted",
+    "material escalation",
+    "blocked dependency",
+    "budget boundary"
+  ]
+}

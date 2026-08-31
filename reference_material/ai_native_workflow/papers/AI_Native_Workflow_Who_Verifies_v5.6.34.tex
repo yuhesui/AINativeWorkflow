@@ -1,0 +1,124 @@
+\documentclass{article}
+% Offline fallback style retained in this package. Phase 01 must verify/replace
+% it with the official NeurIPS 2026 double-blind workshop author kit.
+\usepackage{neurips_2026}
+\input{preamble}
+\providecommand{\workshoptitle}[1]{}
+\workshoptitle{Who Verifies the Agents?}
+\title{Verification-Gated Recovery for Long-Horizon Language Agents}
+\author{Anonymous Authors}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Verification for language agents is usually discussed as a score, critic, test, or process signal. In long-horizon execution, a second problem is equally important: what should the system \emph{do} after verification fails? We present a package-resident protocol in which persistent intent is refined from Plan to Phase to a multi-view durable contract (DIC), instantiated through just-in-time execution stacks (EPS), and linked to evidence at prompt/run and action level. A verification gate returns one of four control outcomes---accept, local repair, upward replan, or material escalation---rather than only a scalar judgment. With complete dependency declarations and version-bound evidence, we prove that a repair need invalidate only its dynamic dependency cone, and that this scope is worst-case tight given footprint information alone. Under a conditional verifier miss bound $\alpha$, fault survival across $k$ observable gates is at most $\alpha^k$; conversely, if the evidence channel aliases goal-satisfying and goal-violating states, no evidence-only verifier can avoid both false acceptance and false rejection. We instantiate the protocol in AI-Native Workflow and pre-register a five-task paired evaluation emphasizing iterative-spec regression, live stateful cutover, and scientific certification. The benchmark runs are pending; we therefore claim a verification/recovery mechanism and formal limits, not empirical superiority.
+\end{abstract}
+
+\section{Introduction}
+Agents can now edit repositories, run tests, browse resources, call tools, and coordinate other agents. This makes verification both more valuable and more ambiguous. A unit test can reveal a failure, but it does not decide whether to retry the last command, invalidate several downstream artifacts, redesign the plan, or ask a human. A verifier may also check an artifact whose upstream assumptions have changed, allowing stale evidence to certify a now-invalid result.
+
+Current agent work explores self-reflection \citep{shinn2023reflexion}, process supervision \citep{lightman2023verify}, scalable oversight \citep{irving2018debate,leike2018recursive,burns2024weakstrong}, and security/evaluation environments \citep{ruan2024toolemu,debenedetti2024agentdojo}. We study a complementary control question: \emph{how can verification be tied to persistent intent, artifact versions, dependencies, and an explicit recovery action?}
+
+Our protocol stores a hierarchy
+\[
+\text{Plan}\succ\text{Phase}\succ\text{DIC}\succ\text{EPS}\succ\text{Prompt/Run}\succ\text{Action}
+\]
+inside the working package. The DIC is one multi-view contract for the whole Phase. Its Requests state what must be achieved; its Plan records prompt dependencies, parallel subagents, merge points, and conditional branches. EPS instances operationalize planned nodes against the current state. Evidence is linked to the object it purports to verify. Verification then produces a control outcome rather than merely a critique.
+
+We make three contributions. First, we specify an executable verification/recovery state machine with evidence lineage and distinct local-repair, replan, and human-escalation semantics. Second, we prove a dependency-local recovery theorem and a matching worst-case necessity result under explicit completeness assumptions, plus simple imperfect-verifier and observability limits. Third, we pre-register a small resource-constrained evaluation that emphasizes regression and repair behavior rather than only terminal task success.
+
+\section{From verification signal to recovery decision}
+\subsection{Persistent verification target}
+A verification call is meaningful only relative to a target claim and its authority. AI-Native Workflow therefore stores one durable intent contract (DIC) per Phase. \texttt{REQUESTS.md} is the authoritative inventory of goals and acceptance targets; \texttt{PLAN.md} records the execution graph; \texttt{TEST\_MATRIX.md}, when present, maps software/theory/experiment cases to checks. The DIC can survive deletion and regeneration of the current execution stack.
+
+A Phase's \texttt{reports/} directory is mandatory, flat, and capped at ten files by default. It contains a human report plus key merged raw outputs with provenance. Lossless collation is allowed; averaging, paraphrase, or removal of failed records is not considered raw evidence. This keeps the evidence surface compact without replacing the forensic log archive.
+
+\subsection{Four verification outcomes}
+Let $D$ denote the DIC, $s$ the current package/environment state and $e$ the available evidence. The verification operator is
+\[
+V(D,s,e)\in\{\mathsf{accept},\mathsf{repair},\mathsf{replan},\mathsf{escalate}\}.
+\]
+\begin{itemize}
+  \item \textbf{Accept}: the relevant request/phase has sufficient evidence.
+  \item \textbf{Repair}: intent is unchanged; re-execute the smallest affected operational region.
+  \item \textbf{Replan}: the durable execution design changes while the authorized objective remains intact.
+  \item \textbf{Escalate}: machine authority is insufficient, e.g. material objective/scientific/protocol/release change, external/destructive action, credentials, or paid compute.
+\end{itemize}
+This separates verifier epistemics (what did the evidence show?) from recovery control (where should execution resume?).
+
+\subsection{Verification layers}
+Local verification is automatic and close to the producing action: compile, test, validate a schema, reopen an artifact, recompute a statistic. Milestone verification closes a larger Request or prompt batch. Fresh-context independent review is reserved for material claims or release boundaries. Thus a second agent is not mandatory after every step; independence is spent where correlated error is most consequential.
+
+\section{Dependency-local recovery}
+Let execution nodes form a DAG. Node $v$ declares read keys $R_v$ and writes $W_v$, and all possible data-flow dependencies are represented. If a repair changes keys $\Delta$, define
+\[
+B(\Delta)=\{v:R_v\cap\Delta\neq\varnothing\},\qquad
+\mathcal I(\Delta)=\Reach(B(\Delta)).
+\]
+
+\begin{theorem}[Local recovery]
+Assume node outputs and evidence depend only on declared reads, predecessor outputs, recorded tool/version parameters, and recorded randomness; dependency edges are complete; and evidence is tied to artifact versions. After changing $\Delta$, completed outputs outside $\mathcal I(\Delta)$ remain contract-valid.
+\end{theorem}
+\begin{proof}[Sketch]
+A node outside the impact cone neither reads a changed key nor depends on a node that does. Topological induction preserves every declared input and therefore its previously verified output/evidence relation. The technical report gives the full statement and failure conditions.
+\end{proof}
+
+The impact cone is worst-case tight with respect to declared footprints. A direct reader can copy a changed bit, and every descendant can propagate it; therefore each reachable node can be made stale. This is an adaptation of dependency/incremental-build reasoning \citep{mokhov2018build,acar2009selfadjusting}. The operational value is not a new graph theorem but an explicit answer to ``how much verified agent work must be reopened after this failure?''
+
+The assumptions are essential. Hidden shared state, mutable external services, incomplete read sets, or evidence not bound to versions can make an apparently local repair globally unsafe. In such cases the correct verification outcome is replan/escalate or conservative re-verification rather than optimistic locality.
+
+\section{Imperfect verification}
+Suppose a persisting fault remains observable and the conditional probability that gate $i$ misses it, given survival so far, is at most $\alpha<1$. Then
+\[
+\Pr[\text{survive }k\text{ gates}]\le \alpha^k,
+\]
+and expected detection delay is at most $1/(1-\alpha)$ gate intervals. This does not require independent misses, only the conditional bound. It motivates repeated evidence opportunities without implying that ``more verifier calls'' always fix a bad evidence channel.
+
+Indeed, let $O(s)$ be the observation available to the verifier and $G(s)$ the relevant success predicate.
+\begin{proposition}[Evidence aliasing]
+If $O(s_+)=O(s_-)$ but $G(s_+)=1$ and $G(s_-)=0$, no verifier using only $O$ can achieve both zero false acceptance and zero false rejection on these states.
+\end{proposition}
+The proof is immediate: the verifier receives the same input and must return the same decision. The remedy is richer environment-grounded evidence, a weaker claim, or explicit uncertainty---not a more confident prompt.
+
+\section{Implementation and auditability}
+The reference runtime stores canonical state in \texttt{.ai-workflow/STATE.json} and Phase-local DIC/EPS/prompt/action records beneath the Plan path. Stable IDs and hashes reconstruct which execution produced which evidence. Optional verification/research/minor/checkpoint lanes can be materialized lazily; reports are always present. A fresh Main can recover the approved objective, active phase, unresolved escalations, and evidence pointers from the package alone.
+
+Conformance tests cover multi-phase Plan authority, ordinary autonomous progression, periodic checkpoints, material escalation, package-only recovery, DIC custom views, parallel prompt nodes, report invariants, and compatibility surfaces. We classify this as implementation evidence only.
+
+\section{Targeted evaluation protocol}
+We deliberately use a small proof-of-concept design rather than a broad benchmark sweep. ChatGPT Plus is Main for every run. Claude Code / Pro A is the primary executor. We compare a competent flat condition F with the full workflow W; both can plan, iterate, and use task-local tests, but F omits the persistent DIC/EPS/request/invalidation state machine. Claude Pro B repeats only the two mechanism-critical tasks.
+
+\begin{table}[t]
+\centering\small
+\caption{Five frozen candidate tasks; scores are pending.}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+ID & Task & Verification/recovery signal\\\midrule
+T1 & \texttt{env\_manager} & 5 progressive checkpoints; easy-control overhead\\
+T2 & \texttt{database\_migration} & dependencies, rollback, old requirements remain active\\
+T3 & \texttt{recli} & 8 checkpoints; regression/erosion under architectural growth\\
+T4 & \texttt{live-database-cutover} & continuous live-state consistency and safe cutover\\
+T5 & \texttt{certified-sparse-regression} & outcome certification in scientific optimization\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+T1--T3 use SlopCodeBench's iterative-specification tasks \citep{orlanski2026slopcodebench}; T4 comes from Terminal-Bench \citep{merrill2026terminalbench}; T5 from Terminal-Bench-Science \citep{terminalbenchscience2026}. The core study is ten F/W paired runs with Pro A, plus four pre-declared F/W replications on T2/T3 with Pro B.
+
+The primary quantities are official reward/pass, strict pass rate by SlopCodeBench checkpoint, regression/erosion, rework, repair scope, prompt/run count, Main turns, and wall time. We expect hierarchy may be pure overhead on T1; the more diagnostic question is whether W retains earlier requirements and localizes repairs better on T2/T3. T4 tests stateful verification and premature completion; T5 probes transfer beyond software engineering.
+
+With five tasks, we will show every run and paired/checkpoint traces rather than claim population-level significance. Oracle/reference solutions are used only for isolated environment qualification and are excluded from scored workspaces. At this draft stage, no scored run has occurred, and no empirical superiority claim is made.
+
+\section{Related work}
+Agent benchmarks such as AgentBench, WebArena, GAIA, SWE-bench, OSWorld, $\tau$-bench, and Terminal-Bench expose failures in tool-mediated and stateful tasks \citep{liu2024agentbench,zhou2024webarena,mialon2024gaia,jimenez2024swebench,xie2024osworld,yao2024taubench,merrill2026terminalbench}. SlopCodeBench is especially relevant because requirements accumulate across checkpoints and regression is directly measured \citep{orlanski2026slopcodebench}. Reflection and process supervision provide feedback signals \citep{shinn2023reflexion,lightman2023verify}; debate, recursive reward modeling, and weak-to-strong work address scalable oversight \citep{irving2018debate,leike2018recursive,burns2024weakstrong}. Our narrower focus is the control semantics after evidence arrives: how a verifier's result is tied to authority, dependency invalidation, repair scope, and persistent audit state.
+
+\section{Limitations}
+The locality theorem is only as sound as the dependency model. Hidden side effects and mutable external systems invalidate its assumptions. Verifier-error bounds do not model strategic reward hacking or correlated evidence failures beyond the stated conditional miss bound. The small experiment cannot establish general superiority and may be dominated by model-specific behavior of ChatGPT Main and Claude Code. Verification metadata also adds overhead and can encourage false confidence if the checks do not observe the real goal. Finally, the workflow is not a sandbox; security requires separate isolation and adversarial testing.
+
+\section{Conclusion}
+Reliable long-horizon agents need a response to verification failure, not only a verdict. By linking persistent requests, execution dependencies, versioned evidence, and four explicit recovery outcomes, AI-Native Workflow turns verification into a control loop whose scope can be audited. The formal results state exactly when local repair is safe and exactly why insufficient evidence cannot be repaired by hierarchy alone. The pending evaluation asks the pragmatic workshop question: does that extra structure reduce regression and rework enough to matter on real agent tasks?
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "qualification_only": true,
+  "candidate_agent_used": false,
+  "build_invocation": "Direct docker build of the two pinned upstream Dockerfiles; upstream CRLF shell wrapper was not edited.",
+  "images": {
+    "pb-env": {
+      "id": "sha256:9b80c1bce02930470851d1ee5ec7b21e5d19f95377913b89dd65d57c992ef956",
+      "repo_digest": "pb-env@sha256:9b80c1bce02930470851d1ee5ec7b21e5d19f95377913b89dd65d57c992ef956",
+      "bytes": 1410598556,
+      "build_status": "SUCCESS"
+    },
+    "pb-reproducer": {
+      "id": "sha256:86f0f081db56e1f10d677bdbda7a73aa4dd052dccb6131bf4d33b7e9a7c1a921",
+      "repo_digest": "pb-reproducer@sha256:86f0f081db56e1f10d677bdbda7a73aa4dd052dccb6131bf4d33b7e9a7c1a921",
+      "bytes": 339299564,
+      "build_status": "SUCCESS"
+    }
+  },
+  "root_unit_suite_without_api_judge": {
+    "passed": 49,
+    "deselected": 18,
+    "failed": 0,
+    "errors": 0,
+    "seconds": 16.78,
+    "junit": "../unit-tests-no-api.xml"
+  },
+  "native_api_judge_qualified": false,
+  "full_target_gpu_reproduction_qualified": false,
+  "status": "CONTAINER_AND_NON_API_UNIT_PATHS_QUALIFIED_TASK_BLOCKED"
+}

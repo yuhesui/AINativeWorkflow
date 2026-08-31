@@ -1,0 +1,25 @@
+{
+  "accepted": [
+    {
+      "checkpoint": 1,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_01_grader_raw.json",
+      "grader_raw_sha256": "9aff232606be39a0b083f8712eec866b02b441c9f03f8a0d3a17bbc4f8e6ba73"
+    },
+    {
+      "checkpoint": 2,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_02_grader_raw.json",
+      "grader_raw_sha256": "10a0298849656b3ef6ff7488916c65afde89e930d5985e411b90644602bc1ebb"
+    },
+    {
+      "checkpoint": 3,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_03_grader_raw.json",
+      "grader_raw_sha256": "de42788b3d7f3111e967988705d821018c6ffb2f82a3f9f28d520e1c159e659f"
+    }
+  ],
+  "current_checkpoint": 3,
+  "revealed": [
+    1,
+    2,
+    3
+  ]
+}

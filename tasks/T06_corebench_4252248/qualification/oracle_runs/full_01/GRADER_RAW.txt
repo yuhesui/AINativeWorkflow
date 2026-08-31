@@ -1,0 +1,37 @@
+1.0
+
+AUC = 0.4929241
+
+0.6
+0.4
+0.2
+0.0
+
+Precision
+
+0.8
+
+Integration = 0.493
+Structure = 0.467
+Sensitivity = 0.405
+Perturbation = 0.316
+IorioPGX = 0.401
+Iskar = 0.256
+SuperPred = 0.37
+rand = 0.212
+
+0.0
+
+0.2
+
+0.4
+
+0.6
+
+Recall
+
+0.8
+
+1.0
+
+

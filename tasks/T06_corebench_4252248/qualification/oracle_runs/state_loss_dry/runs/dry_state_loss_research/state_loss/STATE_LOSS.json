@@ -1,0 +1,16 @@
+{
+  "captured_utc": "2026-08-30T21:06:50.363159+00:00",
+  "elapsed_hours": 4.0,
+  "old_main_transcript_transferred": false,
+  "recovery_files": {
+    "ORIGINAL_TASK.md": "42a180d8b41d21ac590556d251a1de086841b6f9c9c2616e46a5202161c7cc6d",
+    "RECOVERY_INSTRUCTION.md": "2810a3d893361f3830cb318d530910c14f8d3ee109d3766a64914254f5fb56fe",
+    "RESOURCE_POLICY.md": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe"
+  },
+  "repo_surviving_tree_sha256": "2747f254e842348944e2fe203be3da753cca9a0899d88d6e1317b6540a900c5b",
+  "run_id": "dry_state_loss_research",
+  "schema_version": 1,
+  "stable_handoff_evidence": "D:\\Projects\\AI Native Workflow\\tasks\\T06_corebench_4252248\\qualification\\oracle_runs\\state_loss_dry\\runs\\dry_state_loss_research\\state_loss\\evidence\\stable_handoff.json",
+  "stable_handoff_evidence_sha256": "88daf781ca58a8608b94438b5a2c3554f826ed59c7c5a6c4ed7c031ee0717fda",
+  "task_id": "T06"
+}

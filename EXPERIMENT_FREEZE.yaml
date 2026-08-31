@@ -1,0 +1,58 @@
+protocol: AI-Native Workflow Evaluation Protocol v1.0
+status: FROZEN_BEFORE_SCORED_RUNS
+runtime_schema: 5.6.35
+core_trajectory_count: 28
+optional_state_loss_trajectory_count: 8
+conditions:
+- DIRECT
+- AI_NATIVE
+execution_tier:
+  tasks:
+  - T01
+  - T02
+  - T03
+  - T04
+  ecosystems:
+    openai:
+      main: ChatGPT GPT-5.6 Sol, highest actually available
+      executor: Codex GPT-5.6 Terra xhigh
+    anthropic:
+      main: Claude Opus 5 high
+      executor: Claude Code Sonnet 5 high
+  external_research: false
+research_tier:
+  tasks:
+  - T05
+  - T06
+  - T07
+  root_main: ChatGPT Main unless unavailable; record exact product/model
+  routing: Main chooses models/tools from identical permitted resource pool in both
+    conditions
+  resource_pool:
+  - Main reasoning
+  - Codex Terra xhigh
+  - Claude Code Sonnet 5 high
+  - Claude Opus 5 high research/reasoning session
+  - web/primary literature research
+  - local terminal/Python/CPU/GPU
+  state_loss: mandatory paired NORMAL and STATE_LOSS modes
+state_loss:
+  T03: optional after checkpoint 3/5 and before checkpoint 4 reveal
+  T04: optional after checkpoint 4/8 and before checkpoint 5 reveal
+  T05: mandatory at first stable Main↔executor handoff after 50% of fixed budget
+  T06: mandatory at first stable Main↔executor handoff after 50% of fixed budget
+  T07: mandatory at first stable Main↔executor handoff after 50% of fixed budget
+  recovery_inputs:
+  - original frozen task prompt
+  - exact surviving repository/workspace snapshot
+  - same permitted resource/model menu
+  - fixed recovery prompt
+  forbidden_recovery_inputs:
+  - prior Main transcript
+  - human-written handoff summary
+  - post-hoc hints
+task_replacement: No replacement after any scored result. Before scoring, replacement
+  requires documented environment/verifier/license impossibility and a protocol revision,
+  not expected performance.
+scoring: Preserve native benchmark metrics; normalized 0–100 completion scores may
+  be reported only alongside raw/native scores.

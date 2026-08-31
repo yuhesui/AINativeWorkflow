@@ -1,0 +1,35 @@
+{
+  "authoritative_sources": [
+    {
+      "commit": "e32a2980e72fe6eb04ee04eb749458f570625663",
+      "commit_date": "2025-11-23T12:05:05-05:00",
+      "kind": "git",
+      "url": "https://github.com/siegelz/core-bench.git"
+    },
+    {
+      "bytes": 18735033,
+      "capsule_url": "https://codeocean.com/capsule/4252248/tree/v1",
+      "kind": "Code Ocean capsule",
+      "revision": "v1",
+      "sha256": "bd7a853f2f4859431848c52fcb9288edfbacac41e1b8b8fabc02179989471dd4",
+      "url": "https://corebench.cs.princeton.edu/capsules/capsule-4252248.tar.gz"
+    }
+  ],
+  "benchmark": "CORE-Bench Hard",
+  "frozen_identity": "capsule-4252248",
+  "license": "CORE-Bench MIT license plus licenses retained inside capsule code/data.",
+  "retrieved_utc_date": "2026-08-31",
+  "schema_version": 1,
+  "task_id": "T06",
+  "technical_adaptations": [
+    "placed the complete capsule in test_repo",
+    "isolated benchmark expected answer and harness",
+    "added official public source-paper citation and CC BY supplementary materials"
+  ],
+  "visibility": {
+    "original_task": "provenance only; never scored workspace",
+    "private_eval": "physically excluded from agent workspace",
+    "reference_manifest": "reference_material/VISIBILITY_MANIFEST.json",
+    "test_repo": "complete agent-facing workspace"
+  }
+}

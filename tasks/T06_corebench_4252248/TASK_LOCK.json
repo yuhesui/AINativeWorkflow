@@ -1,0 +1,67 @@
+{
+  "benchmark": "CORE-Bench Hard",
+  "frozen_identity": "capsule-4252248",
+  "qualification": {
+    "blockers": [],
+    "candidate_agent_used": false,
+    "evidence": [
+      "oracle_runs/full_01",
+      "oracle_runs/state_loss_dry",
+      "private_eval/expected_answer.json",
+      "private_eval/grade_answer.py"
+    ],
+    "qualification_date": "2026-08-31",
+    "schema_version": 1,
+    "scored_run_created": false,
+    "status": "QUALIFIED"
+  },
+  "resource_policy_sha256": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe",
+  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "schema_version": 1,
+  "sources": [
+    {
+      "commit": "e32a2980e72fe6eb04ee04eb749458f570625663",
+      "commit_date": "2025-11-23T12:05:05-05:00",
+      "kind": "git",
+      "url": "https://github.com/siegelz/core-bench.git"
+    },
+    {
+      "bytes": 18735033,
+      "capsule_url": "https://codeocean.com/capsule/4252248/tree/v1",
+      "kind": "Code Ocean capsule",
+      "revision": "v1",
+      "sha256": "bd7a853f2f4859431848c52fcb9288edfbacac41e1b8b8fabc02179989471dd4",
+      "url": "https://corebench.cs.princeton.edu/capsules/capsule-4252248.tar.gz"
+    }
+  ],
+  "surfaces": {
+    "original_task": {
+      "bytes": 266347671,
+      "file_count": 2448,
+      "tree_sha256": "bde65a144c4620e36fa668c1a174b97505c67e58d67f73e70e1db942632c40fd"
+    },
+    "private_eval": {
+      "bytes": 5950852,
+      "file_count": 10,
+      "tree_sha256": "62bbd5e9524628a397700fede12540b38f603180ae9691bd0c67ebe39516f072"
+    },
+    "reference_agent_visible": {
+      "bytes": 3594924,
+      "file_count": 3,
+      "tree_sha256": "a9034c3fe450657907b747338d9662f84b303330c7b07896553a9fbe2db21d2b"
+    },
+    "reference_provenance_only": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_repo": {
+      "bytes": 53040368,
+      "file_count": 221,
+      "tree_sha256": "2747f254e842348944e2fe203be3da753cca9a0899d88d6e1317b6540a900c5b"
+    }
+  },
+  "task_id": "T06",
+  "task_prompt_sha256": "42a180d8b41d21ac590556d251a1de086841b6f9c9c2616e46a5202161c7cc6d",
+  "visibility_manifest_sha256": "fb86c90e5bfe94cc70f454a7ce74a59fe7c5b6fe72f64c36f33c22c1bb3f6226"
+}

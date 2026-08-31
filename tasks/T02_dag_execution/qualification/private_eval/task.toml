@@ -1,0 +1,98 @@
+schema_version = "1.1"
+
+artifacts = []
+
+[task]
+name = "gabeorlanski/dag_execution"
+description = "Workflow orchestration system with a custom DSL for defining DAGs of tasks with dependencies and parameters. Includes a parser, execution engine, and JSONL logging. Adds caching with content-hashing and time-based strategies, then dynamic cache overrides per-task."
+authors = [{ name = "Gabriel Orlanski" }]
+keywords = [
+  "workflow-orchestration",
+  "dag",
+  "cli-tools",
+  "parser",
+  "toml",
+  "dependency-resolution",
+  "caching",
+  "task-scheduling",
+  "scb-problem",
+  "multi-step",
+  "pytest",
+]
+
+[metadata]
+difficulty = "hard"
+category = "dsl"
+tags = [
+  "workflow-orchestration",
+  "dag",
+  "cli-tools",
+  "parser",
+  "toml",
+  "dependency-resolution",
+  "caching",
+  "task-scheduling",
+]
+source = "scb-problems"
+source_problem = "dag_execution"
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+allow_internet = true
+workdir = "/app"
+
+[environment.env]
+COLUMNS = "240"
+LINES = "60"
+PYTHONUNBUFFERED = "1"
+TERM = "xterm"
+
+[agent]
+timeout_sec = 7200.0
+
+[verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_1"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_2"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+[[steps]]
+name = "checkpoint_3"
+artifacts = [
+  { source = "/app", destination = "app", exclude = [".venv", "__pycache__", ".pytest_cache", ".ruff_cache", ".mypy_cache", ".git", "node_modules", "target", "dist", "build"] },
+]
+min_reward = { core_pass_rate = 0.0, strict_pass_rate = 0.0 }
+
+[steps.agent]
+timeout_sec = 7200.0
+
+[steps.verifier]
+timeout_sec = 1800.0
+
+# revision: v5

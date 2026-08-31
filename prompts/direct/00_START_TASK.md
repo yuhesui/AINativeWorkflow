@@ -1,0 +1,1 @@
+Complete the task I provide using the permitted models, coding agents, tools, tests, and research capabilities. Plan, delegate, implement, test, revise, and keep any notes you naturally judge useful. Work competently and autonomously within the task boundaries. Do not assume any hidden benchmark information.

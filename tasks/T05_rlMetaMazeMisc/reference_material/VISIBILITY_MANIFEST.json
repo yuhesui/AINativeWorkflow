@@ -1,0 +1,17 @@
+{
+  "task_id": "T05",
+  "agent_visible": [
+    {
+      "path": "../test_repo/task_config.yaml",
+      "role": "authoritative frozen task specification",
+      "why_visible": "MLGym exposes the task description and evaluation interface to the solver"
+    },
+    {
+      "path": "../test_repo/evaluate.py",
+      "role": "read-only native evaluation interface",
+      "why_visible": "listed as evaluation_read_only in the authoritative task config"
+    }
+  ],
+  "provenance_only": [],
+  "reason": "No separate paper is bundled by MLGym; external primary-literature research follows RESOURCE_POLICY.md."
+}

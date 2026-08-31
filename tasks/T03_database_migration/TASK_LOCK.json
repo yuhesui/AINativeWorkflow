@@ -1,0 +1,61 @@
+{
+  "benchmark": "SlopCodeBench",
+  "frozen_identity": "gabeorlanski/database_migration",
+  "qualification": {
+    "blockers": [],
+    "candidate_agent_used": false,
+    "evidence": [
+      "oracle_runs/checkpoint_5",
+      "oracle_runs/harness_dry",
+      "oracle_runs/harness_finalizer_v2"
+    ],
+    "qualification_date": "2026-08-31",
+    "schema_version": 1,
+    "scored_run_created": false,
+    "status": "QUALIFIED"
+  },
+  "resource_policy_sha256": "f644ba02b3f57e0f162acce4899bf8977742d812004e67e68e92c9ae00d1d0ae",
+  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "schema_version": 1,
+  "sources": [
+    {
+      "content_digest": "sha256:15a6ac32fc6e2ac000df7e634d6f21899aed228418fdb277725ee93790f0d25f",
+      "embedded_source_revision": "4d38d30-dirty",
+      "harbor_version_used": "0.22.0",
+      "kind": "Harbor OCI task",
+      "name": "gabeorlanski/database_migration",
+      "registry": "slop-code-bench",
+      "task_revision": "v5"
+    }
+  ],
+  "surfaces": {
+    "original_task": {
+      "bytes": 1237042,
+      "file_count": 80,
+      "tree_sha256": "1a99fe348abd658a20d46d7bdfd904183de3db6ea47c0b5b2dc17c86215ab9b9"
+    },
+    "private_eval": {
+      "bytes": 1234773,
+      "file_count": 79,
+      "tree_sha256": "3a4111e4e442135e7b8c6b64cd23d6d53c310af524310b8bf133520969bbe197"
+    },
+    "reference_agent_visible": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reference_provenance_only": {
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_repo": {
+      "bytes": 557515,
+      "file_count": 130,
+      "tree_sha256": "0d4db72c159d2d71934c09f8f5fdc1b47dce308e23ca4d8df9fc6fabf95dfc95"
+    }
+  },
+  "task_id": "T03",
+  "task_prompt_sha256": "9b0ad9d700780172737979600d581da10dc7239f9ce21c7cda1892fa01422689",
+  "visibility_manifest_sha256": "5e14663b055ef37c3e74c07ecce73936beaf7932a05922de95fbe9be7fd34ac8"
+}
