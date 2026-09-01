@@ -1,0 +1,22 @@
+test_main_and_orchestrator_boundaries_are_explicit (test_runtime.DocumentationContractTestCase.test_main_and_orchestrator_boundaries_are_explicit) ... ok
+test_prompting_source_lock_and_model_tuning (test_runtime.DocumentationContractTestCase.test_prompting_source_lock_and_model_tuning) ... ok
+test_action_lineage_and_completion_gate (test_runtime.RuntimeTestCase.test_action_lineage_and_completion_gate) ... ok
+test_all_four_verification_outcomes (test_runtime.RuntimeTestCase.test_all_four_verification_outcomes) ... ok
+test_clean_initial_state (test_runtime.RuntimeTestCase.test_clean_initial_state) ... ok
+test_deterministic_demo (test_runtime.RuntimeTestCase.test_deterministic_demo) ... ok
+test_eps_binds_to_stable_dic (test_runtime.RuntimeTestCase.test_eps_binds_to_stable_dic) ... ok
+test_impact_cone (test_runtime.RuntimeTestCase.test_impact_cone) ... ok
+test_missing_core_view_is_rejected (test_runtime.RuntimeTestCase.test_missing_core_view_is_rejected) ... ok
+test_missing_dependency_and_cycle_are_rejected (test_runtime.RuntimeTestCase.test_missing_dependency_and_cycle_are_rejected) ... ok
+test_model_node_requires_tuned_prompt_before_action (test_runtime.RuntimeTestCase.test_model_node_requires_tuned_prompt_before_action) ... ok
+test_one_dic_and_core_views (test_runtime.RuntimeTestCase.test_one_dic_and_core_views) ... ok
+test_plan_requires_phase_before_approval (test_runtime.RuntimeTestCase.test_plan_requires_phase_before_approval) ... ok
+test_recovery_detects_missing_dic_view (test_runtime.RuntimeTestCase.test_recovery_detects_missing_dic_view) ... ok
+test_no_unbalanced_markdown_fences (test_templates.TemplateTestCase.test_no_unbalanced_markdown_fences) ... ok
+test_plan_template_owns_graph_and_subagents (test_templates.TemplateTestCase.test_plan_template_owns_graph_and_subagents) ... ok
+test_template_manifest_resolves (test_templates.TemplateTestCase.test_template_manifest_resolves) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.087s
+
+OK

@@ -1,0 +1,8 @@
+[project]
+name = "ai-native-workflow-runtime"
+version = "5.6.36"
+description = "Reference runtime for hierarchical verification-gated execution"
+requires-python = ">=3.10"
+
+[project.scripts]
+aw = "aw.cli:main"

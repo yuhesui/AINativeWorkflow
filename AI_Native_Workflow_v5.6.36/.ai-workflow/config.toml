@@ -1,0 +1,26 @@
+[workflow]
+version = "5.6.36"
+mode = "structured"
+execution_level = "high"
+research_level = "mid"
+test_profile = "integration"
+
+[runtime]
+state_file = ".ai-workflow/STATE.json"
+runtime_dir = ".ai-workflow/runtime"
+require_one_dic_per_phase = true
+require_core_dic_views = true
+
+[roles]
+main_surface = "persistent_chat"
+orchestrator_surface = "repository_aware_coding_agent"
+
+[prompting]
+require_model_tuned_eps = true
+prefer_bounded_prompts = true
+max_default_work_packages_per_prompt = 3
+
+[subagents]
+consider_explicitly = true
+parallel_only_when_independent = true
+require_disjoint_writes_or_merge_contract = true

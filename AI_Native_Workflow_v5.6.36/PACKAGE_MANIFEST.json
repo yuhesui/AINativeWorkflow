@@ -1,0 +1,499 @@
+{
+  "package": "AI-Native Workflow v5.6.36 Enhanced Development Package",
+  "runtime_boundary": ".ai-workflow/",
+  "file_count": 82,
+  "files": [
+    {
+      "path": ".ai-workflow/README.md",
+      "size_bytes": 651,
+      "sha256": "ad35867156b360b1f725ac6402743d3102142cfc72a71a18269318e8d1dc4ba4",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/STATE.json",
+      "size_bytes": 207,
+      "sha256": "b57d8dfb4a15c45ab333ed0ccee4375d220d4a7ed9747d5ea31e8d97dc1a9b79",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/VERSION",
+      "size_bytes": 7,
+      "sha256": "f30d9f3e6c1898b0de14b3b74843bf4992c1924edb023e1acaa59869f61916f0",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/__init__.py",
+      "size_bytes": 231,
+      "sha256": "d2af4428957db5bddfb5e45881c737202cbec5865925d34e482f7d20e1ecd3dc",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/cli.py",
+      "size_bytes": 2343,
+      "sha256": "3e578a735cc3f7cb55ed110f4ec9491c579b5cb48ce089da4eb55b8b8ba8587d",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/demo.py",
+      "size_bytes": 6896,
+      "sha256": "063a919c4fa6ce19e346e1ffc7b71d5ff01d0bf9b2e96d03c5ae8240eac4a2df",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/impact.py",
+      "size_bytes": 1406,
+      "sha256": "b2159a65f348ebd44e99e3c327acee609c67a6369c6e06415cd5cdaf57f03b86",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/store.py",
+      "size_bytes": 22044,
+      "sha256": "38f528984b22151283cbbce777df8313affa624cd3e9f4891af2c1a1a3bf407e",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/dic/PLAN.md",
+      "size_bytes": 2653,
+      "sha256": "4f145d68ae718cbc0e5bfd45cf08d6f7e6f66bbdfeea10074a8094cb84688b45",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/dic/README.md",
+      "size_bytes": 1035,
+      "sha256": "cde6b4eb4fc91cb7ae5fb69d0d87f4ca658d54b1ff6120f6cc07d803545acc77",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/dic/REQUESTS.md",
+      "size_bytes": 515,
+      "sha256": "7c71d3adc0c271697fb6403ffabad52437c363850ba6c8e8f9d1160af7fb6489",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/manifest.json",
+      "size_bytes": 395,
+      "sha256": "fd648f185a88297a348b6bce991b47ac269213ea0242c311ef5a8bb6a7b37262",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/prompts/ORCHESTRATOR_INIT.md",
+      "size_bytes": 1733,
+      "sha256": "70d72a64873b81f9fe38e674cbbf23b724fdfd57580c844a5b9c790a2d869969",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/prompts/RESEARCH.md",
+      "size_bytes": 870,
+      "sha256": "db4405094c77f91b24ceb63a2c5870643fc9cf81b549eca174caf86a7d0e7992",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/prompts/VERIFIER.md",
+      "size_bytes": 773,
+      "sha256": "70a1a34af569069fb5fbb7505c40daacce550049dc83c44755b6dea88e665ed6",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw/templates/prompts/WORKER.md",
+      "size_bytes": 931,
+      "sha256": "bb557778cc21fe51e2f29a95a0880f85a6479427aa89f073aa06d120eb611526",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/aw.py",
+      "size_bytes": 153,
+      "sha256": "7288160e51983f95f283cbbffd3fce7569973464de7d6a14cbe5f5ec7f79e09f",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/config.toml",
+      "size_bytes": 616,
+      "sha256": "40c57c4f975453ef2d2cd647783ce84ba69040f23beae93653d9cc4283aea4f1",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/CLAUDE_EXECUTION.md",
+      "size_bytes": 2194,
+      "sha256": "48d593b2ca6b5f76b6a897edd49796d0a2bf46dc7bdeb7e7bdeb514f0466feba",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/CODEX_EXECUTION.md",
+      "size_bytes": 1573,
+      "sha256": "cd60b64032ca4c951d5de6aa6549fff3735363078b53a59ab1e6665beae3e279",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/CORE.md",
+      "size_bytes": 2949,
+      "sha256": "16ee87faabebc5002bd96913cbcef23a7a8138c585089522098b8f1287ad7dd7",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/EXPERIMENT.md",
+      "size_bytes": 676,
+      "sha256": "fe91661707cd6e86beab8a3926109e44bbc7925fbf1f50988c43ad87f9baf63a",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/GPT56_ROUTING.md",
+      "size_bytes": 1675,
+      "sha256": "c0d82b087bdf81b9bf466d3e579f0ae6a77acf58c41f1943d855a5b991565015",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/MAIN.md",
+      "size_bytes": 7623,
+      "sha256": "963efc0e744b4fdf1c097c29e864e8ede199a74a84da93a39a5105f7fed60202",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/MAIN_CHAT_CHECKLIST.md",
+      "size_bytes": 768,
+      "sha256": "405cea52449ddc9939350897bedd4ba110bcff01d0880c6bf3fd5d84fca1e7a8",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/OFFICIAL_PROMPTING_SOURCES.md",
+      "size_bytes": 3678,
+      "sha256": "79dc8734d6cf734b5d51c4c81b0660ab36cdd1e36354e7c9fc8678cafe95c8bd",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/ORCHESTRATOR.md",
+      "size_bytes": 9182,
+      "sha256": "65fa2c42dfc945f591ef04c199af4c9584daa2c239073d45f08ebc839fc1a5dc",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/PROMPTING_CORE.md",
+      "size_bytes": 4259,
+      "sha256": "0706e025c59b76e60e04f731b7b286aedea3cf7a5ae3beafc0d35ff31426df07",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/RESEARCH.md",
+      "size_bytes": 2370,
+      "sha256": "7e1e6a16150fc71bdfe637126cb2dd057ec92e29728e895dc4547711fdc5f70c",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/THEORY.md",
+      "size_bytes": 711,
+      "sha256": "a5ed51221003c9d776253719a4bbf9a8aee177e36de344f877aa6ba2cbf820f6",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/VERIFIER.md",
+      "size_bytes": 776,
+      "sha256": "107fffdb415dce06323ec4fd7c2baaf7943d63208806b2d8f9afe67723e11223",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/WORKER.md",
+      "size_bytes": 529,
+      "sha256": "923049693df852b41fbc08b26e602f6b6c3930836d113d04726bc6677350b705",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/execution_levels/HIGH.md",
+      "size_bytes": 228,
+      "sha256": "82092bb860c7c47feb6aaf8b043194cd15c4cd0b73d0c3973ea664e556035a9c",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/execution_levels/LOW.md",
+      "size_bytes": 197,
+      "sha256": "f0b2be13fe6907a714613c6d3a8cbd6caf825776ec2862c9324472d2c715c122",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/execution_levels/MID.md",
+      "size_bytes": 205,
+      "sha256": "19be107dc711fc13c0074293ce2061181ced9ff2775f061b65b665a82fb0c1ae",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/execution_levels/ULTRA.md",
+      "size_bytes": 234,
+      "sha256": "ae4ec9665973adb5cf978d3095e16638772c7b1877acabf5166020ea01ec5395",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/docs/execution_levels/XHIGH.md",
+      "size_bytes": 233,
+      "sha256": "c432877882925ed01ce4658fc14d6067b1daf0d115fb25c6d811ae9ac0867e28",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/package.json",
+      "size_bytes": 545,
+      "sha256": "09f606cb7a4a45471fdd473eba2acd70b7632b944436711ce6f7ff7b9a0a0530",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/pyproject.toml",
+      "size_bytes": 210,
+      "sha256": "7b304dde65cc866a2df4ac4eb0aefe265938754956f3308b32b28493a732d823",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/tests/test_runtime.py",
+      "size_bytes": 9774,
+      "sha256": "a8758a044c908732bfb565ef4d4a4c5452d9c3e5649103aa517c0cd65dbc065e",
+      "category": "operative_runtime"
+    },
+    {
+      "path": ".ai-workflow/tests/test_templates.py",
+      "size_bytes": 1204,
+      "sha256": "9cdc50a435a1815f5e7e6cc49363a5b41601fcb4d996a8212afb6c776170992c",
+      "category": "operative_runtime"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size_bytes": 1663,
+      "sha256": "cfd740d52ea0c9abe094d55f156ea926fb308d3b12f419c9b861907831d7dd32",
+      "category": "package_documentation"
+    },
+    {
+      "path": "PACKAGE_CONTENTS.md",
+      "size_bytes": 2552,
+      "sha256": "e53d8f3b68eed3d2fefbfe87bb0cc736149098fd59982ec8122dceaa5f500f63",
+      "category": "package_documentation"
+    },
+    {
+      "path": "QUICK_START.md",
+      "size_bytes": 1833,
+      "sha256": "143ad3c940673557f46c5a4cdba63f656eb61f2517c268db536900e63f72383a",
+      "category": "package_documentation"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 3080,
+      "sha256": "f944edd1ae65d7bc9f47e1360bc0801b372ce9a36e86394c346a07168a5eb1e8",
+      "category": "package_documentation"
+    },
+    {
+      "path": "VALIDATION_REPORT.md",
+      "size_bytes": 3626,
+      "sha256": "cfe0d5413161710a56851a5904e88d5892d89c39bc234b718b17c668024b02aa",
+      "category": "package_documentation"
+    },
+    {
+      "path": "research/OFFICIAL_PROMPTING_SOURCE_LOCK.yaml",
+      "size_bytes": 3893,
+      "sha256": "b18c6ae8e7db135ee240b1b2463f81cf3a9857f2f0e740fbfbe248b8cb1aad69",
+      "category": "workflow_research"
+    },
+    {
+      "path": "research/RUNTIME_ENHANCEMENT_AUDIT.md",
+      "size_bytes": 3763,
+      "sha256": "7cca16662e4642595f3f4a1e6bb1d3ea9cb45d343f3c906f3022c055c86ed6ba",
+      "category": "workflow_research"
+    },
+    {
+      "path": "runtime_release/AI_WORKFLOW_RUNTIME_v5.6.36.zip",
+      "size_bytes": 46676,
+      "sha256": "af22bddef53baa1bc9fcdae325e37e6083dde54d8a262cef61eda64e92517e95",
+      "category": "runtime_distribution"
+    },
+    {
+      "path": "slides/ANNOTATED_READING_LIST.md",
+      "size_bytes": 1793,
+      "sha256": "d93d70d4163ff681810a03d27992762e880f1474a6662f51965047734000d2e4",
+      "category": "teaching_development"
+    },
+    {
+      "path": "slides/DEMO_FACILITATOR_GUIDE.md",
+      "size_bytes": 1018,
+      "sha256": "88d5f15fddf1b1f3ad42ffe53524fdef6a27a210bcc2e75e69382e84d2f8a74e",
+      "category": "teaching_development"
+    },
+    {
+      "path": "slides/LEARNER_EXERCISE.md",
+      "size_bytes": 1466,
+      "sha256": "45142a7374586800aa98c5d2c60a37c1164e1049e7bcfd1721f83ac70ad991d0",
+      "category": "teaching_development"
+    },
+    {
+      "path": "slides/NEURIPS_2026_EDUCATION_SLIDE_PLAN.md",
+      "size_bytes": 11505,
+      "sha256": "24ed7b2e872bb0d2d0bcb288347dd469459a79a16bc9f7bc215320155fa54d21",
+      "category": "teaching_development"
+    },
+    {
+      "path": "slides/README.md",
+      "size_bytes": 1042,
+      "sha256": "63a538bc3ba46e1735790336cda91083166feb99c70219a7dbee67890ff8000a",
+      "category": "teaching_development"
+    },
+    {
+      "path": "slides/TEACHING_MATERIALS_PLAN.md",
+      "size_bytes": 2195,
+      "sha256": "2b266d8abd30c90f3406a720933f8f7355fa73b0be8865bf95e2c7d366f73cd1",
+      "category": "teaching_development"
+    },
+    {
+      "path": "source_tracking/SOURCE_PACKAGE_REFERENCE.md",
+      "size_bytes": 977,
+      "sha256": "dc05733e6f14dc4b7f17083e2b7ecdee0a2ba5c71c8f653e08301e4ed589de05",
+      "category": "source_provenance"
+    },
+    {
+      "path": "submissions/neurips_education/EDUCATION_SUBMISSION_CHECKLIST.md",
+      "size_bytes": 1268,
+      "sha256": "0dbb2b0af57ea05606f03f11fe698e2ea6a3f3ab224795e009c07df24f1ac8f9",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/neurips_education/NEURIPS_2026_Education_Verification_Control_Starter.zip",
+      "size_bytes": 30832,
+      "sha256": "174c22166746c475d8a6f2c69ebc04ced5a8a970ed0cbc8f027addb247fdebbd",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/neurips_education/README.md",
+      "size_bytes": 890,
+      "sha256": "ce65d57f524c7e351c5baef3b19ffabb941a3e7ca18839b4fcade17e59130c63",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/neurips_education/SUBMISSION_REQUIREMENTS.md",
+      "size_bytes": 1607,
+      "sha256": "9d5185704443ff003e16fc042ce8c17084678529921219a2f1368fba3144cf66",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/neurips_education/TWO_PAGE_CONCEPT_OUTLINE.md",
+      "size_bytes": 2427,
+      "sha256": "8030fea8993e9a9cd0179f63d68b65e6ded7d765800eff03b13374391552b307",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/README.md",
+      "size_bytes": 726,
+      "sha256": "12d8e6097c9f148ab80d9b1482efa8d9c416b68d24a1e2df6184782c1a797eb7",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/SUBMISSION_CHECKLIST.md",
+      "size_bytes": 1469,
+      "sha256": "dd4e3f7b94abff849305981852f50f3a5a77769e541a8fa82de262241782c34a",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/Who_Verifies_Agents_2026_Anonymous_AI_Workflow_Supplement.zip",
+      "size_bytes": 48994,
+      "sha256": "c55213bde1cd9432bbee02823292a8ddc60e7824b85776609bb850ab9d4af1aa",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/Who_Verifies_Agents_2026_Submission_Package.zip",
+      "size_bytes": 207219,
+      "sha256": "866950b29c4f819bb38858d7cdc3086e68eb4e88b58d1cc1584450a3ee287952",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/artifacts/demo_trace.json",
+      "size_bytes": 1553,
+      "sha256": "9166c7e8b27b4994873a4e1991a5e6e880a9a760137968fb856e11f61e4d6efe",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/artifacts/recovery.json",
+      "size_bytes": 100,
+      "sha256": "c1c5b12f1edf441b1ad87e06c3df60488b3da73a030887e320adda06c4f2314a",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/main.pdf",
+      "size_bytes": 148622,
+      "sha256": "cc6a0c98799fe424f785042d7ff53bbd45ae326e1e4d41e2a07b4685b8010371",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/openreview_metadata.md",
+      "size_bytes": 3121,
+      "sha256": "eb8c27fb35f9f350d5b52c74337f6e2b28b14b427d1c4847fe5b2856680d6485",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/source/main.tex",
+      "size_bytes": 15064,
+      "sha256": "c033a62bd7f7bf8fb7dffab49d022ebbd784c415bdea1d1f58e82a16d061a1f5",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/source/neurips_2026.sty",
+      "size_bytes": 3024,
+      "sha256": "ac76979b97fd9d8dc82a9a68afecd271348a537adc0ae45a85e4bb76050a895b",
+      "category": "submission_storage"
+    },
+    {
+      "path": "submissions/who_verifies/source/references.bib",
+      "size_bytes": 2102,
+      "sha256": "62ffd1c033ad880f59daaea7dca4548d470a071f96e9be77bd0bade26adc0131",
+      "category": "submission_storage"
+    },
+    {
+      "path": "technical_report/README.md",
+      "size_bytes": 332,
+      "sha256": "4ec9ab98c58b9a35dfe1da20e73a4ba31d03efb5c8de227cd63e31a343a934b3",
+      "category": "technical_report_development"
+    },
+    {
+      "path": "technical_report/ROLE_AND_EXECUTION_UPDATE_NOTE.md",
+      "size_bytes": 2719,
+      "sha256": "e5fbc00156f8835fe109a5bf8dc4ffd268d45e516e90018ec15b6717e990e40c",
+      "category": "technical_report_development"
+    },
+    {
+      "path": "validation/README.md",
+      "size_bytes": 248,
+      "sha256": "c70351022c99a8042284be5f0e9fcc65ac7c561413bcffb733227c7f64d3c53e",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/clean_runtime_recovery.json",
+      "size_bytes": 100,
+      "sha256": "40a41faac33b414ad34ec9155466bb043a90653471d4e77c37d86be84fe83ca1",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/demo_recovery.json",
+      "size_bytes": 100,
+      "sha256": "c1c5b12f1edf441b1ad87e06c3df60488b3da73a030887e320adda06c4f2314a",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/education_zip_test.txt",
+      "size_bytes": 1704,
+      "sha256": "bae6e0bce59cc91fa55e48add8b764283a2d5e3ccbc798a34e04f279c999b753",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/extracted_supplement_tests.txt",
+      "size_bytes": 2020,
+      "sha256": "da8619fbeae6237eb3b5395d51c55e7c284b5599754e2d882f4aa097aa0b4c38",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/runtime_tests.txt",
+      "size_bytes": 2020,
+      "sha256": "a04c1709bf8876d7e4229ab2695522034b3e28b12b98c7dc33219af7fdcce5a6",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/supplement_zip_test.txt",
+      "size_bytes": 2900,
+      "sha256": "a544b228d462343277ba79c6fade7f54de97b65aa070e1e3207357d25ce22c5d",
+      "category": "validation_evidence"
+    },
+    {
+      "path": "validation/who_verifies_pdfinfo.txt",
+      "size_bytes": 545,
+      "sha256": "c7f52ea72b879ebe2ac5afc1991cd49eb4c4c850acd8eb9f0edf4bcefe4fb1b2",
+      "category": "validation_evidence"
+    }
+  ]
+}

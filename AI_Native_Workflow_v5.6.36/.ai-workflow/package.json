@@ -1,0 +1,13 @@
+{
+  "name": "ai-native-workflow",
+  "version": "5.6.36",
+  "schema_version": "5.6.36",
+  "runtime_boundary": ".ai-workflow",
+  "main_surface": "persistent_chat",
+  "orchestrator_surface": "repository_aware_coding_agent",
+  "core_scientific_workstreams": ["main", "theory", "experiment"],
+  "core_dic_views": ["README.md", "REQUESTS.md", "PLAN.md"],
+  "verification_outcomes": ["accept", "repair", "replan", "escalate"],
+  "research_levels": ["none", "low", "mid", "high", "max"],
+  "execution_levels": ["low", "mid", "high", "xhigh", "ultra"]
+}
