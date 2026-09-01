@@ -84,11 +84,10 @@ $Workspace = Join-Path $TaskRoot "runs\\$RunId\\workspace"
 ```"""
 
 
-def main_prompt(base: str, route: dict[str, str], task: str, task_id: str) -> str:
+def main_prompt(base: str, route: dict[str, str], task: str) -> str:
     return "\n\n".join(
         (
             base,
-            f"Task capsule for this run: {task_id}; the T1-T4 handoff archive requirement applies.",
             route["guidance"],
             "Frozen task prompt follows exactly:",
             task,
@@ -269,7 +268,6 @@ or compare another matrix row as part of the same trajectory.
 def render(spec: TaskSpec) -> str:
     task_root = ROOT / "tasks" / spec.directory
     task = read(task_root / "TASK.md")
-    resource_policy = read(task_root / "RESOURCE_POLICY.md")
     direct = read(ROOT / "prompts" / "direct" / "00_START_TASK.md")
     loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
     ai_start = read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md")
@@ -287,7 +285,7 @@ Main: **{route['main']}**. Executor: **{route['executor']}**.
 Open a fresh Main chat with access to the materialized workspace and unchanged resource policy.
 Paste this as the first and only task-start message:
 
-{prompt_block(main_prompt(direct, route, task, spec.task_id))}
+{prompt_block(main_prompt(direct, route, task))}
 
 Do not send the AI-Native loader or expose any global workflow reference material.
 
@@ -303,7 +301,7 @@ Open a fresh Main chat with access to the materialized workspace. Paste loader m
 
 Wait only for the requested ready confirmation. Then paste task-start message 2 exactly:
 
-{prompt_block(main_prompt(ai_start, route, task, spec.task_id))}
+{prompt_block(main_prompt(ai_start, route, task))}
 
 Main chooses the Plan and number of Phases after task start; the operator does not pre-create them.
 """
@@ -329,9 +327,8 @@ authorizes no scored execution by itself.
 The Main surface is a fresh persistent **chat** in both conditions. The CLI is only a bounded
 executor. Record exact product-visible identifiers and effort settings in `RUN.json` at launch.
 
-Frozen matched resource policy:
-
-> {resource_policy.replace(chr(10), chr(10) + '> ')}
+The frozen matched budget and access rules are in this task root's `RESOURCE_POLICY.md`. Enforce
+that file exactly and give the same limits to both conditions.
 
 Before selecting one row, run `python -X utf8 scripts/validate_repo.py`, confirm this task is
 `QUALIFIED`, and confirm no scored run directory already uses the selected ID. Run exactly one row.

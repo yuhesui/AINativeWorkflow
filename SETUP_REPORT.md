@@ -70,12 +70,12 @@ Windows invocation.
   checkpoint counts. Only checkpoint 1 is initially visible. The reveal tool
   requires an accepted cumulative grader artifact and reveals exactly one next
   checkpoint. T3 and T4 enforce their frozen checkpoint state-loss boundaries.
-- T1-T4 use persistent chat as Main in both conditions and a coding CLI only as
+- The fixed-ecosystem coding capsules use persistent chat as Main in both conditions and a coding CLI only as
   a bounded executor. The Direct prompt requests a neutral ordinary handoff ZIP
   without workflow concepts; the AI-Native prompt requests one canonical Phase
   ZIP containing its current DIC, assigned EPS/prompt, and lineage manifest.
   `scripts/generate_chat_main_runbooks.py` deterministically emits the exact
-  model-specific copy/paste operations in each T1-T4 task root.
+  model-specific copy/paste operations in each selected task root.
 - T5 uses the exact starter, config, native evaluator, and held-out mean reward;
   its research extension asks for reproducible hypothesis-driven work without
   prescribing an algorithm. A compatible CUDA dependency lock was diagnosed

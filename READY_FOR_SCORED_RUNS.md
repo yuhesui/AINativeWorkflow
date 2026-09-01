@@ -52,8 +52,8 @@ resource measurements, and grader evidence under the run's `main/`,
 `executors/`, and `evidence/` directories without mounting private evaluation
 material into the workspace.
 
-For T1-T4, use the generated `CHAT_MAIN_TESTING_STEPS.md` in the selected task
-root for exact copy/paste prompts. Main is a persistent chat and the coding CLI
+For the selected qualified coding capsule, use its generated
+`CHAT_MAIN_TESTING_STEPS.md` for exact copy/paste prompts. Main is a persistent chat and the coding CLI
 is only a bounded executor. Each Direct handoff is one ordinary ZIP rooted at
 `executor_handoffs/<handoff-id>/`, containing a model-tuned executor prompt,
 context, return contract, and manifest. It must not use or imitate DIC/EPS or
@@ -74,7 +74,7 @@ delegates bounded work, evaluates returned evidence, and accepts, repairs, or
 replans. Do not pre-create task-specific plans, phase counts, DICs, EPSs, or
 execution history.
 
-For each T1-T4 CLI handoff, chat Main outputs one Phase ZIP preserving the
+For each CLI handoff on the current task, chat Main outputs one Phase ZIP preserving the
 canonical `.ai-workflow/runtime/plans/<plan-id>/phases/<phase-id>/` paths. It
 contains the complete current DIC, the assigned just-in-time EPS JSON and exact
 executor prompt, plus a lineage/authority/evidence manifest. Import that
