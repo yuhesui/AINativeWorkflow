@@ -31,20 +31,29 @@ def main() -> int:
     if not args.accepted_grader_raw.is_file():
         raise SystemExit("accepted grader raw output is required before reveal")
     previous = state["current_checkpoint"]
+    raw_sha256 = file_sha256(args.accepted_grader_raw)
+    existing_acceptance = next(
+        (item for item in state["accepted"] if item["checkpoint"] == previous),
+        None,
+    )
+    if existing_acceptance and existing_acceptance["grader_raw_sha256"] != raw_sha256:
+        raise SystemExit("accepted checkpoint already recorded with different grader evidence")
     evidence_dir = workspace / ".evaluation" / "acceptance_evidence"
     evidence_dir.mkdir(parents=True, exist_ok=True)
     evidence_copy = evidence_dir / f"checkpoint_{previous:02d}_grader_raw{args.accepted_grader_raw.suffix}"
-    shutil.copy2(args.accepted_grader_raw, evidence_copy)
+    if args.accepted_grader_raw.resolve() != evidence_copy.resolve():
+        shutil.copy2(args.accepted_grader_raw, evidence_copy)
     instruction = task_root / "qualification" / "private_eval" / "steps" / f"checkpoint_{args.checkpoint}" / "instruction.md"
     if not instruction.is_file():
         raise SystemExit(f"missing private checkpoint instruction: {instruction}")
     destination = workspace / "CHECKPOINTS" / f"{args.checkpoint:02d}.md"
     shutil.copy2(instruction, destination)
-    state["accepted"].append({
-        "checkpoint": previous,
-        "grader_raw": evidence_copy.relative_to(workspace).as_posix(),
-        "grader_raw_sha256": file_sha256(evidence_copy),
-    })
+    if existing_acceptance is None:
+        state["accepted"].append({
+            "checkpoint": previous,
+            "grader_raw": evidence_copy.relative_to(workspace).as_posix(),
+            "grader_raw_sha256": raw_sha256,
+        })
     state["current_checkpoint"] = args.checkpoint
     state["revealed"].append(args.checkpoint)
     state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")

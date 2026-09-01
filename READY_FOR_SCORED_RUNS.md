@@ -52,6 +52,13 @@ resource measurements, and grader evidence under the run's `main/`,
 `executors/`, and `evidence/` directories without mounting private evaluation
 material into the workspace.
 
+For T1-T4, use the generated `CHAT_MAIN_TESTING_STEPS.md` in the selected task
+root for exact copy/paste prompts. Main is a persistent chat and the coding CLI
+is only a bounded executor. Each Direct handoff is one ordinary ZIP rooted at
+`executor_handoffs/<handoff-id>/`, containing a model-tuned executor prompt,
+context, return contract, and manifest. It must not use or imitate DIC/EPS or
+contain `.ai-workflow/`.
+
 For progressive tasks, an operator runs the private cumulative grader, stores
 its raw record outside the workspace, and uses `scripts/reveal_checkpoint.py`
 to reveal only the immediate next checkpoint after acceptance. Main must never
@@ -66,6 +73,14 @@ chooses the Phase decomposition, creates each active Phase folder/DIC/EPS,
 delegates bounded work, evaluates returned evidence, and accepts, repairs, or
 replans. Do not pre-create task-specific plans, phase counts, DICs, EPSs, or
 execution history.
+
+For each T1-T4 CLI handoff, chat Main outputs one Phase ZIP preserving the
+canonical `.ai-workflow/runtime/plans/<plan-id>/phases/<phase-id>/` paths. It
+contains the complete current DIC, the assigned just-in-time EPS JSON and exact
+executor prompt, plus a lineage/authority/evidence manifest. Import that
+`.ai-workflow/` subtree into the surviving workspace before launching the
+frozen Codex CLI or Claude Code CLI executor. The ZIP is transport for
+canonical state, not a second workflow surface.
 
 Preserve every durable runtime mutation. The final AI-Native repository must
 include its full final `.ai-workflow/`; the final Direct repository must not
