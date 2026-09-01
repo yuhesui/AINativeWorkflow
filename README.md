@@ -40,6 +40,41 @@ For a Direct run, the harness materializes the same `test_repo/` while physicall
 
 `original_task/` is the full upstream provenance copy, not the agent workspace.
 
+The repository-default runtime and seven task `.ai-workflow/` folders are
+generated, Git-ignored copies.
+The complete `AI_Native_Workflow_v5.6.36/` package is tracked once as the
+authority. The repository-root `AI_WORKFLOW_RUNTIME.zip` is generated and
+Git-ignored. Reconstruct any missing generated archive/copy from the configured
+source with:
+
+```powershell
+python -X utf8 scripts/sync_ai_workflow.py
+```
+
+Use `--check` for a read-only equality/clean-state check. The run starter uses
+`--ensure`, which installs missing copies but refuses to overwrite runtime drift.
+Use `scripts/update_ai_workflow.py` below to deliberately rebuild an existing
+archive from the configured source and refresh the locks.
+Generated `MAIN_INPUT.zip`, live `workspace/`, and optional `repo_initial/`
+duplicates are also ignored. Unique handoffs, run metadata/results, and the
+required full `repo_final/` remain eligible for archival/tracking.
+
+### Updating the workflow runtime
+
+The expanded `test_repo/.ai-workflow/` folder is the actual runtime used by the
+harness, but it is deliberately not tracked repeatedly. The default update
+source is configured in `AI_WORKFLOW_RUNTIME_SOURCE.json` and currently resolves
+to `AI_Native_Workflow_v5.6.36/.ai-workflow`. During pre-run setup, run:
+
+```powershell
+python -X utf8 scripts/update_ai_workflow.py
+```
+
+The command tests the tracked configured source, rebuilds
+`AI_WORKFLOW_RUNTIME.zip`, reconstructs the repository-default and every task
+copy, refreshes task/package locks, and runs repository validation. A changed
+runtime is refused after run artifacts exist.
+
 ## Global AI-Native references
 
 Global workflow material lives under:

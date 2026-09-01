@@ -12,14 +12,22 @@ __pycache__/
 venv/
 
 # benchmark/runtime heavy outputs
+# Duplicate workflow archive/copies are generated from the tracked configured source package.
+/.ai-workflow/
+/tasks/*/test_repo/.ai-workflow/
+/AI_WORKFLOW_RUNTIME.zip
+
 **/runs/*/workspace/
+**/runs/*/repo_initial/
 **/runs/*/container/
 **/runs/*/cache/
 **/runs/*/raw_large/
+**/runs/*/MAIN_INPUT.zip
 **/qualification/docker-cache/
 *.tar
 *.tar.gz
 *.img
+/.qualification_tmp/
 
 # editor/OS
 .DS_Store

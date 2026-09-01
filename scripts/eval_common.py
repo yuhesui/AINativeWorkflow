@@ -7,10 +7,40 @@ import json
 from pathlib import Path
 from typing import Iterable
 
-TRANSIENT_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache"}
+TRANSIENT_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea"}
 SENSITIVE_NAMES = {"expected_answer.json", "golden.sql", "rubric.json", "test_outputs.py"}
 SENSITIVE_PARTS = {"private_eval", "oracle_runs", "solution"}
 SENSITIVE_MARKERS = (b"terminal-bench-canary GUID", b'"expected_answer": 0.4929241')
+
+
+def is_dynamic_run_artifact(relative: Path) -> bool:
+    """Return whether a repository-relative path belongs to mutable run output."""
+    parts = relative.parts
+    return (
+        len(parts) >= 4
+        and parts[0] == "tasks"
+        and parts[2] in {"runs", "run_results"}
+        and parts[3] not in {"README.md", ".gitkeep"}
+    )
+
+
+def is_generated_runtime_copy(relative: Path) -> bool:
+    """Return whether a path is inside an expanded, Git-ignored runtime copy."""
+    parts = relative.parts
+    return (
+        (len(parts) >= 1 and parts[0] == ".ai-workflow")
+        or (
+            len(parts) >= 4
+            and parts[0] == "tasks"
+            and parts[2] == "test_repo"
+            and parts[3] == ".ai-workflow"
+        )
+    )
+
+
+def is_generated_runtime_archive(relative: Path) -> bool:
+    """Return whether a path is the reconstructible repository-root runtime ZIP."""
+    return relative.as_posix() == "AI_WORKFLOW_RUNTIME.zip"
 
 
 def files(root: Path, *, include_transient: bool = False) -> Iterable[Path]:

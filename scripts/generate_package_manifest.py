@@ -6,7 +6,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from eval_common import file_sha256, files
+from eval_common import (
+    file_sha256,
+    files,
+    is_dynamic_run_artifact,
+    is_generated_runtime_archive,
+    is_generated_runtime_copy,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +26,13 @@ def main() -> int:
         if path == DESTINATION:
             continue
         rel = path.relative_to(ROOT).as_posix()
+        relative = path.relative_to(ROOT)
+        if (
+            is_dynamic_run_artifact(relative)
+            or is_generated_runtime_archive(relative)
+            or is_generated_runtime_copy(relative)
+        ):
+            continue
         size = path.stat().st_size
         entries[rel] = {"sha256": file_sha256(path), "bytes": size}
         total_bytes += size
@@ -28,6 +41,9 @@ def main() -> int:
         "package": "AI_Native_Workflow_Eval_v1.0_Frozen_Internal",
         "generated_utc_date": "2026-08-31",
         "self_excluded": "PACKAGE_MANIFEST.json",
+        "dynamic_run_artifacts_excluded": True,
+        "expanded_runtime_copies_excluded": True,
+        "generated_runtime_archive_excluded": True,
         "file_count": len(entries),
         "bytes": total_bytes,
         "files": entries,

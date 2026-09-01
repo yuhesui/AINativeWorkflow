@@ -52,12 +52,25 @@ mounted into the agent repository or container. Automated sensitive-material
 and reference-policy checks run both during materialization and repository
 validation.
 
-The seven initial `.ai-workflow/` trees are copies of one clean runtime. Their
+The repository-default and seven initial `.ai-workflow/` trees are generated
+copies of the configured clean v5.6.36 runtime. Their
 state is `active_plan_id: null` and `plans: {}`; no task-specific Plan, Phase,
 DIC, EPS, report, or history is pre-created. A representative runtime test run
-under explicit UTF-8 mode passed all 55 tests. The ordinary Windows code page
-caused one locale-only failure (54/55); `python -X utf8` is therefore the locked
-Windows invocation.
+under explicit UTF-8 mode passed all 17 focused v5.6.36 tests;
+`python -X utf8` remains the locked Windows invocation.
+
+To keep Git and operator uploads lean, those eight expanded trees are generated
+and ignored. The complete `AI_Native_Workflow_v5.6.36/` package is tracked once
+as the authority; `AI_WORKFLOW_RUNTIME.zip` is a canonical generated, ignored
+archive. `scripts/sync_ai_workflow.py` deterministically builds/checks the
+archive and installs byte-identical clean copies. `start_run.py` invokes the sync tool's `--ensure`
+mode to restore missing copies while refusing to overwrite a differing existing
+runtime without an explicit sync. For deliberate pre-run runtime maintenance,
+`scripts/update_ai_workflow.py` loads the source configured by
+`AI_WORKFLOW_RUNTIME_SOURCE.json` (currently
+`AI_Native_Workflow_v5.6.36/.ai-workflow`), rebuilds the root archive,
+synchronizes all copies, refreshes locks/manifests, and validates with rollback
+of tracked metadata on failure.
 
 ## Technical adaptations
 
@@ -74,8 +87,16 @@ Windows invocation.
   a bounded executor. The Direct prompt requests a neutral ordinary handoff ZIP
   without workflow concepts; the AI-Native prompt requests one canonical Phase
   ZIP containing its current DIC, assigned EPS/prompt, and lineage manifest.
-  `scripts/generate_chat_main_runbooks.py` deterministically emits the exact
-  model-specific copy/paste operations in each selected task root.
+  Main returns each ZIP as a download rather than claiming a local path.
+  `scripts/start_run.py` provides the one-command operator surface: it creates
+  a UTC-stamped run folder, packages `MAIN_INPUT.zip`, references the
+  source-derived repository-root `AI_WORKFLOW_RUNTIME.zip` only for AI-Native, asks for the
+  Main-chat link and `MAIN_HANDOFF.zip`, then opens the interactive executor in
+  `workspace/`.
+  Run/chat/executor timing, routing, usage, and hashes are consolidated in the
+  evolving `RUN.json`; Main-chat token use remains uninferable from a saved
+  URL. `scripts/generate_chat_main_runbooks.py` emits the concise per-task
+  commands.
 - T5 uses the exact starter, config, native evaluator, and held-out mean reward;
   its research extension asks for reproducible hypothesis-driven work without
   prescribing an algorithm. A compatible CUDA dependency lock was diagnosed
@@ -126,9 +147,10 @@ families in the frozen protocol, with actual identifiers recorded at run time.
 
 `scripts/prepare_run.py` lock-checks the source, rejects inherited runtime
 state/caches, enforces condition-specific runtime presence, checks hidden and
-reference leakage, creates standard evidence directories, and captures an
-immutable initial snapshot. `scripts/capture_state_loss.py` snapshots the exact
-surviving repository while explicitly excluding transcript transfer.
+reference leakage, and captures immutable source/task-lock and initial-tree
+hashes. The simple operator layout avoids a duplicate `repo_initial/`; the full
+final repository remains mandatory. `scripts/capture_state_loss.py` snapshots
+the exact surviving repository while explicitly excluding transcript transfer.
 `scripts/finalize_run.py` copies and hashes the entire final repository and
 creates the separate native-result surface.
 
@@ -139,13 +161,20 @@ entire-repository finalization succeeded. The final tree hashes were
 `bf0bf1a2babe5a82763f72d2a5e1d652a021613c0abf379110ebb6abea17c307`
 (Direct) and
 `b2d86f5f58d67252d356cf4fe963e561b7b51c76368a11a064ac9213efb2c2d7`
-(AI-Native). Every real `tasks/*/runs/` and `run_results/` contains only its
-README at setup completion.
+(AI-Native). No valid Main handoff import, executor session, finalization, score, or executed
+scored trajectory exists. An older Direct materialization is retained as
+`INVALIDATED_PRE_TRAJECTORY`, and an operator-created AI-Native materialization
+is retained at `AWAITING_MAIN`; both remain auditable without being treated as
+completed trajectories. All `run_results/` surfaces remain empty of result IDs.
 
 ## AI-Native provenance and prompting audit
 
-The archived workflow source package remains immutable (SHA-256
+The prior v5.6.35 workflow source package remains immutable historical
+provenance (SHA-256
 `2df995c1eb3e0fc144e0e82555d96584d5b4bad108d916754a70ac6412873cb7`).
+The operative pre-run runtime source is now the locally configured v5.6.36
+package, which is tracked in full. The root runtime ZIP and eight expanded
+runtime trees are reconstructed duplicates and intentionally ignored.
 The machine-facing `.aiexplainer/` points to canonical runtime/specification
 material, and the portable explainer ZIP is generated deterministically.
 Runtime prompting/routing documents were audited against current official

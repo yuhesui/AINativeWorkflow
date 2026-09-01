@@ -12,7 +12,7 @@ import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
-from eval_common import load_json, tree_sha256, validate_workspace
+from eval_common import file_sha256, load_json, tree_sha256, validate_workspace
 
 
 def ignore_direct(_directory: str, names: list[str]) -> set[str]:
@@ -26,6 +26,11 @@ def main() -> int:
     parser.add_argument("--condition", choices=("DIRECT", "AI_NATIVE"), required=True)
     parser.add_argument("--run-id", help="create standard runs/<RUN_ID> metadata and workspace")
     parser.add_argument("--attempt-id", default="attempt-01")
+    parser.add_argument(
+        "--simple-layout",
+        action="store_true",
+        help="create only the run root, workspace, and RUN.json; retain initial state by immutable hashes",
+    )
     parser.add_argument("--non-scored", action="store_true", help="required for qualification dry-runs")
     parser.add_argument(
         "--qualification-root",
@@ -62,8 +67,10 @@ def main() -> int:
         workspace = args.dest.resolve() if args.dest else run_dir / "workspace"
         if run_dir.exists():
             raise SystemExit(f"run identifier already exists: {run_dir}")
-        for rel in ("main", "executors", "state_loss", "evidence"):
-            (run_dir / rel).mkdir(parents=True, exist_ok=False)
+        run_dir.mkdir(parents=True, exist_ok=False)
+        if not args.simple_layout:
+            for rel in ("main", "executors", "state_loss", "evidence"):
+                (run_dir / rel).mkdir()
     elif args.dest:
         workspace = args.dest.resolve()
     else:
@@ -101,13 +108,17 @@ def main() -> int:
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "source_test_repo": str(source),
         "source_test_repo_tree_sha256": actual_hash,
+        "source_task_lock_sha256": file_sha256(lock_path),
         "workspace": str(workspace),
         "repo_initial_tree_sha256": initial_hash,
+        "repo_initial_storage": "hash_ref" if args.simple_layout else "full_snapshot",
         "qualification_root": str(args.qualification_root.resolve()) if args.qualification_root else None,
+        "layout_version": "simple-v2" if args.simple_layout else "capsule-v1",
     }
     if run_dir:
-        initial = run_dir / "repo_initial"
-        shutil.copytree(workspace, initial)
+        if not args.simple_layout:
+            initial = run_dir / "repo_initial"
+            shutil.copytree(workspace, initial)
         (run_dir / "RUN.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0

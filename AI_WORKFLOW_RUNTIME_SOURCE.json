@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "configured_source_path": "AI_Native_Workflow_v5.6.36",
+  "runtime_subpath": ".ai-workflow",
+  "source_release_archive": "runtime_release/AI_WORKFLOW_RUNTIME_v5.6.36.zip",
+  "canonical_runtime_archive": "AI_WORKFLOW_RUNTIME.zip",
+  "default_task_runtime_path": "test_repo/.ai-workflow",
+  "runtime_schema": "5.6.36",
+  "tracking_policy": "Track the complete configured source package and this reference; reconstruct and ignore the root runtime archive plus expanded runtime directories."
+}

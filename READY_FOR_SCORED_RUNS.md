@@ -13,8 +13,11 @@ runbook; it is not authorization to start a row of `manifests/RUN_MATRIX.csv`.
    run ID and attempt ID. An infrastructure rerun always receives a new ID and
    records the earlier run's invalidation reason.
 2. Confirm the task's `QUALIFICATION_STATUS.json` is `QUALIFIED`, then run
-   `python -X utf8 scripts/validate_repo.py` and verify the task and environment
-   locks. Do not waive a `BLOCKED` status.
+   `python -X utf8 scripts/sync_ai_workflow.py --check` and
+   `python -X utf8 scripts/validate_repo.py`; verify the task and environment
+   locks. After a fresh checkout, run `python -X utf8 scripts/sync_ai_workflow.py`
+   once to expand the single root `AI_WORKFLOW_RUNTIME.zip`. Do not waive a
+   `BLOCKED` status.
 3. Record the exact product-visible Main and executor identifiers. For T1-T4,
    OpenAI routing is ChatGPT GPT-5.6 Sol at the highest exposed reasoning level
    with Codex GPT-5.6 Terra xhigh; Anthropic routing is Claude Opus 5 high with
@@ -24,23 +27,19 @@ runbook; it is not authorization to start a row of `manifests/RUN_MATRIX.csv`.
 4. Confirm the matched task budget in `test_repo/RESOURCE_POLICY.md`, available
    disk, network policy, and required hardware. Do not buy compute without
    human approval.
-5. Materialize a fresh workspace. This is the only supported source of both
-   conditions:
+5. For a qualified fixed-ecosystem coding task, start a timestamped run with
+   the single command in that task's `TESTING_STEPS.md`:
 
    ```text
-   python scripts/prepare_run.py tasks/<TASK> --condition DIRECT \
-     --run-id <RUN_ID> --attempt-id <ATTEMPT_ID> \
-     --authorize-scored-materialization
-
-   python scripts/prepare_run.py tasks/<TASK> --condition AI_NATIVE \
-     --run-id <RUN_ID> --attempt-id <ATTEMPT_ID> \
-     --authorize-scored-materialization
+   python -X utf8 scripts/start_run.py tasks/<TASK> --condition DIRECT
    ```
 
-   Use only the command matching the selected row. The Direct copy is the full
-   `test_repo/` with `.ai-workflow/` physically excluded. The AI-Native copy is
-   the full same repository including a clean `.ai-workflow/`. Never maintain a
-   separate hand-edited Direct tree.
+   Change only the condition to `AI_NATIVE` for the workflow row, or add
+   `--ecosystem ANTHROPIC` for the frozen Claude route. The starter maps this
+   choice to the unchanged matrix row, adds a UTC timestamp to the physical
+   run/attempt ID, packages Main's inputs, updates one `RUN.json`, and opens the
+   interactive executor after Main returns its handoff. Direct still excludes
+   `.ai-workflow/`; AI-Native uses the same source with a clean runtime.
 
 ## Direct operational loop
 
@@ -52,12 +51,17 @@ resource measurements, and grader evidence under the run's `main/`,
 `executors/`, and `evidence/` directories without mounting private evaluation
 material into the workspace.
 
+The Main attachment is a ZIP of `workspace/` only. Do not upload the task
+capsule root: `original_task/`, qualification/private evaluator material,
+oracle runs, provenance-only references, run records, and grader machinery are
+outside Main's input surface.
+
 For the selected qualified coding capsule, use its generated
-`CHAT_MAIN_TESTING_STEPS.md` for exact copy/paste prompts. Main is a persistent chat and the coding CLI
-is only a bounded executor. Each Direct handoff is one ordinary ZIP rooted at
-`executor_handoffs/<handoff-id>/`, containing a model-tuned executor prompt,
-context, return contract, and manifest. It must not use or imitate DIC/EPS or
-contain `.ai-workflow/`.
+`TESTING_STEPS.md`. `scripts/start_run.py` creates `MAIN_INPUT.zip` and
+`MAIN_PROMPT.md` directly in a timestamped run root, asks for the Main-chat
+link, waits for a handoff ZIP in the run folder, validates/imports it, and opens the
+interactive CLI in `workspace/`. A Direct run never creates or receives
+`AI_WORKFLOW_RUNTIME.zip`; its ordinary handoff must not use or imitate DIC/EPS.
 
 For progressive tasks, an operator runs the private cumulative grader, stores
 its raw record outside the workspace, and uses `scripts/reveal_checkpoint.py`
@@ -74,13 +78,39 @@ delegates bounded work, evaluates returned evidence, and accepts, repairs, or
 replans. Do not pre-create task-specific plans, phase counts, DICs, EPSs, or
 execution history.
 
-For each CLI handoff on the current task, chat Main outputs one Phase ZIP preserving the
-canonical `.ai-workflow/runtime/plans/<plan-id>/phases/<phase-id>/` paths. It
-contains the complete current DIC, the assigned just-in-time EPS JSON and exact
-executor prompt, plus a lineage/authority/evidence manifest. Import that
-`.ai-workflow/` subtree into the surviving workspace before launching the
-frozen Codex CLI or Claude Code CLI executor. The ZIP is transport for
-canonical state, not a second workflow surface.
+As in Direct, Main receives only packaged agent-visible workspace material. In
+this condition Main receives the run's `MAIN_INPUT.zip` plus the single clean
+repository-root `AI_WORKFLOW_RUNTIME.zip`; both exclude all task-root private,
+provenance-only, oracle, grader, and run-record surfaces. `RUN.json` records the
+shared archive's path and exact hash; no per-run workflow ZIP is created.
+
+For each CLI handoff on the current task, chat Main outputs one downloadable
+Phase ZIP containing the complete current DIC, assigned just-in-time EPS and
+exact executor prompt, all changed durable workflow state needed for import,
+and a lineage/authority/evidence manifest. Main does not claim to save into a
+local path. The operator saves it directly in the printed run folder;
+`MAIN_HANDOFF.zip` is preferred but a unique alternate `.zip` filename is accepted. The
+still-running starter imports its workflow overlay, records the
+Main chat locator in `RUN.json`, and opens the frozen interactive Codex CLI or
+Claude Code CLI in the workspace. The ZIP is transport for canonical state,
+not a second workflow surface.
+
+Before import, the starter performs a dry validation of the ZIP structure,
+manifest, declared-file set, condition, route, and workflow-overlay policy. A
+package may place its contents at archive root or beneath exactly one enclosing
+folder; manifest paths remain relative to the contents below that wrapper. A
+rejected package may be overwritten or replaced under another ZIP name in the run
+folder and revalidated without changing the workspace;
+each validation attempt and bundle hash is appended to `RUN.json`. Once a
+handoff has been imported or executed, any retry must use a new handoff ID and,
+for AI-Native, a new EPS attempt.
+
+The launcher automatically records executor timestamps, wall time, exit status,
+CLI version, route, and artifact hashes. It records executor token/cost data when
+the installed product exposes it and the operator transcribes it or supplies a
+usage JSON file. These records, the Main-chat link, and optional transcript hash
+are consolidated in `RUN.json`; a link alone cannot supply Main token usage or
+reliable active-working time.
 
 Preserve every durable runtime mutation. The final AI-Native repository must
 include its full final `.ai-workflow/`; the final Direct repository must not

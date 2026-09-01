@@ -14,14 +14,17 @@ documented technical blockers are resolved under the frozen protocol.
 
 Validation completed:
 
-- representative AI-Native runtime tests: 55/55 passed under UTF-8 mode;
+- representative AI-Native runtime v5.6.36 tests: 17/17 passed under UTF-8 mode;
 - seven clean runtime trees byte-identical, hash
-  `3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd`;
+  `9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798`;
 - Direct and AI-Native non-scored materialization and leakage checks passed;
 - progressive reveal, checkpoint and research-task state-loss snapshots passed;
 - full-final-repository archive and separate raw/metric result attachment passed;
 - task/environment lock checks and `scripts/validate_repo.py` passed;
-- all scored `runs/` and `run_results/` surfaces are empty of run IDs.
+- no valid Main handoff import, executor session, finalization, score, or executed scored
+  trajectory exists. One older Direct materialization is explicitly
+  `INVALIDATED_PRE_TRAJECTORY`; one operator-created AI-Native materialization
+  remains `AWAITING_MAIN`. Both preserve their audit metadata.
 
 See `SETUP_REPORT.md` for exact evidence and blockers and
 `READY_FOR_SCORED_RUNS.md` for the human/Main operational loop.

@@ -14,7 +14,7 @@
     "status": "QUALIFIED"
   },
   "resource_policy_sha256": "de168df905c7b553ebb0f6e6c3f370787b794f3213c0a04de20aebcc6168deac",
-  "runtime_tree_sha256": "3ca9872b60db0ab6a8107888529223ab6b380332af7faba9a4f823aca56c0dbd",
+  "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
   "schema_version": 1,
   "sources": [
     {
@@ -49,9 +49,9 @@
       "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "test_repo": {
-      "bytes": 556038,
-      "file_count": 130,
-      "tree_sha256": "20eb245b0359a4a3b4efedab72710c8e79ffa98a8c678e945a995e2fd455b873"
+      "bytes": 104478,
+      "file_count": 44,
+      "tree_sha256": "ad84e6632ee48515cf2d2de3e4e484217aa2073960a9f0eaa6fa08235764f909"
     }
   },
   "task_id": "T02",

@@ -1,10 +1,13 @@
 schema: aiexplainer-1.0
 purpose: machine-facing orientation for AI-Native Workflow evaluation
-authoritative_runtime: tasks/<task>/test_repo/.ai-workflow/
-full_source_package: source_package/AI_Native_Workflow_v5.6.35_Deadline_Experiment_Ready_Repository.zip
+authoritative_source_package: ../../../AI_Native_Workflow_v5.6.36/
+configured_runtime_source: ../../../AI_WORKFLOW_RUNTIME_SOURCE.json
+generated_runtime_archive: ../../../AI_WORKFLOW_RUNTIME.zip
+default_new_task_runtime_source: ../../../AI_WORKFLOW_RUNTIME_SOURCE.json
+historical_source_package: source_package/AI_Native_Workflow_v5.6.35_Deadline_Experiment_Ready_Repository.zip
 papers_dir: papers/
 prompting_source_lock: prompting/SOURCE_LOCK.json
 prompting_audit: prompting/AUDIT.md
 portable_bundle: AI_NATIVE_WORKFLOW_FULL_AI_EXPLAINER.zip
-source_package_sha256: 2df995c1eb3e0fc144e0e82555d96584d5b4bad108d916754a70ac6412873cb7
+historical_source_package_sha256: 2df995c1eb3e0fc144e0e82555d96584d5b4bad108d916754a70ac6412873cb7
 note: This is an explainer/index, not a substitute for runtime or frozen protocol.

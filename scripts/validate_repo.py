@@ -10,12 +10,17 @@ from eval_common import (
     TRANSIENT_DIRS,
     file_sha256,
     files,
+    is_dynamic_run_artifact,
+    is_generated_runtime_archive,
+    is_generated_runtime_copy,
     load_json,
     sensitive_leaks,
     tree_sha256,
     validate_clean_runtime,
     validate_reference_mounts,
 )
+from sync_ai_workflow import ARCHIVE as WORKFLOW_ARCHIVE
+from sync_ai_workflow import inspect_archive
 
 ROOT = Path(__file__).resolve().parents[1]
 TASKS = (
@@ -146,15 +151,41 @@ def main() -> int:
 
         for surface in ("runs", "run_results"):
             surface_path = task / surface
-            unexpected = [
-                p.name for p in surface_path.iterdir()
-                if p.name not in {"README.md", ".gitkeep"}
-            ] if surface_path.is_dir() else []
+            unexpected: list[str] = []
+            if surface_path.is_dir():
+                for path in surface_path.iterdir():
+                    if path.name in {"README.md", ".gitkeep"}:
+                        continue
+                    if surface == "runs" and path.is_dir():
+                        metadata_path = path / "RUN.json"
+                        if metadata_path.is_file():
+                            metadata = load_json(metadata_path)
+                            status = str(metadata.get("status", ""))
+                            unstarted = status == "AWAITING_MAIN" and not any(
+                                key in metadata
+                                for key in ("main_chat", "main_handoff", "executor_session", "finalization")
+                            )
+                            if status == "INVALIDATED_PRE_TRAJECTORY" or unstarted:
+                                continue
+                    unexpected.append(path.name)
             if unexpected:
                 errors.append(f"{name}: scored surface is not empty: {surface}/{unexpected[:5]}")
 
     if len(runtime_hashes) != len(TASKS) or len(set(runtime_hashes)) != 1:
         errors.append("the seven test_repo/.ai-workflow trees are not byte-identical")
+    repository_runtime = ROOT / ".ai-workflow"
+    repository_runtime_hash = tree_sha256(repository_runtime) if repository_runtime.is_dir() else ""
+    if not repository_runtime_hash:
+        errors.append("missing generated repository-default .ai-workflow runtime")
+    elif runtime_hashes and repository_runtime_hash != runtime_hashes[0]:
+        errors.append("repository-default .ai-workflow differs from task runtimes")
+    archive_info: dict[str, object] = {}
+    try:
+        archive_info = inspect_archive(WORKFLOW_ARCHIVE)
+        if runtime_hashes and archive_info.get("tree_sha256") != runtime_hashes[0]:
+            errors.append("canonical AI workflow archive differs from expanded runtimes")
+    except (OSError, ValueError, zipfile.BadZipFile) as exc:
+        errors.append(f"canonical AI workflow archive is invalid: {exc}")
     runtime_record_path = ROOT / "RUNTIME_COPY_HASHES.json"
     if runtime_record_path.is_file() and runtime_hashes:
         runtime_record = load_json(runtime_record_path)
@@ -163,6 +194,12 @@ def main() -> int:
         recorded_tasks = runtime_record.get("tasks", {})
         if set(recorded_tasks) != set(TASKS) or any(value != runtime_hashes[0] for value in recorded_tasks.values()):
             errors.append("RUNTIME_COPY_HASHES.json does not record all seven identical runtimes")
+        if runtime_record.get("canonical_archive") != WORKFLOW_ARCHIVE.relative_to(ROOT).as_posix():
+            errors.append("RUNTIME_COPY_HASHES.json does not identify the canonical archive")
+        if runtime_record.get("repository_default") != repository_runtime_hash:
+            errors.append("RUNTIME_COPY_HASHES.json repository-default runtime hash is stale")
+        if archive_info and runtime_record.get("canonical_archive_sha256") != archive_info.get("archive_sha256"):
+            errors.append("RUNTIME_COPY_HASHES.json canonical archive hash is stale")
     if aggregate.get("status") not in {"READY", "QUALIFIED_WITH_BLOCKERS"}:
         errors.append(f"aggregate task-lock status is not final: {aggregate.get('status')!r}")
 
@@ -187,6 +224,10 @@ def main() -> int:
         "SETUP_REPORT.md",
         "BUILD_STATUS.md",
         "RUNTIME_COPY_HASHES.json",
+        "AI_WORKFLOW_RUNTIME_SOURCE.json",
+        "AI_WORKFLOW_RUNTIME.zip",
+        "scripts/sync_ai_workflow.py",
+        "scripts/update_ai_workflow.py",
         "VALIDATION_RUNTIME_TESTS.txt",
         "PACKAGE_MANIFEST.json",
     ):
@@ -212,6 +253,9 @@ def main() -> int:
             path.relative_to(ROOT).as_posix(): path
             for path in files(ROOT)
             if path != package_path
+            and not is_dynamic_run_artifact(path.relative_to(ROOT))
+            and not is_generated_runtime_archive(path.relative_to(ROOT))
+            and not is_generated_runtime_copy(path.relative_to(ROOT))
         }
         if set(recorded) != set(actual_paths):
             missing = sorted(set(actual_paths) - set(recorded))[:10]
@@ -230,7 +274,7 @@ def main() -> int:
         return 1
     print(
         "OK: seven frozen capsules; locked complete surfaces; identical clean runtimes; "
-        "visibility isolation; qualification records; empty scored-run surfaces"
+        "visibility isolation; qualification records; no executed scored trajectories"
     )
     return 0
 
