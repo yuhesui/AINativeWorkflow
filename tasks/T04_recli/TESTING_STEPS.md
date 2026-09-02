@@ -6,13 +6,13 @@ Codex, or Claude prompt. The starter keeps the operator flow to one command. It 
 Main time/effort and the chat link, accepts the downloaded handoff, and opens the interactive CLI
 in the run's `workspace/`.
 
-## Direct baseline with Codex
+## Direct baseline with Claude Code
 
 ```shell
 python -X utf8 scripts/start_run.py "./tasks/T04_recli" --condition DIRECT
 ```
 
-## AI-Native workflow with Codex
+## AI-Native workflow with Claude Code
 
 ```shell
 python -X utf8 scripts/start_run.py "./tasks/T04_recli" --condition AI_NATIVE
@@ -30,15 +30,16 @@ The command remains open while you use Main:
    (for example, `12m 34s`). This is recorded once before executor launch in both conditions.
    Invalid time or effort entries are requested again. For OpenAI effort, press Enter for `high`,
    enter `xh` or `xhigh` for `xhigh`, or enter `pro` for `pro`.
-5. Paste the Main-chat link. A normal or shared ChatGPT link is accepted by default; use
-   `--reject-shared-chat-link` only when the run requires a private URL.
+5. Paste the Main-chat link. A normal or shared Claude link is accepted by default; use
+   `--reject-shared-chat-link` only when the run requires a private URL. Create or refresh the
+   shared snapshot after Main produces the handoff, because later messages are not added automatically.
 6. Save Main's downloaded executor ZIP directly in that run folder and press Enter.
    `MAIN_HANDOFF.zip` is preferred, but a unique alternate `.zip` download name is accepted.
 7. The starter validates the package before import. If rejected, overwrite it or save the corrected
    ZIP there under a new name, then press Enter; the workspace has not been changed.
-8. Codex opens interactively, already rooted at the run's `workspace/` and pointed at Main's prompt.
+8. Claude Code opens interactively, already rooted at the run's `workspace/` and pointed at Main's prompt.
    The progressive coding workspace includes `.evaluation/run_in_env.py`; the launcher starts the
-   frozen Linux sidecar and Codex routes task build/test/runtime commands through that helper, where
+   frozen Linux sidecar and Claude Code routes task build/test/runtime commands through that helper, where
    the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
 9. When the CLI exits, the starter automatically runs the frozen private grader outside the
    workspace and stores its raw output under the run's `evidence/grader/` directory. It then opens
@@ -67,7 +68,7 @@ missing or stale values before changing the workspace.
 ## Run folder
 
 Every invocation gets a name such as
-`run_20260901T153000Z_T04_OPENAI_DIRECT_NORMAL`, so reruns never overwrite one another.
+`run_20260901T153000Z_T04_ANTHROPIC_DIRECT_NORMAL`, so reruns never overwrite one another.
 The run root contains `RUN.json`, `MAIN_INPUT.zip`, `MAIN_PROMPT.md`, and the downloaded handoff ZIP.
 `RUN.json` records the hash and path of the shared workflow archive for AI-Native runs, so no
 per-run runtime duplicate is created. It is the single evolving metadata record for the Main link,
@@ -75,8 +76,9 @@ model route, timestamps, executor sessions, wall time, usage, and hashes. The in
 retained as a reproducible task-lock/tree-hash reference; the final repository remains a required
 full directory.
 
-For the Anthropic row, add `--ecosystem ANTHROPIC`; the same command opens Claude Code instead of
-Codex and asks for the exact installed Sonnet model identifier.
+This branch defaults to the frozen Anthropic route: Claude Opus 5 high as Main and Claude Code
+Sonnet 5 high as executor. Add `--ecosystem OPENAI` only when deliberately materializing the frozen
+OpenAI row.
 
 ## Checkpoints
 

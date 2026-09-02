@@ -26,16 +26,16 @@ Run the Main Prompt + upload required document after running the start run comma
 
 e.g.
 
-## Direct baseline with Codex
+## Direct baseline with Claude Code
 
-## Direct baseline with Codex
+## Direct baseline with Claude Code
 
 ```powershell
 python -X utf8 scripts/start_run.py ".\tasks\T01_query_optimize" --condition DIRECT
 python -X utf8 scripts/start_run.py "./tasks/T01_query_optimize" --condition DIRECT
 ```
 
-## AI-Native workflow with Codex
+## AI-Native workflow with Claude Code
 
 ```powershell
 python -X utf8 scripts/start_run.py ".\tasks\T01_query_optimize" --condition AI_NATIVE
@@ -45,7 +45,7 @@ python -X utf8 scripts/start_run.py ".\tasks\T01_query_optimize" --condition AI_
 python -X utf8 scripts/start_run.py ".\tasks\T02_dag_execution" --condition DIRECT
 ```
 
-## AI-Native workflow with Codex
+## AI-Native workflow with Claude Code
 
 ```powershell
 python -X utf8 scripts/start_run.py ".\tasks\T02_dag_execution" --condition AI_NATIVE

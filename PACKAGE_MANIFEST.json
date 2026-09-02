@@ -1,5 +1,5 @@
 {
-  "bytes": 813738007,
+  "bytes": 813739760,
   "dynamic_run_artifacts_excluded": true,
   "expanded_runtime_copies_excluded": true,
   "file_count": 5850,
@@ -357,16 +357,16 @@
       "sha256": "d43df2dfaf249672fc8ede4d124dd8e0eed6ea2ecc0f38947c0eba1d34a3d66d"
     },
     "QuickStart.md": {
-      "bytes": 1764,
-      "sha256": "904b94abf4c4c1e9a58940faa6c8fa2dce29095d1099898e6c997606ffa76540"
+      "bytes": 1784,
+      "sha256": "3f7f96cdb58be32292a2e306258b70c1892f9e6b4976a6964b4edaff186e664b"
     },
     "README.md": {
       "bytes": 5088,
       "sha256": "2b033d8f819026a800d0ef1451f8e36d844a1231ec6217804255a61212a73ec7"
     },
     "READY_FOR_SCORED_RUNS.md": {
-      "bytes": 11339,
-      "sha256": "7f1802efffbc026495c109029d36ba598b377940769b997fff013778d0117263"
+      "bytes": 11589,
+      "sha256": "3edbf1a45965452bf4327a6e0f5ad453a7e34213100e62f8aea2f9d3aaad3bf2"
     },
     "RUNTIME_COPY_HASHES.json": {
       "bytes": 1112,
@@ -525,8 +525,8 @@
       "sha256": "378c68ac7ae75a4a7941de33eb62da349f4f9558d9e954b77fa523bcb36b76a4"
     },
     "scripts/generate_chat_main_runbooks.py": {
-      "bytes": 10513,
-      "sha256": "bf3fe74b0b84acda1bb2877bb43d55199f81ffef77f5e6f0462bdc9f1995e617"
+      "bytes": 10710,
+      "sha256": "6a33d798566c350ea58aa0db6070c4266701165e3595d571c35640ab9fe803c0"
     },
     "scripts/generate_package_manifest.py": {
       "bytes": 1710,
@@ -545,8 +545,8 @@
       "sha256": "4ae29873605b735a85926b41481cd54fc8b8c9574e4f9d1f01fb2044de192ab5"
     },
     "scripts/launch_executor.py": {
-      "bytes": 28329,
-      "sha256": "16276b9078f6af712f18edcc0ed8b28b1ef0944c48af1459bacf012dfcec55b5"
+      "bytes": 28517,
+      "sha256": "c1bbed42602eb6f7d76f22a473bf2f2358644e6181af611aa5f75a4413de8be0"
     },
     "scripts/prepare_run.py": {
       "bytes": 5686,
@@ -561,8 +561,8 @@
       "sha256": "e97ccbb5716cb0fb4ff88ef3c90e50f941d97b4acb4b3d45e90f850768fe15b2"
     },
     "scripts/start_run.py": {
-      "bytes": 22098,
-      "sha256": "f399275250063964662e73e2191d55aa65e0faa870d91f057200f45ad2ce7de3"
+      "bytes": 22408,
+      "sha256": "d2f594895425b0ff8b632a2d8d8a16c0b48836cf624f646829a2dd6ae4ee465a"
     },
     "scripts/sync_ai_workflow.py": {
       "bytes": 12395,
@@ -617,8 +617,8 @@
       "sha256": "8ff1d8d5ed3b54deb0ca8af7ea6035fd5786ed4f3614d6c93808c79fdb9c7ec7"
     },
     "tasks/T01_query_optimize/TESTING_STEPS.md": {
-      "bytes": 5822,
-      "sha256": "07d70f542d4c39d6f1af5f3646b3c7c9db1ccd13b41a1eefa419767447ac0d5d"
+      "bytes": 6019,
+      "sha256": "d7e773c32f5653ebdafcb2ace4491223da2b7e3fb099da7a4c898cd6a511235d"
     },
     "tasks/T01_query_optimize/original_task/README.md": {
       "bytes": 1993,
@@ -1329,8 +1329,8 @@
       "sha256": "bbbe07276e3fccaf0a94f0ed06681176a7a9538d5d2b256b196b75681bbcda0c"
     },
     "tasks/T02_dag_execution/TESTING_STEPS.md": {
-      "bytes": 6153,
-      "sha256": "4d07a7a97e65fe420239997fd7ef4955490e1f354033cb1d5dcd9f724eba1f07"
+      "bytes": 6350,
+      "sha256": "54931fc70bbb2e9c39f5301c2efc2a63cc09f800d24e37048b8442a3220b184f"
     },
     "tasks/T02_dag_execution/original_task/README.md": {
       "bytes": 4231,
@@ -2105,8 +2105,8 @@
       "sha256": "8dc4c47b2adaa9b6853299317b369b315bb821e9ec009a882dfbb8b4584f88c1"
     },
     "tasks/T03_database_migration/TESTING_STEPS.md": {
-      "bytes": 6517,
-      "sha256": "c73f6e4fa62c00405a37c03e29c839734f927af60f93b4a31fd6fa667b19a450"
+      "bytes": 6714,
+      "sha256": "c8e901961e85919cb63256f352835d1966a8b060b54517baef9639c546e9103c"
     },
     "tasks/T03_database_migration/original_task/README.md": {
       "bytes": 4863,
@@ -4721,8 +4721,8 @@
       "sha256": "c2e2dad5a787dbde795d8b30b9e719e3190d77e58e6618e68a2b2c92dc85adfc"
     },
     "tasks/T04_recli/TESTING_STEPS.md": {
-      "bytes": 6452,
-      "sha256": "09df926e7c54f69dc0582f25a0403527d317cf3ef8ce3336cb167fb373d68f5a"
+      "bytes": 6649,
+      "sha256": "7c4113d67f505d9b3b41af8263348f307c3401a3dbfe0df0938d6216f0a4a1e0"
     },
     "tasks/T04_recli/original_task/README.md": {
       "bytes": 5658,

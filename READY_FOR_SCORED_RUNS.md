@@ -34,8 +34,8 @@ runbook; it is not authorization to start a row of `manifests/RUN_MATRIX.csv`.
    python -X utf8 scripts/start_run.py tasks/<TASK> --condition DIRECT
    ```
 
-   Change only the condition to `AI_NATIVE` for the workflow row, or add
-   `--ecosystem ANTHROPIC` for the frozen Claude route. The starter maps this
+   Change only the condition to `AI_NATIVE` for the workflow row. This branch defaults to the
+   frozen Claude route; add `--ecosystem OPENAI` only for a deliberate OpenAI row. The starter maps this
    choice to the unchanged matrix row, adds a UTC timestamp to the physical
    run/attempt ID, packages Main's inputs, updates one `RUN.json`, and opens the
    interactive executor after Main returns its handoff. Direct still excludes
@@ -112,9 +112,11 @@ each validation attempt and bundle hash is appended to `RUN.json`. Once a
 handoff has been imported or executed, any retry must use a new handoff ID and,
 for AI-Native, a new EPS attempt.
 
-The starter accepts an authenticated Main conversation URL or a normal ChatGPT share link by
+The starter accepts an authenticated Main conversation URL or a normal Claude/ChatGPT share link by
 default. Use `--reject-shared-chat-link` when policy requires a private/workspace-only locator;
-remember that anyone with a share link may be able to view its conversation. The launcher
+remember that anyone with a share link may be able to view its conversation. For Claude, create or
+refresh the shared snapshot after the handoff is produced; later messages are not included
+automatically, and uploaded files themselves are not part of the shared snapshot. The launcher
 automatically records executor timestamps, wall time, exit status,
 CLI version, route, and artifact hashes. It records executor token/cost data when
 the installed product exposes it and the operator transcribes either the complete

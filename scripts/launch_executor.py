@@ -162,10 +162,14 @@ def validate_chat_url(value: str, allow_shared: bool) -> None:
         raise SystemExit("Main chat locator must be an https URL")
     if parsed.username or parsed.password:
         raise SystemExit("Main chat URL must not contain credentials")
-    if parsed.netloc.lower() == "chatgpt.com" and parsed.path.startswith("/share/") and not allow_shared:
+    host = (parsed.hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    shared = parsed.path.startswith("/share/") and host in {"chatgpt.com", "claude.ai"}
+    if shared and not allow_shared:
         raise SystemExit(
-            "ChatGPT share links are disabled for this launch; use an authenticated conversation "
-            "URL or omit --reject-shared-chat-link"
+            "Main share links are disabled for this launch; use an authenticated conversation "
+            "URL or allow shared chat links"
         )
 
 
@@ -296,7 +300,11 @@ def main() -> int:
     parser.add_argument("run_id")
     parser.add_argument("--bundle", type=Path, required=True, help="ZIP downloaded from Main chat")
     parser.add_argument("--executor", choices=("CODEX", "CLAUDE"), required=True)
-    parser.add_argument("--claude-model", help="exact product-visible Claude Sonnet 5 CLI model ID")
+    parser.add_argument(
+        "--claude-model",
+        default="claude-sonnet-5",
+        help="exact Claude Sonnet 5 CLI model ID (default: claude-sonnet-5)",
+    )
     parser.add_argument("--main-chat-url")
     parser.add_argument("--main-model")
     parser.add_argument("--main-effort")
@@ -308,7 +316,7 @@ def main() -> int:
         "--allow-shared-chat-link",
         dest="allow_shared_chat_link",
         action="store_true",
-        help="accept ChatGPT share links (the default)",
+        help="accept ChatGPT or Claude share links (the default)",
     )
     chat_link_policy.add_argument(
         "--reject-shared-chat-link",
@@ -495,7 +503,7 @@ def main() -> int:
         ).stdout.strip()
         chat_url = prompt_required(
             args.main_chat_url,
-            "Main chat URL (authenticated conversation or ChatGPT share link): ",
+            "Main chat URL (authenticated conversation or supported share link): ",
         )
         validate_chat_url(chat_url, args.allow_shared_chat_link)
         main_model = prompt_required(args.main_model, "Exact product-visible Main model: ")

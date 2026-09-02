@@ -400,7 +400,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("task_root", type=portable_path)
     parser.add_argument("--condition", choices=("DIRECT", "AI_NATIVE"), required=True)
-    parser.add_argument("--ecosystem", choices=("OPENAI", "ANTHROPIC"), default="OPENAI")
+    parser.add_argument(
+        "--ecosystem",
+        choices=("OPENAI", "ANTHROPIC"),
+        default="ANTHROPIC",
+        help="routing ecosystem (default on this branch: ANTHROPIC)",
+    )
     parser.add_argument("--state-mode", choices=("NORMAL", "STATE_LOSS"), default="NORMAL")
     parser.add_argument("--main-chat-url")
     parser.add_argument("--main-model")
@@ -412,13 +417,17 @@ def main() -> int:
     )
     parser.add_argument("--main-transcript", type=Path)
     parser.add_argument("--handoff", type=Path, help="already-downloaded first Main handoff ZIP")
-    parser.add_argument("--claude-model")
+    parser.add_argument(
+        "--claude-model",
+        default="claude-sonnet-5",
+        help="Claude Code executor model (default: claude-sonnet-5)",
+    )
     chat_link_policy = parser.add_mutually_exclusive_group()
     chat_link_policy.add_argument(
         "--allow-shared-chat-link",
         dest="allow_shared_chat_link",
         action="store_true",
-        help="accept ChatGPT share links (the default)",
+        help="accept ChatGPT or Claude share links (the default)",
     )
     chat_link_policy.add_argument(
         "--reject-shared-chat-link",
@@ -530,8 +539,9 @@ def main() -> int:
         "Main total active/compute time for this prompt and handoff",
     )
     main_effort = prompt_main_effort(args.main_effort, args.ecosystem)
+    provider = "Claude" if args.ecosystem == "ANTHROPIC" else "ChatGPT"
     main_chat_url = args.main_chat_url or required_input(
-        "Main chat link (normal or shared ChatGPT URL): "
+        f"Main chat link (normal or shared {provider} URL): "
     )
     handoff = wait_for_first_handoff(run_dir, args.handoff)
     run = load_json(run_path)
