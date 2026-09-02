@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import subprocess
 import sys
 import zipfile
@@ -19,6 +20,13 @@ from sync_ai_workflow import inspect_archive
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def portable_path(value: str) -> Path:
+    """Accept the documented Windows path spelling when invoked on POSIX too."""
+    if os.name != "nt":
+        value = value.replace("\\", "/")
+    return Path(value)
 
 
 def save_json(path: Path, value: object) -> None:
@@ -277,8 +285,9 @@ def launch(
     ]
     if claude_model:
         command.extend(("--claude-model", claude_model))
-    if allow_shared_chat_link:
-        command.append("--allow-shared-chat-link")
+    command.append(
+        "--allow-shared-chat-link" if allow_shared_chat_link else "--reject-shared-chat-link"
+    )
     if main_transcript:
         command.extend(("--main-transcript", str(main_transcript.resolve())))
     if qualification_root:
@@ -306,7 +315,7 @@ def record_handoff_validation(run_path: Path, handoff: Path, return_code: int) -
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("task_root", type=Path)
+    parser.add_argument("task_root", type=portable_path)
     parser.add_argument("--condition", choices=("DIRECT", "AI_NATIVE"), required=True)
     parser.add_argument("--ecosystem", choices=("OPENAI", "ANTHROPIC"), default="OPENAI")
     parser.add_argument("--state-mode", choices=("NORMAL", "STATE_LOSS"), default="NORMAL")
@@ -316,7 +325,20 @@ def main() -> int:
     parser.add_argument("--main-transcript", type=Path)
     parser.add_argument("--handoff", type=Path, help="already-downloaded first Main handoff ZIP")
     parser.add_argument("--claude-model")
-    parser.add_argument("--allow-shared-chat-link", action="store_true")
+    chat_link_policy = parser.add_mutually_exclusive_group()
+    chat_link_policy.add_argument(
+        "--allow-shared-chat-link",
+        dest="allow_shared_chat_link",
+        action="store_true",
+        help="accept ChatGPT share links (the default)",
+    )
+    chat_link_policy.add_argument(
+        "--reject-shared-chat-link",
+        dest="allow_shared_chat_link",
+        action="store_false",
+        help="require a non-share HTTPS Main chat URL",
+    )
+    parser.set_defaults(allow_shared_chat_link=True)
     parser.add_argument("--stop-after-package", action="store_true")
     parser.add_argument("--non-scored", action="store_true")
     parser.add_argument("--qualification-root", type=Path)

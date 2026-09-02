@@ -1,8 +1,8 @@
 {
-  "bytes": 813661091,
+  "bytes": 813665540,
   "dynamic_run_artifacts_excluded": true,
   "expanded_runtime_copies_excluded": true,
-  "file_count": 5834,
+  "file_count": 5846,
   "files": {
     ".gitignore": {
       "bytes": 561,
@@ -356,13 +356,17 @@
       "bytes": 2005,
       "sha256": "d43df2dfaf249672fc8ede4d124dd8e0eed6ea2ecc0f38947c0eba1d34a3d66d"
     },
+    "QuickStart.md": {
+      "bytes": 1413,
+      "sha256": "7f35ab8ba36bbe4477fa2674f1905aa3644e92db74c1d4eac1da609a297bef71"
+    },
     "README.md": {
       "bytes": 5088,
       "sha256": "2b033d8f819026a800d0ef1451f8e36d844a1231ec6217804255a61212a73ec7"
     },
     "READY_FOR_SCORED_RUNS.md": {
-      "bytes": 9067,
-      "sha256": "1167558fdcef07c075bd168f42b6d641a3f615870a2bfdaa9a3e84d72402f2d5"
+      "bytes": 9333,
+      "sha256": "9134add31a39e595e03d810c94d95cd46717b44ebf994bc61d18e3e76f303f71"
     },
     "RUNTIME_COPY_HASHES.json": {
       "bytes": 1112,
@@ -378,7 +382,7 @@
     },
     "VALIDATION_RUNTIME_TESTS.txt": {
       "bytes": 114,
-      "sha256": "c20f8963308b6f4293cde5e19fa00cdd410c299b3d8e134a93816dd24218d1de"
+      "sha256": "e2259e137c3fa21c2d894acb843ea5b641b816ddf4490680a95f5a12bda6f244"
     },
     "manifests/ENVIRONMENT_LOCK.json": {
       "bytes": 1794,
@@ -394,7 +398,7 @@
     },
     "manifests/TASK_LOCK.json": {
       "bytes": 4073,
-      "sha256": "9a923f6cfe5c69c525edd86ca916330a5f5bf90b2dc9871e8523eb285f0a0ada"
+      "sha256": "0a59f1dc19516c0118a7e06be3f0bacfe7a05686a07f0d54a75383765f842480"
     },
     "prompts/ai_native/00_LOAD_AI_NATIVE.md": {
       "bytes": 1033,
@@ -521,8 +525,8 @@
       "sha256": "87182fa5cc37ad08f4a5621de83ab42890329de8f31e98f4bd930a921ca691de"
     },
     "scripts/generate_chat_main_runbooks.py": {
-      "bytes": 8322,
-      "sha256": "b4124140823654ea3d626a6b6d28333e6fd27ae6b211feadb542599c4bd7ef88"
+      "bytes": 8652,
+      "sha256": "847bf9fb8c2fc55131c5fed82771e896fa744448e2bf49e6b2bf57025590a7a2"
     },
     "scripts/generate_package_manifest.py": {
       "bytes": 1710,
@@ -537,8 +541,8 @@
       "sha256": "4ae29873605b735a85926b41481cd54fc8b8c9574e4f9d1f01fb2044de192ab5"
     },
     "scripts/launch_executor.py": {
-      "bytes": 23808,
-      "sha256": "11d5ff5a62dad1edec1f8bde26e6800a007d25a837cad9618d011d42b8e04543"
+      "bytes": 24196,
+      "sha256": "3586a0799270218549fbe813323bb5032278ef1dad4e5f0e68811a04a9b96367"
     },
     "scripts/prepare_run.py": {
       "bytes": 5587,
@@ -549,8 +553,8 @@
       "sha256": "e97ccbb5716cb0fb4ff88ef3c90e50f941d97b4acb4b3d45e90f850768fe15b2"
     },
     "scripts/start_run.py": {
-      "bytes": 15341,
-      "sha256": "9b36d83ce0d496d927cde28bc5fc18f324ddffdf60f75c27d9680391bf4422e1"
+      "bytes": 16054,
+      "sha256": "396f67cc7be5cea0fad6f66bd7fb24fad4454b94bebc9fb39201f0c9a4d14c1a"
     },
     "scripts/sync_ai_workflow.py": {
       "bytes": 12395,
@@ -590,15 +594,15 @@
     },
     "tasks/T01_query_optimize/TASK_LOCK.json": {
       "bytes": 2711,
-      "sha256": "fb4b689c88e2484fa805e8a2d648cdc11dd3e523be38bf19fc0e1e1ef9becfd7"
+      "sha256": "39ada08ef8aef2581ab1f9beb9a998599c5071de8cb5691d03cd30e854bcb5f7"
     },
     "tasks/T01_query_optimize/TASK_SOURCE.json": {
       "bytes": 1826,
       "sha256": "8ff1d8d5ed3b54deb0ca8af7ea6035fd5786ed4f3614d6c93808c79fdb9c7ec7"
     },
     "tasks/T01_query_optimize/TESTING_STEPS.md": {
-      "bytes": 3599,
-      "sha256": "f27c02c244be6a366eed9ae17eb0cabb7d63564ddd48444d9ba286cbdd2998f8"
+      "bytes": 3931,
+      "sha256": "c1d6eb9a4cb8e124a5c0cc8dba057935bf69f40f2f4e13f337ea6029180e34d5"
     },
     "tasks/T01_query_optimize/original_task/README.md": {
       "bytes": 1993,
@@ -1248,6 +1252,14 @@
       "bytes": 185,
       "sha256": "7a8ae3d7cc73d0213fceb282bcd61bbbc8513cfbc6c2e838b138a47181885ce3"
     },
+    "tasks/T01_query_optimize/reference_material/agent_visible/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "tasks/T01_query_optimize/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
     "tasks/T01_query_optimize/run_results/README.md": {
       "bytes": 447,
       "sha256": "225b5a573163f0fb53b443e30d00e431db0c55bbe8d667efd03597b06a002fef"
@@ -1294,15 +1306,15 @@
     },
     "tasks/T02_dag_execution/TASK_LOCK.json": {
       "bytes": 2080,
-      "sha256": "ab358f6bf793bbbdba5aef8bac4ca91e7c60d53dbdedee7f70bd73fbfd969062"
+      "sha256": "dda82db8eb9665d3eab9e1c16577c1d3c101c22d8b40f66f9161b014a6b34e25"
     },
     "tasks/T02_dag_execution/TASK_SOURCE.json": {
       "bytes": 1218,
       "sha256": "bbbe07276e3fccaf0a94f0ed06681176a7a9538d5d2b256b196b75681bbcda0c"
     },
     "tasks/T02_dag_execution/TESTING_STEPS.md": {
-      "bytes": 3932,
-      "sha256": "28709ef6a50add3e87128ae28d28d8f7ff4b4ccc0b462027ed09cd867426a6fd"
+      "bytes": 4264,
+      "sha256": "74e20d769d83d04b046c06541b4e260916849789e03ddde88fa693f0c1f2fd5e"
     },
     "tasks/T02_dag_execution/original_task/README.md": {
       "bytes": 4231,
@@ -2024,6 +2036,14 @@
       "bytes": 222,
       "sha256": "c739aa00e88754bdfa93d803fdcf35a84a779b0a168f6a84c8310f04f9facfe0"
     },
+    "tasks/T02_dag_execution/reference_material/agent_visible/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "tasks/T02_dag_execution/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
     "tasks/T02_dag_execution/run_results/README.md": {
       "bytes": 446,
       "sha256": "cc145704a99d158494bfd5dacf226c90ac6196cd67e28f9f402eaac3c8af00aa"
@@ -2062,15 +2082,15 @@
     },
     "tasks/T03_database_migration/TASK_LOCK.json": {
       "bytes": 2134,
-      "sha256": "ab14409ad82e68c473560a83639c2397fc45150009fba27e6c63ebf3fa2cd5bc"
+      "sha256": "5084d62e8e1f7d2b07a1706b7c454a5672f501c04360e7892f2cadcacfdfc875"
     },
     "tasks/T03_database_migration/TASK_SOURCE.json": {
       "bytes": 1250,
       "sha256": "8dc4c47b2adaa9b6853299317b369b315bb821e9ec009a882dfbb8b4584f88c1"
     },
     "tasks/T03_database_migration/TESTING_STEPS.md": {
-      "bytes": 4286,
-      "sha256": "e6964f7f47328b0181183f508f96ee31025390c4aca8f4b56fa14ac3f1bc8f8e"
+      "bytes": 4618,
+      "sha256": "07679b12973df07f4a000569824179c62e7e2152b131e9313d64352d529b700f"
     },
     "tasks/T03_database_migration/original_task/README.md": {
       "bytes": 4863,
@@ -4632,6 +4652,14 @@
       "bytes": 222,
       "sha256": "5e14663b055ef37c3e74c07ecce73936beaf7932a05922de95fbe9be7fd34ac8"
     },
+    "tasks/T03_database_migration/reference_material/agent_visible/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "tasks/T03_database_migration/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
     "tasks/T03_database_migration/run_results/README.md": {
       "bytes": 451,
       "sha256": "cc4d30d47972a354627ca9e17f4d84261b2e083a402d726d9acda71f3d6914e8"
@@ -4670,15 +4698,15 @@
     },
     "tasks/T04_recli/TASK_LOCK.json": {
       "bytes": 2029,
-      "sha256": "e4c5e05d37f004c6faaa41fbf54922f24a532ca3a0d4b16daa303f7583787cfb"
+      "sha256": "7012fdab00152667b14f18c9ab1d2f17b1fa4d228eae1add4de14ddc6bcefd00"
     },
     "tasks/T04_recli/TASK_SOURCE.json": {
       "bytes": 1224,
       "sha256": "c2e2dad5a787dbde795d8b30b9e719e3190d77e58e6618e68a2b2c92dc85adfc"
     },
     "tasks/T04_recli/TESTING_STEPS.md": {
-      "bytes": 4247,
-      "sha256": "a2fb16feff78793b8794424c3ed50d3a71a7cf6fc057d17a32868ad727c0c8ec"
+      "bytes": 4579,
+      "sha256": "04de05090f88205c7033e63cde11b9ddc07021024185e0e71216282048701ee3"
     },
     "tasks/T04_recli/original_task/README.md": {
       "bytes": 5658,
@@ -5088,6 +5116,14 @@
       "bytes": 222,
       "sha256": "737e206baececc1299719718e1917990aa27280136e09424e646293e29db3bcc"
     },
+    "tasks/T04_recli/reference_material/agent_visible/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "tasks/T04_recli/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
     "tasks/T04_recli/run_results/README.md": {
       "bytes": 438,
       "sha256": "3107571fc6e010cef4f1942696b0ddeea8c0d0f1221dc1f942420f04927bcd47"
@@ -5130,7 +5166,7 @@
     },
     "tasks/T05_rlMetaMazeMisc/TASK_LOCK.json": {
       "bytes": 2170,
-      "sha256": "1c30c7866603642e4de349f8d981797ca76ad03aeef2c1acfe6026ad0c531294"
+      "sha256": "2229d18a729a819fbcc89aaef59490af04395c0d4490d021d67536b3fe01ecc2"
     },
     "tasks/T05_rlMetaMazeMisc/TASK_SOURCE.json": {
       "bytes": 1137,
@@ -6276,6 +6312,14 @@
       "bytes": 603,
       "sha256": "55824111d9a4bb5c8d8a176301eb37d984794450d401a2e0bd8e0a069681631c"
     },
+    "tasks/T05_rlMetaMazeMisc/reference_material/agent_visible/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "tasks/T05_rlMetaMazeMisc/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
     "tasks/T05_rlMetaMazeMisc/run_results/README.md": {
       "bytes": 447,
       "sha256": "13f4c9468726d09631abdd84b39f55c63cf9bec0dbb9ea720a7db65ffef6bf56"
@@ -6358,7 +6402,7 @@
     },
     "tasks/T06_corebench_4252248/TASK_LOCK.json": {
       "bytes": 2362,
-      "sha256": "219527511c33d926650310f39fc4410ad14d4b6726fdc913d945b5c326bb7095"
+      "sha256": "d7d122b0767dbc9f5ba57793190e8fee128f099756a48d1fcd4769e5b011ae96"
     },
     "tasks/T06_corebench_4252248/TASK_SOURCE.json": {
       "bytes": 1344,
@@ -19291,6 +19335,10 @@
     "tasks/T06_corebench_4252248/reference_material/agent_visible/supplementary_methods.docx": {
       "bytes": 10777,
       "sha256": "58cba277e90f39a9bfbdf7d6bbc3b0b5f9a696d85533c7855096417614872f6e"
+    },
+    "tasks/T06_corebench_4252248/reference_material/provenance_only/.gitkeep": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     "tasks/T06_corebench_4252248/run_results/README.md": {
       "bytes": 450,

@@ -70,7 +70,7 @@ def main_prompt(base: str, route: dict[str, str], task: str) -> str:
 
 def render(spec: TaskSpec) -> str:
     display_name = spec.directory.split("_", 1)[1].replace("_", " ")
-    task_path = f".\\tasks\\{spec.directory}"
+    task_path = f"./tasks/{spec.directory}"
     progressive = ""
     if spec.checkpoints:
         progressive = f"""## Checkpoints
@@ -92,21 +92,24 @@ recovery message; never transfer the old Main transcript.
 
     return f"""# Testing steps — {display_name}
 
-The starter keeps the operator flow to one command. It creates a unique UTC-dated folder under
+Run these commands in a system terminal from the evaluation repository root—not in a ChatGPT,
+Codex, or Claude prompt. The starter keeps the operator flow to one command. It creates a unique UTC-dated folder under
 `runs/`, packages the Main inputs in that folder, asks for the Main-chat link and downloaded
 handoff, and opens the interactive CLI in the run's `workspace/`.
 
 ## Direct baseline with Codex
 
-```powershell
+```shell
 python -X utf8 scripts/start_run.py "{task_path}" --condition DIRECT
 ```
 
 ## AI-Native workflow with Codex
 
-```powershell
+```shell
 python -X utf8 scripts/start_run.py "{task_path}" --condition AI_NATIVE
 ```
+
+On macOS, use `python3` in place of `python` if that is the installed interpreter command.
 
 The command remains open while you use Main:
 
@@ -114,7 +117,8 @@ The command remains open while you use Main:
 2. Upload `MAIN_INPUT.zip` and paste `MAIN_PROMPT.md` into a fresh Main chat.
 3. For AI-Native only, also upload the printed root `AI_WORKFLOW_RUNTIME.zip` as instructed by
    `MAIN_PROMPT.md`.
-4. Paste the Main-chat link back into the waiting command.
+4. Paste the Main-chat link back into the waiting command. A normal ChatGPT share link is accepted
+   by default; use `--reject-shared-chat-link` only when the run requires a private URL.
 5. Save Main's downloaded executor ZIP directly in that run folder and press Enter.
    `MAIN_HANDOFF.zip` is preferred, but a unique alternate `.zip` download name is accepted.
 6. The starter validates the package before import. If rejected, overwrite it or save the corrected

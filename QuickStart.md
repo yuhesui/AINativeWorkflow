@@ -1,5 +1,20 @@
-1. Update All
-python -X utf8 scripts/update_ai_workflow.py
+1. Prepare a fresh checkout (run in a system terminal from the repository root)
+
+```shell
+git lfs install
+git lfs pull
+python3 -X utf8 scripts/sync_ai_workflow.py --ensure
+python3 -X utf8 scripts/validate_repo.py
+```
+
+On Windows, use `python` instead of `python3` when that is the installed command.
+
+`scripts/update_ai_workflow.py` is the maintainer operation for deliberately rebuilding the
+canonical runtime and refreshing locks. It is not required before an ordinary run. When needed:
+
+```shell
+python3 -X utf8 scripts/update_ai_workflow.py
+```
 
 2. Go to task testing steps
 
@@ -16,6 +31,7 @@ e.g.
 
 ```powershell
 python -X utf8 scripts/start_run.py ".\tasks\T01_query_optimize" --condition DIRECT
+python -X utf8 scripts/start_run.py "./tasks/T01_query_optimize" --condition DIRECT
 ```
 
 ## AI-Native workflow with Codex
