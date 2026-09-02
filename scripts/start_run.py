@@ -8,6 +8,7 @@ import csv
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import zipfile
@@ -29,6 +30,32 @@ def portable_path(value: str) -> Path:
     if os.name != "nt":
         value = value.replace("\\", "/")
     return Path(value)
+
+
+def require_executor_cli(ecosystem: str) -> str:
+    """Fail before materializing a run when its frozen interactive CLI cannot launch."""
+    command = "claude" if ecosystem == "ANTHROPIC" else "codex"
+    executable = shutil.which(command)
+    if executable is None:
+        install_hint = (
+            " Install and authenticate Claude Code, then ensure `claude` is on PATH."
+            if command == "claude"
+            else " Install and authenticate Codex CLI, then ensure `codex` is on PATH."
+        )
+        raise SystemExit(f"required executor CLI is not installed or not on PATH: {command}.{install_hint}")
+    if command == "claude":
+        help_result = subprocess.run(
+            [executable, "--help"], capture_output=True, text=True, check=False
+        )
+        help_text = f"{help_result.stdout}\n{help_result.stderr}"
+        missing = [flag for flag in ("--model", "--effort") if flag not in help_text]
+        if help_result.returncode or missing:
+            detail = ", ".join(missing) if missing else "a successful --help command"
+            raise SystemExit(
+                "Claude Code is present but does not expose the frozen launch controls "
+                f"({detail}). Update Claude Code and retry."
+            )
+    return executable
 
 
 def save_json(path: Path, value: object) -> None:
@@ -453,6 +480,9 @@ def main() -> int:
 
     if args.qualification_root and not args.non_scored:
         raise SystemExit("--qualification-root requires --non-scored")
+    if not args.stop_after_package:
+        executor_cli = require_executor_cli(args.ecosystem)
+        print(f"Executor preflight: {executor_cli}")
     synced = subprocess.run(
         [
             sys.executable,

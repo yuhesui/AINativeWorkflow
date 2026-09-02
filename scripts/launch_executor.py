@@ -480,7 +480,7 @@ def main() -> int:
         else:
             command = [
                 "claude", "--model", executor_model, "--effort", "high",
-                "--name", f"{args.run_id}-{handoff_id}", bootstrap,
+                bootstrap,
             ]
 
         if args.dry_run:
@@ -579,7 +579,8 @@ def main() -> int:
             ):
                 main_chats.append(chat_record)
         save_json(run_path, run)
-        print(f"\nOpening {args.executor} in repository: {workspace}")
+        executor_label = "Claude Code" if args.executor == "CLAUDE" else "Codex"
+        print(f"\nOpening {executor_label} in repository: {workspace}")
         if args.executor == "CLAUDE":
             print(f"Before exiting Claude Code, run /usage and /export {transcript_hint}")
         else:
