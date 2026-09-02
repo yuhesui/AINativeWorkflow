@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import zipfile
 from pathlib import Path
 
@@ -60,11 +61,19 @@ def transient_paths(root: Path) -> list[str]:
     return [
         path.relative_to(ROOT).as_posix()
         for path in root.rglob("*")
-        if any(part in TRANSIENT_DIRS for part in path.relative_to(root).parts)
+        if path.relative_to(root).parts[0] not in {"runs", "run_results"}
+        and any(part in TRANSIENT_DIRS for part in path.relative_to(root).parts)
     ]
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--allow-scored-runs",
+        action="store_true",
+        help="validate repository/capsule integrity after run artifacts have been retained",
+    )
+    args = parser.parse_args()
     errors: list[str] = []
     aggregate_path = ROOT / "manifests" / "TASK_LOCK.json"
     aggregate = load_json(aggregate_path) if aggregate_path.is_file() else {}
@@ -168,7 +177,7 @@ def main() -> int:
                             if status == "INVALIDATED_PRE_TRAJECTORY" or unstarted:
                                 continue
                     unexpected.append(path.name)
-            if unexpected:
+            if unexpected and not args.allow_scored_runs:
                 errors.append(f"{name}: scored surface is not empty: {surface}/{unexpected[:5]}")
 
     if len(runtime_hashes) != len(TASKS) or len(set(runtime_hashes)) != 1:
@@ -272,9 +281,14 @@ def main() -> int:
         print("REPOSITORY VALIDATION FAILED")
         print("\n".join(f"- {error}" for error in errors))
         return 1
+    run_surface = (
+        "retained run artifacts allowed"
+        if args.allow_scored_runs
+        else "no executed scored trajectories"
+    )
     print(
         "OK: seven frozen capsules; locked complete surfaces; identical clean runtimes; "
-        "visibility isolation; qualification records; no executed scored trajectories"
+        f"visibility isolation; qualification records; {run_surface}"
     )
     return 0
 

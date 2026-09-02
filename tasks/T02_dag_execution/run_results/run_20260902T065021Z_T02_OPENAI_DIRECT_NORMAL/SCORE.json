@@ -1,0 +1,14 @@
+{
+  "condition": "DIRECT",
+  "grader_raw": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\run_results\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\GRADER_RAW.ctrf.json",
+  "grader_raw_sha256": "4e2cd53faeb95592b1b7748bab7f969c588673d49b38a203d781e9b991b212b1",
+  "invalidation_reason": null,
+  "native_primary_metric": null,
+  "normalized_completion_score": null,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\repo_final",
+  "repo_final_tree_sha256": "d876935fdfb2bb02dc181ad76d8e780485acb288df7a59dc8b965b4877a394cc",
+  "run_id": "run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL",
+  "schema_version": 1,
+  "task_id": "T02",
+  "validity": "FAILED_TASK"
+}

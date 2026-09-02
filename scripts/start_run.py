@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import subprocess
 import sys
 import zipfile
@@ -20,6 +21,7 @@ from sync_ai_workflow import inspect_archive
 
 
 ROOT = Path(__file__).resolve().parents[1]
+MAIN_TIME = re.compile(r"^\s*(\d+)\s*m\s*(\d+)\s*s\s*$", re.IGNORECASE)
 
 
 def portable_path(value: str) -> Path:
@@ -94,9 +96,33 @@ def zip_tree(
             archive.write(path, name.as_posix())
 
 
-def write_main_prompt(task_root: Path, run_dir: Path, condition: str, ecosystem: str) -> Path:
+def write_main_prompt(
+    task_root: Path,
+    run_dir: Path,
+    condition: str,
+    ecosystem: str,
+    run: dict,
+) -> Path:
     route = ROUTES[ecosystem]
     task = read(task_root / "TASK.md")
+    binding = f"""Frozen handoff identity — copy these exact values into every HANDOFF_MANIFEST.json:
+
+```json
+{{
+  "task_id": {json.dumps(run["task_id"])},
+  "run_id": {json.dumps(run["run_id"])},
+  "task_lock_sha256": {json.dumps(run["source_task_lock_sha256"])}
+}}
+```
+
+A package with missing or different binding values will be rejected before import.
+"""
+    interaction_guidance = ""
+    if str(run["task_id"]) in {"T01", "T02", "T03", "T04"}:
+        if condition == "DIRECT":
+            interaction_guidance = """Interaction policy for this task: minimize unnecessary Main/operator round trips. For all currently revealed scope, prefer one comprehensive executor handoff that can carry implementation, testing, bounded repair, and evidence return. Use another handoff only for newly revealed instructions, a genuine evidence gate, or an unrecoverable executor boundary. Never cross an unrevealed-checkpoint gate."""
+        else:
+            interaction_guidance = """Interaction policy for this task: minimize unnecessary Main/operator round trips. For the complete currently revealed scope, prefer one coherent active Phase, one complete DIC, and one comprehensive EPS/executor handoff capable of implementation, testing, bounded repair, and evidence return. If multiple Phases are genuinely needed, create them autonomously and consolidate execution as far as evidence-gated semantics safely allow. Do not manufacture extra Phases or handoffs, and never cross an unrevealed-checkpoint gate."""
     if condition == "DIRECT":
         body = main_prompt(read(ROOT / "prompts" / "direct" / "00_START_TASK.md"), route, task)
         text = f"""# Main chat prompt
@@ -104,27 +130,31 @@ def write_main_prompt(task_root: Path, run_dir: Path, condition: str, ecosystem:
 Upload `MAIN_INPUT.zip`, then paste this single message:
 
 ````text
+{binding}
+
+{interaction_guidance}
+
 {body}
 ````
 """
     else:
         loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
         body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
-        text = f"""# Main chat prompts
+        text = f"""# Main chat prompt
 
-Before pasting either message, upload `MAIN_INPUT.zip` from the printed run folder and
+Upload `MAIN_INPUT.zip` from the printed run folder and
 `AI_WORKFLOW_RUNTIME.zip` from the evaluation repository root. The runtime archive supplies the
 clean `.ai-workflow/` directory at the scored repository root.
 
-Paste message 1:
+Then paste this single complete message:
 
 ````text
 {loader}
-````
 
-After Main confirms readiness, paste message 2:
+{binding}
 
-````text
+{interaction_guidance}
+
 {body}
 ````
 """
@@ -155,7 +185,7 @@ def package_inputs(task_root: Path, run_dir: Path, condition: str, run: dict) ->
         }
     elif (run_dir / ".ai-workflow.zip").exists():
         raise SystemExit("Direct run must not contain a legacy .ai-workflow.zip")
-    prompt = write_main_prompt(task_root, run_dir, condition, run["ecosystem"])
+    prompt = write_main_prompt(task_root, run_dir, condition, run["ecosystem"], run)
     run["main_prompt"] = {"path": str(prompt), "sha256": file_sha256(prompt)}
     run["status"] = "AWAITING_MAIN"
     run["inputs_packaged_utc"] = utc_now()
@@ -166,6 +196,59 @@ def required_input(message: str) -> str:
     while not value:
         value = input(message).strip()
     return value
+
+
+def prompt_main_effort(current: str | None, ecosystem: str) -> str:
+    if current:
+        raw = current.strip().lower()
+        interactive = False
+    else:
+        raw = ""
+        interactive = True
+    aliases = {
+        "": "high",
+        "h": "high",
+        "high": "high",
+        "xh": "xhigh",
+        "xhigh": "xhigh",
+        "pro": "pro",
+    }
+    while True:
+        if interactive:
+            message = (
+                "Main compute/effort [Press Enter for high; xh/xhigh for xhigh; pro for pro]: "
+                if ecosystem == "OPENAI"
+                else "Main compute/effort [Press Enter for high]: "
+            )
+            raw = input(message).strip().lower()
+        if raw in aliases:
+            return aliases[raw]
+        if not interactive:
+            raise SystemExit("Main effort must be high (or blank), xh/xhigh, or pro")
+        print("Invalid effort. Please try again: press Enter for high, or enter xh, xhigh, or pro.")
+
+
+def prompt_optional_minutes(current: float | None, label: str) -> float | None:
+    if current is not None:
+        if current < 0:
+            raise SystemExit("--main-wall-minutes must be non-negative")
+        return current
+    while True:
+        raw = input(
+            f"{label} as Xm Ys, e.g. 12m 34s "
+            "(blank if unavailable): "
+        ).strip()
+        if not raw:
+            return None
+        match = MAIN_TIME.fullmatch(raw)
+        if not match:
+            print("Invalid time. Use Xm Ys, for example 12m 34s, or leave it blank.")
+            continue
+        minutes, seconds = (int(part) for part in match.groups())
+        if seconds >= 60:
+            print("Invalid time. Seconds must be between 0 and 59.")
+            continue
+        return minutes + seconds / 60.0
 
 
 def handoff_zip_candidates(run_dir: Path) -> list[Path]:
@@ -321,7 +404,12 @@ def main() -> int:
     parser.add_argument("--state-mode", choices=("NORMAL", "STATE_LOSS"), default="NORMAL")
     parser.add_argument("--main-chat-url")
     parser.add_argument("--main-model")
-    parser.add_argument("--main-effort")
+    parser.add_argument(
+        "--main-effort", help="Main setting: high (default), xh/xhigh, or pro"
+    )
+    parser.add_argument(
+        "--main-wall-minutes", type=float, help="reported active Main-chat time"
+    )
     parser.add_argument("--main-transcript", type=Path)
     parser.add_argument("--handoff", type=Path, help="already-downloaded first Main handoff ZIP")
     parser.add_argument("--claude-model")
@@ -340,6 +428,16 @@ def main() -> int:
     )
     parser.set_defaults(allow_shared_chat_link=True)
     parser.add_argument("--stop-after-package", action="store_true")
+    parser.add_argument(
+        "--skip-post-run-record",
+        action="store_true",
+        help="do not open the metric/finalization recorder after the executor exits",
+    )
+    parser.add_argument(
+        "--skip-auto-grade",
+        action="store_true",
+        help="do not run the frozen private grader after the executor exits",
+    )
     parser.add_argument("--non-scored", action="store_true")
     parser.add_argument("--qualification-root", type=Path)
     args = parser.parse_args()
@@ -419,11 +517,31 @@ def main() -> int:
     if args.stop_after_package:
         return 0
 
-    main_chat_url = args.main_chat_url or required_input("\nMain chat link: ")
-    handoff = wait_for_first_handoff(run_dir, args.handoff)
     route = ROUTES[args.ecosystem]
     main_model = args.main_model or route["main"]
-    main_effort = args.main_effort or ("highest exposed" if args.ecosystem == "OPENAI" else "high")
+    print("\nIn a fresh Main chat, upload:")
+    print(f"  - {run_dir / 'MAIN_INPUT.zip'}")
+    if args.condition == "AI_NATIVE":
+        print(f"  - {WORKFLOW_ARCHIVE}")
+    print(f"Then paste the instructions from: {run_dir / 'MAIN_PROMPT.md'}")
+    print("When Main has produced the handoff ZIP, return here to archive its run details.")
+    main_minutes = prompt_optional_minutes(
+        args.main_wall_minutes,
+        "Main total active/compute time for this prompt and handoff",
+    )
+    main_effort = prompt_main_effort(args.main_effort, args.ecosystem)
+    main_chat_url = args.main_chat_url or required_input(
+        "Main chat link (normal or shared ChatGPT URL): "
+    )
+    handoff = wait_for_first_handoff(run_dir, args.handoff)
+    run = load_json(run_path)
+    run["main_model_product_visible"] = main_model
+    run["main_effort_product_visible"] = main_effort
+    if main_minutes is not None:
+        main_seconds = round(main_minutes * 60.0, 6)
+        run["main_initial_prompt_wall_seconds_reported"] = main_seconds
+        run["main_active_wall_seconds_reported"] = main_seconds
+    save_json(run_path, run)
     rejected_handoffs: dict[Path, str] = {}
     while True:
         validation_result = launch(
@@ -461,7 +579,41 @@ def main() -> int:
         qualification_root=args.qualification_root,
     )
     print(f"\nRun metadata: {run_path}")
-    return result
+    grade_result = 0
+    if not args.skip_auto_grade:
+        grade_command = [
+            sys.executable,
+            "-X",
+            "utf8",
+            str(ROOT / "scripts" / "grade_run.py"),
+            str(task_root),
+            "--run-id",
+            run_id,
+        ]
+        if args.qualification_root:
+            grade_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
+        print("\nRunning frozen private grader...")
+        grade_result = subprocess.run(grade_command, cwd=ROOT, check=False).returncode
+    if not args.skip_post_run_record:
+        record_command = [
+                sys.executable,
+                "-X",
+                "utf8",
+                str(ROOT / "scripts" / "record_run.py"),
+                str(task_root),
+                "--run-id",
+                run_id,
+            ]
+        if args.qualification_root:
+            record_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
+        record_result = subprocess.run(
+            record_command,
+            cwd=ROOT,
+            check=False,
+        ).returncode
+        if result == 0 and grade_result == 0:
+            return record_result
+    return result or grade_result
 
 
 if __name__ == "__main__":

@@ -85,6 +85,7 @@ def main() -> int:
         shutil.copy2(workspace / "TASK.md", checkpoints / "01.md")
         state_dir = workspace / ".evaluation"
         state_dir.mkdir()
+        shutil.copy2(Path(__file__).with_name("task_environment.py"), state_dir / "run_in_env.py")
         (state_dir / "CHECKPOINT_STATE.json").write_text(
             json.dumps({"current_checkpoint": 1, "accepted": [], "revealed": [1]}, indent=2) + "\n",
             encoding="utf-8",

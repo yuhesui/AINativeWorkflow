@@ -1,2 +1,2 @@
 .................                                                    [100%]
-17 passed, 4 subtests passed in 1.20s
+17 passed, 4 subtests passed in 1.25s

@@ -51,9 +51,9 @@
       "tree_sha256": "a9034c3fe450657907b747338d9662f84b303330c7b07896553a9fbe2db21d2b"
     },
     "reference_provenance_only": {
-      "bytes": 0,
-      "file_count": 0,
-      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 1,
+      "file_count": 1,
+      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
     },
     "test_repo": {
       "bytes": 52588808,

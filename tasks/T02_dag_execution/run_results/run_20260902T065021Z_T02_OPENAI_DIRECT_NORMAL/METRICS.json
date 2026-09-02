@@ -1,0 +1,163 @@
+{
+  "active_executor_effort": "xhigh",
+  "active_executor_product_visible": "gpt-5.6-terra",
+  "attempt_id": "attempt-20260902T065021Z",
+  "auto_grades": [
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": false,
+      "checkpoint": 1,
+      "checkpoint_primary_score": 84.84848484848484,
+      "checkpoint_total": 3,
+      "core_pass_rate": 0.6666666666666666,
+      "graded_utc": "2026-09-02T08:11:26.043297+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 0.8484848484848485,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\native_reward\\reward_details.json",
+      "native_primary_metric": null,
+      "normalized_completion_score": null,
+      "pytest_exit_code": 1,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\GRADER_RAW_checkpoint_01.ctrf.json",
+      "raw_grader_sha256": "4e2cd53faeb95592b1b7748bab7f969c588673d49b38a203d781e9b991b212b1",
+      "run_id": "run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 0.8484848484848485,
+      "task_id": "T02"
+    }
+  ],
+  "condition": "DIRECT",
+  "created_utc": "2026-09-02T06:50:21.207522+00:00",
+  "ecosystem": "OPENAI",
+  "executor": "CODEX",
+  "finalized_utc": "2026-09-02T08:11:34.647456+00:00",
+  "handoff_validation_attempts": [
+    {
+      "attempt": 1,
+      "bundle": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\MAIN_HANDOFF(1).zip",
+      "bundle_sha256": "683514a4ba201aa4d6180c89163f69bb40792e68c2d1a14291eb4c40fa58fc6a",
+      "checked_utc": "2026-09-02T06:59:49.962050+00:00",
+      "valid": true,
+      "validator_return_code": 0
+    }
+  ],
+  "inputs_packaged_utc": "2026-09-02T06:50:21.260248+00:00",
+  "invalidation_reason": null,
+  "last_recorded_utc": "2026-09-02T08:23:22.923420+00:00",
+  "latest_auto_grade": {
+    "accepted_for_next_reveal": true,
+    "all_checkpoints_graded": false,
+    "checkpoint": 1,
+    "checkpoint_primary_score": 84.84848484848484,
+    "checkpoint_total": 3,
+    "core_pass_rate": 0.6666666666666666,
+    "graded_utc": "2026-09-02T08:11:26.043297+00:00",
+    "grader_ok": true,
+    "grader_runtime": "WSL2",
+    "isolated_pass_rate": 0.8484848484848485,
+    "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\native_reward\\reward_details.json",
+    "native_primary_metric": null,
+    "normalized_completion_score": null,
+    "pytest_exit_code": 1,
+    "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\GRADER_RAW_checkpoint_01.ctrf.json",
+    "raw_grader_sha256": "4e2cd53faeb95592b1b7748bab7f969c588673d49b38a203d781e9b991b212b1",
+    "run_id": "run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL",
+    "schema_version": 1,
+    "strict_pass_rate": 0.8484848484848485,
+    "task_id": "T02"
+  },
+  "layout_version": "simple-v2",
+  "main_chats": [
+    {
+      "handoff_id": "DIRECT-PIPELINE-001",
+      "main_effort_product_visible": "highest exposed",
+      "main_model_product_visible": "ChatGPT GPT-5.6 Sol \u2014 highest reasoning setting actually exposed",
+      "recorded_utc": "2026-09-02T06:59:50.135375+00:00",
+      "transcript_export": null,
+      "url": "https://chatgpt.com/share/6a97c89f-d93c-83ec-bd66-f139136bc872",
+      "url_sha256": "540bac548b32c9d5e30f6872112eb0dd62d004f8adcc43fb516a5098b95db302"
+    }
+  ],
+  "main_effort_product_visible": "highest exposed",
+  "main_input": {
+    "contains_ai_workflow": false,
+    "path": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\MAIN_INPUT.zip",
+    "sha256": "eb04c877aea1cf9a61d89b933f2cef331fa4fe22377e140858945216e5031785"
+  },
+  "main_model_product_visible": "ChatGPT GPT-5.6 Sol \u2014 highest reasoning setting actually exposed",
+  "main_prompt": {
+    "path": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\MAIN_PROMPT.md",
+    "sha256": "ca2c1c7811af17427bacd4fdef5938e437f3a12a54ce8958c798d3a10900e940"
+  },
+  "matrix_run_id": "T02_OPENAI_DIRECT_NORMAL",
+  "metadata_file": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\RUN.json",
+  "non_scored": false,
+  "operator_records": [
+    {
+      "main_active_wall_seconds_reported": null,
+      "main_usage_reported": {},
+      "notes": "Operator-requested archival after checkpoint 1 of 3; trajectory ended before later checkpoint reveals. Main/executor token usage was not reported.",
+      "recorded_utc": "2026-09-02T08:11:34.435125+00:00"
+    },
+    {
+      "executor_usage_reported": {
+        "cached_input_tokens": 4994816,
+        "input_tokens": 128933,
+        "output_tokens": 53904,
+        "reasoning_tokens": 24204,
+        "total_tokens": 182837
+      },
+      "main_active_wall_seconds_reported": null,
+      "main_usage_reported": {},
+      "notes": "Late operator transcription of product-visible Codex token summary.",
+      "recorded_utc": "2026-09-02T08:23:22.923420+00:00"
+    }
+  ],
+  "qualification_root": null,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\repo_final",
+  "repo_final_tree_sha256": "d876935fdfb2bb02dc181ad76d8e780485acb288df7a59dc8b965b4877a394cc",
+  "repo_initial_storage": "hash_ref",
+  "repo_initial_tree_sha256": "0c67cb6a97ab3a0574e0e19b691ac5ef192ce38dfdcd06383981f3ff42625b4b",
+  "resource_summary": {
+    "cached_input_tokens": 4994816,
+    "elapsed_since_materialization_seconds": 4873.227603,
+    "executor_wall_seconds": 0.0,
+    "input_tokens": 128933,
+    "output_tokens": 53904,
+    "reasoning_tokens": 24204,
+    "total_tokens": 182837
+  },
+  "run_folder_timestamp_utc": "20260902T065021Z",
+  "run_id": "run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL",
+  "schema_version": 1,
+  "source_task_lock_sha256": "dda82db8eb9665d3eab9e1c16577c1d3c101c22d8b40f66f9161b014a6b34e25",
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\test_repo",
+  "source_test_repo_tree_sha256": "ad84e6632ee48515cf2d2de3e4e484217aa2073960a9f0eaa6fa08235764f909",
+  "started_utc": "2026-09-02T06:59:50.135432+00:00",
+  "state_mode": "NORMAL",
+  "status": "FINALIZED",
+  "task_id": "T02",
+  "unattributed_executor_usage_records": [
+    {
+      "recorded_utc": "2026-09-02T08:23:22.923399+00:00",
+      "usage": {
+        "cached_input_tokens": 4994816,
+        "input_tokens": 128933,
+        "output_tokens": 53904,
+        "reasoning_tokens": 24204,
+        "total_tokens": 182837
+      },
+      "usage_source": "operator_record_run_no_session"
+    }
+  ],
+  "usage_totals": {
+    "cached_input_tokens": 4994816,
+    "executor_wall_seconds": 0.0,
+    "input_tokens": 128933,
+    "output_tokens": 53904,
+    "reasoning_tokens": 24204,
+    "total_tokens": 182837
+  },
+  "validity": "FAILED_TASK",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T02_dag_execution\\runs\\run_20260902T065021Z_T02_OPENAI_DIRECT_NORMAL\\workspace"
+}

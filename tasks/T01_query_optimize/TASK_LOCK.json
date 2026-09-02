@@ -52,14 +52,14 @@
       "tree_sha256": "1014e562423901142341ca68f6e424c9dd1d459e7dd79ef506ca66bddc2b5f8e"
     },
     "reference_agent_visible": {
-      "bytes": 0,
-      "file_count": 0,
-      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 1,
+      "file_count": 1,
+      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
     },
     "reference_provenance_only": {
-      "bytes": 0,
-      "file_count": 0,
-      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 1,
+      "file_count": 1,
+      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
     },
     "test_repo": {
       "bytes": 50704155,

@@ -18,7 +18,7 @@
       "original_task_tree_sha256": "bab10ce010fe4eadeb000220e92a398f06c365e33e15f0e8936de601c53abcb6",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "fb4b689c88e2484fa805e8a2d648cdc11dd3e523be38bf19fc0e1e1ef9becfd7",
+      "task_lock_sha256": "39ada08ef8aef2581ab1f9beb9a998599c5071de8cb5691d03cd30e854bcb5f7",
       "test_repo_tree_sha256": "c5a37a1fa1ee50c1201ba9d2d04cc26fd76f70e50bf905fc8bcdaec0370cee4f"
     },
     "T02": {
@@ -27,7 +27,7 @@
       "original_task_tree_sha256": "569dfdc765274e48a44930ce4dc8ee89c59d4357662e82f87e7910cddb46dc56",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "ab358f6bf793bbbdba5aef8bac4ca91e7c60d53dbdedee7f70bd73fbfd969062",
+      "task_lock_sha256": "dda82db8eb9665d3eab9e1c16577c1d3c101c22d8b40f66f9161b014a6b34e25",
       "test_repo_tree_sha256": "ad84e6632ee48515cf2d2de3e4e484217aa2073960a9f0eaa6fa08235764f909"
     },
     "T03": {
@@ -36,7 +36,7 @@
       "original_task_tree_sha256": "1a99fe348abd658a20d46d7bdfd904183de3db6ea47c0b5b2dc17c86215ab9b9",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "ab14409ad82e68c473560a83639c2397fc45150009fba27e6c63ebf3fa2cd5bc",
+      "task_lock_sha256": "5084d62e8e1f7d2b07a1706b7c454a5672f501c04360e7892f2cadcacfdfc875",
       "test_repo_tree_sha256": "dd7a393de60e05c2045306913de65a219cfff0329e42475c72b5e47f60be3713"
     },
     "T04": {
@@ -45,7 +45,7 @@
       "original_task_tree_sha256": "7225965da3b010a7408468c2af66f36d9199acb4767bf1d17745a0c4eb231eba",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "e4c5e05d37f004c6faaa41fbf54922f24a532ca3a0d4b16daa303f7583787cfb",
+      "task_lock_sha256": "7012fdab00152667b14f18c9ab1d2f17b1fa4d228eae1add4de14ddc6bcefd00",
       "test_repo_tree_sha256": "88e03f355eefc1cee76f4c48dcc295d1318b15be73eb011efed8f5d1f495cc12"
     },
     "T05": {
@@ -54,7 +54,7 @@
       "original_task_tree_sha256": "098856a1059143d48950365dc4f467dbe48e3d21f8d3d97ec719aae7d4d3e9b5",
       "qualification_status": "BLOCKED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "1c30c7866603642e4de349f8d981797ca76ad03aeef2c1acfe6026ad0c531294",
+      "task_lock_sha256": "2229d18a729a819fbcc89aaef59490af04395c0d4490d021d67536b3fe01ecc2",
       "test_repo_tree_sha256": "0542934f164748c83d9e7938870d507059ce9f2ba3c39901a9da8b8b0e32b6a7"
     },
     "T06": {
@@ -63,7 +63,7 @@
       "original_task_tree_sha256": "bde65a144c4620e36fa668c1a174b97505c67e58d67f73e70e1db942632c40fd",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "219527511c33d926650310f39fc4410ad14d4b6726fdc913d945b5c326bb7095",
+      "task_lock_sha256": "d7d122b0767dbc9f5ba57793190e8fee128f099756a48d1fcd4769e5b011ae96",
       "test_repo_tree_sha256": "ccbab2116270445372e42b36a29e3bddb5f69cf33a155db2abcfe83f2daf9a53"
     },
     "T07": {

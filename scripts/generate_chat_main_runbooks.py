@@ -94,8 +94,9 @@ recovery message; never transfer the old Main transcript.
 
 Run these commands in a system terminal from the evaluation repository root—not in a ChatGPT,
 Codex, or Claude prompt. The starter keeps the operator flow to one command. It creates a unique UTC-dated folder under
-`runs/`, packages the Main inputs in that folder, asks for the Main-chat link and downloaded
-handoff, and opens the interactive CLI in the run's `workspace/`.
+`runs/`, packages the Main inputs in that folder, tells you exactly which files to upload, records
+Main time/effort and the chat link, accepts the downloaded handoff, and opens the interactive CLI
+in the run's `workspace/`.
 
 ## Direct baseline with Codex
 
@@ -117,13 +118,27 @@ The command remains open while you use Main:
 2. Upload `MAIN_INPUT.zip` and paste `MAIN_PROMPT.md` into a fresh Main chat.
 3. For AI-Native only, also upload the printed root `AI_WORKFLOW_RUNTIME.zip` as instructed by
    `MAIN_PROMPT.md`.
-4. Paste the Main-chat link back into the waiting command. A normal ChatGPT share link is accepted
-   by default; use `--reject-shared-chat-link` only when the run requires a private URL.
-5. Save Main's downloaded executor ZIP directly in that run folder and press Enter.
+4. Back in the waiting command, enter Main's total time for the single prompt and handoff as `Xm Ys`
+   (for example, `12m 34s`). This is recorded once before executor launch in both conditions.
+   Invalid time or effort entries are requested again. For OpenAI effort, press Enter for `high`,
+   enter `xh` or `xhigh` for `xhigh`, or enter `pro` for `pro`.
+5. Paste the Main-chat link. A normal or shared ChatGPT link is accepted by default; use
+   `--reject-shared-chat-link` only when the run requires a private URL.
+6. Save Main's downloaded executor ZIP directly in that run folder and press Enter.
    `MAIN_HANDOFF.zip` is preferred, but a unique alternate `.zip` download name is accepted.
-6. The starter validates the package before import. If rejected, overwrite it or save the corrected
+7. The starter validates the package before import. If rejected, overwrite it or save the corrected
    ZIP there under a new name, then press Enter; the workspace has not been changed.
-7. Codex opens interactively, already rooted at the run's `workspace/` and pointed at Main's prompt.
+8. Codex opens interactively, already rooted at the run's `workspace/` and pointed at Main's prompt.
+   The progressive coding workspace includes `.evaluation/run_in_env.py`; the launcher starts the
+   frozen Linux sidecar and Codex routes task build/test/runtime commands through that helper, where
+   the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
+9. When the CLI exits, the starter automatically runs the frozen private grader outside the
+   workspace and stores its raw output under the run's `evidence/grader/` directory. It then opens
+   the run recorder, which reuses the already recorded Main time without asking again. Enter any
+   reported Main tokens and missing executor usage. Usage accepts
+   either JSON or the complete product-visible `Token usage: total=...` line. When pricing is
+   available, the pipeline records and prints a standard API-equivalent estimate; this is not a
+   claim about the incremental charge for a ChatGPT, Codex, or Claude subscription.
 
 Direct never creates or receives the runtime archive. AI-Native keeps `.ai-workflow/` in the scored
 workspace and supplies the generated repository-root archive to Main. Main is never told to create
@@ -136,6 +151,10 @@ subfolders, but excludes `.ai-workflow/` in both conditions. It has no special i
 schema. By contrast, Main's returned handoff ZIP is validated against the exact file and manifest
 contract embedded in `MAIN_PROMPT.md`. Its package may be at ZIP root or below exactly one wrapper
 folder; manifest paths remain relative to the package contents below that wrapper.
+
+Every generated `MAIN_PROMPT.md` supplies an exact `task_id`, timestamped `run_id`, and
+`task_lock_sha256`. Main must echo all three into each `HANDOFF_MANIFEST.json`; the importer rejects
+missing or stale values before changing the workspace.
 
 ## Run folder
 
@@ -155,9 +174,22 @@ Codex and asks for the exact installed Sonnet model identifier.
 {loss}
 ## Finish
 
-Run the private grader outside the workspace. Finalize using the timestamped folder name as the run
-ID and pass that folder's `RUN.json` as `--metrics-json`. Finalization retains the full repository in
-`repo_final/` and writes native scoring results separately under `run_results/`.
+The starter runs the private grader automatically after the CLI exits. To grade again manually,
+run:
+
+```shell
+python -X utf8 scripts/grade_run.py "{task_path}" --run-id <RUN_ID>
+```
+
+Then use the interactive recorder when needed:
+
+```shell
+python -X utf8 scripts/record_run.py "{task_path}"
+```
+
+It selects the latest unfinished run by default, records reported resource usage, automatically
+reuses the latest grader output and score, and can finalize. Finalization retains the full
+repository in `repo_final/` and writes native scoring results separately under `run_results/`.
 
 This file is generated by `scripts/generate_chat_main_runbooks.py`. The frozen task prompt itself is
 read from this task root at run creation and written verbatim into that run's `MAIN_PROMPT.md`.

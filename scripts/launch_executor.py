@@ -18,6 +18,8 @@ from pathlib import Path, PurePosixPath
 from urllib.parse import urlparse
 
 from eval_common import file_sha256, load_json, sensitive_leaks
+from usage_cost import attach_cost_estimate
+from task_environment import environment_spec, ensure_sidecar, stop_sidecar
 
 
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
@@ -33,6 +35,15 @@ TOKEN_FIELDS = (
     "total_tokens",
     "cost_usd",
 )
+TOKEN_USAGE_LINE = re.compile(
+    r"^\s*(?:token\s+usage\s*:\s*)?"
+    r"total\s*=\s*([\d,]+)\s+"
+    r"input\s*=\s*([\d,]+)\s*"
+    r"(?:\(\s*\+\s*([\d,]+)\s+cached\s*\)\s*)?"
+    r"output\s*=\s*([\d,]+)\s*"
+    r"(?:\(\s*reasoning\s+([\d,]+)\s*\))?\s*$",
+    re.IGNORECASE,
+)
 
 
 def utc_now() -> str:
@@ -42,6 +53,34 @@ def utc_now() -> str:
 def save_json(path: Path, value: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def parse_usage_input(raw: str) -> dict:
+    """Accept either usage JSON or Codex's product-visible token summary line."""
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError:
+        match = TOKEN_USAGE_LINE.fullmatch(raw)
+        if not match:
+            raise ValueError(
+                "expected usage JSON or 'Token usage: total=... input=... "
+                "(+ ... cached) output=... (reasoning ...)'"
+            )
+        total, input_tokens, cached, output, reasoning = match.groups()
+
+        def integer(text: str | None) -> int:
+            return int(text.replace(",", "")) if text else 0
+
+        return {
+            "total_tokens": integer(total),
+            "input_tokens": integer(input_tokens),
+            "cached_input_tokens": integer(cached),
+            "output_tokens": integer(output),
+            "reasoning_tokens": integer(reasoning),
+        }
+    if not isinstance(value, dict):
+        raise ValueError("usage input must be one JSON object")
+    return value
 
 
 def safe_id(value: object, label: str) -> str:
@@ -130,6 +169,21 @@ def validate_chat_url(value: str, allow_shared: bool) -> None:
         )
 
 
+def validate_handoff_bindings(manifest: dict, run: dict, run_id: str) -> None:
+    expected_bindings = {
+        "task_id": run.get("task_id"),
+        "run_id": run_id,
+        "task_lock_sha256": run.get("source_task_lock_sha256"),
+    }
+    for field, expected in expected_bindings.items():
+        if not isinstance(expected, str) or not expected:
+            raise SystemExit(f"RUN.json is missing required handoff binding: {field}")
+        if manifest.get(field) != expected:
+            raise SystemExit(
+                f"handoff {field} does not match this run; expected {expected!r}"
+            )
+
+
 def parse_usage(path: Path | None, skip_prompt: bool) -> tuple[dict, str]:
     if path is not None:
         value = json.loads(path.read_text(encoding="utf-8"))
@@ -138,17 +192,15 @@ def parse_usage(path: Path | None, skip_prompt: bool) -> tuple[dict, str]:
         return value, str(path.resolve())
     if skip_prompt:
         return {}, "not_reported"
-    print("\nIf the CLI displayed usage, paste one JSON object now.")
-    print('Example: {"input_tokens": 123, "output_tokens": 45, "cost_usd": 0.12}')
-    raw = input("Usage JSON (blank if unavailable): ").strip()
+    print("\nIf the CLI displayed usage, paste its token line or one JSON object now.")
+    print("Example: Token usage: total=168 input=123 (+ 500 cached) output=45 (reasoning 20)")
+    raw = input("Usage (blank if unavailable): ").strip()
     if not raw:
         return {}, "not_reported"
     try:
-        value = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        raise SystemExit(f"invalid usage JSON: {exc}") from exc
-    if not isinstance(value, dict):
-        raise SystemExit("usage input must be one JSON object")
+        value = parse_usage_input(raw)
+    except ValueError as exc:
+        raise SystemExit(f"invalid usage input: {exc}") from exc
     return value, "operator_transcription"
 
 
@@ -204,6 +256,21 @@ def usage_totals(sessions: list[dict]) -> dict:
             if isinstance(number, (int, float)) and not isinstance(number, bool):
                 totals[field] = totals.get(field, 0) + number
     totals["executor_wall_seconds"] = round(totals["executor_wall_seconds"], 6)
+    estimates = [
+        item.get("usage", {}).get("api_equivalent_cost_estimate")
+        for item in sessions
+        if isinstance(item, dict) and isinstance(item.get("usage"), dict)
+    ]
+    estimated_costs = [
+        estimate.get("estimated_cost_usd")
+        for estimate in estimates
+        if isinstance(estimate, dict)
+        and isinstance(estimate.get("estimated_cost_usd"), (int, float))
+    ]
+    if estimated_costs:
+        totals["executor_api_equivalent_cost_estimated_usd"] = round(
+            sum(estimated_costs), 8
+        )
     return totals
 
 
@@ -275,6 +342,7 @@ def main() -> int:
         package_root, package_wrapper = find_package_root(staging)
         manifest_path = package_root / "HANDOFF_MANIFEST.json"
         manifest = load_json(manifest_path)
+        validate_handoff_bindings(manifest, run, args.run_id)
         handoff_id = safe_id(manifest.get("handoff_id"), "handoff_id")
         manifest_condition = str(manifest.get("condition", "")).upper().replace("-", "_")
         if manifest_condition != run["condition"]:
@@ -388,6 +456,14 @@ def main() -> int:
             "read outside this repository or access private evaluator material. Preserve the requested "
             "commands, tests, diffs, failures, and return evidence."
         )
+        if environment_spec(task_root) is not None:
+            bootstrap += (
+                " This repository uses its frozen Linux task environment through the approved "
+                "sidecar. Run every task build, test, and runtime command through "
+                "`python .evaluation/run_in_env.py exec-self -- <command>`. The host repository "
+                "is bind-mounted at `/app` inside that environment; do not create or copy a host "
+                "virtual environment."
+            )
         if args.executor == "CODEX":
             command = [
                 "codex", "-C", str(workspace), "-m", executor_model,
@@ -472,6 +548,12 @@ def main() -> int:
             if simple_layout
             else run_dir / "executors" / f"{args.run_id}-{handoff_id}-transcript.txt"
         )
+        try:
+            task_environment = ensure_sidecar(task_root, args.run_id, workspace)
+        except RuntimeError as exc:
+            raise SystemExit(str(exc)) from exc
+        if task_environment is not None:
+            run["task_environment"] = task_environment
         started_utc = utc_now()
         if "started_utc" not in run:
             run["started_utc"] = started_utc
@@ -481,7 +563,13 @@ def main() -> int:
         run["active_executor_product_visible"] = executor_model
         run["active_executor_effort"] = required_effort
         if simple_layout:
-            run.setdefault("main_chats", []).append(chat_record)
+            main_chats = run.setdefault("main_chats", [])
+            if not any(
+                isinstance(existing, dict)
+                and existing.get("url_sha256") == chat_record["url_sha256"]
+                for existing in main_chats
+            ):
+                main_chats.append(chat_record)
         save_json(run_path, run)
         print(f"\nOpening {args.executor} in repository: {workspace}")
         if args.executor == "CLAUDE":
@@ -489,10 +577,23 @@ def main() -> int:
         else:
             print("Before exiting Codex, preserve any product-visible usage summary for the prompt below.")
         started = time.monotonic()
-        result = subprocess.run(command, cwd=workspace, check=False)
+        try:
+            result = subprocess.run(command, cwd=workspace, check=False)
+        finally:
+            try:
+                stop_sidecar(run.get("task_environment"))
+            except RuntimeError as exc:
+                print(f"WARNING: {exc}", file=sys.stderr)
         wall_seconds = time.monotonic() - started
         ended_utc = utc_now()
         usage, usage_source = parse_usage(args.usage_json, args.skip_usage_prompt)
+        cost_estimate = attach_cost_estimate(usage, executor_model)
+        if cost_estimate is not None:
+            print(
+                "Estimated standard API-equivalent executor cost: "
+                f"${cost_estimate['estimated_cost_usd']:.2f} "
+                "(not necessarily an actual subscription charge)"
+            )
         session_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + f"-{handoff_id}"
         session = {
             "schema_version": 1,

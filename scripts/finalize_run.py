@@ -45,7 +45,12 @@ def main() -> int:
         raise SystemExit(f"missing RUN.json: {run_json}")
     run = json.loads(run_json.read_text(encoding="utf-8"))
     errors = validate_workspace(task_root, workspace, run["condition"])
-    errors = [e for e in errors if "inherited non-clean plan state" not in e]
+    errors = [
+        error
+        for error in errors
+        if "inherited non-clean plan state" not in error
+        and "generated cache debris present" not in error
+    ]
     if errors:
         raise SystemExit("final workspace validation failed:\n- " + "\n- ".join(errors))
     final = run_dir / "repo_final"

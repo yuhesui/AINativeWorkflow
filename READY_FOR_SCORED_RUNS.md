@@ -63,16 +63,19 @@ link, waits for a handoff ZIP in the run folder, validates/imports it, and opens
 interactive CLI in `workspace/`. A Direct run never creates or receives
 `AI_WORKFLOW_RUNTIME.zip`; its ordinary handoff must not use or imitate DIC/EPS.
 
-For progressive tasks, an operator runs the private cumulative grader, stores
-its raw record outside the workspace, and uses `scripts/reveal_checkpoint.py`
-to reveal only the immediate next checkpoint after acceptance. Main must never
-see later checkpoint prompts or hidden tests early.
+For progressive tasks, `start_run.py` automatically runs the frozen private
+cumulative grader after the executor exits and stores its raw record outside
+the workspace under `evidence/grader/`. It prints the exact
+`scripts/reveal_checkpoint.py` command for revealing only the immediate next
+checkpoint after accepted grading. Main must never see later checkpoint prompts
+or hidden tests early.
 
 ## AI-Native operational loop
 
-Open a fresh Main chat on the materialized `workspace/`. Supply the AI-Native
-loader prompt, have Main read the root `.ai-workflow/`, then supply the frozen
-task prompt. Treat the task as the approved Goal. Main itself creates the Plan,
+Open a fresh Main chat on the materialized `workspace/`. After uploading both
+archives, paste the one complete `MAIN_PROMPT.md`; it instructs Main to load the
+root `.ai-workflow/` and then continue directly with the frozen approved Goal in
+the same message. Main itself creates the Plan,
 chooses the Phase decomposition, creates each active Phase folder/DIC/EPS,
 delegates bounded work, evaluates returned evidence, and accepts, repairs, or
 replans. Do not pre-create task-specific plans, phase counts, DICs, EPSs, or
@@ -84,7 +87,11 @@ repository-root `AI_WORKFLOW_RUNTIME.zip`; both exclude all task-root private,
 provenance-only, oracle, grader, and run-record surfaces. `RUN.json` records the
 shared archive's path and exact hash; no per-run workflow ZIP is created.
 
-For each CLI handoff on the current task, chat Main outputs one downloadable
+For the currently revealed scope, T1–T4 Main should minimize unnecessary
+operator round trips: prefer one coherent Phase/DIC/EPS and comprehensive
+executor handoff, while retaining autonomous multi-Phase decomposition when
+genuinely warranted. Progressive checkpoint gates remain mandatory and later
+instructions are never revealed early. For each CLI handoff, chat Main outputs one downloadable
 Phase ZIP containing the complete current DIC, assigned just-in-time EPS and
 exact executor prompt, all changed durable workflow state needed for import,
 and a lineage/authority/evidence manifest. Main does not claim to save into a
@@ -105,12 +112,36 @@ each validation attempt and bundle hash is appended to `RUN.json`. Once a
 handoff has been imported or executed, any retry must use a new handoff ID and,
 for AI-Native, a new EPS attempt.
 
-The launcher automatically records executor timestamps, wall time, exit status,
+The starter accepts an authenticated Main conversation URL or a normal ChatGPT share link by
+default. Use `--reject-shared-chat-link` when policy requires a private/workspace-only locator;
+remember that anyone with a share link may be able to view its conversation. The launcher
+automatically records executor timestamps, wall time, exit status,
 CLI version, route, and artifact hashes. It records executor token/cost data when
-the installed product exposes it and the operator transcribes it or supplies a
-usage JSON file. These records, the Main-chat link, and optional transcript hash
+the installed product exposes it and the operator transcribes either the complete
+`Token usage: total=...` line or supplies a usage JSON file. These records, the Main-chat link, and optional transcript hash
 are consolidated in `RUN.json`; a link alone cannot supply Main token usage or
 reliable active-working time.
+
+When the executor exits, `start_run.py` first runs `scripts/grade_run.py`, then opens
+`scripts/record_run.py` automatically. The grader executes outside the workspace and records raw
+native evidence in the run folder. Main active time is recorded once before executor launch; the
+post-executor recorder reuses it without asking again. The operator may then record reported Main
+tokens, missing latest-executor usage, and a note. The recorder automatically
+reuses the latest grader evidence and score. It does not force premature completion: answer No if
+another checkpoint or Main/executor cycle remains. Rerunning `python -X utf8
+scripts/record_run.py tasks/<TASK>` selects the latest unfinished run unless `--run-id` is supplied.
+
+Use `--skip-auto-grade` only for diagnosed grader infrastructure work. A grader can be rerun with
+`python -X utf8 scripts/grade_run.py tasks/<TASK> --run-id <RUN_ID>`; reruns are appended to
+`RUN.json` rather than erasing earlier grader attempts.
+
+Late usage can be appended after archival without modifying `repo_final` or `SCORE.json` using
+`record_run.py --run-id <RUN_ID> --update-finalized --executor-usage-text "Token usage: ..."`.
+
+Before any scored trajectory exists, use the strict `python -X utf8 scripts/validate_repo.py`
+readiness check. Once retained run artifacts exist, use `python -X utf8 scripts/validate_repo.py
+--allow-scored-runs` to validate capsule/runtime integrity without treating those required archives
+as setup debris.
 
 Preserve every durable runtime mutation. The final AI-Native repository must
 include its full final `.ai-workflow/`; the final Direct repository must not

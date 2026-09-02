@@ -1,0 +1,34 @@
+{
+  "attempt_id": "attempt-20260902T064407Z",
+  "condition": "DIRECT",
+  "created_utc": "2026-09-02T06:44:08.158451+00:00",
+  "ecosystem": "OPENAI",
+  "executor": "CODEX",
+  "inputs_packaged_utc": "2026-09-02T06:44:15.891537+00:00",
+  "layout_version": "simple-v2",
+  "main_input": {
+    "contains_ai_workflow": false,
+    "path": "D:\\Projects\\AI Native Workflow\\tasks\\T01_query_optimize\\runs\\run_20260902T064407Z_T01_OPENAI_DIRECT_NORMAL\\MAIN_INPUT.zip",
+    "sha256": "3b77813f3543e395295a0211e98957685753a29a9f0a100348536ce6704d2be0"
+  },
+  "main_prompt": {
+    "path": "D:\\Projects\\AI Native Workflow\\tasks\\T01_query_optimize\\runs\\run_20260902T064407Z_T01_OPENAI_DIRECT_NORMAL\\MAIN_PROMPT.md",
+    "sha256": "3b7dbb99b34a371240f2902034ebb7a8162a3017a7357a0d1c1383b804d363a7"
+  },
+  "matrix_run_id": "T01_OPENAI_DIRECT_NORMAL",
+  "metadata_file": "D:\\Projects\\AI Native Workflow\\tasks\\T01_query_optimize\\runs\\run_20260902T064407Z_T01_OPENAI_DIRECT_NORMAL\\RUN.json",
+  "non_scored": false,
+  "qualification_root": null,
+  "repo_initial_storage": "hash_ref",
+  "repo_initial_tree_sha256": "40b87c7d4db8eed018fb08d418e120cf6e7138d0943300c20453162a428350ac",
+  "run_folder_timestamp_utc": "20260902T064407Z",
+  "run_id": "run_20260902T064407Z_T01_OPENAI_DIRECT_NORMAL",
+  "schema_version": 1,
+  "source_task_lock_sha256": "39ada08ef8aef2581ab1f9beb9a998599c5071de8cb5691d03cd30e854bcb5f7",
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T01_query_optimize\\test_repo",
+  "source_test_repo_tree_sha256": "c5a37a1fa1ee50c1201ba9d2d04cc26fd76f70e50bf905fc8bcdaec0370cee4f",
+  "state_mode": "NORMAL",
+  "status": "AWAITING_MAIN",
+  "task_id": "T01",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T01_query_optimize\\runs\\run_20260902T064407Z_T01_OPENAI_DIRECT_NORMAL\\workspace"
+}
