@@ -14,6 +14,7 @@ venv/
 # benchmark/runtime heavy outputs
 # Duplicate workflow archive/copies are generated from the tracked configured source package.
 /.ai-workflow/
+/.branch_worktrees/
 /tasks/*/test_repo/.ai-workflow/
 /AI_WORKFLOW_RUNTIME.zip
 
