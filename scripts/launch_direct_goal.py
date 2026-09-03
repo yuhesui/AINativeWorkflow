@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Open one Direct-condition CLI session on the frozen task Goal."""
+"""Open or resume one CLI session on a frozen Direct or AI-Native Goal."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Launch one Direct baseline CLI Goal run.")
+    parser = argparse.ArgumentParser(description="Launch or resume one frozen CLI Goal run.")
     parser.add_argument("task_root", type=Path)
     parser.add_argument("run_id")
     parser.add_argument("--executor", choices=("CODEX", "CLAUDE"), required=True)
@@ -33,7 +33,7 @@ def main() -> int:
     parser.add_argument(
         "--resume-session",
         action="store_true",
-        help="resume the most recent Codex session scoped to this run workspace",
+        help="resume the most recent CLI session scoped to this run workspace",
     )
     parser.add_argument("--qualification-root", type=Path)
     parser.add_argument("--dry-run", action="store_true")
@@ -50,12 +50,15 @@ def main() -> int:
     if not prompt.is_file() or prompt.parent != run_dir:
         raise SystemExit("--prompt must be a file stored directly in this run folder")
     run = load_json(run_path)
-    if run.get("condition") != "DIRECT":
-        raise SystemExit("launch_direct_goal.py only supports DIRECT runs")
+    condition = str(run.get("condition"))
+    if condition not in {"DIRECT", "AI_NATIVE"}:
+        raise SystemExit("run condition must be DIRECT or AI_NATIVE")
     if run.get("status") == "FINALIZED":
         raise SystemExit("cannot launch an executor for a finalized run")
-    if (workspace / ".ai-workflow").exists():
+    if condition == "DIRECT" and (workspace / ".ai-workflow").exists():
         raise SystemExit("Direct workspace must not contain .ai-workflow")
+    if condition == "AI_NATIVE" and not (workspace / ".ai-workflow").is_dir():
+        raise SystemExit("AI-Native workspace must contain .ai-workflow")
 
     required_effort = "xhigh" if args.executor == "CODEX" else "high"
     if args.executor == "CODEX":
@@ -67,8 +70,9 @@ def main() -> int:
         if not executor_model:
             executor_model = "<EXACT_CLAUDE_SONNET_5_MODEL_ID>"
 
+    condition_label = "Direct baseline" if condition == "DIRECT" else "AI-Native run"
     bootstrap = (
-        "Treat the assignment below as the approved Goal for this Direct baseline. Work "
+        f"Treat the assignment below as the approved Goal continuation for this {condition_label}. Work "
         "autonomously from the current repository root in one CLI session, implement the complete "
         "currently revealed task, test and repair it, and preserve concise evidence. Do not read "
         "outside this repository or access private evaluator material.\n\n"
@@ -92,10 +96,13 @@ def main() -> int:
                 "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
             ]
     else:
-        command = [
-            "claude", "--model", executor_model, "--effort", "high",
-            "--name", f"{args.run_id}-direct-goal", bootstrap,
-        ]
+        command = ["claude"]
+        if args.resume_session:
+            command.append("--continue")
+        command.extend(("--model", executor_model, "--effort", "high"))
+        if not args.resume_session:
+            command.extend(("--name", f"{args.run_id}-{condition.lower()}-goal"))
+        command.append(bootstrap)
     if args.dry_run:
         print(json.dumps({
             "status": "DRY_RUN_VALID",
@@ -121,9 +128,11 @@ def main() -> int:
     started_utc = utc_now()
     run.setdefault("started_utc", started_utc)
     run["status"] = "IN_PROGRESS"
-    execution_mode = "DIRECT_CLI_GOAL_RESUME" if args.resume_session else "DIRECT_CLI_GOAL"
+    prefix = "DIRECT" if condition == "DIRECT" else "AI_NATIVE"
+    execution_mode = f"{prefix}_CLI_GOAL_RESUME" if args.resume_session else f"{prefix}_CLI_GOAL"
     run["execution_mode"] = execution_mode
-    run["main_inference_count"] = 0
+    if condition == "DIRECT":
+        run["main_inference_count"] = 0
     run["active_executor_product_visible"] = executor_model
     run["active_executor_effort"] = required_effort
     save_json(run_path, run)

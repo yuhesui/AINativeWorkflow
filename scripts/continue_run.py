@@ -70,19 +70,20 @@ def capture_executor_return(run_dir: Path, checkpoint: int, supplied: Path | Non
 
 
 def record_direct_checkpoint_evidence(run_dir: Path, checkpoint: int, run: dict, grade: dict) -> Path:
-    """Persist machine-captured Direct evidence without an operator paste step."""
+    """Persist machine-captured checkpoint evidence without an operator paste step."""
     destination = run_dir / f"EXECUTOR_RETURN_CHECKPOINT_{checkpoint:02d}.md"
     sessions = run.get("executor_sessions")
     latest_session = sessions[-1] if isinstance(sessions, list) and sessions else None
     payload = {
         "checkpoint": checkpoint,
         "capture_mode": "durable_workspace_and_session_metadata",
-        "note": "The interactive CLI final response is not separately captured.",
+        "condition": run.get("condition"),
+        "note": "The interactive CLI final response is not separately captured; the surviving workspace and session metadata are authoritative.",
         "latest_executor_session": latest_session,
         "grader": safe_grade_summary(grade),
     }
     destination.write_text(
-        "# Direct checkpoint evidence\n\n```json\n"
+        "# Checkpoint evidence\n\n```json\n"
         + json.dumps(payload, indent=2, sort_keys=True)
         + "\n```\n",
         encoding="utf-8",
@@ -246,8 +247,7 @@ def direct_launch_command(
     ]
     if executor == "CLAUDE":
         command.extend(("--claude-model", str(run.get("active_executor_product_visible") or "claude-sonnet-5")))
-    else:
-        command.append("--resume-session")
+    command.append("--resume-session")
     if qualification_root:
         command.extend(("--qualification-root", str(qualification_root.resolve())))
     return command
@@ -294,10 +294,7 @@ def main() -> int:
             "start the required fresh-Main recovery flow from READY_FOR_SCORED_RUNS.md."
         )
 
-    if run.get("condition") == "DIRECT":
-        executor_return = record_direct_checkpoint_evidence(run_dir, previous, run, grade)
-    else:
-        executor_return = capture_executor_return(run_dir, previous, args.executor_return)
+    executor_return = record_direct_checkpoint_evidence(run_dir, previous, run, grade)
     checkpoint = previous + 1
     reveal = [
         sys.executable, "-X", "utf8", str(ROOT / "scripts" / "reveal_checkpoint.py"),
@@ -308,19 +305,34 @@ def main() -> int:
     if result.returncode:
         return result.returncode
 
-    if run.get("condition") == "DIRECT":
-        prompt = run_dir / f"DIRECT_GOAL_CHECKPOINT_{checkpoint:02d}.md"
+    if run.get("condition") in {"DIRECT", "AI_NATIVE"}:
+        is_direct = run.get("condition") == "DIRECT"
+        prompt_prefix = "DIRECT_GOAL" if is_direct else "AI_NATIVE_GOAL"
+        prompt = run_dir / f"{prompt_prefix}_CHECKPOINT_{checkpoint:02d}.md"
+        workflow_guidance = (
+            "Continue directly in the surviving repository without a Main chat or AI-Native "
+            "Workflow."
+            if is_direct
+            else
+            "Continue the same approved Goal using the surviving repository and durable "
+            "`.ai-workflow/` state. Update the Plan/Phase/DIC/EPS evidence as needed; do not "
+            "request another Main inference."
+        )
         prompt.write_text(
-            "# Direct CLI Goal — continued cumulative scope\n\n"
+            f"# {'Direct' if is_direct else 'AI-Native'} CLI Goal — continued cumulative scope\n\n"
             "Treat the updated `TASK.md` and all currently revealed checkpoint instructions as the "
-            "approved Goal. Continue directly in the surviving repository without a Main chat or "
-            "AI-Native Workflow. Complete the cumulative requirements through the current checkpoint, "
+            f"approved Goal. {workflow_guidance} Complete the cumulative requirements through the current checkpoint, "
             "run legitimate visible tests, repair failures, preserve prior passing behavior, and stop "
-            "before any unrevealed checkpoint.\n",
+            "before any unrevealed checkpoint. The harness has already started the frozen task "
+            "environment. Use `python .evaluation/run_in_env.py exec-self -- <command>` for task "
+            "commands; do not perform Docker/WSL/sidecar/model-route preflight or ask the operator "
+            "to confirm it. Retry an actually failed wrapper command once and escalate only if the "
+            "repeated failure blocks the current acceptance criterion.\n",
             encoding="utf-8",
         )
         run = load_json(run_path)
-        run.setdefault("direct_continuations", []).append({
+        continuation_key = "direct_continuations" if is_direct else "ai_native_continuations"
+        run.setdefault(continuation_key, []).append({
             "checkpoint": checkpoint,
             "created_utc": datetime.now(timezone.utc).isoformat(),
             "prompt": str(prompt),
@@ -328,7 +340,9 @@ def main() -> int:
             "executor_return": str(executor_return),
             "executor_return_sha256": file_sha256(executor_return),
         })
-        run["main_inference_count"] = 0
+        run["main_inference_count"] = 0 if is_direct else max(
+            1, int(run.get("main_inference_count", 1))
+        )
         run["status"] = "READY_EXECUTOR_CONTINUATION"
         save_json(run_path, run)
         session_count = len(run.get("executor_sessions", []))
@@ -340,12 +354,10 @@ def main() -> int:
         after_launch = load_json(run_path)
         if launched.returncode and len(after_launch.get("executor_sessions", [])) == session_count:
             after_launch["status"] = "INVALID_INFRASTRUCTURE"
-            after_launch["invalidation_reason"] = (
-                "Direct continuation executor did not start; grading was skipped."
-            )
+            after_launch["invalidation_reason"] = "Continuation executor did not start; grading was skipped."
             after_launch["infrastructure_failure_utc"] = datetime.now(timezone.utc).isoformat()
             save_json(run_path, after_launch)
-            print("Direct continuation did not start; marked INVALID_INFRASTRUCTURE and skipped grading.")
+            print("Continuation did not start; marked INVALID_INFRASTRUCTURE and skipped grading.")
             return launched.returncode
         grade_command = [
             sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
@@ -384,7 +396,7 @@ def main() -> int:
                 continuation_command.extend(
                     ("--qualification-root", str(args.qualification_root.resolve()))
                 )
-            print("\nCheckpoint accepted; automatically continuing to the next Direct checkpoint.")
+            print("\nCheckpoint accepted; automatically continuing the same CLI run to the next checkpoint.")
             return subprocess.run(continuation_command, cwd=ROOT, check=False).returncode
         return launched.returncode or graded.returncode
 

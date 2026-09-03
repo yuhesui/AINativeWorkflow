@@ -144,7 +144,7 @@ def write_main_prompt(
 
 A package with missing or different binding values will be rejected before import.
 """
-    interaction_guidance = """Interaction policy: use exactly one Main inference for the complete currently revealed scope. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. Never cross an unrevealed-checkpoint gate. The harness provisions and starts the task environment before the executor opens: make the Orchestrator start substantive work immediately through `.evaluation/run_in_env.py`, without Docker/WSL/sidecar/model-route preflight or operator-confirmation gates."""
+    interaction_guidance = """Interaction policy: use exactly one Main inference for this normal run's progressive trajectory. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. The harness will reveal accepted later checkpoints and resume the same executor without another Main inference; preserve durable workflow state for that continuation, but never infer or cross an unrevealed-checkpoint gate. The harness provisions and starts the task environment before the executor opens: make the Orchestrator start substantive work immediately through `.evaluation/run_in_env.py`, without Docker/WSL/sidecar/model-route preflight or operator-confirmation gates."""
     loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
     body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
     text = f"""# Main chat prompt
@@ -455,7 +455,7 @@ def finish_run(
         run = load_json(run_path)
         latest_grade = run.get("latest_auto_grade")
         if (
-            run.get("condition") == "DIRECT"
+            run.get("condition") in {"DIRECT", "AI_NATIVE"}
             and run.get("task_id") in {"T02", "T03", "T04"}
             and isinstance(latest_grade, dict)
             and latest_grade.get("task_completion") == "INCOMPLETE_CHECKPOINTS"
@@ -467,7 +467,7 @@ def finish_run(
             ]
             if qualification_root:
                 command.extend(("--qualification-root", str(qualification_root.resolve())))
-            print("\nCheckpoint accepted; automatically continuing the Direct run.")
+            print("\nCheckpoint accepted; automatically continuing the same CLI run.")
             return subprocess.run(command, cwd=ROOT, check=False).returncode
     if not skip_post_run_record:
         record_command = [
