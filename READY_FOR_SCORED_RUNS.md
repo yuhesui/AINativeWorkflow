@@ -102,6 +102,18 @@ Main chat locator in `RUN.json`, and opens the frozen interactive Codex CLI or
 Claude Code CLI in the workspace. The ZIP is transport for canonical state,
 not a second workflow surface.
 
+After an accepted progressive checkpoint, run the exact `scripts/continue_run.py` command printed
+by the grader. It captures the executor's final response, reveals only the immediate next
+checkpoint, and creates a safe `MAIN_CONTINUE_INPUT_CHECKPOINT_XX.zip` containing the newly
+authorized instruction, sanitized grader summary, executor return, and current agent-visible
+workspace. It also creates one fixed, fully copy-paste `MAIN_CONTINUE_PROMPT_CHECKPOINT_XX.md`.
+Upload that ZIP and paste the prompt into the same Main chat. Main must continue the existing run
+and return one new complete handoff ZIP. The continuation launcher validates the ZIP before any
+import, places Direct handoffs under `workspace/executor_handoffs/`, merges AI-Native Phase 2+
+workflow overlays into their canonical locations under `workspace/.ai-workflow/`, opens the
+frozen executor, and grades the new cumulative checkpoint. Repeat until every checkpoint is graded.
+Checkpoint number does not prescribe Phase number; Main retains control of Phase decomposition.
+
 Before import, the starter performs a dry validation of the ZIP structure,
 manifest, declared-file set, condition, route, and workflow-overlay policy. A
 package may place its contents at archive root or beneath exactly one enclosing

@@ -76,9 +76,27 @@ def render(spec: TaskSpec) -> str:
         progressive = f"""## Checkpoints
 
 This task has {spec.checkpoints} cumulative checkpoints. Only checkpoint 1 is initially visible.
-After the private grader accepts the current checkpoint, reveal exactly the next checkpoint with
-`scripts/reveal_checkpoint.py`. Use the timestamped run folder's `workspace/`; never give Main the
-private grader or a later checkpoint early.
+After the private grader accepts the current checkpoint, continue the same run with the single
+command printed by the grader:
+
+```shell
+python -X utf8 scripts/continue_run.py "{task_path}" --run-id <RUN_ID>
+```
+
+The continuation command asks you to paste the executor's final response, reveals exactly the next
+checkpoint, and creates `MAIN_CONTINUE_INPUT_CHECKPOINT_XX.zip` plus one fully copy-paste
+`MAIN_CONTINUE_PROMPT_CHECKPOINT_XX.md`. Upload the ZIP and paste that prompt into the same Main
+chat. Main returns one new complete handoff ZIP for the currently revealed cumulative scope. Save
+it directly in the same run folder; the continuation command validates it, imports a Direct
+handoff under `workspace/executor_handoffs/` or merges an AI-Native Phase 2+ overlay into the
+existing `workspace/.ai-workflow/`, opens the executor, and grades the new checkpoint.
+Enter Main's continuation time when asked and paste the current chat link. If using a Claude shared
+snapshot, refresh the share after the continuation so the archived link includes the new messages.
+
+Repeat `continue_run.py` after each accepted checkpoint until all {spec.checkpoints} checkpoints
+are graded. Never give Main the private grader or a later checkpoint early. A checkpoint does not
+force a matching Phase number: in AI-Native, Main preserves the existing Plan and chooses the next
+justified Phase decomposition itself.
 """
     loss = ""
     if spec.loss_after:
