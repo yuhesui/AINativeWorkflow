@@ -124,7 +124,7 @@ def elapsed_seconds(created_utc: object, ended_utc: str) -> float | None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Record Main/executor resource use and optionally finalize an unfinished run."
+        description="Record condition-appropriate resource use and optionally finalize a run."
     )
     parser.add_argument("task_root", type=portable_path)
     parser.add_argument("--run-id", help="default: latest unfinished run in this task")
@@ -167,6 +167,11 @@ def main() -> int:
     print(f"\nRecording run: {run_dir.name}")
     print(f"Current status: {run.get('status', 'UNKNOWN')}")
     interactive = not args.non_interactive
+    has_main = (
+        run.get("condition") == "AI_NATIVE"
+        or int(run.get("main_inference_count", 0)) > 0
+        or "main_model_product_visible" in run
+    )
 
     main_minutes = args.main_wall_minutes
     previously_reported_main_seconds = run.get("main_active_wall_seconds_reported")
@@ -180,7 +185,7 @@ def main() -> int:
                 f"{int(previously_reported_main_seconds) // 60}m "
                 f"{int(previously_reported_main_seconds) % 60}s"
             )
-    elif main_minutes is None and interactive:
+    elif main_minutes is None and interactive and has_main:
         cumulative_seconds = prompt_optional_time(
             "Cumulative Main active/compute time as Xm Ys "
             "(blank if unavailable): "
@@ -196,7 +201,7 @@ def main() -> int:
             main_usage = numeric_usage(parse_usage_input(args.main_usage_text), "Main usage")
         except ValueError as exc:
             raise SystemExit(f"invalid Main usage input: {exc}") from exc
-    if main_usage is None and interactive:
+    if main_usage is None and interactive and has_main:
         main_usage = prompt_usage("Main")
 
     executor_usage = usage_from_file(args.executor_usage_json, "executor usage")

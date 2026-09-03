@@ -1,0 +1,21 @@
+{
+  "version": "5.6.39",
+  "dic_core_views": [
+    "dic/README.md",
+    "dic/REQUESTS.md",
+    "dic/PLAN.md"
+  ],
+  "prompt_templates": [
+    "prompts/ORCHESTRATOR_INIT.md",
+    "prompts/WORKER.md",
+    "prompts/RESEARCH.md",
+    "prompts/VERIFIER.md"
+  ],
+  "notes": "One DIC per Phase. PLAN.md owns the durable prompt/dependency graph. Main authors the initial EPS/prompt graph; Orchestrator validates/model-tunes it and may issue bounded repair EPS attempts.",
+  "phase_package_templates": [
+    "phase/PHASE_MANIFEST.json",
+    "phase/EPS/eps_001/manifest.json",
+    "phase/EPS/eps_001/prompts/P01.md",
+    "phase/ORCHESTRATOR_START.md"
+  ]
+}

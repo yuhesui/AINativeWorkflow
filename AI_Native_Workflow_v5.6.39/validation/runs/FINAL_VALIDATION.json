@@ -1,0 +1,85 @@
+{
+  "required": {
+    ".ai-workflow/STATE.json": {
+      "present": true,
+      "bytes": 46166
+    },
+    ".ai-workflow/aw/hierarchy.py": {
+      "present": true,
+      "bytes": 34250
+    },
+    ".ai-workflow/tests/test_hierarchical_runtime.py": {
+      "present": true,
+      "bytes": 4045
+    },
+    "README.md": {
+      "present": true,
+      "bytes": 2274
+    },
+    "Quick Start.md": {
+      "present": true,
+      "bytes": 2949
+    },
+    "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex": {
+      "present": true,
+      "bytes": 38257
+    },
+    "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.pdf": {
+      "present": false,
+      "bytes": 0
+    },
+    "research/CLAIM_LEDGER.json": {
+      "present": true,
+      "bytes": 9619
+    },
+    "research/LITERATURE_AND_NOVELTY.md": {
+      "present": true,
+      "bytes": 5570
+    },
+    "experiments/EXPERIMENT_HANDOFF.md": {
+      "present": true,
+      "bytes": 1997
+    },
+    "submissions/meta_agents/main.tex": {
+      "present": true,
+      "bytes": 14678
+    },
+    "submissions/meta_agents/main.pdf": {
+      "present": false,
+      "bytes": 0
+    },
+    "submissions/who_verifies/main.tex": {
+      "present": true,
+      "bytes": 10551
+    },
+    "submissions/who_verifies/main.pdf": {
+      "present": true,
+      "bytes": 159589
+    },
+    "submissions/automlr/ELIGIBILITY_CHECK.md": {
+      "present": true,
+      "bytes": 1890
+    },
+    "submissions/automlr/main.tex": {
+      "present": true,
+      "bytes": 3995
+    },
+    "submissions/automlr/main.pdf": {
+      "present": true,
+      "bytes": 60478
+    },
+    "MAIN_REPORT.md": {
+      "present": true,
+      "bytes": 8071
+    },
+    "PACKAGE_HANDOFF.json": {
+      "present": true,
+      "bytes": 402
+    },
+    "build/BUILD_STATUS.json": {
+      "present": true,
+      "bytes": 18269
+    }
+  },
+  "all_required_present": false
+}

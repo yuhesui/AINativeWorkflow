@@ -1,0 +1,79 @@
+{
+  "package": "AI_Native_Workflow_v5.6.39_Full_Updated",
+  "package_version": "5.6.39",
+  "runtime_root": ".ai-workflow/",
+  "runtime_schema": "5.6.39",
+  "proper_name": "AI Native Workflow",
+  "generic_adjective": "AI-native",
+  "operative_boundary": "Only .ai-workflow/ is installed/passed as the workflow runtime; other folders are development/reference storage for the workflow project itself.",
+  "canonical_read_order": [
+    "00_READ_FIRST.md",
+    "CURRENT_STATE.md",
+    "ROADMAP.md (only when future work is needed)",
+    ".ai-workflow/README.md",
+    ".ai-workflow/docs/CORE.md",
+    ".ai-workflow/docs/MAIN.md",
+    "technical_report/AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.pdf",
+    ".ai-workflow/guides/DETAILED_WORKFLOW_GUIDE.md",
+    "validation/CURRENT_VALIDATION.md"
+  ],
+  "architecture": {
+    "hierarchy": "Goal -> Plan -> Phase -> DIC -> EPS -> Prompt/Run -> Action",
+    "core_scientific_workstreams": [
+      "Main",
+      "Theory",
+      "Experiment"
+    ],
+    "research": "cross-cutting decision-support capability",
+    "orchestrator": "repository-aware coding-agent execution surface",
+    "dic": "exactly one durable multi-view DIC per Phase",
+    "dic_core_views": [
+      "DIC/README.md",
+      "DIC/REQUESTS.md",
+      "DIC/PLAN.md"
+    ],
+    "verification_outcomes": [
+      "accept",
+      "repair",
+      "replan",
+      "escalate"
+    ],
+    "initial_eps_owner": "Main authors the initial EPS/prompt graph from the approved DIC/PLAN.md.",
+    "orchestrator_eps_role": "Orchestrator validates/model-tunes and executes the initial EPS; it may issue bounded superseding repair EPS revisions under an unchanged DIC.",
+    "phase_storage": "Project-local Phase materials live at repository-root phases/<phase_id>/, not inside .ai-workflow/.",
+    "phase_import": "aw phase import <zip> safely imports a Main-produced Phase package, validates the DIC/EPS package, scaffolds Phase evidence/report folders, and registers state."
+  },
+  "design_objective": "Reduce human supervisory attention required per unit of verified research progress while preserving scientific quality, evidence integrity, and human authority.",
+  "primary_current_outputs": {
+    "technical_report": "technical_report/AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.pdf",
+    "detailed_guide": ".ai-workflow/guides/DETAILED_WORKFLOW_GUIDE.md",
+    "meta_agents": "submissions/meta_agents/main.pdf",
+    "education_plan": "slides/NEURIPS_2026_EDUCATION_SLIDE_PLAN.md",
+    "validation": "validation/CURRENT_VALIDATION.md"
+  },
+  "current_status": "v5.6.39 initial-EPS ownership, root Phase filesystem, safe Phase ZIP import, long-form documentation, Education plan, and submission surfaces validated.",
+  "external_actions_performed": false,
+  "default_phase_tree": {
+    "DIC/": [
+      "README.md",
+      "REQUESTS.md",
+      "PLAN.md"
+    ],
+    "EPS/": "Main-authored initial EPS plus bounded repair EPS attempts",
+    "ORCHESTRATOR_START.md": "Phase-specific coding-agent starter",
+    "reports/": [
+      "PHASE_SUMMARY.md",
+      "VERIFICATION_<n>.md when formal verification occurs",
+      "FINAL_HANDOFF.md at terminal handoff"
+    ],
+    "results/": [
+      "KEY_RESULTS.json when key results are naturally structured",
+      "KEY_RESULTS.csv when a tabular representation is natural"
+    ],
+    "evidence/": [
+      "EVIDENCE_MANIFEST.json"
+    ],
+    "artifacts/": "generated scientific/technical artifacts",
+    "logs/": "raw execution logs"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "package_version": "5.6.37",
+  "runtime_schema": "5.6.37",
+  "runtime_tests": "17 passed",
+  "validate": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "recover": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "demo": {
+    "verification_sequence": [
+      "repair",
+      "accept"
+    ],
+    "stable_dic_across_attempts": true,
+    "retained_nodes": [
+      "collect",
+      "theory"
+    ]
+  },
+  "pdfs": {
+    "technical_report": {
+      "pages": 18,
+      "page_size": "595.276 x 841.89 pts (A4)"
+    },
+    "meta_agents": {
+      "pages": 7,
+      "page_size": "612 x 792 pts (letter)"
+    },
+    "who_verifies": {
+      "pages": 4,
+      "page_size": "612 x 792 pts (letter)"
+    },
+    "automlr": {
+      "pages": 3,
+      "page_size": "595.276 x 841.89 pts (A4)"
+    }
+  },
+  "meta_track": "Full Paper",
+  "meta_main_text_pages_approx": 5,
+  "attention_claim_status": "evaluation target only; no confirmed attention-efficiency result",
+  "external_actions_performed": false
+}

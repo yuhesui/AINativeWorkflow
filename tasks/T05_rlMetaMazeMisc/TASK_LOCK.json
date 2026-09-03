@@ -18,7 +18,7 @@
     "status": "BLOCKED"
   },
   "resource_policy_sha256": "c883ac10d0b6afed1e3d46c5ca9cf3a6d05de3380bb6479eb2c9130b8b32a9a8",
-  "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
+  "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
   "schema_version": 1,
   "sources": [
     {
@@ -51,9 +51,9 @@
       "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
     },
     "test_repo": {
-      "bytes": 151364,
-      "file_count": 54,
-      "tree_sha256": "0542934f164748c83d9e7938870d507059ce9f2ba3c39901a9da8b8b0e32b6a7"
+      "bytes": 223539,
+      "file_count": 67,
+      "tree_sha256": "8227adc7467b67cbce825df8c194986c33ef5aa9aa287dd4fd98ffbfb944f13a"
     }
   },
   "task_id": "T05",

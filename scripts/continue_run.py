@@ -212,6 +212,17 @@ def launch_command(run: dict, task_root: Path, handoff: Path, chat_url: str) -> 
     return command
 
 
+def direct_launch_command(run: dict, task_root: Path, prompt: Path) -> list[str]:
+    executor = str(run.get("executor") or ("CODEX" if run.get("ecosystem") == "OPENAI" else "CLAUDE"))
+    command = [
+        sys.executable, "-X", "utf8", str(ROOT / "scripts" / "launch_direct_goal.py"),
+        str(task_root), str(run["run_id"]), "--executor", executor, "--prompt", str(prompt),
+    ]
+    if executor == "CLAUDE":
+        command.extend(("--claude-model", str(run.get("active_executor_product_visible") or "claude-sonnet-5")))
+    return command
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Continue one accepted progressive checkpoint run.")
     parser.add_argument("task_root", type=portable_path)
@@ -262,6 +273,48 @@ def main() -> int:
     if result.returncode:
         return result.returncode
 
+    if run.get("condition") == "DIRECT":
+        prompt = run_dir / f"DIRECT_GOAL_CHECKPOINT_{checkpoint:02d}.md"
+        prompt.write_text(
+            "# Direct CLI Goal — continued cumulative scope\n\n"
+            "Treat the updated `TASK.md` and all currently revealed checkpoint instructions as the "
+            "approved Goal. Continue directly in the surviving repository without a Main chat or "
+            "AI-Native Workflow. Complete the cumulative requirements through the current checkpoint, "
+            "run legitimate visible tests, repair failures, preserve prior passing behavior, and stop "
+            "before any unrevealed checkpoint.\n",
+            encoding="utf-8",
+        )
+        run = load_json(run_path)
+        run.setdefault("direct_continuations", []).append({
+            "checkpoint": checkpoint,
+            "created_utc": datetime.now(timezone.utc).isoformat(),
+            "prompt": str(prompt),
+            "prompt_sha256": file_sha256(prompt),
+            "executor_return": str(executor_return),
+            "executor_return_sha256": file_sha256(executor_return),
+        })
+        run["main_inference_count"] = 0
+        run["status"] = "READY_EXECUTOR_CONTINUATION"
+        save_json(run_path, run)
+        launched = subprocess.run(direct_launch_command(run, task_root, prompt), cwd=ROOT, check=False)
+        graded = subprocess.run(
+            [sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
+             str(task_root), "--run-id", run_id],
+            cwd=ROOT,
+            check=False,
+        )
+        if launched.returncode == 0 and graded.returncode == 0:
+            updated = load_json(run_path)
+            latest = updated.get("latest_auto_grade")
+            if isinstance(latest, dict) and latest.get("all_checkpoints_graded"):
+                return subprocess.run(
+                    [sys.executable, "-X", "utf8", str(ROOT / "scripts" / "record_run.py"),
+                     str(task_root), "--run-id", run_id],
+                    cwd=ROOT,
+                    check=False,
+                ).returncode
+        return launched.returncode or graded.returncode
+
     input_zip, prompt = build_main_input(
         run_dir, workspace, run, checkpoint, previous, grade, executor_return
     )
@@ -277,6 +330,7 @@ def main() -> int:
         "executor_return_sha256": file_sha256(executor_return),
     }
     run.setdefault("main_continuations", []).append(continuation)
+    run["main_inference_count"] = int(run.get("main_inference_count", 1)) + 1
     run["status"] = "AWAITING_MAIN_CONTINUATION"
     save_json(run_path, run)
 

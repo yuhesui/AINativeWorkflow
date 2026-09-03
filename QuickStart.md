@@ -21,8 +21,11 @@ python3 -X utf8 scripts/update_ai_workflow.py
 
 e.g. tasks/T02_dag_execution/TESTING_STEPS.md
 
-3. Go to ChatGPT/ Claude (online)
-Run the Main Prompt + upload required document after running the start run command
+3. Run the selected condition
+
+Direct opens the coding CLI immediately with the task as its approved Goal; it does not use Main.
+AI-Native prints the two files to upload to ChatGPT/Claude and uses exactly one Main inference for
+the currently revealed scope before opening the coding CLI.
 
 e.g.
 
@@ -63,9 +66,8 @@ After the grader accepts a checkpoint, run the continuation command it prints. F
 python -X utf8 scripts/continue_run.py ".\tasks\T02_dag_execution" --run-id <RUN_ID>
 ```
 
-Paste the executor's final response when requested. The command reveals only the next checkpoint,
-creates one continuation ZIP and one fixed copy-paste Main prompt, then waits for Main's next
-complete handoff ZIP. Save that ZIP in the same run folder. It is validated and imported into the
-surviving workspace before the next executor session opens. Repeat for each remaining checkpoint;
-do not start a new run or reveal later checkpoints manually.
+Paste the executor's final response when requested. The command reveals only the next checkpoint.
+Direct opens the next coding-CLI Goal session without Main. AI-Native creates one continuation ZIP
+and fixed copy-paste prompt, then uses one Main inference to obtain the next complete active-Phase
+package. Repeat for each remaining checkpoint; never reveal a later checkpoint manually.
 

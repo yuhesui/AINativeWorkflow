@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Native Workflow experiment run record",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "package_hash",
+    "run_id",
+    "condition",
+    "task_family",
+    "task_seed",
+    "dependency_graph",
+    "model",
+    "artifacts",
+    "grader",
+    "outcomes",
+    "costs",
+    "termination_reason",
+    "evidence_level"
+  ],
+  "properties": {
+    "condition": {
+      "enum": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C1V",
+        "C2EXTRA"
+      ]
+    },
+    "evidence_level": {
+      "enum": [
+        "smoke",
+        "pilot",
+        "confirmatory",
+        "post_hoc"
+      ]
+    },
+    "outcomes": {
+      "type": "object"
+    },
+    "costs": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "array"
+    },
+    "dependency_graph": {
+      "type": "object"
+    }
+  }
+}
