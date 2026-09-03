@@ -46,9 +46,11 @@ For AI-Native, the same command pauses for one Main inference:
    frozen Linux sidecar and Codex routes task build/test/runtime commands through that helper, where
    the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
 9. When the CLI exits, the starter automatically runs the frozen private grader outside the
-   workspace and stores its raw output under the run's `evidence/grader/` directory. It then opens
-   the run recorder. AI-Native reuses the already recorded Main time; Direct does not request Main
-   metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
+   workspace and stores its raw output under the run's `evidence/grader/` directory. For a
+   progressive Direct run, an accepted incomplete grade automatically resumes Codex at the next
+   authorized checkpoint; the recorder opens only after the final checkpoint. AI-Native returns to
+   the operator for the next Main inference. AI-Native reuses the already recorded Main time;
+   Direct does not request Main metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
    either JSON or the complete product-visible `Token usage: total=...` line. When pricing is
    available, the pipeline records and prints a standard API-equivalent estimate; this is not a
    claim about the incremental charge for a ChatGPT, Codex, or Claude subscription.
@@ -87,22 +89,24 @@ Codex and asks for the exact installed Sonnet model identifier.
 ## Checkpoints
 
 This task has 8 cumulative checkpoints. Only checkpoint 1 is initially visible.
-After the private grader accepts the current checkpoint, continue the same run with the single
-command printed by the grader:
+For Direct, the starter automatically grades each checkpoint, reveals exactly the next authorized
+checkpoint, resumes the Codex session in the same run workspace, and repeats through checkpoint
+8. No Main chat or repeated continuation command is required. If a Direct run is
+interrupted after an accepted checkpoint, resume the entire remaining checkpoint loop with:
 
 ```shell
 python -X utf8 scripts/continue_run.py "./tasks/T04_recli" --run-id <RUN_ID>
 ```
 
-The continuation command asks for the executor's final response and reveals exactly the next
-checkpoint. Direct immediately opens another direct CLI Goal session with no Main. AI-Native uses
-exactly one Main inference for the newly revealed scope, imports the returned complete active-Phase
-package, opens the orchestrator, and grades the new checkpoint.
+Direct captures checkpoint evidence from durable session/grader metadata and does not ask the
+operator to paste the executor's final response. The continuation command keeps advancing after
+each accepted Direct checkpoint until completion or the frozen state-loss boundary.
 
-Repeat `continue_run.py` after each accepted checkpoint until all 8 checkpoints
-are graded. Never give Main the private grader or a later checkpoint early. A checkpoint does not
-force a matching Phase number: in AI-Native, Main preserves the existing Plan and chooses the next
-justified Phase decomposition itself.
+For AI-Native, run the printed continuation command after each accepted checkpoint. It requests
+exactly one Main inference for that newly revealed scope, imports the returned complete active-Phase
+package, opens the orchestrator, and grades the new checkpoint. Never give Main the private grader
+or a later checkpoint early. A checkpoint does not force a matching Phase number: Main preserves
+the existing Plan and chooses the next justified Phase decomposition itself.
 
 ## State-loss variant
 

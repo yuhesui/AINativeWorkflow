@@ -46,9 +46,11 @@ For AI-Native, the same command pauses for one Main inference:
    frozen Linux sidecar and Codex routes task build/test/runtime commands through that helper, where
    the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
 9. When the CLI exits, the starter automatically runs the frozen private grader outside the
-   workspace and stores its raw output under the run's `evidence/grader/` directory. It then opens
-   the run recorder. AI-Native reuses the already recorded Main time; Direct does not request Main
-   metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
+   workspace and stores its raw output under the run's `evidence/grader/` directory. For a
+   progressive Direct run, an accepted incomplete grade automatically resumes Codex at the next
+   authorized checkpoint; the recorder opens only after the final checkpoint. AI-Native returns to
+   the operator for the next Main inference. AI-Native reuses the already recorded Main time;
+   Direct does not request Main metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
    either JSON or the complete product-visible `Token usage: total=...` line. When pricing is
    available, the pipeline records and prints a standard API-equivalent estimate; this is not a
    claim about the incremental charge for a ChatGPT, Codex, or Claude subscription.

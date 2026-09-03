@@ -69,6 +69,27 @@ def capture_executor_return(run_dir: Path, checkpoint: int, supplied: Path | Non
         print("The executor return cannot be empty. Paste it again, then enter END.")
 
 
+def record_direct_checkpoint_evidence(run_dir: Path, checkpoint: int, run: dict, grade: dict) -> Path:
+    """Persist machine-captured Direct evidence without an operator paste step."""
+    destination = run_dir / f"EXECUTOR_RETURN_CHECKPOINT_{checkpoint:02d}.md"
+    sessions = run.get("executor_sessions")
+    latest_session = sessions[-1] if isinstance(sessions, list) and sessions else None
+    payload = {
+        "checkpoint": checkpoint,
+        "capture_mode": "durable_workspace_and_session_metadata",
+        "note": "The interactive CLI final response is not separately captured.",
+        "latest_executor_session": latest_session,
+        "grader": safe_grade_summary(grade),
+    }
+    destination.write_text(
+        "# Direct checkpoint evidence\n\n```json\n"
+        + json.dumps(payload, indent=2, sort_keys=True)
+        + "\n```\n",
+        encoding="utf-8",
+    )
+    return destination
+
+
 def safe_grade_summary(grade: dict) -> dict:
     fields = (
         "schema_version", "task_id", "run_id", "graded_utc", "grader_ok",
@@ -212,7 +233,12 @@ def launch_command(run: dict, task_root: Path, handoff: Path, chat_url: str) -> 
     return command
 
 
-def direct_launch_command(run: dict, task_root: Path, prompt: Path) -> list[str]:
+def direct_launch_command(
+    run: dict,
+    task_root: Path,
+    prompt: Path,
+    qualification_root: Path | None,
+) -> list[str]:
     executor = str(run.get("executor") or ("CODEX" if run.get("ecosystem") == "OPENAI" else "CLAUDE"))
     command = [
         sys.executable, "-X", "utf8", str(ROOT / "scripts" / "launch_direct_goal.py"),
@@ -220,6 +246,10 @@ def direct_launch_command(run: dict, task_root: Path, prompt: Path) -> list[str]
     ]
     if executor == "CLAUDE":
         command.extend(("--claude-model", str(run.get("active_executor_product_visible") or "claude-sonnet-5")))
+    else:
+        command.append("--resume-session")
+    if qualification_root:
+        command.extend(("--qualification-root", str(qualification_root.resolve())))
     return command
 
 
@@ -228,11 +258,13 @@ def main() -> int:
     parser.add_argument("task_root", type=portable_path)
     parser.add_argument("--run-id")
     parser.add_argument("--executor-return", type=portable_path)
+    parser.add_argument("--qualification-root", type=portable_path)
     args = parser.parse_args()
 
     task_root = args.task_root.resolve()
     run_id = args.run_id or latest_unfinished_run(task_root)
-    run_dir = task_root / "runs" / run_id
+    run_base = args.qualification_root.resolve() if args.qualification_root else task_root
+    run_dir = run_base / "runs" / run_id
     run_path = run_dir / "RUN.json"
     workspace = run_dir / "workspace"
     if not run_path.is_file() or not workspace.is_dir():
@@ -262,7 +294,10 @@ def main() -> int:
             "start the required fresh-Main recovery flow from READY_FOR_SCORED_RUNS.md."
         )
 
-    executor_return = capture_executor_return(run_dir, previous, args.executor_return)
+    if run.get("condition") == "DIRECT":
+        executor_return = record_direct_checkpoint_evidence(run_dir, previous, run, grade)
+    else:
+        executor_return = capture_executor_return(run_dir, previous, args.executor_return)
     checkpoint = previous + 1
     reveal = [
         sys.executable, "-X", "utf8", str(ROOT / "scripts" / "reveal_checkpoint.py"),
@@ -296,10 +331,30 @@ def main() -> int:
         run["main_inference_count"] = 0
         run["status"] = "READY_EXECUTOR_CONTINUATION"
         save_json(run_path, run)
-        launched = subprocess.run(direct_launch_command(run, task_root, prompt), cwd=ROOT, check=False)
+        session_count = len(run.get("executor_sessions", []))
+        launched = subprocess.run(
+            direct_launch_command(run, task_root, prompt, args.qualification_root),
+            cwd=ROOT,
+            check=False,
+        )
+        after_launch = load_json(run_path)
+        if launched.returncode and len(after_launch.get("executor_sessions", [])) == session_count:
+            after_launch["status"] = "INVALID_INFRASTRUCTURE"
+            after_launch["invalidation_reason"] = (
+                "Direct continuation executor did not start; grading was skipped."
+            )
+            after_launch["infrastructure_failure_utc"] = datetime.now(timezone.utc).isoformat()
+            save_json(run_path, after_launch)
+            print("Direct continuation did not start; marked INVALID_INFRASTRUCTURE and skipped grading.")
+            return launched.returncode
+        grade_command = [
+            sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
+            str(task_root), "--run-id", run_id,
+        ]
+        if args.qualification_root:
+            grade_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
         graded = subprocess.run(
-            [sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
-             str(task_root), "--run-id", run_id],
+            grade_command,
             cwd=ROOT,
             check=False,
         )
@@ -307,12 +362,30 @@ def main() -> int:
             updated = load_json(run_path)
             latest = updated.get("latest_auto_grade")
             if isinstance(latest, dict) and latest.get("all_checkpoints_graded"):
-                return subprocess.run(
-                    [sys.executable, "-X", "utf8", str(ROOT / "scripts" / "record_run.py"),
-                     str(task_root), "--run-id", run_id],
-                    cwd=ROOT,
-                    check=False,
-                ).returncode
+                record_command = [
+                    sys.executable, "-X", "utf8", str(ROOT / "scripts" / "record_run.py"),
+                    str(task_root), "--run-id", run_id,
+                ]
+                if args.qualification_root:
+                    record_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
+                return subprocess.run(record_command, cwd=ROOT, check=False).returncode
+            loss_boundary = {"T03": 3, "T04": 4}.get(task_id)
+            if run.get("state_mode") == "STATE_LOSS" and checkpoint == loss_boundary:
+                print(
+                    "Frozen state-loss boundary reached. Capture recovery state before revealing "
+                    "the next checkpoint."
+                )
+                return 0
+            continuation_command = [
+                sys.executable, "-X", "utf8", str(Path(__file__).resolve()),
+                str(task_root), "--run-id", run_id,
+            ]
+            if args.qualification_root:
+                continuation_command.extend(
+                    ("--qualification-root", str(args.qualification_root.resolve()))
+                )
+            print("\nCheckpoint accepted; automatically continuing to the next Direct checkpoint.")
+            return subprocess.run(continuation_command, cwd=ROOT, check=False).returncode
         return launched.returncode or graded.returncode
 
     input_zip, prompt = build_main_input(
