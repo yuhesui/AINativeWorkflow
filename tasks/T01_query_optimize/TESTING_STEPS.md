@@ -3,8 +3,9 @@
 Run these commands in a system terminal from the evaluation repository root—not in a ChatGPT,
 Codex, or Claude prompt. The starter keeps the operator flow to one command. It creates a unique UTC-dated folder under
 `runs/` and opens the interactive CLI in the run's `workspace/`. Direct goes straight to the coding
-CLI as one approved-Goal run. AI-Native first performs exactly one Main inference for the currently
-revealed scope and imports Main's complete Phase package.
+CLI as one approved-Goal run. AI-Native performs exactly one initial Main inference, imports Main's
+complete Phase package, and then automatically continues accepted progressive checkpoints using the
+surviving workflow state.
 
 ## Direct baseline with Codex
 
@@ -47,9 +48,9 @@ For AI-Native, the same command pauses for one Main inference:
    the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
 9. When the CLI exits, the starter automatically runs the frozen private grader outside the
    workspace and stores its raw output under the run's `evidence/grader/` directory. For a
-   progressive Direct run, an accepted incomplete grade automatically resumes Codex at the next
-   authorized checkpoint; the recorder opens only after the final checkpoint. AI-Native returns to
-   the operator for the next Main inference. AI-Native reuses the already recorded Main time;
+   progressive run in either condition, an accepted incomplete grade automatically resumes the CLI
+   at the next authorized checkpoint; the recorder opens only after the final checkpoint. AI-Native
+   does not return to Main between ordinary checkpoints and reuses the already recorded Main time;
    Direct does not request Main metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
    either JSON or the complete product-visible `Token usage: total=...` line. When pricing is
    available, the pipeline records and prints a standard API-equivalent estimate; this is not a
