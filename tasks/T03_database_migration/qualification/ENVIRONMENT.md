@@ -19,3 +19,9 @@ The authoritative dependency and image details for this task are below.
   `4d38d30-dirty`, task revision `v5`.
 - WSL qualification environment uses Python 3.12.3 and pytest 9.0.2.
 - The five cumulative checkpoints are private and sequentially revealable.
+
+On 2026-09-04, the upstream environment's moving `npm@latest` installation
+resolved to npm 12.0.2, which requires Node 22.22.2 or newer and rejected the
+upstream-pinned Node 22.12.0. The scored harness therefore uses
+`qualification/environment/Dockerfile`, whose sole dependency change pins npm
+10.9.0. The immutable upstream Dockerfile remains in `original_task/`.

@@ -33,7 +33,9 @@ def dockerfile_sha256(path: Path) -> str:
 def environment_spec(task_root: Path) -> dict | None:
     if not task_root.name.startswith(SUPPORTED_TASK_PREFIXES):
         return None
-    dockerfile = task_root / "original_task" / "environment" / "Dockerfile"
+    upstream_dockerfile = task_root / "original_task" / "environment" / "Dockerfile"
+    qualified_dockerfile = task_root / "qualification" / "environment" / "Dockerfile"
+    dockerfile = qualified_dockerfile if qualified_dockerfile.is_file() else upstream_dockerfile
     task_toml = task_root / "original_task" / "task.toml"
     if not dockerfile.is_file() or not task_toml.is_file():
         raise RuntimeError(f"frozen task environment is incomplete: {task_root}")
@@ -45,6 +47,8 @@ def environment_spec(task_root: Path) -> dict | None:
         "dockerfile": dockerfile,
         "build_context": dockerfile.parent,
         "dockerfile_sha256": digest,
+        "upstream_dockerfile": upstream_dockerfile,
+        "environment_adapted": dockerfile != upstream_dockerfile,
         "image_tag": f"ai-native-eval-{task_id}:{digest[:12]}",
         "cpus": environment.get("cpus", 1),
         "memory_mb": environment.get("memory_mb", 2048),
@@ -179,6 +183,8 @@ def ensure_sidecar(task_root: Path, run_id: str, workspace: Path) -> dict | None
         "host_workspace": str(workspace),
         "dockerfile": str(spec["dockerfile"]),
         "dockerfile_sha256": spec["dockerfile_sha256"],
+        "upstream_dockerfile": str(spec["upstream_dockerfile"]),
+        "environment_adapted": spec["environment_adapted"],
         "image_tag": image_tag,
         "image_id": image_id,
         "image_built_this_session": built,
@@ -193,7 +199,7 @@ def stop_sidecar(record: object) -> None:
     name = str(record.get("container_name", ""))
     if not name:
         return
-    result = _docker(["stop", "--time", "10", name], capture_output=True)
+    result = _docker(["stop", "--timeout", "10", name], capture_output=True)
     if result.returncode and "No such container" not in result.stderr:
         raise RuntimeError(f"failed to stop task environment sidecar: {result.stderr.strip()}")
     record["status"] = "STOPPED"
