@@ -449,6 +449,26 @@ def finish_run(
             grade_command.extend(("--qualification-root", str(qualification_root.resolve())))
         print("\nRunning frozen private grader...")
         grade_result = subprocess.run(grade_command, cwd=ROOT, check=False).returncode
+    if result == 0 and grade_result == 0 and not skip_auto_grade:
+        run_base = qualification_root.resolve() if qualification_root else task_root
+        run_path = run_base / "runs" / run_id / "RUN.json"
+        run = load_json(run_path)
+        latest_grade = run.get("latest_auto_grade")
+        if (
+            run.get("condition") == "DIRECT"
+            and run.get("task_id") in {"T02", "T03", "T04"}
+            and isinstance(latest_grade, dict)
+            and latest_grade.get("task_completion") == "INCOMPLETE_CHECKPOINTS"
+            and latest_grade.get("accepted_for_next_reveal")
+        ):
+            command = [
+                sys.executable, "-X", "utf8", str(ROOT / "scripts" / "continue_run.py"),
+                str(task_root), "--run-id", run_id,
+            ]
+            if qualification_root:
+                command.extend(("--qualification-root", str(qualification_root.resolve())))
+            print("\nCheckpoint accepted; automatically continuing the Direct run.")
+            return subprocess.run(command, cwd=ROOT, check=False).returncode
     if not skip_post_run_record:
         record_command = [
             sys.executable, "-X", "utf8", str(ROOT / "scripts" / "record_run.py"),

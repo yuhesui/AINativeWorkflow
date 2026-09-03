@@ -30,6 +30,11 @@ def main() -> int:
     parser.add_argument("--claude-model")
     parser.add_argument("--usage-json", type=Path)
     parser.add_argument("--skip-usage-prompt", action="store_true")
+    parser.add_argument(
+        "--resume-session",
+        action="store_true",
+        help="resume the most recent Codex session scoped to this run workspace",
+    )
     parser.add_argument("--qualification-root", type=Path)
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
@@ -76,10 +81,16 @@ def main() -> int:
             "mounted at `/app` inside that environment."
         )
     if args.executor == "CODEX":
-        command = [
-            "codex", "-C", str(workspace), "-m", executor_model,
-            "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
-        ]
+        if args.resume_session:
+            command = [
+                "codex", "resume", "--last", "-C", str(workspace), "-m", executor_model,
+                "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
+            ]
+        else:
+            command = [
+                "codex", "-C", str(workspace), "-m", executor_model,
+                "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
+            ]
     else:
         command = [
             "claude", "--model", executor_model, "--effort", "high",
@@ -110,7 +121,8 @@ def main() -> int:
     started_utc = utc_now()
     run.setdefault("started_utc", started_utc)
     run["status"] = "IN_PROGRESS"
-    run["execution_mode"] = "DIRECT_CLI_GOAL"
+    execution_mode = "DIRECT_CLI_GOAL_RESUME" if args.resume_session else "DIRECT_CLI_GOAL"
+    run["execution_mode"] = execution_mode
     run["main_inference_count"] = 0
     run["active_executor_product_visible"] = executor_model
     run["active_executor_effort"] = required_effort
@@ -134,7 +146,7 @@ def main() -> int:
         "session_id": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + f"-direct-{sequence:02d}",
         "run_id": args.run_id,
         "handoff_id": None,
-        "execution_mode": "DIRECT_CLI_GOAL",
+        "execution_mode": execution_mode,
         "executor": args.executor,
         "executor_model_product_visible": executor_model,
         "executor_effort": required_effort,
