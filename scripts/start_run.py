@@ -462,6 +462,25 @@ def finish_run(
     return result or grade_result
 
 
+def stop_after_infrastructure_failure(run_path: Path, result: int) -> bool:
+    """Record a pre-executor failure and prevent grading an untouched workspace."""
+    if result == 0:
+        return False
+    run = load_json(run_path)
+    if run.get("executor_sessions"):
+        return False
+    run["status"] = "INVALID_INFRASTRUCTURE"
+    run["invalidation_reason"] = (
+        "Executor session did not start; environment setup or CLI launch failed "
+        f"with exit code {result}. Workspace was not graded."
+    )
+    run["infrastructure_failure_utc"] = utc_now()
+    save_json(run_path, run)
+    print("\nExecutor did not start. Marked run INVALID_INFRASTRUCTURE; skipping grader and recorder.")
+    print(f"Run metadata: {run_path}")
+    return True
+
+
 def record_handoff_validation(run_path: Path, handoff: Path, return_code: int) -> None:
     run = load_json(run_path)
     attempts = run.setdefault("handoff_validation_attempts", [])
@@ -623,6 +642,8 @@ def main() -> int:
             qualification_root=args.qualification_root,
         )
         print(f"\nRun metadata: {run_path}")
+        if stop_after_infrastructure_failure(run_path, result):
+            return result
         return finish_run(
             task_root,
             run_id,
@@ -695,6 +716,8 @@ def main() -> int:
         qualification_root=args.qualification_root,
     )
     print(f"\nRun metadata: {run_path}")
+    if stop_after_infrastructure_failure(run_path, result):
+        return result
     return finish_run(
         task_root,
         run_id,
