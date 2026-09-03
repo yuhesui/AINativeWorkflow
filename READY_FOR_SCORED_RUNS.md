@@ -91,15 +91,21 @@ Main chat locator in `RUN.json`, and opens the frozen interactive Codex CLI or
 Claude Code CLI in the workspace. The ZIP is transport for canonical state,
 not a second workflow surface.
 
-After an accepted progressive checkpoint, run the exact `scripts/continue_run.py` command printed
-by the grader. It captures the executor's final response, reveals only the immediate next
-checkpoint, and creates a safe `MAIN_CONTINUE_INPUT_CHECKPOINT_XX.zip` containing the newly
-authorized instruction, sanitized grader summary, executor return, and current agent-visible
-workspace. It also creates one fixed, fully copy-paste `MAIN_CONTINUE_PROMPT_CHECKPOINT_XX.md`.
-For Direct, the continuation launcher bypasses Main and immediately opens another direct Goal
-session. For AI-Native, upload the continuation ZIP and paste its prompt into the same Main chat;
-this is one Main inference for that newly revealed scope. The launcher validates and imports the
-new complete Phase package, opens the frozen executor, and grades the cumulative checkpoint.
+After an accepted progressive checkpoint, Direct automatically reveals only the immediate next
+checkpoint, resumes the Codex session scoped to the same run workspace, and repeats until every
+checkpoint is graded or a frozen state-loss boundary is reached. Direct captures durable
+session/grader evidence automatically and does not ask for an executor-response paste. If that
+automatic loop is interrupted, the printed `scripts/continue_run.py` command resumes the entire
+remaining Direct loop rather than advancing only one checkpoint.
+
+For AI-Native, run the exact `scripts/continue_run.py` command printed by the grader after each
+accepted checkpoint. It captures the executor's final response and creates a safe
+`MAIN_CONTINUE_INPUT_CHECKPOINT_XX.zip` containing the newly authorized instruction, sanitized
+grader summary, executor return, and current agent-visible workspace. It also creates one fixed,
+fully copy-paste `MAIN_CONTINUE_PROMPT_CHECKPOINT_XX.md`. Upload the continuation ZIP and paste its
+prompt into the same Main chat; this is one Main inference for that newly revealed scope. The
+launcher validates and imports the new complete Phase package, opens the frozen executor, and
+grades the cumulative checkpoint.
 Checkpoint number does not prescribe Phase number; Main retains control of Phase decomposition.
 
 Before import, the starter performs a dry validation of the ZIP structure,

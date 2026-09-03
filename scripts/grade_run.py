@@ -454,11 +454,16 @@ def main() -> int:
     append_grade(run_path, result)
     print(json.dumps(result, indent=2, sort_keys=True))
     if task_id in SLOP_TASKS and not result["all_checkpoints_graded"]:
-        print(
-            "\nCheckpoint graded. Continue the same run with:\n"
-            f"{sys.executable} -X utf8 scripts/continue_run.py \"{task_root}\" "
-            f"--run-id {args.run_id}"
-        )
+        if run.get("condition") == "DIRECT":
+            print("\nCheckpoint graded and authorized for automatic Direct continuation.")
+        else:
+            command = (
+                f"{sys.executable} -X utf8 scripts/continue_run.py \"{task_root}\" "
+                f"--run-id {args.run_id}"
+            )
+            if args.qualification_root:
+                command += f' --qualification-root "{args.qualification_root.resolve()}"'
+            print("\nCheckpoint graded. Continue the same run with:\n" + command)
     return 0
 
 
