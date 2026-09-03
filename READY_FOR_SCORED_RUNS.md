@@ -1,5 +1,12 @@
 # Scored-run operations and readiness gates
 
+> **Protocol-revision gate:** The current harness implements the operator-requested Direct
+> condition as a coding-CLI Goal run with zero Main inferences. That differs from the still-frozen
+> definitions in `protocol/01_CONDITIONS.md`, `protocol/04_MODEL_POLICY.md`, and
+> `EXPERIMENT_FREEZE.yaml`, which assign Main to both conditions. Do not use this revised Direct
+> harness for a scored row until an explicit protocol revision freezes the new condition and matched
+> budgets. Do not pool earlier Main-based Direct runs with the revised zero-Main condition.
+
 Repository-wide qualification status: **QUALIFIED_WITH_BLOCKERS**.
 
 T1, T2, T3, T4, and T6 have qualified environments and graders. T5 and T7
