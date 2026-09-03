@@ -504,11 +504,17 @@ def main() -> int:
         )
         if environment_spec(task_root) is not None:
             bootstrap += (
-                " This repository uses its frozen Linux task environment through the approved "
-                "sidecar. Run every task build, test, and runtime command through "
-                "`python .evaluation/run_in_env.py exec-self -- <command>`. The host repository "
-                "is bind-mounted at `/app` inside that environment; do not create or copy a host "
-                "virtual environment."
+                " The harness has already provisioned and started the frozen Linux task "
+                "environment. Begin substantive task work immediately and run task build, test, "
+                "and runtime commands through `python .evaluation/run_in_env.py exec-self -- "
+                "<command>`. Treat that wrapper as the task-command interface; do not inspect or "
+                "manage Docker, WSL, daemon sockets, groups, images, containers, sidecar lifecycle, "
+                "or the already selected model route, and do not ask the operator to confirm or "
+                "start them. If an actually required wrapper command fails, retry it once and "
+                "preserve the exact output. Continue repository work that does not require the "
+                "failed command, and report an infrastructure block only if the repeated failure "
+                "prevents a current acceptance criterion. The host repository is bind-mounted at "
+                "`/app` inside that environment; do not create or copy a host virtual environment."
             )
         if args.executor == "CODEX":
             command = [

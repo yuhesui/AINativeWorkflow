@@ -117,7 +117,7 @@ def write_main_prompt(
 
 A package with missing or different binding values will be rejected before import.
 """
-    interaction_guidance = """Interaction policy: use exactly one Main inference for the complete currently revealed scope. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. Never cross an unrevealed-checkpoint gate."""
+    interaction_guidance = """Interaction policy: use exactly one Main inference for the complete currently revealed scope. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. Never cross an unrevealed-checkpoint gate. The harness provisions and starts the task environment before the executor opens: make the Orchestrator start substantive work immediately through `.evaluation/run_in_env.py`, without Docker/WSL/sidecar/model-route preflight or operator-confirmation gates."""
     loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
     body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
     text = f"""# Main chat prompt
