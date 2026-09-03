@@ -2,9 +2,9 @@
 
 Run these commands in a system terminal from the evaluation repository root—not in a ChatGPT,
 Codex, or Claude prompt. The starter keeps the operator flow to one command. It creates a unique UTC-dated folder under
-`runs/`, packages the Main inputs in that folder, tells you exactly which files to upload, records
-Main time/effort and the chat link, accepts the downloaded handoff, and opens the interactive CLI
-in the run's `workspace/`.
+`runs/` and opens the interactive CLI in the run's `workspace/`. Direct goes straight to the coding
+CLI as one approved-Goal run. AI-Native first performs exactly one Main inference for the currently
+revealed scope and imports Main's complete Phase package.
 
 ## Direct baseline with Claude Code
 
@@ -20,31 +20,35 @@ python -X utf8 scripts/start_run.py "./tasks/T02_dag_execution" --condition AI_N
 
 On macOS, use `python3` in place of `python` if that is the installed interpreter command.
 
-The command remains open while you use Main:
+For Direct, the command immediately opens Claude Code at `workspace/` with `DIRECT_GOAL.md`. There is no
+Main chat, Main input ZIP, chat link, or Main token/time prompt.
+
+For AI-Native, the same command pauses for one Main inference:
 
 1. Open the printed run folder.
 2. Upload `MAIN_INPUT.zip` and paste `MAIN_PROMPT.md` into a fresh Main chat.
 3. For AI-Native only, also upload the printed root `AI_WORKFLOW_RUNTIME.zip` as instructed by
    `MAIN_PROMPT.md`.
-4. Back in the waiting command, enter Main's total time for the single prompt and handoff as `Xm Ys`
-   (for example, `12m 34s`). This is recorded once before executor launch in both conditions.
+4. Back in the waiting command, enter Main's total time for the single inference as `Xm Ys`
+   (for example, `12m 34s`).
    Invalid time or effort entries are requested again. For OpenAI effort, press Enter for `high`,
    enter `xh` or `xhigh` for `xhigh`, or enter `pro` for `pro`.
 5. Paste the Main-chat link. A normal or shared Claude link is accepted by default; use
-   `--reject-shared-chat-link` only when the run requires a private URL. Create or refresh the
-   shared snapshot after Main produces the handoff, because later messages are not added automatically.
-6. Save Main's downloaded executor ZIP directly in that run folder and press Enter.
+   `--reject-shared-chat-link` only when the run requires a private URL.
+6. Save Main's downloaded complete Phase ZIP directly in that run folder and press Enter.
    `MAIN_HANDOFF.zip` is preferred, but a unique alternate `.zip` download name is accepted.
 7. The starter validates the package before import. If rejected, overwrite it or save the corrected
    ZIP there under a new name, then press Enter; the workspace has not been changed.
-8. Claude Code opens interactively, already rooted at the run's `workspace/` and pointed at Main's prompt.
+8. Claude Code opens interactively, already rooted at the run's `workspace/` and pointed at the Phase
+   `ORCHESTRATOR_START.md`. The package must include the full Phase manifest, all DIC views, the
+   complete initial EPS graph, and one substantive prompt file per EPS node.
    The progressive coding workspace includes `.evaluation/run_in_env.py`; the launcher starts the
    frozen Linux sidecar and Claude Code routes task build/test/runtime commands through that helper, where
    the same host workspace is mounted at `/app`. Do not copy or archive a host `.venv` as setup.
 9. When the CLI exits, the starter automatically runs the frozen private grader outside the
    workspace and stores its raw output under the run's `evidence/grader/` directory. It then opens
-   the run recorder, which reuses the already recorded Main time without asking again. Enter any
-   reported Main tokens and missing executor usage. Usage accepts
+   the run recorder. AI-Native reuses the already recorded Main time; Direct does not request Main
+   metrics. Enter any reported Main tokens when applicable and missing executor usage. Usage accepts
    either JSON or the complete product-visible `Token usage: total=...` line. When pricing is
    available, the pipeline records and prints a standard API-equivalent estimate; this is not a
    claim about the incremental charge for a ChatGPT, Codex, or Claude subscription.
@@ -55,7 +59,7 @@ local paths. If the ignored archive or expanded runtimes are missing after check
 reconstructs them from the tracked configured source package automatically;
 `python -X utf8 scripts/update_ai_workflow.py` deliberately rebuilds and validates every copy.
 
-`MAIN_INPUT.zip` preserves the complete agent-visible repository tree, including ordinary
+For AI-Native, `MAIN_INPUT.zip` preserves the complete agent-visible repository tree, including ordinary
 subfolders, but excludes `.ai-workflow/` in both conditions. It has no special internal JSON
 schema. By contrast, Main's returned handoff ZIP is validated against the exact file and manifest
 contract embedded in `MAIN_PROMPT.md`. Its package may be at ZIP root or below exactly one wrapper
@@ -69,7 +73,8 @@ missing or stale values before changing the workspace.
 
 Every invocation gets a name such as
 `run_20260901T153000Z_T02_ANTHROPIC_DIRECT_NORMAL`, so reruns never overwrite one another.
-The run root contains `RUN.json`, `MAIN_INPUT.zip`, `MAIN_PROMPT.md`, and the downloaded handoff ZIP.
+The Direct run root contains `RUN.json` and `DIRECT_GOAL.md`. The AI-Native run root additionally
+contains `MAIN_INPUT.zip`, `MAIN_PROMPT.md`, and the downloaded whole-Phase handoff ZIP.
 `RUN.json` records the hash and path of the shared workflow archive for AI-Native runs, so no
 per-run runtime duplicate is created. It is the single evolving metadata record for the Main link,
 model route, timestamps, executor sessions, wall time, usage, and hashes. The initial repository is
@@ -83,9 +88,22 @@ OpenAI row.
 ## Checkpoints
 
 This task has 3 cumulative checkpoints. Only checkpoint 1 is initially visible.
-After the private grader accepts the current checkpoint, reveal exactly the next checkpoint with
-`scripts/reveal_checkpoint.py`. Use the timestamped run folder's `workspace/`; never give Main the
-private grader or a later checkpoint early.
+After the private grader accepts the current checkpoint, continue the same run with the single
+command printed by the grader:
+
+```shell
+python -X utf8 scripts/continue_run.py "./tasks/T02_dag_execution" --run-id <RUN_ID>
+```
+
+The continuation command asks for the executor's final response and reveals exactly the next
+checkpoint. Direct immediately opens another direct CLI Goal session with no Main. AI-Native uses
+exactly one Main inference for the newly revealed scope, imports the returned complete active-Phase
+package, opens the orchestrator, and grades the new checkpoint.
+
+Repeat `continue_run.py` after each accepted checkpoint until all 3 checkpoints
+are graded. Never give Main the private grader or a later checkpoint early. A checkpoint does not
+force a matching Phase number: in AI-Native, Main preserves the existing Plan and chooses the next
+justified Phase decomposition itself.
 
 
 ## Finish

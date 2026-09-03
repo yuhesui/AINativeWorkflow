@@ -16,8 +16,8 @@
     "scored_run_created": false,
     "status": "BLOCKED"
   },
-  "resource_policy_sha256": "5f6cf12183000d9887eef9cbbb6e3deed88726c2060aabb2cdc34fc5e95a1fa5",
-  "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
+  "resource_policy_sha256": "6d4415f6f66d3c21de4b14969748e8fbf9b10f230f0725fbccb732d35f384d53",
+  "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
   "schema_version": 1,
   "sources": [
     {
@@ -31,9 +31,9 @@
   ],
   "surfaces": {
     "original_task": {
-      "bytes": 92841066,
-      "file_count": 785,
-      "tree_sha256": "95d25e96ae2c5e54384ef932fcb34ba6a844ac87b5acbfee96e3b0b983cd462b"
+      "bytes": 293346296,
+      "file_count": 775,
+      "tree_sha256": "51dfeba56136ebd04ece98a9a0f97ee570fa3f2a6a27514822e9b3ded4e1b46a"
     },
     "private_eval": {
       "bytes": 1230553,
@@ -41,9 +41,9 @@
       "tree_sha256": "dcad5611f94103cb1732ccf97996dc7b3a436731c1d8b44424bdf5a55ba3954d"
     },
     "reference_agent_visible": {
-      "bytes": 4053918,
+      "bytes": 4055287,
       "file_count": 13,
-      "tree_sha256": "07e00bb8c1fe95a7ef8f881a88349a5d3f1feea88decf127d5497692e4eea92a"
+      "tree_sha256": "0296fbad6f5d6c83c7d8bc97de12a9c79df0449a5351e2a774324c2f5cee4a91"
     },
     "reference_provenance_only": {
       "bytes": 156,
@@ -51,12 +51,12 @@
       "tree_sha256": "67557495c2c5ccd782e0084d6aa3d9976efd503191126954be3595c9bbc6435d"
     },
     "test_repo": {
-      "bytes": 4151716,
-      "file_count": 57,
-      "tree_sha256": "e5f67009a272495c9e6edc2f92a064716992beb4d8aabdf3d669f12f7c198122"
+      "bytes": 4225281,
+      "file_count": 70,
+      "tree_sha256": "4a34ee75041066404b48656e9351458689597112dfdbc3ddc298022f62d0b62d"
     }
   },
   "task_id": "T07",
-  "task_prompt_sha256": "53ee1cdcbcd31c64e1834254cf6358a4b12e565f6acd2a77ad4271069cdd0a97",
-  "visibility_manifest_sha256": "3a91bcdabb96665333dfc32d9c03c62d1ef5215825d71be84192a12a54f0cf89"
+  "task_prompt_sha256": "f76baa2e5045e1745d412539069f410ff0eb767bc77b20b282f291d4163019e2",
+  "visibility_manifest_sha256": "498009509d6a4e88e82b79a71206e36ad6d51146febdeaae59d221849f20de92"
 }

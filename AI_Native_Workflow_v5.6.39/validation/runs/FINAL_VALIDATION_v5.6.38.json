@@ -1,0 +1,91 @@
+{
+  "package_version": "5.6.38",
+  "runtime_schema": "5.6.38",
+  "date": "2026-09-03",
+  "runtime": {
+    "tests": "17 passed, 4 subtests passed",
+    "validate": {
+      "errors": [],
+      "ok": true,
+      "plan_count": 0,
+      "schema_version": "5.6.38",
+      "warnings": []
+    },
+    "recover": {
+      "errors": [],
+      "ok": true,
+      "plan_count": 0,
+      "schema_version": "5.6.38",
+      "warnings": []
+    },
+    "demo": {
+      "verification_sequence": [
+        "repair",
+        "accept"
+      ],
+      "stable_dic_across_attempts": true,
+      "dic_id": "dic_demo",
+      "eps_attempts": 2,
+      "changed_keys": [
+        "normalized"
+      ],
+      "declared_downstream_impact_cone": [
+        "experiment",
+        "paper",
+        "release",
+        "table"
+      ],
+      "retained_nodes": [
+        "collect",
+        "theory"
+      ],
+      "recovery_ok": true,
+      "recovery_schema": "5.6.38"
+    }
+  },
+  "documentation": {
+    "technical_report_pages": 58,
+    "technical_report_source_lines": 1998,
+    "detailed_guide_lines": 1914,
+    "root_tracking_files": [
+      "00_READ_FIRST.md",
+      "CURRENT_STATE.md",
+      "ROADMAP.md",
+      "README.md",
+      "QUICKSTART.md",
+      "VERSIONING.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "submissions": {
+    "meta_agents": {
+      "track": "Full Paper",
+      "pdf_pages": 7,
+      "source_package_integrity": "passed"
+    },
+    "neurips_education": {
+      "starter_runtime_version": "5.6.38",
+      "starter_archive_integrity": "passed"
+    },
+    "who_verifies": "retained as frozen submission artifact",
+    "automlr": "retained as development/submission scaffold"
+  },
+  "release_archives": {
+    "runtime_zip": {
+      "name": "AI_WORKFLOW_RUNTIME_v5.6.38.zip",
+      "sha256": "93fa80a58e72a085af115495b21f94d45bb08b9cc9627e639bc2cd1bea8fd5df",
+      "integrity": "passed"
+    },
+    "meta_agents_zip": {
+      "name": "Managing_Agents_Meta_Agents_2026_Full_Paper_Package_v5.6.38.zip",
+      "sha256": "7593665a7a75c077b9a5c4faef70dd613b631f9f169248067a6c21d6adc8fcc9",
+      "integrity": "passed"
+    }
+  },
+  "claim_boundary": [
+    "Human-attention intensity is a design/evaluation target, not an established empirical improvement.",
+    "Defensive drift and salience flattening are workflow failure modes/observations, not universal LLM laws.",
+    "The deterministic demo is structural/runtime evidence, not comparative agent-performance evidence."
+  ],
+  "status": "release candidate validated"
+}

@@ -1,0 +1,89 @@
+{
+  "protocol_version": "candidate-1",
+  "status": "candidate_not_frozen",
+  "claim_boundary": "smoke/pilot outputs are not confirmatory",
+  "conditions": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C1V",
+    "C2EXTRA"
+  ],
+  "factors": {
+    "dependency_depth": [
+      2,
+      4,
+      8,
+      12
+    ],
+    "branching": [
+      1,
+      2,
+      4
+    ],
+    "delayed_dependency": [
+      0,
+      2,
+      6
+    ],
+    "interacting_constraints": [
+      1,
+      3,
+      6
+    ],
+    "fault": [
+      "none",
+      "stale_schema",
+      "omitted_constraint",
+      "version_swap",
+      "corrupted_statistic",
+      "unsupported_citation",
+      "failing_code_path"
+    ]
+  },
+  "task_families": [
+    "repository_reconstruction",
+    "code_data_pipeline",
+    "evidence_synthesis"
+  ],
+  "primary_outcomes": [
+    "end_to_end_success",
+    "hard_constraint_satisfaction",
+    "unsupported_completion",
+    "fault_detection_latency",
+    "failure_propagation_size",
+    "recovery_locality",
+    "rework"
+  ],
+  "cost_outcomes": [
+    "model_calls",
+    "input_tokens",
+    "output_tokens",
+    "tool_calls",
+    "verifier_calls",
+    "wall_seconds",
+    "human_checkpoints"
+  ],
+  "budget_policy": {
+    "primary": "matched_total_model_tokens_and_calls",
+    "secondary": "pareto_frontier"
+  },
+  "freeze_required": [
+    "model identifiers",
+    "decoding parameters",
+    "prompts",
+    "tools",
+    "task seeds",
+    "graders",
+    "budgets",
+    "stopping rules",
+    "exclusions",
+    "analysis code hash"
+  ],
+  "human_confirmation_required": [
+    "paid compute",
+    "credentials/private systems",
+    "protocol change after freeze"
+  ]
+}

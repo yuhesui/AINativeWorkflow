@@ -1,0 +1,63 @@
+% NeurIPS 2026-compatible workshop style snapshot for this self-contained package.
+% Submission formatting follows the 2026 author-kit conventions: US Letter,
+% Times-like 10pt text, anonymous review, line numbers, and workshop footer.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2026}[2026/01/29 NeurIPS 2026 workshop-compatible style]
+\newif\if@neuripsfinal\@neuripsfinalfalse
+\newif\if@preprint\@preprintfalse
+\newif\if@anonymous\@anonymoustrue
+\newif\if@workshop\@workshopfalse
+\newcommand{\@workshoptitle}{}
+\newcommand{\workshoptitle}[1]{\renewcommand{\@workshoptitle}{#1}}
+\DeclareOption{final}{\@neuripsfinaltrue\@anonymousfalse}
+\DeclareOption{preprint}{\@preprinttrue\@anonymousfalse}
+\DeclareOption{nonanonymous}{\@anonymousfalse}
+\DeclareOption{dblblindworkshop}{\@workshoptrue}
+\DeclareOption{sglblindworkshop}{\@workshoptrue\@anonymousfalse}
+\DeclareOption{nonatbib}{}
+\ProcessOptions\relax
+\RequirePackage[letterpaper,textwidth=5.5in,textheight=9in,top=1in,headheight=12pt,headsep=18pt,footskip=24pt]{geometry}
+\RequirePackage{times}
+\RequirePackage{natbib}
+\RequirePackage{lineno}
+\RequirePackage{fancyhdr}
+\RequirePackage{microtype}
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\sfdefault}{phv}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.2pt plus 1pt minus 1pt}
+\widowpenalty=10000
+\clubpenalty=10000
+\sloppy
+\renewcommand{\normalsize}{\@setfontsize\normalsize\@xpt\@xipt}
+\normalsize
+\renewcommand{\small}{\@setfontsize\small\@ixpt\@xpt}
+\renewcommand{\footnotesize}{\@setfontsize\footnotesize\@viiipt\@ixpt}
+\renewcommand{\scriptsize}{\@setfontsize\scriptsize\@viipt\@viiipt}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}{-1.8ex plus -.4ex minus -.2ex}{1.0ex plus .2ex}{\large\bfseries\raggedright}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}{-1.4ex plus -.3ex minus -.2ex}{.6ex plus .2ex}{\normalsize\bfseries\raggedright}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{1.0ex plus .3ex minus .2ex}{-1em}{\normalsize\bfseries}}
+\providecommand{\@maketitle}{}
+\renewcommand{\@maketitle}{%
+  \vbox{\hsize\textwidth
+  \hrule height 4pt\vskip .20in
+  \centering{\LARGE\bfseries\@title\par}\vskip .16in
+  \hrule height 1pt\vskip .08in
+  \if@anonymous
+    {\bfseries Anonymous Author(s)\par Affiliation\par Address\par \texttt{email}\par}
+  \else
+    {\large \@author\par}
+  \fi
+  \vskip .10in}}
+\renewcommand{\maketitle}{\par\begingroup\thispagestyle{empty}\@maketitle\@notice\endgroup}
+\newcommand{\@notice}{%
+  \if@workshop
+    \vskip 5pt\footnotesize Submitted to the 40th Conference on Neural Information Processing Systems (NeurIPS 2026), workshop: \@workshoptitle. Do not distribute.
+  \else\if@preprint
+    \vskip 5pt\footnotesize Preprint. Work in progress.
+  \else
+    \vskip 5pt\footnotesize Submitted to the 40th Conference on Neural Information Processing Systems (NeurIPS 2026). Do not distribute.
+  \fi\fi}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}
+\if@neuripsfinal\else\linenumbers\fi
+\endinput

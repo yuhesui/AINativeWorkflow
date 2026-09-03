@@ -1,0 +1,94 @@
+version: "2026-09-01"
+policy: >-
+  Store concise operational distillations inside .ai-workflow; do not vendor full
+  provider pages. Refresh before a major runtime release or when model/surface
+  behavior materially changes.
+sources:
+  - id: openai_gpt56_model_guidance
+    provider: OpenAI
+    title: GPT-5.6 model guidance
+    url: https://developers.openai.com/api/docs/guides/latest-model
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/PROMPTING_CORE.md
+      - .ai-workflow/docs/GPT56_ROUTING.md
+      - .ai-workflow/docs/CODEX_EXECUTION.md
+    implications:
+      - prefer lean outcome-focused prompts
+      - state instructions once
+      - define autonomy and approval boundaries compactly
+      - expose only relevant tools
+      - specify evidence, success criteria, output schema, concurrency, retries, and stops
+  - id: openai_chatgpt_prompting
+    provider: OpenAI
+    title: Prompting for ChatGPT
+    url: https://learn.chatgpt.com/docs/prompting
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/MAIN.md
+      - .ai-workflow/docs/PROMPTING_CORE.md
+    implications:
+      - structure substantial work around goal, context, output, and boundaries
+      - include only decision-relevant material
+      - leave room for adaptive execution when the route is not contractual
+  - id: openai_reasoning_best_practices
+    provider: OpenAI
+    title: Reasoning best practices
+    url: https://developers.openai.com/api/docs/guides/reasoning-best-practices
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/MAIN.md
+      - .ai-workflow/docs/THEORY.md
+      - .ai-workflow/docs/EXPERIMENT.md
+      - .ai-workflow/docs/VERIFIER.md
+    implications:
+      - use direct instructions and explicit success criteria
+      - do not require visible chain-of-thought
+      - add examples only where they address a measured ambiguity
+  - id: openai_codex_prompting
+    provider: OpenAI
+    title: Codex prompting
+    url: https://developers.openai.com/codex/prompting
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/CODEX_EXECUTION.md
+    implications:
+      - name desired behavior, relevant code or failure, constraints, and verification
+      - allow repository inspection and local implementation choice within the contract
+  - id: anthropic_prompting_best_practices
+    provider: Anthropic
+    title: Claude prompting best practices
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/CLAUDE_EXECUTION.md
+      - .ai-workflow/docs/PROMPTING_CORE.md
+    implications:
+      - be clear and direct
+      - use structured or XML sections where useful
+      - use examples selectively
+      - use subagents for parallel, isolated, independent workstreams
+      - work directly for simple, sequential, shared-context work
+  - id: anthropic_parallel_tool_use
+    provider: Anthropic
+    title: Parallel tool use
+    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/ORCHESTRATOR.md
+      - .ai-workflow/docs/CLAUDE_EXECUTION.md
+    implications:
+      - parallelize independent calls
+      - serialize side-effecting, ordered, or shared-state operations
+      - do not manufacture parallel batches by guessing missing inputs
+  - id: anthropic_claude_code_best_practices
+    provider: Anthropic
+    title: Claude Code best practices
+    url: https://code.claude.com/docs/en/best-practices
+    retrieved: 2026-09-01
+    applies_to:
+      - .ai-workflow/docs/CLAUDE_EXECUTION.md
+    implications:
+      - use project instructions and bounded tasks
+      - isolate parallel writes with worktrees or equivalent safeguards
+      - validate the integrated repository and remove temporary artifacts

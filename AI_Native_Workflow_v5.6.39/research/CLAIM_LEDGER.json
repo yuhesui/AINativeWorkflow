@@ -1,0 +1,222 @@
+{
+  "schema": "ai-native-workflow/claim-ledger/1",
+  "updated": "2026-08-30",
+  "claims": [
+    {
+      "id": "ARCH-01",
+      "statement": "The canonical execution lineage is Action ≼ EPS ≼ DIC ≼ Phase ≼ Plan ≼ Goal, with package-resident identifiers and hashes.",
+      "classification": "invariant_by_construction",
+      "status": "implemented",
+      "assumptions": [
+        "all canonical actions are recorded by the runtime"
+      ],
+      "evidence": [
+        ".ai-workflow/aw/hierarchy.py",
+        ".ai-workflow/tests/test_hierarchical_runtime.py"
+      ],
+      "novelty_position": "engineering invariant; not claimed as a new theorem"
+    },
+    {
+      "id": "ARCH-02",
+      "statement": "Ordinary phases may progress autonomously inside an approved Plan; periodic and material events are separate governance boundaries.",
+      "classification": "invariant_by_construction",
+      "status": "implemented",
+      "assumptions": [
+        "runtime state transitions are used"
+      ],
+      "evidence": [
+        ".ai-workflow/aw/hierarchy.py",
+        "docs/WORKFLOW_SPEC.md"
+      ],
+      "novelty_position": "workflow design contribution"
+    },
+    {
+      "id": "DEF-REF-01",
+      "statement": "Semantic refinement X ≼ Y means every trace admitted by X, after the declared abstraction map, is admitted by Y.",
+      "classification": "definition",
+      "status": "retained",
+      "assumptions": [],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex"
+      ],
+      "novelty_position": "standard trace-refinement formulation adapted to the hierarchy"
+    },
+    {
+      "id": "THM-COMP-01",
+      "statement": "For an acyclic Plan, phase contract satisfaction composes to goal satisfaction when pre/post compatibility, declared-frame noninterference, and a terminal goal implication all hold.",
+      "classification": "theorem_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "DAG execution",
+        "sound phase contracts",
+        "edge compatibility",
+        "frame/noninterference",
+        "terminal implication"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#compositional-satisfaction"
+      ],
+      "novelty_position": "known contract-composition principle; included for precision, not claimed as theorem novelty"
+    },
+    {
+      "id": "THM-LOCAL-01",
+      "statement": "Under declared read/write locality, versioned evidence, and deterministic-or-reverified phase semantics, repairing keys Δ requires invalidating only the dynamic impact cone Reach({v:R_v∩Δ≠∅}); outputs outside that cone remain contract-valid.",
+      "classification": "theorem_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "complete read sets",
+        "complete write sets",
+        "versioned evidence",
+        "deterministic or reverified semantics",
+        "no hidden shared state"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#dependency-local-recovery"
+      ],
+      "novelty_position": "adaptation of incremental-computation/build-system locality to agent workflow recovery"
+    },
+    {
+      "id": "THM-LOCAL-02",
+      "statement": "Without additional semantic information, the direct-reader seed of the dynamic impact cone is worst-case necessary: every direct reader can be made contract-invalid by some admissible phase function after Δ changes.",
+      "classification": "theorem_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "phase functions may depend arbitrarily on every declared read key"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#locality-minimality"
+      ],
+      "novelty_position": "tightness characterization for the declared-footprint model"
+    },
+    {
+      "id": "THM-VER-01",
+      "statement": "If the conditional probability of missing a persisting fault at each verification gate is at most α, then survival through k gates is at most α^k and the expected number of gate intervals to detection is at most 1/(1−α).",
+      "classification": "theorem_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "conditional miss bound α<1 at every gate",
+        "fault remains observable at subsequent gates"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#imperfect-verification"
+      ],
+      "novelty_position": "elementary reliability bound applied to evidence-gated agent execution"
+    },
+    {
+      "id": "PROP-CHK-01",
+      "statement": "In the stated stationary cost model, checkpoint overhead U(h)=n(c_v+βc_f)/h+λnc_r h(1+α)/(2(1−α)) is minimized at h*=sqrt(2(c_v+βc_f)(1−α)/(λc_r(1+α))).",
+      "classification": "proposition_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "stationary independent fault arrivals",
+        "uniform fault position within interval",
+        "constant per-phase repair cost",
+        "conditional verifier rates",
+        "continuous relaxation of h"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#checkpoint-cost"
+      ],
+      "novelty_position": "checkpoint/restart trade-off adapted to governance cadence; not a universal prescription"
+    },
+    {
+      "id": "PROP-CTX-01",
+      "statement": "A phase can omit global state outside its context projection without changing its action distribution only when the projection is conditionally sufficient for that phase and referenced evidence remains resolvable.",
+      "classification": "proposition_under_explicit_assumptions",
+      "status": "proved",
+      "assumptions": [
+        "conditional sufficiency",
+        "stable artifact identifiers",
+        "no hidden side channel"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#context-locality"
+      ],
+      "novelty_position": "formal condition clarifying when externalized state is safe"
+    },
+    {
+      "id": "IMP-OBS-01",
+      "statement": "If a verifier observes a non-injective evidence map on which the goal predicate is not constant, no decision rule using only that evidence can have both zero false acceptance and zero false rejection.",
+      "classification": "impossibility_proposition",
+      "status": "proved",
+      "assumptions": [
+        "verifier decision depends only on observed evidence"
+      ],
+      "evidence": [
+        "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.tex#observability-limit"
+      ],
+      "novelty_position": "basic partial-observability impossibility; important limit, not claimed as novel in isolation"
+    },
+    {
+      "id": "HYP-HORIZON-01",
+      "statement": "The relative end-to-end benefit of hierarchical execution over a flat plan increases with effective task horizon after controlling model, token budget, and tool budget.",
+      "classification": "empirical_hypothesis",
+      "status": "planned_not_tested",
+      "assumptions": [],
+      "evidence": [
+        "experiments/FROZEN_CANDIDATE_PROTOCOL.md"
+      ],
+      "novelty_position": "central empirical claim requiring confirmatory evidence"
+    },
+    {
+      "id": "HYP-REPAIR-01",
+      "statement": "Verification-triggered local repair reduces downstream failure propagation and rework versus hierarchy without gated repair at matched inference budget.",
+      "classification": "empirical_hypothesis",
+      "status": "planned_not_tested",
+      "assumptions": [],
+      "evidence": [
+        "experiments/FROZEN_CANDIDATE_PROTOCOL.md"
+      ],
+      "novelty_position": "mechanism claim requiring controlled faults"
+    },
+    {
+      "id": "EMP-RUNTIME-01",
+      "statement": "The reference runtime passes its hierarchy-specific conformance tests and package recovery validation.",
+      "classification": "engineering_evidence",
+      "status": "verified_in_current_build",
+      "assumptions": [
+        "recorded test log is current"
+      ],
+      "evidence": [
+        "build/logs/hierarchical_tests.txt",
+        "build/logs/recovery.json"
+      ],
+      "novelty_position": "implementation validation, not agent-performance evidence"
+    },
+    {
+      "id": "NOV-01",
+      "statement": "The defensible system contribution is the integrated object persistent intent + hierarchical refinement + bounded execution + evidence-gated verification + local repair/upward replanning, not hierarchy alone.",
+      "classification": "novelty_position",
+      "status": "provisional_pending_external_review",
+      "assumptions": [
+        "literature synthesis remains current"
+      ],
+      "evidence": [
+        "research/LITERATURE_AND_NOVELTY.md"
+      ],
+      "novelty_position": "system-level combination and operationalization"
+    },
+    {
+      "id": "REMOVED-01",
+      "statement": "Hierarchical decomposition by itself guarantees correctness or preserves user intent in open-world execution.",
+      "classification": "unsupported_and_removed",
+      "status": "removed",
+      "assumptions": [],
+      "evidence": [
+        "research/CLAIM_LEDGER.md"
+      ],
+      "novelty_position": "contradicted by observability and verifier limits"
+    },
+    {
+      "id": "REMOVED-02",
+      "statement": "The current package has confirmatory evidence that it outperforms flat agents on long-horizon tasks.",
+      "classification": "unsupported_and_removed",
+      "status": "removed",
+      "assumptions": [],
+      "evidence": [
+        "experiments/EXPERIMENT_HANDOFF.md"
+      ],
+      "novelty_position": "awaits dedicated Experiment session"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Acar(2009)]{acar2009selfadjusting}
+Umut~A. Acar.
+\newblock \emph{Self-Adjusting Computation}.
+\newblock Morgan \& Claypool, 2009.
+
+\bibitem[Burns et~al.(2024)Burns, Ye, Klein, and
+  Steinhardt]{burns2024weakstrong}
+Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt.
+\newblock Weak-to-strong generalization: Eliciting strong capabilities with
+  weak supervision.
+\newblock In \emph{International Conference on Machine Learning}, 2024.
+
+\bibitem[Daly(2006)]{daly2006higher}
+John~T. Daly.
+\newblock A higher order estimate of the optimum checkpoint interval for
+  restart dumps.
+\newblock \emph{Future Generation Computer Systems}, 22\penalty0 (3):\penalty0
+  303--312, 2006.
+
+\bibitem[Debenedetti et~al.(2024)Debenedetti, Zhang, Balunovic, Beurer-Kellner,
+  Fischer, and Tram{\`e}r]{debenedetti2024agentdojo}
+Edoardo Debenedetti, Jie Zhang, Mislav Balunovic, Luca Beurer-Kellner, Marc
+  Fischer, and Florian Tram{\`e}r.
+\newblock Agentdojo: A dynamic environment to evaluate prompt injection attacks
+  and defenses for llm agents.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem[Irving et~al.(2018)Irving, Christiano, and Amodei]{irving2018debate}
+Geoffrey Irving, Paul Christiano, and Dario Amodei.
+\newblock Ai safety via debate.
+\newblock \emph{arXiv preprint arXiv:1805.00899}, 2018.
+
+\bibitem[Leike et~al.(2018)Leike, Krueger, Everitt, Martic, Maini, and
+  Legg]{leike2018recursive}
+Jan Leike, David Krueger, Tom Everitt, Miljan Martic, Vishal Maini, and Shane
+  Legg.
+\newblock Scalable agent alignment via reward modeling: A research direction.
+\newblock \emph{arXiv preprint arXiv:1811.07871}, 2018.
+
+\bibitem[Lightman et~al.(2023)Lightman, Kosaraju, Burda, Edwards, Baker, Lee,
+  Leike, Schulman, Sutskever, and Cobbe]{lightman2023verify}
+Hunter Lightman, Vineet Kosaraju, Yura Burda, Harrison Edwards, Bowen Baker,
+  Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe.
+\newblock Let's verify step by step.
+\newblock \emph{arXiv preprint arXiv:2305.20050}, 2023.
+
+\bibitem[Mokhov et~al.(2018)Mokhov, Mitchell, and
+  Peyton~Jones]{mokhov2018build}
+Andrey Mokhov, Neil Mitchell, and Simon Peyton~Jones.
+\newblock Build systems {\`a} la carte.
+\newblock In \emph{Proceedings of the ACM on Programming Languages}, 2018.
+
+\bibitem[Ruan et~al.(2024)Ruan, Dong, Wang, Pitis, Zhou, Ba, Dubois, Maddison,
+  and Hashimoto]{ruan2024toolemu}
+Yangjun Ruan, Honghua Dong, Andrew Wang, Silviu Pitis, Yongchao Zhou, Jimmy Ba,
+  Yann Dubois, Chris~J. Maddison, and Tatsunori Hashimoto.
+\newblock Toolemu: Identifying the risks of lm agents with an lm-emulated
+  sandbox.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Shinn et~al.(2023)Shinn, Cassano, Gopinath, Narasimhan, and
+  Yao]{shinn2023reflexion}
+Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu
+  Yao.
+\newblock Reflexion: Language agents with verbal reinforcement learning.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Yao et~al.(2023)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and
+  Cao]{yao2023react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan,
+  and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In \emph{International Conference on Learning Representations}, 2023.
+
+\bibitem[Young(1974)]{young1974first}
+John~W. Young.
+\newblock A first order approximation to the optimum checkpoint interval.
+\newblock \emph{Communications of the ACM}, 17\penalty0 (9):\penalty0 530--531,
+  1974.
+
+\bibitem[Zhou et~al.(2024)Zhou, Yan, Shlapentokh-Rothman, Wang, and
+  Wang]{zhou2024lats}
+Andy Zhou, Kai Yan, Michal Shlapentokh-Rothman, Haohan Wang, and Yu-Xiong Wang.
+\newblock Language agent tree search unifies reasoning, acting, and planning in
+  language models.
+\newblock In \emph{International Conference on Machine Learning}, 2024.
+
+\end{thebibliography}

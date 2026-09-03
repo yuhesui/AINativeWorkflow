@@ -53,14 +53,14 @@ and reference-policy checks run both during materialization and repository
 validation.
 
 The repository-default and seven initial `.ai-workflow/` trees are generated
-copies of the configured clean v5.6.36 runtime. Their
+copies of the configured clean v5.6.39 runtime. Their
 state is `active_plan_id: null` and `plans: {}`; no task-specific Plan, Phase,
 DIC, EPS, report, or history is pre-created. A representative runtime test run
-under explicit UTF-8 mode passed all 17 focused v5.6.36 tests;
+under explicit UTF-8 mode passed all 19 focused v5.6.39 tests;
 `python -X utf8` remains the locked Windows invocation.
 
 To keep Git and operator uploads lean, those eight expanded trees are generated
-and ignored. The complete `AI_Native_Workflow_v5.6.36/` package is tracked once
+and ignored. The complete `AI_Native_Workflow_v5.6.39/` package is tracked once
 as the authority; `AI_WORKFLOW_RUNTIME.zip` is a canonical generated, ignored
 archive. `scripts/sync_ai_workflow.py` deterministically builds/checks the
 archive and installs byte-identical clean copies. `start_run.py` invokes the sync tool's `--ensure`
@@ -68,7 +68,7 @@ mode to restore missing copies while refusing to overwrite a differing existing
 runtime without an explicit sync. For deliberate pre-run runtime maintenance,
 `scripts/update_ai_workflow.py` loads the source configured by
 `AI_WORKFLOW_RUNTIME_SOURCE.json` (currently
-`AI_Native_Workflow_v5.6.36/.ai-workflow`), rebuilds the root archive,
+`AI_Native_Workflow_v5.6.39/.ai-workflow`), rebuilds the root archive,
 synchronizes all copies, refreshes locks/manifests, and validates with rollback
 of tracked metadata on failure.
 
@@ -83,16 +83,15 @@ of tracked metadata on failure.
   checkpoint counts. Only checkpoint 1 is initially visible. The reveal tool
   requires an accepted cumulative grader artifact and reveals exactly one next
   checkpoint. T3 and T4 enforce their frozen checkpoint state-loss boundaries.
-- The fixed-ecosystem coding capsules use persistent chat as Main in both conditions and a coding CLI only as
-  a bounded executor. The Direct prompt requests a neutral ordinary handoff ZIP
-  without workflow concepts; the AI-Native prompt requests one canonical Phase
-  ZIP containing its current DIC, assigned EPS/prompt, and lineage manifest.
-  Main returns each ZIP as a download rather than claiming a local path.
+- The Direct coding condition now launches the frozen coding CLI directly with the current task as
+  an approved Goal; it uses zero Main inferences and no Main handoff ZIP. The AI-Native condition
+  uses exactly one Main inference per currently revealed scope and requires one canonical whole-Phase
+  ZIP containing the Phase manifest, every DIC view, the full initial EPS graph, one prompt file per
+  EPS node, the Orchestrator entrypoint, and lineage metadata.
   `scripts/start_run.py` provides the one-command operator surface: it creates
-  a UTC-stamped run folder, packages `MAIN_INPUT.zip`, references the
-  source-derived repository-root `AI_WORKFLOW_RUNTIME.zip` only for AI-Native, asks for the
-  Main-chat link and `MAIN_HANDOFF.zip`, then opens the interactive executor in
-  `workspace/`.
+  a UTC-stamped run folder and opens Direct immediately. Only AI-Native packages `MAIN_INPUT.zip`,
+  references the source-derived repository-root `AI_WORKFLOW_RUNTIME.zip`, asks for the Main-chat
+  link and `MAIN_HANDOFF.zip`, and imports the result before opening the executor in `workspace/`.
   Run/chat/executor timing, routing, usage, and hashes are consolidated in the
   evolving `RUN.json`; Main-chat token use remains uninferable from a saved
   URL. `scripts/generate_chat_main_runbooks.py` emits the concise per-task

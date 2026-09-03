@@ -8,72 +8,72 @@
     "T06",
     "T07"
   ],
-  "generated_utc_date": "2026-09-02",
+  "generated_utc_date": "2026-09-04",
   "schema_version": 1,
   "status": "QUALIFIED_WITH_BLOCKERS",
   "tasks": {
     "T01": {
       "folder": "T01_query_optimize",
       "identity": "query-optimize",
-      "original_task_tree_sha256": "bab10ce010fe4eadeb000220e92a398f06c365e33e15f0e8936de601c53abcb6",
+      "original_task_tree_sha256": "5e2a9c10c0f3a24ccca62d792c214ca69e9d06f750de56d0c1d225c6107f144d",
       "qualification_status": "QUALIFIED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "39ada08ef8aef2581ab1f9beb9a998599c5071de8cb5691d03cd30e854bcb5f7",
-      "test_repo_tree_sha256": "c5a37a1fa1ee50c1201ba9d2d04cc26fd76f70e50bf905fc8bcdaec0370cee4f"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "fa03d726ff9bab274679af0b54201de0e6382ce51e0717533ad52a536d5a1daa",
+      "test_repo_tree_sha256": "9a86be619776db9e51b2bd964b214d2d70286e4cb11eb5ceea18a4f5645f7a58"
     },
     "T02": {
       "folder": "T02_dag_execution",
       "identity": "gabeorlanski/dag_execution",
-      "original_task_tree_sha256": "569dfdc765274e48a44930ce4dc8ee89c59d4357662e82f87e7910cddb46dc56",
+      "original_task_tree_sha256": "f58ad52823fc3c2d331d50fa50b8c208574c2981dc0a9b1b823991dc049fcd21",
       "qualification_status": "QUALIFIED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "dda82db8eb9665d3eab9e1c16577c1d3c101c22d8b40f66f9161b014a6b34e25",
-      "test_repo_tree_sha256": "ad84e6632ee48515cf2d2de3e4e484217aa2073960a9f0eaa6fa08235764f909"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "51e781a64d3e38d07a7968bd8aa72be0c8cf09e7b9c4d51bff7a2083174ede6a",
+      "test_repo_tree_sha256": "48dc5639dbeae26e67497074d5cd9eab56150acb165ec3a7b2767e111edcbd8f"
     },
     "T03": {
       "folder": "T03_database_migration",
       "identity": "gabeorlanski/database_migration",
-      "original_task_tree_sha256": "1a99fe348abd658a20d46d7bdfd904183de3db6ea47c0b5b2dc17c86215ab9b9",
+      "original_task_tree_sha256": "1cc12e27859082bf979331f1eda259f08813be24644aafcc321121c2ceca8e69",
       "qualification_status": "QUALIFIED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "5084d62e8e1f7d2b07a1706b7c454a5672f501c04360e7892f2cadcacfdfc875",
-      "test_repo_tree_sha256": "dd7a393de60e05c2045306913de65a219cfff0329e42475c72b5e47f60be3713"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "b06f06c4578af6408126964f75f2af77c9d976fedb863c8c7f04667e033c10a7",
+      "test_repo_tree_sha256": "9e1ff9827646382456f5c305a5c67dc555516362fbff06beb4428e892e7dd7f7"
     },
     "T04": {
       "folder": "T04_recli",
       "identity": "gabeorlanski/recli",
-      "original_task_tree_sha256": "7225965da3b010a7408468c2af66f36d9199acb4767bf1d17745a0c4eb231eba",
+      "original_task_tree_sha256": "161de4ef3fcf19a725d3c042c2ff654490423a6572568d2af43021342e627581",
       "qualification_status": "QUALIFIED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "7012fdab00152667b14f18c9ab1d2f17b1fa4d228eae1add4de14ddc6bcefd00",
-      "test_repo_tree_sha256": "88e03f355eefc1cee76f4c48dcc295d1318b15be73eb011efed8f5d1f495cc12"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "f4b2d6d9e64a7d49582cf22a4019e8ab9ae92c1e25867f7b6205f63164a675a1",
+      "test_repo_tree_sha256": "7c9f05b87a6ca67e39fe2632bf1ec70bc3e669c45b4b0dbc95d40725d7bc77a1"
     },
     "T05": {
       "folder": "T05_rlMetaMazeMisc",
       "identity": "rlMetaMazeMisc",
-      "original_task_tree_sha256": "098856a1059143d48950365dc4f467dbe48e3d21f8d3d97ec719aae7d4d3e9b5",
+      "original_task_tree_sha256": "8397afaba0351c4fa8c2095ec9f6b7af36a30cfdbc381c314366999a788ac40d",
       "qualification_status": "BLOCKED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "2229d18a729a819fbcc89aaef59490af04395c0d4490d021d67536b3fe01ecc2",
-      "test_repo_tree_sha256": "0542934f164748c83d9e7938870d507059ce9f2ba3c39901a9da8b8b0e32b6a7"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "c87fe98f0a27629864f799c55dbd9af2e08c695cbe19f4242a506bf40f29d3e3",
+      "test_repo_tree_sha256": "c4e397e6cc326fc179baf86de5b9e6ed30fe3e48463f1f9fd87684efb1db3502"
     },
     "T06": {
       "folder": "T06_corebench_4252248",
       "identity": "capsule-4252248",
-      "original_task_tree_sha256": "bde65a144c4620e36fa668c1a174b97505c67e58d67f73e70e1db942632c40fd",
+      "original_task_tree_sha256": "a74e5a75c4d4659157c01361e8e29fd0e63b34ca39444ea6a57b92216dde301c",
       "qualification_status": "QUALIFIED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "d7d122b0767dbc9f5ba57793190e8fee128f099756a48d1fcd4769e5b011ae96",
-      "test_repo_tree_sha256": "ccbab2116270445372e42b36a29e3bddb5f69cf33a155db2abcfe83f2daf9a53"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "95a8e97ba77093b39e83825688c341fae4d4bd7683f6d1535422d63b37c16e82",
+      "test_repo_tree_sha256": "90f2c67450c3c1ebf24f12fdd32ef2f43ec4b2dc6b6fc996c8fa059aabd3ffea"
     },
     "T07": {
       "folder": "T07_sequential_neural_score_estimation",
       "identity": "sequential-neural-score-estimation",
-      "original_task_tree_sha256": "95d25e96ae2c5e54384ef932fcb34ba6a844ac87b5acbfee96e3b0b983cd462b",
+      "original_task_tree_sha256": "51dfeba56136ebd04ece98a9a0f97ee570fa3f2a6a27514822e9b3ded4e1b46a",
       "qualification_status": "BLOCKED",
-      "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
-      "task_lock_sha256": "c8ca58c2c7b20a4572ff90cd42765b8b840f11a7d2b74388fb3eb2f85e7cf1e5",
-      "test_repo_tree_sha256": "e5f67009a272495c9e6edc2f92a064716992beb4d8aabdf3d669f12f7c198122"
+      "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
+      "task_lock_sha256": "79ac6a91c2136aee862346bf33184151ae08d233851fe929b836fe7895029491",
+      "test_repo_tree_sha256": "4a34ee75041066404b48656e9351458689597112dfdbc3ddc298022f62d0b62d"
     }
   }
 }

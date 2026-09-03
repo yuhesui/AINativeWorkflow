@@ -15,8 +15,8 @@
     "scored_run_created": false,
     "status": "QUALIFIED"
   },
-  "resource_policy_sha256": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe",
-  "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
+  "resource_policy_sha256": "f0d0554d338a4f4c88ea13c8a02052a69d5f725db3c51487e28d0695c2d730e3",
+  "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
   "schema_version": 1,
   "sources": [
     {
@@ -36,32 +36,32 @@
   ],
   "surfaces": {
     "original_task": {
-      "bytes": 266347671,
-      "file_count": 2448,
-      "tree_sha256": "bde65a144c4620e36fa668c1a174b97505c67e58d67f73e70e1db942632c40fd"
+      "bytes": 199483776,
+      "file_count": 2415,
+      "tree_sha256": "a74e5a75c4d4659157c01361e8e29fd0e63b34ca39444ea6a57b92216dde301c"
     },
     "private_eval": {
-      "bytes": 5950852,
+      "bytes": 5950904,
       "file_count": 10,
-      "tree_sha256": "62bbd5e9524628a397700fede12540b38f603180ae9691bd0c67ebe39516f072"
+      "tree_sha256": "c0d1bc34b5bc6cb1f78110a7dd16532083c0d11d168309ccb0015ef7e58ecb42"
     },
     "reference_agent_visible": {
-      "bytes": 3594924,
+      "bytes": 3594935,
       "file_count": 3,
-      "tree_sha256": "a9034c3fe450657907b747338d9662f84b303330c7b07896553a9fbe2db21d2b"
+      "tree_sha256": "038726151badfac05022b8eb9010aacfaeb8f7ded30311217955f45e44754004"
     },
     "reference_provenance_only": {
-      "bytes": 1,
-      "file_count": 1,
-      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "test_repo": {
-      "bytes": 52588808,
-      "file_count": 135,
-      "tree_sha256": "ccbab2116270445372e42b36a29e3bddb5f69cf33a155db2abcfe83f2daf9a53"
+      "bytes": 4508949,
+      "file_count": 120,
+      "tree_sha256": "90f2c67450c3c1ebf24f12fdd32ef2f43ec4b2dc6b6fc996c8fa059aabd3ffea"
     }
   },
   "task_id": "T06",
-  "task_prompt_sha256": "42a180d8b41d21ac590556d251a1de086841b6f9c9c2616e46a5202161c7cc6d",
-  "visibility_manifest_sha256": "fb86c90e5bfe94cc70f454a7ce74a59fe7c5b6fe72f64c36f33c22c1bb3f6226"
+  "task_prompt_sha256": "2eeaaebae1502fec025d3214fb81b672453d21ec2260f48cd2bfa7df150a2faf",
+  "visibility_manifest_sha256": "d8202764ebe356ad876d96fc558e53df5f8112d9d9ce3e0d5473758516641363"
 }

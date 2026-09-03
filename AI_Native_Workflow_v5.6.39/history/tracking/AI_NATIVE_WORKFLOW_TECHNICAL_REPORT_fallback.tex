@@ -1,0 +1,411 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[round]{natbib}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{145,25,38}
+\definecolor{softgray}{RGB}{245,245,243}
+\hypersetup{colorlinks=true,linkcolor=deepred,citecolor=deepred,urlcolor=deepred,pdftitle={AI-Native Workflow: Hierarchical Intent, Verification, and Recovery}}
+\setlist{nosep,leftmargin=*}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}[definition]{Assumption}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{remark}[definition]{Remark}
+\newcommand{\State}{\mathcal S}
+\newcommand{\Trace}{\mathcal T}
+\newcommand{\Evidence}{\mathcal E}
+\newcommand{\Keys}{\mathcal K}
+\newcommand{\Acc}{\operatorname{Acc}}
+\newcommand{\Reach}{\operatorname{Reach}}
+\newcommand{\Desc}{\operatorname{Desc}}
+\newcommand{\proj}{\operatorname{proj}}
+\title{\textbf{AI-Native Workflow}\\\large Hierarchical Intent, Evidence-Gated Verification, and Dependency-Local Recovery for Long-Horizon Language-Agent Execution}
+\author{Yuhe Sui}
+\date{Version 5.6.32 --- 30 August 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Long-horizon language-agent work fails less often because a model cannot generate a plausible next step than because intent, authority, evidence, and dependencies drift across many steps and contexts. This report specifies a package-resident control layer whose canonical hierarchy is \emph{Plan $\rightarrow$ Phase $\rightarrow$ durable intent contract (DIC) $\rightarrow$ disposable execution prompt stack (EPS) $\rightarrow$ Action}. A human approves a multi-phase Plan and reviews periodic or material checkpoints; Main, Theory, and Experiment workstreams autonomously manage ordinary phases. We formalize semantic refinement, contract composition, verification outcomes, dependency-local invalidation, imperfect verifiers, context projection, and human-checkpoint complexity. Under complete read/write declarations and versioned evidence, a repair need invalidate only its dynamic dependency cone, and that cone is worst-case tight. Under a conditional verifier miss bound $\alpha<1$, an undetected fault survives $k$ gates with probability at most $\alpha^k$; a stationary cost model yields an explicit checkpoint-interval trade-off. Conversely, if observed evidence aliases goal-satisfying and goal-violating states, no evidence-only verifier can avoid both false acceptance and false rejection. These results clarify the mechanism and its limits; they do not establish that hierarchy alone is novel or empirically superior. We therefore define a controlled programme that separates hierarchy, extra inference, prompting, and verifier effects while varying effective task horizon and injected faults.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Language agents increasingly edit repositories, run tools, synthesize evidence, and coordinate other agents. The difficult regime is not a single tool call but a programme extending across many dependent decisions, artifacts, model contexts, and human review cycles. In that regime, a locally fluent response can coexist with global failure: the original objective is weakened, an assumption silently changes, an intermediate artifact becomes stale, a verifier checks the wrong object, or a late repair forces unnecessary re-execution.
+
+Existing agents already plan, reflect, search, use memory, and communicate in manager--worker arrangements \citep{yao2023react,yao2023tot,besta2024got,shinn2023reflexion,wu2023autogen,hong2024metagpt}. The claim of this report is therefore deliberately narrower. Long-horizon execution benefits from an explicit \emph{authority and refinement protocol}: persistent intent is approved at a human timescale, refined through bounded machine contracts, linked to evidence, and repaired at the smallest dependency-valid scope. The protocol must survive a fresh session with no access to the original conversation.
+
+AI-Native Workflow 5.6.32 implements that protocol inside the working package. Its small authority index is \texttt{.ai-workflow/STATE.json}; full contracts, operational refinements, action records, and evidence pointers are package-resident. The default persistent workstreams are Main, Theory, and Experiment. Orchestration is a capability of the active workstream rather than a fourth chat. Human governance is separated from machine execution: a Plan is approved once, ordinary phases proceed autonomously, periodic checkpoints aggregate several phases, and material changes escalate immediately.
+
+The report makes four contributions. First, it gives an executable specification of the hierarchy and state machine. Second, it formalizes what intent preservation and compositional satisfaction would require rather than treating hierarchy as self-justifying. Third, it proves a dependency-local recovery theorem, an imperfect-verification bound, a checkpoint-cost proposition, and an observability impossibility. Fourth, it freezes an evaluation design that tests the proposed mechanism against matched-budget alternatives. The formal results are adaptations of established contract, incremental-computation, reliability, and partial-observability ideas; the intended scientific contribution is their integrated operationalization and empirical test in language-agent harnesses.
+
+\paragraph{Claim discipline.} Every substantial statement is assigned one of: definition; invariant by construction; theorem or proposition under explicit assumptions; empirical hypothesis; conjecture; or unsupported and removed. The machine-readable ledger in \texttt{research/CLAIM\_LEDGER.json} is authoritative for manuscript integration.
+
+\section{The Long-Horizon Agent Problem}
+\subsection{Execution traces and drift}
+Let $\State$ be the joint repository--environment state, including files, tool state, external observations that have been durably recorded, and governance metadata. A primitive action $a$ induces a possibly stochastic transition kernel
+\[
+K_a : \State \rightsquigarrow \State\times\Evidence,
+\]
+where $\Evidence$ contains logs, test outputs, citations, measurements, or human decisions. A run is a trace $\tau=(s_0,a_1,e_1,s_1,\ldots,a_T,e_T,s_T)\in\Trace$. A global intent is not merely a natural-language string: it comprises a terminal goal predicate $G(s_T)$, trace constraints $J(\tau)$, authority boundaries, and evidence requirements.
+
+Long horizon is multidimensional. Sequence length matters, but so do dependency depth, branching, delayed reuse of earlier artifacts, interacting constraints, state hidden outside the current context, and the distance between a fault and the observation that reveals it. We call the resulting quantity \emph{effective task horizon}. It is an empirical construct to be operationalized by a task dependency graph rather than equated with prompt length or token count.
+
+\subsection{Characteristic failures}
+The architecture targets five failure classes.
+\begin{enumerate}
+\item \textbf{Intent drift}: a local objective remains plausible but no longer refines the approved goal.
+\item \textbf{Authority drift}: a machine makes a scientific, release, or external decision that required human authority.
+\item \textbf{Unsupported completion}: an artifact is marked complete without evidence satisfying its acceptance predicate.
+\item \textbf{Stale dependency propagation}: a repaired upstream object leaves downstream artifacts and evidence incorrectly trusted.
+\item \textbf{context fracture}: a fresh session lacks the assumptions, decisions, or evidence needed to continue safely.
+\end{enumerate}
+These failures can occur even when every generated sentence is locally coherent. They require state, contracts, evidence, and invalidation semantics, not only stronger prose prompting.
+
+\section{Hierarchical Execution Model}
+\subsection{Levels and roles}
+The canonical levels are shown in \ref{tab:levels}.
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l l X X@{}}
+\toprule
+Level & Lifetime & Semantic responsibility & Normal authority\\
+\midrule
+Goal & programme & global outcome, constraints, authority & human + Main\\
+Plan & several phases & strategic DAG and checkpoints & human approval, Main ownership\\
+Phase & milestone & coherent machine-managed subgoal & Main/Theory/Experiment\\
+DIC & phase/repair-stable & durable intent, acceptance, evidence, escalation & owning workstream\\
+EPS & disposable & just-in-time executable refinement & owning workstream\\
+Action & primitive & tool use, edit, search, experiment, test & executor/tool\\
+\bottomrule
+\end{tabularx}
+\caption{The hierarchy separates durable semantics from disposable operations.}
+\label{tab:levels}
+\end{table}
+
+Main owns overall authority, architecture, integration, state, and publication. Theory owns formal reasoning, literature and novelty analysis, propositions, and counterexamples. Experiment owns benchmark design, implementation, statistics, and empirical evidence. Search and research are capabilities available to Theory and Experiment. A workstream may delegate bounded actions, but it retains its DIC and integration responsibility.
+
+\subsection{Plans and phases}
+\begin{definition}[Plan]
+A Plan is a tuple $P=(V,E,\prec,\Gamma,h)$ where $(V,E)$ is a directed acyclic graph of phases, $\prec$ is a declared execution order compatible with $E$, $\Gamma$ is the governance policy, and $h$ is the periodic human-checkpoint interval. Each phase $v\in V$ has an owner, objective, dependency set, materiality class, DIC pointer, status, and evidence index.
+\end{definition}
+A Plan is the normal human approval object. A Phase is a machine milestone, not ordinarily a separate human approval request. The runtime permits automatic progression to a dependency-ready ordinary phase until a checkpoint becomes due or a material escalation opens.
+
+\subsection{Durable intent contracts}
+\begin{definition}[DIC]
+A durable intent contract for phase $v$ is
+\[
+C_v=(D_v,I_v,A_v,W_v,\mathcal U_v,\mathcal X_v,\mathcal R_v),
+\]
+where $D_v\subseteq\State$ is a precondition domain, $I_v\subseteq\Trace$ is a trace invariant, $A_v\subseteq\State$ is an acceptable post-state set, $W_v:\State\times\Evidence^*\to\{0,1\}$ is an evidence predicate, $\mathcal U_v$ is the authority/input set, $\mathcal X_v$ is the escalation set, and $\mathcal R_v$ is the declared dependency/read footprint.
+\end{definition}
+The runtime representation also records natural-language constraints, acceptance predicates, evidence requirements, exclusions, and content hashes. A DIC survives local repair. If the subgoal, acceptance meaning, frozen protocol, or authority changes materially, the correct operation is replan or escalate rather than silently mutating the contract.
+
+\subsection{EPS and actions}
+An EPS is a disposable operational policy generated from one DIC and current local state. It names concrete actions, tools, expected outputs, local checks, and stop conditions. It may be regenerated after a local failure without changing the DIC. An Action record links to exactly one EPS, DIC, Phase, and Plan and records result and evidence pointers. This design prevents operational prompt text from becoming a second, long-lived source of semantic authority.
+
+\section{Intent and Contract Refinement}
+\subsection{Trace semantics}
+Associate each object $X$ in the hierarchy with an admitted trace set $\llbracket X\rrbracket\subseteq\Trace_X$. Adjacent levels may use different state descriptions, so let $\rho_{XY}:\Trace_X\to\Trace_Y$ be a declared abstraction map.
+\begin{definition}[Semantic refinement]
+$X$ refines $Y$, written $X\preceq_{\rho}Y$, if
+\[
+\rho_{XY}(\llbracket X\rrbracket)\subseteq \llbracket Y\rrbracket.
+\]
+\end{definition}
+This definition makes intent preservation a semantic inclusion claim, not a similarity judgment between prompt strings. In a practical package, refinement is supported by contract predicates, evidence, tests, and review; it is rarely decided by a complete semantic oracle.
+
+\begin{proposition}[Refinement-chain preservation]
+If $X_0\preceq X_1\preceq\cdots\preceq X_m$ and the abstraction maps compose on admitted traces, then $X_0\preceq X_m$.
+\end{proposition}
+\begin{proof}
+Repeated image inclusion gives
+$\rho_{0m}(\llbracket X_0\rrbracket)\subseteq\rho_{1m}(\llbracket X_1\rrbracket)\subseteq\llbracket X_m\rrbracket$.
+\end{proof}
+The proposition is a consequence of the definition. It does not show that a model-generated child actually refines its parent; that requires a sound certificate or verifier.
+
+\subsection{Acceptance predicates and acceptable-state sets}
+For a completed phase trace $\tau_v$ ending in state $s'$, define
+\[
+\Acc_{C_v}(\tau_v,e_v)=\mathbf 1\{s'\in A_v,\ \tau_v\in I_v,\ W_v(s',e_v)=1\}.
+\]
+Acceptance separates the desired state from evidence that warrants believing the state was reached. A unit test may be strong evidence for a deterministic software property and weak evidence for a broad scientific claim. The DIC must state the connection.
+
+\subsection{Compositional satisfaction}
+\label{sec:composition}
+For each phase $v$, let $F_v$ be its implemented transition relation. Let $\operatorname{Pred}(v)$ be its predecessors. Write $\mathsf{Pre}_v$ and $\mathsf{Post}_v$ for its pre/post predicates and $\mathsf{Frame}_v$ for keys it promises not to alter.
+
+\begin{assumption}[Contract soundness]
+For every phase $v$, every admitted execution satisfies the Hoare-style relation
+$\{\mathsf{Pre}_v\land I\}\,F_v\,\{\mathsf{Post}_v\land I\}$, and its evidence predicate is sound for the asserted postcondition.
+\end{assumption}
+\begin{assumption}[Edge compatibility]
+For each non-source $v$, the conjunction of relevant predecessor postconditions implies $\mathsf{Pre}_v$. Concurrent or unordered branches either have disjoint writes or satisfy an explicit commutativity/noninterference condition.
+\end{assumption}
+\begin{theorem}[Compositional satisfaction]
+\label{thm:composition}
+For an acyclic Plan satisfying contract soundness and edge compatibility, if the initial state satisfies all source preconditions and the conjunction of terminal postconditions implies the global goal $G$, then every admitted complete topological execution terminates in a state satisfying $G$ and the global invariant $I$.
+\end{theorem}
+\begin{proof}
+Proceed by induction over a topological order. Source preconditions hold initially. At step $v$, all predecessors have executed; edge compatibility and noninterference imply $\mathsf{Pre}_v$, while the induction hypothesis gives $I$. Contract soundness yields $\mathsf{Post}_v$ and preserves $I$. After all nodes, all terminal postconditions and $I$ hold; the terminal implication gives $G$.
+\end{proof}
+The assumptions are substantial. Hidden dependencies, unsound evidence, stochastic tools outside the contract, or incompatible branches invalidate the conclusion. The theorem is a precise restatement of contract composition in this setting, not a claim that LLM agents automatically satisfy it \citep{hoare1969axiomatic}.
+
+\section{Verification and Replanning}
+\subsection{Closed-loop operator}
+Verification consumes the DIC, current state, emitted evidence, and relevant dependency versions. It returns
+\[
+\mathcal V(C_v,s,e)\in\{\textsf{accept},\textsf{repair},\textsf{replan},\textsf{escalate}\}.
+\]
+\textsf{Accept} closes the DIC. \textsf{Repair} retains the DIC and regenerates EPS. \textsf{Replan} changes the decomposition or contract and therefore crosses a governance boundary. \textsf{Escalate} requests authority unavailable to the active workstream.
+
+Local verification is automatic where a tool or predicate can check the action. Independent review is reserved for material evidence, claim freeze, release, or submission boundaries. Independence means a fresh context and no authorship of the audited artifact; merely repeating the same prompt does not remove shared blind spots.
+
+\subsection{Imperfect verification}
+Let a fault remain present at successive gates. Define $M_i$ as the event that it survives gate $i$ undetected.
+\begin{assumption}[Conditional miss bound]
+For some $0\le\alpha<1$,
+$\Pr(M_i\mid M_1\cap\cdots\cap M_{i-1})\le\alpha$ at every gate at which the fault is observable.
+\end{assumption}
+\begin{theorem}[Survival and detection bound]
+\label{thm:miss}
+Under the conditional miss bound,
+\[
+\Pr(M_1\cap\cdots\cap M_k)\le\alpha^k.
+\]
+If $N$ is the number of gate intervals through which the fault persists before detection, then $\mathbb E[N]\le(1-\alpha)^{-1}$.
+\end{theorem}
+\begin{proof}
+The chain rule and the conditional bounds give the product bound. The tail-sum formula gives
+$\mathbb E[N]=\sum_{k\ge0}\Pr(N>k)\le\sum_{k\ge0}\alpha^k=(1-\alpha)^{-1}$.
+\end{proof}
+No independence assumption is needed beyond the stated conditional bound. The bound is useless when the fault is not represented in the evidence channel, a limitation formalized in \ref{prop:observability}.
+
+\subsection{Repair versus replan}
+A repair changes operational means while preserving the DIC's semantics and authority. A replan changes at least one parent-level obligation, dependency, acceptance meaning, or frozen protocol. This distinction is auditable: a repair produces a new EPS under the same DIC hash; a replan changes a DIC or Plan revision and opens a checkpoint or escalation event.
+
+\section{Dependency Locality and Failure Propagation}
+\subsection{Declared footprints}
+Model state as a key-value map $s:\Keys\to\mathcal V$. Each phase $v$ declares read set $R_v\subseteq\Keys$ and write set $W_v\subseteq\Keys$. Edges include every possible data dependence: if $W_u\cap R_v\neq\varnothing$, then $u\to v$ unless an equivalent versioned external dependency is declared.
+
+After a repair changes keys $\Delta\subseteq\Keys$, define the direct-reader seed
+\[
+B(\Delta)=\{v:R_v\cap\Delta\neq\varnothing\}
+\]
+and dynamic impact cone
+\[
+\mathcal I(\Delta)=\Reach_G(B(\Delta)),
+\]
+including the seed.
+
+\begin{assumption}[Local deterministic-or-reverified semantics]
+A phase's output and evidence validity depend only on its declared read values, declared predecessor outputs, explicit tool/version parameters, and fresh randomness recorded in evidence. There is no undeclared mutable shared state. Evidence is bound to input and artifact versions.
+\end{assumption}
+
+\begin{theorem}[Dependency-local recovery]
+\label{thm:local}
+Under complete dependency edges and local deterministic-or-reverified semantics, after a repair that changes only $\Delta$, retaining completed phase outputs and evidence for every $v\notin\mathcal I(\Delta)$ preserves their contract validity. Re-execution need be considered only inside $\mathcal I(\Delta)$.
+\end{theorem}
+\begin{proof}
+Take a topological order of nodes outside the cone. A node $v\notin\mathcal I(\Delta)$ does not directly read a changed key. Nor can any predecessor output on which it depends have changed: otherwise a changed predecessor would reach $v$, placing $v$ in the cone. By induction, all declared inputs, tool/version parameters, and predecessor outputs of $v$ are unchanged. Local semantics therefore preserve its output distribution under recorded randomness, or fresh reverification certifies it, and version-bound evidence remains valid.
+\end{proof}
+
+\begin{theorem}[Worst-case tightness]
+\label{thm:tight}
+Without additional semantic restrictions, every node in $\mathcal I(\Delta)$ can be necessary to invalidate: for any such node, there exists a set of phase functions consistent with the declared graph for which changing $\Delta$ changes that node's accepted output. Hence no strict subset of the impact cone is uniformly safe over the declared-footprint model.
+\end{theorem}
+\begin{proof}
+For a direct reader, choose its output to copy a changed bit. Along any path from that reader to a target descendant, choose each phase to copy the predecessor bit and let its acceptance predicate bind to the previous version. The change propagates to the target and invalidates its old evidence. Thus each reachable node is necessary in some admissible realization.
+\end{proof}
+This result explains both the value and fragility of local repair. Complete dependency declarations can reduce rework from a full rerun to $\sum_{v\in\mathcal I(\Delta)}c_v$; one hidden edge can make that guarantee false. The structure parallels dependency graphs, incremental build systems, and self-adjusting computation \citep{mckinley1994programdependence,mokhov2018build,acar2009selfadjusting}.
+
+\subsection{Propagation bounds}
+A fault originating at node $u$ can affect at most $|\Desc(u)|+1$ phases and in the worst case affects all of them. If the descendant subgraph has branching at most $b$ and depth at most $d$, then
+\[
+|\Desc(u)|+1\le \sum_{i=0}^{d}b^i,
+\]
+with the usual $d+1$ limit when $b=1$. Verification gates do not alter this structural cone; they reduce how much of it executes before detection and which outputs remain trusted.
+
+\section{Context and Persistent State}
+\subsection{Package as authority}
+Chat history is not a durable database. The package therefore stores a small authoritative index and immutable or versioned semantic records. A fresh workstream reads the approved goal, Plan, active Phase, DIC, EPS/action lineage, evidence index, checkpoints, and escalations from the package. Generated narrative handoffs are useful views, not competing authorities.
+
+\subsection{Context projection}
+Let $\Pi_v(s)$ be the context projection supplied to the executor for phase $v$, and let $\pi_v(a\mid s)$ be the ideal phase action kernel.
+\begin{proposition}[Context-local execution]
+\label{prop:context}
+Omitting state outside $\Pi_v(s)$ leaves phase behavior unchanged if
+\[
+\pi_v(a\mid s)=\pi_v(a\mid \Pi_v(s))
+\]
+for all admissible $s,a$, all acceptance predicates and escalation conditions are measurable from the projection plus resolvable evidence references, and omitted state cannot mutate through a hidden channel. If two admissible states share a projection but require different action distributions or acceptance decisions, the projection is insufficient.
+\end{proposition}
+\begin{proof}
+The sufficient direction follows by substitution in the action and verification kernels. For necessity, take states $s,s'$ with $\Pi_v(s)=\Pi_v(s')$ but different required behavior; any projection-only executor must act identically on them and is wrong on at least one.
+\end{proof}
+Externalized state reduces context load only when the projection is semantically sufficient. It is not made safe by storing more files whose relevance cannot be recovered. MemGPT and hierarchical memory systems motivate externalization and working-memory control \citep{packer2023memgpt,wang2024hiagent}; the DIC specifies what must be projected for one bounded phase.
+
+\section{Human Oversight Across Timescales}
+\subsection{Governance complexity}
+Suppose a Plan has $N$ ordinary completed phases, periodic checkpoint interval $h$, and $M$ material escalations. Beyond initial Plan approval, the number of mandatory human governance events is at most
+\[
+\left\lfloor\frac{N}{h}\right\rfloor+M
+\]
+(up to a chosen final release review). This is a counting invariant of the policy, not a quality guarantee. Machine-local checks may be much more frequent.
+
+\subsection{Checkpoint interval under imperfect verification}
+Consider a simplified stationary model. Each checkpoint costs $c_v$; a false rejection occurs with probability $\beta$ and costs $c_f$; faults arrive at rate $\lambda$ per phase; re-executing one contaminated phase costs $c_r$; a persisting observable fault is missed at a gate with conditional probability $\alpha<1$. With interval $h$, a fault appears uniformly within its first block. Its expected contaminated span before detection is
+\[
+\frac h2+h\frac{\alpha}{1-\alpha}=h\frac{1+\alpha}{2(1-\alpha)}.
+\]
+Ignoring overlapping faults and edge effects, expected overhead over $n$ phases is
+\[
+U(h)=\frac{n(c_v+\beta c_f)}{h}+\lambda n c_r h\frac{1+\alpha}{2(1-\alpha)}.
+\]
+\begin{proposition}[Cost-optimal interval in the stationary model]
+\label{prop:hstar}
+The continuous minimizer is
+\[
+h^*=\sqrt{\frac{2(c_v+\beta c_f)(1-\alpha)}{\lambda c_r(1+\alpha)}}.
+\]
+The discrete policy uses a feasible integer near $h^*$.
+\end{proposition}
+\begin{proof}
+$U$ is strictly convex for $h>0$. Setting its derivative to zero and solving gives the expression.
+\end{proof}
+The formula recovers the qualitative checkpoint/restart trade-off \citep{young1974first,daly2006higher}: expensive review favors longer intervals; frequent or costly faults favor shorter intervals; a weak verifier changes both detection delay and repair overhead. The runtime default of seven is a configurable operating prior, not an estimate of $h^*$ for every project.
+
+\section{Main, Theory, and Experiment Specialization}
+Specialization is semantic, not ceremonial. Main resolves authority conflicts and maintains the Plan. Theory is expected to search primary sources, define domains, attempt counterexamples, and downgrade claims that do not survive. Experiment freezes protocols, implements objective graders, records complete evidence, and separates smoke, pilot, confirmatory, and post-hoc analyses. Each can generate EPS and delegate concrete actions, so a persistent Orchestrator is unnecessary.
+
+The separation reduces one common failure: the same context invents a claim, designs a favorable test, interprets the result, and approves publication. It does not guarantee independence. Material theory and evidence should receive a fresh hostile review at a release boundary.
+
+\section{Reference Implementation}
+\subsection{Authority and files}
+The implementation uses only the Python standard library for its canonical state machine. \texttt{.ai-workflow/STATE.json} records schema version, governance, roles, Plans, phase summaries, checkpoints, escalations, evidence pointers, and an append-only bounded event history. Full DIC, EPS, and Action JSON records live under
+\texttt{.ai-workflow/runtime/plans/<plan>/phases/<phase>/}. Content hashes detect accidental DIC drift.
+
+\subsection{State transitions}
+The principal transitions are:
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+Transition & Preconditions & Result\\
+\midrule
+create Plan & initialized package & draft Plan\\
+add Phase & draft Plan & dependency-checked Phase\\
+approve Plan & at least one Phase & approved authority boundary\\
+start Phase & approved, dependencies complete & active Phase/DIC\\
+generate EPS & DIC exists & disposable operation record\\
+complete Phase & active, acceptance satisfied & evidence + next phase/checkpoint\\
+verify repair & same DIC remains valid & regenerate EPS\\
+verify replan & semantic decomposition changes & governance event\\
+escalate & material trigger & autonomous progression stops\\
+recover & package exists & lineage/hash/dependency audit\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Compatibility}
+Legacy v5.6.31 Goal/context/handoff files are indexed rather than deleted. \texttt{Orchestrator} aliases Main; \texttt{Researcher} aliases Theory by default or Experiment for empirical work. A legacy single prompt can be migrated as a one-Phase Plan. The compatibility layer is deliberately subordinate to the canonical state to prevent multiple status files from claiming authority.
+
+\subsection{Conformance coverage}
+The test suite covers one Plan authorizing several phases, autonomous ordinary progression, periodic checkpoint triggering, immediate material escalation, reconstructable lineage, Main/Theory/Experiment ownership, package-only recovery, and legacy compatibility, plus dependency blocking and verification outcomes. These are engineering tests. They do not measure language-agent task success.
+
+\section{Formal Properties and Limits}
+\subsection{What is guaranteed by construction}
+Identifier lineage, role normalization, checkpoint counters, escalation categories, atomic state replacement, and DIC hash checks are implementation invariants when callers use the canonical runtime. They are not semantic guarantees about the world.
+
+\subsection{Observability limit}
+Let $O:\State\to\mathcal O$ be the evidence observation available to a verifier and $G:\State\to\{0,1\}$ the relevant goal predicate.
+\begin{proposition}[Evidence-aliasing impossibility]
+\label{prop:observability}
+If there exist $s_+,s_-$ such that $O(s_+)=O(s_-)$ but $G(s_+)=1$ and $G(s_-)=0$, then no verifier $V:\mathcal O\to\{\textsf{accept},\textsf{reject}\}$ can have both zero false acceptance and zero false rejection on $\{s_+,s_-\}$.
+\end{proposition}
+\begin{proof}
+$V$ receives the same input on both states and must return the same decision. Accepting falsely accepts $s_-$; rejecting falsely rejects $s_+$.
+\end{proof}
+No amount of hierarchical decomposition overcomes evidence that fails to distinguish success from failure. The remedy is a richer environment-grounded observation, a weaker claim, or explicit residual uncertainty---not a more confident verifier prompt.
+
+\subsection{Open-world and adversarial limits}
+The theory assumes declared dependencies, stable identifiers, and evidence tied to the asserted property. Open-world side effects, prompt injection, mutable external services, and adversarial evidence can violate those assumptions. ToolEmu and AgentDojo illustrate why sandbox and security evaluation are separate requirements \citep{ruan2024toolemu,debenedetti2024agentdojo}. The runtime is a control layer, not a security boundary.
+
+\subsection{Novelty limit}
+The formal ingredients have established analogues in program logics, runtime verification, build systems, and checkpointing \citep{hoare1969axiomatic,leucker2009runtime,mokhov2018build,daly2006higher}. The report therefore claims neither theorem novelty in isolation nor implementation equivalence to a learned hierarchical world model. LeCun's world-model programme and joint-embedding predictive models are conceptual motivation for abstraction across timescales, not descriptions of this symbolic package protocol \citep{lecun2022path,bardes2024vjepa}.
+
+\section{Empirical Hypotheses and Evaluation Design}
+\subsection{Central hypotheses}
+The primary empirical hypothesis is that the relative benefit of hierarchy increases with effective task horizon after matching model, task information, and inference budget. The mechanism hypothesis is that verification-triggered local repair reduces downstream propagation and rework beyond hierarchy alone and beyond spending the same calls on generic critique.
+
+\subsection{Conditions}
+The frozen candidate design contains four main conditions: C0 direct/reactive; C1 flat plan-and-execute; C2 hierarchical execution; and C3 hierarchy plus evidence-gated repair/replanning. C1+V spends C3's verifier budget on generic critique without dependency-local repair; C2-extra spends it on additional generation. These controls distinguish structure from extra tokens, calls, stronger prompts, or verifier-as-additional-inference.
+
+\subsection{Task factors and faults}
+Controlled factors are dependency depth, branching, delayed dependency distance, interacting constraints, and injected intermediate faults. Task families should have objective executable graders and pre-generated instances. Faults include stale schemas, omitted constraints, dependency-version swaps, corrupted statistics, unsupported citation pointers, and failing code paths. The injector hides fault existence and location from the agent.
+
+\subsection{Outcomes and analysis}
+Primary outcomes are end-to-end success, hard-constraint satisfaction, unsupported completion, failure-propagation size, recovery locality, detection latency, and rework. Costs include calls, tokens, wall time, verifier calls, and human checkpoints. The primary statistical analysis is a condition-by-effective-horizon interaction in a mixed-effects model, with paired instance contrasts and full interval estimates. A positive submission-level claim requires frozen prompts, matched budgets, at least two task families, objective graders, and completion of all primary conditions.
+
+\subsection{Current evidence boundary}
+The current reconstruction includes conformance tests and a deterministic dependency-locality fixture. They validate implementation paths and terminology only. No large confirmatory comparative study has been run, so the package does not claim empirical superiority.
+
+\section{Related Work}
+\paragraph{Planning and search.} ReAct, Tree of Thoughts, Graph of Thoughts, ReWOO, ADaPT, and LATS develop reasoning/action interleaving, explicit search, or adaptive decomposition \citep{yao2023react,yao2023tot,besta2024got,xu2023rewoo,prasad2024adapt,zhou2024lats}. AI-Native Workflow operates at a longer-lived authority and artifact layer; it can host such methods inside EPS.
+
+\paragraph{Compound agents.} CAMEL, AutoGen, AgentVerse, and MetaGPT establish role-based multi-agent coordination \citep{li2023camel,wu2023autogen,chen2024agentverse,hong2024metagpt}. The present focus is durable refinement, evidence, invalidation, and governance rather than the novelty of manager/worker roles.
+
+\paragraph{Memory and context.} MemGPT and HiAgent address external or hierarchical memory \citep{packer2023memgpt,wang2024hiagent}. The context-locality proposition states the sufficiency condition needed for safe omission; it does not propose a new neural memory model.
+
+\paragraph{Benchmarks.} AgentBench, WebArena, GAIA, SWE-bench, OSWorld, and $\tau$-bench expose stateful, tool-mediated, and long-horizon failures \citep{liu2024agentbench,zhou2024webarena,mialon2024gaia,jimenez2024swebench,xie2024osworld,yao2024taubench}. The proposed factorial generator complements them by manipulating dependency structure and fault location directly.
+
+\paragraph{Verification and oversight.} Reflexion, process supervision, debate, recursive oversight, and weak-to-strong supervision motivate feedback and scalable checking \citep{shinn2023reflexion,lightman2023verify,irving2018debate,leike2018recursive,burns2024weakstrong}. The four-outcome operator adds explicit repair/replan/escalation semantics, while the observability proposition prevents treating verifier confidence as ground truth.
+
+\paragraph{Harness optimization.} DSPy and automated design of agentic systems optimize prompts or agent graphs \citep{khattab2024dspy,hu2025adas}. AI-Native Workflow specifies how a chosen harness is authorized, executed, audited, and locally recovered. Direct comparative evidence is future work.
+
+\section{Limitations}
+The architecture increases explicit state and may add overhead on short tasks. DIC quality is itself model- and human-dependent. Read/write footprints can be incomplete; hidden dependencies invalidate local recovery. Evidence can be stale, adversarial, or weakly connected to the claim. Verifier errors may be correlated, violating convenient rate models. The checkpoint optimum assumes stationarity and ignores overlapping faults, queueing, and heterogeneous costs. Role specialization does not create epistemic independence. The package has no confirmatory evidence yet that the proposed hierarchy improves end-to-end agent performance. Workshop templates and deadlines are external mutable constraints and must be rechecked immediately before submission.
+
+\section{Conclusion}
+AI-Native Workflow 5.6.32 replaces phase-by-phase prompt ceremony with a simpler hierarchy and clearer authority: a human approves a Plan; Main, Theory, and Experiment execute bounded phases through durable contracts and disposable operations; evidence-gated verification chooses accept, repair, replan, or escalate; and declared dependencies make local recovery auditable. The formal analysis identifies exactly what composition and locality require, quantifies one imperfect-verification trade-off, and proves that evidence aliasing prevents universal correctness. The next scientific step is not a broader claim but a controlled experiment: hold model and budget fixed, vary effective horizon and faults, and determine whether the integrated mechanism yields measurable success and recovery advantages.
+
+\appendix
+\section{Claim classification summary}
+\begin{longtable}{p{0.13\textwidth}p{0.23\textwidth}p{0.54\textwidth}}
+\toprule
+ID & Classification & Status\\\midrule
+ARCH-01/02 & invariant by construction & implemented and test-covered\\
+DEF-REF-01 & definition & retained\\
+THM-COMP-01 & theorem under assumptions & proved; not novelty claim\\
+THM-LOCAL-01/02 & theorems under assumptions & proved; locality and tightness\\
+THM-VER-01 & theorem under assumptions & proved; conditional miss bound\\
+PROP-CHK-01 & proposition under assumptions & proved; stationary model\\
+PROP-CTX-01 & proposition under assumptions & proved; conditional sufficiency\\
+IMP-OBS-01 & impossibility proposition & proved\\
+HYP-HORIZON-01 & empirical hypothesis & planned, not tested\\
+HYP-REPAIR-01 & empirical hypothesis & planned, not tested\\
+\bottomrule
+\end{longtable}
+
+\section{Required experiment record}
+Each run record should include package hash, condition, model identifier, decoding parameters, tool versions, task seed, dependency graph, hidden fault metadata, transcript pointer, artifact hashes, grader version, raw outcomes, cost measures, and termination reason. Aggregate manuscript tables must be generated from those records.
+
+\section{Ordinary execution brief}
+A modern prompt needs the desired outcome, package/domain authority, hard constraints, evidence and success criteria, autonomy/escalation boundary, and deliverable. The model chooses the route and records artifacts and concise rationale; it is not asked to reveal private chain-of-thought.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

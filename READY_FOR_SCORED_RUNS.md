@@ -37,31 +37,19 @@ runbook; it is not authorization to start a row of `manifests/RUN_MATRIX.csv`.
    Change only the condition to `AI_NATIVE` for the workflow row. This branch defaults to the
    frozen Claude route; add `--ecosystem OPENAI` only for a deliberate OpenAI row. The starter maps this
    choice to the unchanged matrix row, adds a UTC timestamp to the physical
-   run/attempt ID, packages Main's inputs, updates one `RUN.json`, and opens the
-   interactive executor after Main returns its handoff. Direct still excludes
+   run/attempt ID and updates one `RUN.json`. Direct opens the interactive coding
+   CLI immediately in approved-Goal mode with no Main inference. AI-Native packages Main's inputs
+   and opens the executor after one Main inference returns its whole-Phase handoff. Direct excludes
    `.ai-workflow/`; AI-Native uses the same source with a clean runtime.
 
 ## Direct operational loop
 
-Open a fresh Main chat on the materialized `workspace/` and give it only the
-frozen task prompt and frozen resource menu. Direct may plan, write ordinary
-notes, delegate, research where allowed, test, and revise. It receives no
-AI-Native loader, documents, or state. Record transcripts, tool routing,
-resource measurements, and grader evidence under the run's `main/`,
-`executors/`, and `evidence/` directories without mounting private evaluation
-material into the workspace.
-
-The Main attachment is a ZIP of `workspace/` only. Do not upload the task
-capsule root: `original_task/`, qualification/private evaluator material,
-oracle runs, provenance-only references, run records, and grader machinery are
-outside Main's input surface.
-
-For the selected qualified coding capsule, use its generated
-`TESTING_STEPS.md`. `scripts/start_run.py` creates `MAIN_INPUT.zip` and
-`MAIN_PROMPT.md` directly in a timestamped run root, asks for the Main-chat
-link, waits for a handoff ZIP in the run folder, validates/imports it, and opens the
-interactive CLI in `workspace/`. A Direct run never creates or receives
-`AI_WORKFLOW_RUNTIME.zip`; its ordinary handoff must not use or imitate DIC/EPS.
+Run the selected capsule's `TESTING_STEPS.md` command. `scripts/start_run.py` creates
+`DIRECT_GOAL.md` in the timestamped run root and immediately opens the frozen coding CLI at
+`workspace/`. The task is supplied directly as the approved Goal for one autonomous coding run.
+There is no Main chat, `MAIN_INPUT.zip`, `MAIN_PROMPT.md`, chat link, Main time, Main token record,
+or handoff ZIP. Direct may plan, write ordinary notes, test, and revise, but receives no
+AI-Native loader, documents, or state and must not imitate DIC/EPS.
 
 For progressive tasks, `start_run.py` automatically runs the frozen private
 cumulative grader after the executor exits and stores its raw record outside
@@ -72,28 +60,22 @@ or hidden tests early.
 
 ## AI-Native operational loop
 
-Open a fresh Main chat on the materialized `workspace/`. After uploading both
+Open a fresh Main chat. After uploading both
 archives, paste the one complete `MAIN_PROMPT.md`; it instructs Main to load the
 root `.ai-workflow/` and then continue directly with the frozen approved Goal in
-the same message. Main itself creates the Plan,
-chooses the Phase decomposition, creates each active Phase folder/DIC/EPS,
-delegates bounded work, evaluates returned evidence, and accepts, repairs, or
-replans. Do not pre-create task-specific plans, phase counts, DICs, EPSs, or
-execution history.
+the same message. This is exactly one Main inference for the currently revealed scope. Main chooses
+the Plan and Phase decomposition and returns the actual complete current active Phase package. Do
+not pre-create task-specific plans, phase counts, DICs, EPSs, or execution history.
 
-As in Direct, Main receives only packaged agent-visible workspace material. In
-this condition Main receives the run's `MAIN_INPUT.zip` plus the single clean
+Main receives only packaged agent-visible workspace material: the run's `MAIN_INPUT.zip` plus the single clean
 repository-root `AI_WORKFLOW_RUNTIME.zip`; both exclude all task-root private,
 provenance-only, oracle, grader, and run-record surfaces. `RUN.json` records the
 shared archive's path and exact hash; no per-run workflow ZIP is created.
 
-For the currently revealed scope, T1–T4 Main should minimize unnecessary
-operator round trips: prefer one coherent Phase/DIC/EPS and comprehensive
-executor handoff, while retaining autonomous multi-Phase decomposition when
-genuinely warranted. Progressive checkpoint gates remain mandatory and later
-instructions are never revealed early. For each CLI handoff, chat Main outputs one downloadable
-Phase ZIP containing the complete current DIC, assigned just-in-time EPS and
-exact executor prompt, all changed durable workflow state needed for import,
+For the currently revealed scope, Main outputs exactly one downloadable whole-Phase ZIP. It must
+contain the full Phase manifest, every required DIC view, the complete initial EPS node graph, one
+substantive prompt file per EPS node, the Phase `ORCHESTRATOR_START.md` executor entrypoint, all
+changed durable workflow state needed for import,
 and a lineage/authority/evidence manifest. Main does not claim to save into a
 local path. The operator saves it directly in the printed run folder;
 `MAIN_HANDOFF.zip` is preferred but a unique alternate `.zip` filename is accepted. The
@@ -101,6 +83,17 @@ still-running starter imports its workflow overlay, records the
 Main chat locator in `RUN.json`, and opens the frozen interactive Codex CLI or
 Claude Code CLI in the workspace. The ZIP is transport for canonical state,
 not a second workflow surface.
+
+After an accepted progressive checkpoint, run the exact `scripts/continue_run.py` command printed
+by the grader. It captures the executor's final response, reveals only the immediate next
+checkpoint, and creates a safe `MAIN_CONTINUE_INPUT_CHECKPOINT_XX.zip` containing the newly
+authorized instruction, sanitized grader summary, executor return, and current agent-visible
+workspace. It also creates one fixed, fully copy-paste `MAIN_CONTINUE_PROMPT_CHECKPOINT_XX.md`.
+For Direct, the continuation launcher bypasses Main and immediately opens another direct Goal
+session. For AI-Native, upload the continuation ZIP and paste its prompt into the same Main chat;
+this is one Main inference for that newly revealed scope. The launcher validates and imports the
+new complete Phase package, opens the frozen executor, and grades the cumulative checkpoint.
+Checkpoint number does not prescribe Phase number; Main retains control of Phase decomposition.
 
 Before import, the starter performs a dry validation of the ZIP structure,
 manifest, declared-file set, condition, route, and workflow-overlay policy. A
@@ -126,8 +119,8 @@ reliable active-working time.
 
 When the executor exits, `start_run.py` first runs `scripts/grade_run.py`, then opens
 `scripts/record_run.py` automatically. The grader executes outside the workspace and records raw
-native evidence in the run folder. Main active time is recorded once before executor launch; the
-post-executor recorder reuses it without asking again. The operator may then record reported Main
+native evidence in the run folder. AI-Native Main time is recorded once before executor launch and
+reused by the recorder; Direct skips all Main metrics. The operator may then record reported Main
 tokens, missing latest-executor usage, and a note. The recorder automatically
 reuses the latest grader evidence and score. It does not force premature completion: answer No if
 another checkpoint or Main/executor cycle remains. Rerunning `python -X utf8

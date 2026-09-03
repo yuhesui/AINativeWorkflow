@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "state_path": "/mnt/data/AI_Native_Workflow_v5.6.31_hierarchical/.ai-workflow/STATE.json",
+  "active_plan_id": "plan-hierarchical-research-upgrade",
+  "schema_version": "5.6.32"
+}

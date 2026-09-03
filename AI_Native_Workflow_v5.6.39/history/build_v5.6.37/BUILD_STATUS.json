@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-08-30",
+  "workflow_version": "5.6.33",
+  "pdfs": [
+    {
+      "path": "AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.pdf",
+      "exists": true,
+      "bytes": 370426,
+      "sha256": "20d87af90f5a81d855b4406421366c1cf44b61fb1be3f8641db3c6738d1cd543",
+      "pages": 16,
+      "page_text_lengths": [
+        2717,
+        2619,
+        3497,
+        2546,
+        3123,
+        2747,
+        2589,
+        2998,
+        2831,
+        3109,
+        2717,
+        3212,
+        2736,
+        2262,
+        3096,
+        3189
+      ],
+      "blank_page_candidates": []
+    },
+    {
+      "path": "submissions/meta_agents/main.pdf",
+      "exists": true,
+      "bytes": 175266,
+      "sha256": "02f710ffff9be34621c680a53d86d41127ad77c194268211f10772df38c5ff19",
+      "pages": 6,
+      "page_text_lengths": [
+        3759,
+        3760,
+        3574,
+        4030,
+        4115,
+        632
+      ],
+      "blank_page_candidates": []
+    },
+    {
+      "path": "submissions/who_verifies/main.pdf",
+      "exists": true,
+      "bytes": 170421,
+      "sha256": "129177441eaf8b937f265e8ec82c0d61d3568067166d136b4f88a228a7177e55",
+      "pages": 4,
+      "page_text_lengths": [
+        3213,
+        2828,
+        3609,
+        1976
+      ],
+      "blank_page_candidates": []
+    },
+    {
+      "path": "submissions/automlr/main.pdf",
+      "exists": true,
+      "bytes": 52205,
+      "sha256": "7781c12cf78da86ce8014825bfe853de89fb15b6990cf616eaefe74570176d75",
+      "pages": 3,
+      "page_text_lengths": [
+        1367,
+        1528,
+        586
+      ],
+      "blank_page_candidates": []
+    }
+  ],
+  "tests": {
+    "path": "build/logs/runtime_v5633_tests.txt",
+    "passed": 55,
+    "ok": true
+  },
+  "recovery": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "state_path": "/mnt/data/aw5633_work/.ai-workflow/STATE.json",
+    "active_plan_id": "plan-hierarchical-research-upgrade",
+    "schema_version": "5.6.33"
+  },
+  "report_surface_validation": {
+    "ok": true,
+    "flat": true,
+    "default_max_files": 10,
+    "phase_count": 9
+  },
+  "structure_revision": {
+    "one_dic_package_per_phase": true,
+    "required_dic_views": [
+      "README.md",
+      "REQUESTS.md",
+      "PLAN.md"
+    ],
+    "optional_dic_views": [
+      "ARCHITECTURE.md",
+      "TEST_MATRIX.md",
+      "custom flat Markdown views"
+    ],
+    "eps_semantics": "disposable JIT instantiation/refinement of DIC/PLAN prompt nodes",
+    "optional_lanes": [
+      "minor",
+      "research",
+      "verification",
+      "checkpoints"
+    ],
+    "lane_modes": [
+      "off",
+      "auto",
+      "on"
+    ],
+    "reports": "always present, flat, default max 10, human synthesis plus key merged raw results"
+  },
+  "release_blockers": [],
+  "evidence_boundary": "Builds/tests validate package structure and engineering conformance only; they are not confirmatory comparative language-agent evidence."
+}

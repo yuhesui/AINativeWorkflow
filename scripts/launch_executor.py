@@ -188,6 +188,54 @@ def validate_handoff_bindings(manifest: dict, run: dict, run_id: str) -> None:
             )
 
 
+def validate_whole_phase_overlay(overlay: Path, prompt_source: Path) -> None:
+    """Require an AI-Native handoff to contain a complete executable Phase graph."""
+    entries = [path.relative_to(overlay) for path in overlay.rglob("*")]
+    allowed_roots = {".ai-workflow", "phases"}
+    if not entries or any(not rel.parts or rel.parts[0] not in allowed_roots for rel in entries):
+        raise SystemExit("AI-Native repository_overlay may contain only .ai-workflow/ and phases/")
+    phase_root = overlay / "phases"
+    phase_manifests = sorted(phase_root.glob("*/PHASE_MANIFEST.json")) if phase_root.is_dir() else []
+    if phase_manifests:
+        if prompt_source.name != "ORCHESTRATOR_START.md" or phase_root not in prompt_source.parents:
+            raise SystemExit("AI-Native executor_prompt must be the active Phase ORCHESTRATOR_START.md")
+        for phase_manifest_path in phase_manifests:
+            current = phase_manifest_path.parent
+            required = (
+                current / "DIC" / "README.md",
+                current / "DIC" / "REQUESTS.md",
+                current / "DIC" / "PLAN.md",
+                current / "ORCHESTRATOR_START.md",
+            )
+            missing = [str(path.relative_to(overlay).as_posix()) for path in required if not path.is_file()]
+            if missing:
+                raise SystemExit("whole-Phase handoff is missing: " + ", ".join(missing))
+            phase_manifest = load_json(phase_manifest_path)
+            eps_id = str(phase_manifest.get("initial_eps_id") or "").strip()
+            if not eps_id:
+                raise SystemExit("PHASE_MANIFEST.json must name initial_eps_id")
+            eps_root = current / "EPS" / eps_id
+            eps_manifest_path = eps_root / "manifest.json"
+            if not eps_manifest_path.is_file():
+                raise SystemExit("whole-Phase handoff is missing its initial EPS manifest")
+            eps_manifest = load_json(eps_manifest_path)
+            node_ids = eps_manifest.get("plan_node_ids")
+            nodes = eps_manifest.get("nodes")
+            if not isinstance(node_ids, list) or not node_ids or not isinstance(nodes, dict):
+                raise SystemExit("initial EPS manifest must contain a non-empty full node graph")
+            for node_id in node_ids:
+                if node_id not in nodes:
+                    raise SystemExit(f"initial EPS manifest lacks node metadata for {node_id!r}")
+                prompt_path = eps_root / "prompts" / f"{node_id}.md"
+                if not prompt_path.is_file() or not prompt_path.read_text(encoding="utf-8").strip():
+                    raise SystemExit(f"initial EPS lacks a substantive prompt file for {node_id!r}")
+        return
+    # Compatibility with the pre-root-phases runtime. Its complete Phase state lives below
+    # .ai-workflow; the controlling prompt still must be an orchestrator entrypoint, not a worker.
+    if ".ai-workflow" not in prompt_source.relative_to(overlay).parts:
+        raise SystemExit("AI-Native handoff contains no canonical Phase surface")
+
+
 def parse_usage(path: Path | None, skip_prompt: bool) -> tuple[dict, str]:
     if path is not None:
         value = json.loads(path.read_text(encoding="utf-8"))
@@ -429,9 +477,7 @@ def main() -> int:
             overlay = package_root / overlay_rel
             if not overlay.is_dir():
                 raise SystemExit("AI-Native handoff repository_overlay is missing")
-            overlay_entries = [path.relative_to(overlay) for path in overlay.rglob("*")]
-            if not overlay_entries or any(rel.parts[0] != ".ai-workflow" for rel in overlay_entries):
-                raise SystemExit("AI-Native repository_overlay may contain only .ai-workflow files")
+            validate_whole_phase_overlay(overlay, prompt_source)
             unexpected_files = [
                 path.relative_to(package_root).as_posix()
                 for path in package_root.rglob("*")
@@ -568,6 +614,7 @@ def main() -> int:
         run["status"] = "IN_PROGRESS"
         run["main_model_product_visible"] = main_model
         run["main_effort_product_visible"] = main_effort
+        run["main_inference_count"] = max(1, int(run.get("main_inference_count", 0)))
         run["active_executor_product_visible"] = executor_model
         run["active_executor_effort"] = required_effort
         if simple_layout:

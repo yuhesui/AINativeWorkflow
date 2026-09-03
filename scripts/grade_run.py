@@ -454,12 +454,10 @@ def main() -> int:
     append_grade(run_path, result)
     print(json.dumps(result, indent=2, sort_keys=True))
     if task_id in SLOP_TASKS and not result["all_checkpoints_graded"]:
-        checkpoint = int(result["checkpoint"])
         print(
-            "\nCheckpoint graded. Reveal the next checkpoint with:\n"
-            f"{sys.executable} -X utf8 scripts/reveal_checkpoint.py {task_root} "
-            f"{args.run_id} --checkpoint {checkpoint + 1} "
-            f"--accepted-grader-raw {result['raw_grader']}"
+            "\nCheckpoint graded. Continue the same run with:\n"
+            f"{sys.executable} -X utf8 scripts/continue_run.py \"{task_root}\" "
+            f"--run-id {args.run_id}"
         )
     return 0
 

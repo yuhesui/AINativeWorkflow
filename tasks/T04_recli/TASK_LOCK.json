@@ -12,8 +12,8 @@
     "scored_run_created": false,
     "status": "QUALIFIED"
   },
-  "resource_policy_sha256": "d51288de482dab5ad209433a358890870e06d515902300438a106a6c3c3b7abc",
-  "runtime_tree_sha256": "9e1cad74da9c6495ea555e65dab75e8443418964d8a1dcfecdda50f592919798",
+  "resource_policy_sha256": "0fc25bab8b301c40c759fabd10cbf94a34af1f877cc613c7962f311d6c4a3a50",
+  "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
   "schema_version": 1,
   "sources": [
     {
@@ -28,32 +28,32 @@
   ],
   "surfaces": {
     "original_task": {
-      "bytes": 777723,
+      "bytes": 802322,
       "file_count": 45,
-      "tree_sha256": "7225965da3b010a7408468c2af66f36d9199acb4767bf1d17745a0c4eb231eba"
+      "tree_sha256": "161de4ef3fcf19a725d3c042c2ff654490423a6572568d2af43021342e627581"
     },
     "private_eval": {
-      "bytes": 776346,
+      "bytes": 800929,
       "file_count": 44,
-      "tree_sha256": "bcf7b3a783940e113ebd95b6c06a51fbefc1c4e83739ea8a9c6750960ecfee9b"
+      "tree_sha256": "eca87ae17a81d22073ae2ecd8cd9f047923ed085c0571dc9ced47863a9ea07f1"
     },
     "reference_agent_visible": {
-      "bytes": 1,
-      "file_count": 1,
-      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "reference_provenance_only": {
-      "bytes": 1,
-      "file_count": 1,
-      "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
+      "bytes": 0,
+      "file_count": 0,
+      "tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "test_repo": {
-      "bytes": 102793,
-      "file_count": 44,
-      "tree_sha256": "88e03f355eefc1cee76f4c48dcc295d1318b15be73eb011efed8f5d1f495cc12"
+      "bytes": 175100,
+      "file_count": 57,
+      "tree_sha256": "7c9f05b87a6ca67e39fe2632bf1ec70bc3e669c45b4b0dbc95d40725d7bc77a1"
     }
   },
   "task_id": "T04",
-  "task_prompt_sha256": "6cc8262b8af2c0595b8eff2ea2314b7b2a48e83fffc162049c91763044c36c2b",
-  "visibility_manifest_sha256": "737e206baececc1299719718e1917990aa27280136e09424e646293e29db3bcc"
+  "task_prompt_sha256": "6a1dbcbc26b8433556e44d7393b910d04cb78b990251d4304ab65560da0cff64",
+  "visibility_manifest_sha256": "2e1388784184bde23b1d5776a2e9d6b1f897ca590b4d8c59a2347a02ba3b78da"
 }

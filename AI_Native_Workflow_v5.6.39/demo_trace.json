@@ -1,0 +1,84 @@
+{
+  "changed_keys": [
+    "normalized"
+  ],
+  "declared_downstream_impact_cone": [
+    "experiment",
+    "paper",
+    "release",
+    "table"
+  ],
+  "demo": "verification-gated bounded recovery",
+  "dic_id": "dic_demo",
+  "first_eps": {
+    "actions": [
+      "a1_collect",
+      "a1_normalize",
+      "a1_experiment",
+      "a1_table",
+      "a1_paper",
+      "a1_release",
+      "a1_theory"
+    ],
+    "id": "eps_001",
+    "nodes": [
+      "collect",
+      "normalize",
+      "experiment",
+      "table",
+      "paper",
+      "release",
+      "theory"
+    ]
+  },
+  "recovery": {
+    "errors": [],
+    "ok": true,
+    "plan_count": 1,
+    "schema_version": "5.6.39",
+    "warnings": []
+  },
+  "retained_nodes": [
+    "collect",
+    "theory"
+  ],
+  "root": "/tmp/ai-workflow-demo-1_4cti3z/repo",
+  "second_eps": {
+    "actions": [
+      "a2_normalize",
+      "a2_experiment",
+      "a2_table",
+      "a2_paper",
+      "a2_release"
+    ],
+    "id": "eps_002",
+    "nodes": [
+      "normalize",
+      "experiment",
+      "table",
+      "paper",
+      "release"
+    ]
+  },
+  "stable_dic_across_attempts": true,
+  "status": {
+    "active_plan_id": "plan_demo",
+    "phase_count": 1,
+    "phases": {
+      "phase_demo": {
+        "actions": 12,
+        "dic": "dic_demo",
+        "eps_attempts": 2,
+        "latest_verification": "accept",
+        "status": "complete"
+      }
+    },
+    "plan_status": "approved",
+    "schema_version": "5.6.39"
+  },
+  "temporary_workspace_removed_after_return": true,
+  "verification_sequence": [
+    "repair",
+    "accept"
+  ]
+}

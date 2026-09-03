@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "state_path": "/mnt/data/aw5633_work/.ai-workflow/STATE.json",
+  "active_plan_id": "plan-hierarchical-research-upgrade",
+  "schema_version": "5.6.33"
+}

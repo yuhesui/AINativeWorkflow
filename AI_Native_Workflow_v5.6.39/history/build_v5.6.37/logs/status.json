@@ -1,0 +1,79 @@
+{
+  "schema_version": "5.6.32",
+  "active_plan_id": "plan-hierarchical-research-upgrade",
+  "open_escalations": [],
+  "due_checkpoints": [],
+  "plan": {
+    "id": "plan-hierarchical-research-upgrade",
+    "title": "Hierarchical Research Upgrade and Workshop Submission Programme",
+    "status": "approved",
+    "active_phase_id": null,
+    "completed_since_checkpoint": 0,
+    "checkpoint_interval": 7
+  },
+  "phases": [
+    {
+      "id": "phase-runtime-architecture",
+      "title": "Runtime architecture",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-formal-theory",
+      "title": "Formal theory",
+      "owner": "Theory",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-literature-and-novelty",
+      "title": "Literature and novelty",
+      "owner": "Theory",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-experiment-programme",
+      "title": "Experiment programme",
+      "owner": "Experiment",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-technical-report",
+      "title": "Technical report",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-meta-agents-submission",
+      "title": "Meta-Agents submission",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-who-verifies-submission",
+      "title": "Who Verifies submission",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-automlr-eligibility-and-scaffold",
+      "title": "AutoMLR eligibility and scaffold",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    },
+    {
+      "id": "phase-release-validation",
+      "title": "Release validation",
+      "owner": "Main",
+      "status": "pending",
+      "dic_id": null
+    }
+  ]
+}

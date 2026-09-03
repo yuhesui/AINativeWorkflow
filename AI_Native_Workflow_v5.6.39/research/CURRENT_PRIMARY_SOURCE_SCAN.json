@@ -1,0 +1,42 @@
+{
+  "accessed": "2026-08-30",
+  "source": "arXiv API (primary-paper metadata/preprints; venue status requires official proceedings check)",
+  "queries": {
+    "hierarchical_agents": {
+      "query": "all:\"hierarchical\" AND (all:\"language agent\" OR all:\"LLM agent\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22hierarchical%22+AND+%28all%3A%22language+agent%22+OR+all%3A%22LLM+agent%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    },
+    "long_horizon_agents": {
+      "query": "all:\"long-horizon\" AND (all:\"agent\" OR all:\"language model\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22long-horizon%22+AND+%28all%3A%22agent%22+OR+all%3A%22language+model%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    },
+    "agent_verification": {
+      "query": "all:\"agent verification\" OR (all:\"verifier\" AND all:\"language agent\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22agent+verification%22+OR+%28all%3A%22verifier%22+AND+all%3A%22language+agent%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    },
+    "agent_workflow_optimization": {
+      "query": "all:\"agentic workflow\" OR all:\"automated design of agentic systems\"",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22agentic+workflow%22+OR+all%3A%22automated+design+of+agentic+systems%22&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    },
+    "context_management": {
+      "query": "(all:\"context management\" OR all:\"working memory\") AND all:\"LLM agent\"",
+      "url": "https://export.arxiv.org/api/query?search_query=%28all%3A%22context+management%22+OR+all%3A%22working+memory%22%29+AND+all%3A%22LLM+agent%22&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    },
+    "hierarchical_world_models": {
+      "query": "all:\"hierarchical world model\" OR (au:LeCun AND all:\"planning\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22hierarchical+world+model%22+OR+%28au%3ALeCun+AND+all%3A%22planning%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "results": []
+    }
+  }
+}

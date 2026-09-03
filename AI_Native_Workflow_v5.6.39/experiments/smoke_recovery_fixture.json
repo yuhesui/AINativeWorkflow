@@ -1,0 +1,19 @@
+{
+  "kind": "deterministic_structural_smoke",
+  "changed_keys": [
+    "normalized"
+  ],
+  "direct_readers": [
+    "experiment"
+  ],
+  "impact_cone": [
+    "experiment",
+    "paper",
+    "release",
+    "table"
+  ],
+  "full_rerun_nodes": 7,
+  "local_repair_nodes": 4,
+  "saved_nodes": 3,
+  "claim_boundary": "This checks implementation of declared dependency locality only; it is not comparative language-agent evidence."
+}

@@ -1,0 +1,16 @@
+work/family,category,already known,remaining distinction to test,package citation keys
+ReAct,planning/action,interleaved reasoning and tool actions,no package-resident multi-phase authority or dependency-local invalidation in the core method,yao2023react
+Tree of Thoughts / Graph of Thoughts,search/planning,tree/graph deliberation,reasoning graph is not the durable governance/evidence graph proposed here,yao2023tot; besta2024got
+ReWOO,plan-and-execute,decouples planning from observations,does not by itself define DIC evidence predicates and recovery scope,xu2023rewoo
+ADaPT,adaptive decomposition,decomposes tasks when needed,different focus from persistent intent and package recovery,prasad2024adapt
+LATS / Reflexion,feedback and search,uses feedback for iterative improvement,feedback is not tied to versioned dependency invalidation in the proposed sense,zhou2024lats; shinn2023reflexion
+CAMEL / AutoGen / AgentVerse / MetaGPT,compound agents,"roles, conversations, manager-worker collaboration",hierarchy/roles known; candidate distinction is durable contract/evidence/recovery protocol,li2023camel; wu2023autogen; chen2024agentverse; hong2024metagpt
+MemGPT / HiAgent,context management,external/hierarchical memory,externalization known; this work states a conditional-sufficiency requirement and authority index,packer2023memgpt; wang2024hiagent
+AgentBench / WebArena / GAIA,agent benchmarks,broad tool-use and web/assistant tasks,motivate but do not isolate horizon and fault-propagation mechanism,liu2024agentbench; zhou2024webarena; mialon2024gaia
+SWE-bench / OSWorld / tau-bench,long-horizon environments,"software, computer, and tool-user interaction",natural tasks; proposed factorial graph/fault generator is mechanism-oriented,jimenez2024swebench; xie2024osworld; yao2024taubench
+Process supervision / debate / recursive oversight,verification/oversight,intermediate checking and scalable supervision,does not remove evidence observability or define package-local invalidation,lightman2023verify; irving2018debate; leike2018recursive
+ToolEmu / AgentDojo,agent verification/safety,environment-emulated risk and prompt-injection evaluation,supports environment-grounded evidence and security caveats,ruan2024toolemu; debenedetti2024agentdojo
+DSPy / ADAS,harness optimization,optimizes prompts/pipelines/agent systems,complementary: execution authority and evidence audit for a chosen harness,khattab2024dspy; hu2025adas
+LeCun world-model agenda / V-JEPA,hierarchical predictive motivation,learned latent predictive representations and planning motivation,conceptual only; no implementation equivalence,lecun2022path; bardes2024vjepa
+Build systems / self-adjusting computation,dependency locality,incremental recomputation from dependency graphs,"formal local-recovery result is an adaptation, not isolated novelty",mokhov2018build; acar2009selfadjusting
+Checkpoint/restart theory,checkpoint complexity,cost/reliability trade-offs,checkpoint proposition adapts known structure to agent governance,young1974first; daly2006higher

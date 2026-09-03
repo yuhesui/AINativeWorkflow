@@ -1,0 +1,4 @@
+The 8-bit codepage and sorting file: 88591lat.csf
+The top-level auxiliary file: AI_NATIVE_WORKFLOW_TECHNICAL_REPORT.aux
+The style file: plainnat.bst
+Database file #1: references.bib

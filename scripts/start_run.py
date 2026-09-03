@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create one timestamped run, package Main inputs, and open its CLI executor."""
+"""Create one timestamped run and open its Direct or AI-Native CLI flow."""
 
 from __future__ import annotations
 
@@ -144,30 +144,10 @@ def write_main_prompt(
 
 A package with missing or different binding values will be rejected before import.
 """
-    interaction_guidance = ""
-    if str(run["task_id"]) in {"T01", "T02", "T03", "T04"}:
-        if condition == "DIRECT":
-            interaction_guidance = """Interaction policy for this task: minimize unnecessary Main/operator round trips. For all currently revealed scope, prefer one comprehensive executor handoff that can carry implementation, testing, bounded repair, and evidence return. Use another handoff only for newly revealed instructions, a genuine evidence gate, or an unrecoverable executor boundary. Never cross an unrevealed-checkpoint gate."""
-        else:
-            interaction_guidance = """Interaction policy for this task: minimize unnecessary Main/operator round trips. For the complete currently revealed scope, prefer one coherent active Phase, one complete DIC, and one comprehensive EPS/executor handoff capable of implementation, testing, bounded repair, and evidence return. If multiple Phases are genuinely needed, create them autonomously and consolidate execution as far as evidence-gated semantics safely allow. Do not manufacture extra Phases or handoffs, and never cross an unrevealed-checkpoint gate."""
-    if condition == "DIRECT":
-        body = main_prompt(read(ROOT / "prompts" / "direct" / "00_START_TASK.md"), route, task)
-        text = f"""# Main chat prompt
-
-Upload `MAIN_INPUT.zip`, then paste this single message:
-
-````text
-{binding}
-
-{interaction_guidance}
-
-{body}
-````
-"""
-    else:
-        loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
-        body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
-        text = f"""# Main chat prompt
+    interaction_guidance = """Interaction policy: use exactly one Main inference for the complete currently revealed scope. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. Never cross an unrevealed-checkpoint gate."""
+    loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
+    body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
+    text = f"""# Main chat prompt
 
 Upload `MAIN_INPUT.zip` from the printed run folder and
 `AI_WORKFLOW_RUNTIME.zip` from the evaluation repository root. The runtime archive supplies the
@@ -190,8 +170,32 @@ Then paste this single complete message:
     return destination
 
 
+def write_direct_goal(task_root: Path, run_dir: Path, ecosystem: str) -> Path:
+    route = ROUTES[ecosystem]
+    task = read(task_root / "TASK.md")
+    destination = run_dir / "DIRECT_GOAL.md"
+    destination.write_text(
+        "# Direct CLI Goal\n\n"
+        + read(ROOT / "prompts" / "direct" / "00_START_TASK.md")
+        + "\n\nFrozen executor route: " + route["executor"] + ". Do not silently substitute.\n\n"
+        + "Frozen task prompt follows exactly:\n\n" + task + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    return destination
+
+
 def package_inputs(task_root: Path, run_dir: Path, condition: str, run: dict) -> None:
     workspace = run_dir / "workspace"
+    if condition == "DIRECT":
+        if (workspace / ".ai-workflow").exists():
+            raise SystemExit("Direct workspace must not contain .ai-workflow")
+        prompt = write_direct_goal(task_root, run_dir, run["ecosystem"])
+        run["direct_goal_prompt"] = {"path": str(prompt), "sha256": file_sha256(prompt)}
+        run["main_inference_count"] = 0
+        run["status"] = "READY_EXECUTOR"
+        run["inputs_packaged_utc"] = utc_now()
+        return
     main_input = run_dir / "MAIN_INPUT.zip"
     zip_tree(workspace, main_input, exclude_top_level={".ai-workflow"})
     run["main_input"] = {
@@ -199,22 +203,20 @@ def package_inputs(task_root: Path, run_dir: Path, condition: str, run: dict) ->
         "sha256": file_sha256(main_input),
         "contains_ai_workflow": False,
     }
-    if condition == "AI_NATIVE":
-        workflow = workspace / ".ai-workflow"
-        if not workflow.is_dir():
-            raise SystemExit("AI-Native workspace is missing .ai-workflow")
-        archive_info = inspect_archive()
-        run["ai_workflow_input"] = {
-            "path": str(WORKFLOW_ARCHIVE),
-            "sha256": archive_info["archive_sha256"],
-            "runtime_tree_sha256": archive_info["tree_sha256"],
-            "shared_canonical_archive": True,
-        }
-    elif (run_dir / ".ai-workflow.zip").exists():
-        raise SystemExit("Direct run must not contain a legacy .ai-workflow.zip")
+    workflow = workspace / ".ai-workflow"
+    if not workflow.is_dir():
+        raise SystemExit("AI-Native workspace is missing .ai-workflow")
+    archive_info = inspect_archive()
+    run["ai_workflow_input"] = {
+        "path": str(WORKFLOW_ARCHIVE),
+        "sha256": archive_info["archive_sha256"],
+        "runtime_tree_sha256": archive_info["tree_sha256"],
+        "shared_canonical_archive": True,
+    }
     prompt = write_main_prompt(task_root, run_dir, condition, run["ecosystem"], run)
     run["main_prompt"] = {"path": str(prompt), "sha256": file_sha256(prompt)}
     run["status"] = "AWAITING_MAIN"
+    run["main_inference_count"] = 1
     run["inputs_packaged_utc"] = utc_now()
 
 
@@ -407,6 +409,59 @@ def launch(
     return subprocess.run(command, cwd=ROOT, check=False).returncode
 
 
+def launch_direct(
+    task_root: Path,
+    run_id: str,
+    prompt: Path,
+    *,
+    ecosystem: str,
+    claude_model: str | None,
+    qualification_root: Path | None,
+) -> int:
+    command = [
+        sys.executable, "-X", "utf8", str(ROOT / "scripts" / "launch_direct_goal.py"),
+        str(task_root), run_id, "--executor", "CODEX" if ecosystem == "OPENAI" else "CLAUDE",
+        "--prompt", str(prompt),
+    ]
+    if claude_model:
+        command.extend(("--claude-model", claude_model))
+    if qualification_root:
+        command.extend(("--qualification-root", str(qualification_root.resolve())))
+    return subprocess.run(command, cwd=ROOT, check=False).returncode
+
+
+def finish_run(
+    task_root: Path,
+    run_id: str,
+    result: int,
+    *,
+    qualification_root: Path | None,
+    skip_auto_grade: bool,
+    skip_post_run_record: bool,
+) -> int:
+    grade_result = 0
+    if not skip_auto_grade:
+        grade_command = [
+            sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
+            str(task_root), "--run-id", run_id,
+        ]
+        if qualification_root:
+            grade_command.extend(("--qualification-root", str(qualification_root.resolve())))
+        print("\nRunning frozen private grader...")
+        grade_result = subprocess.run(grade_command, cwd=ROOT, check=False).returncode
+    if not skip_post_run_record:
+        record_command = [
+            sys.executable, "-X", "utf8", str(ROOT / "scripts" / "record_run.py"),
+            str(task_root), "--run-id", run_id,
+        ]
+        if qualification_root:
+            record_command.extend(("--qualification-root", str(qualification_root.resolve())))
+        record_result = subprocess.run(record_command, cwd=ROOT, check=False).returncode
+        if result == 0 and grade_result == 0:
+            return record_result
+    return result or grade_result
+
+
 def record_handoff_validation(run_path: Path, handoff: Path, return_code: int) -> None:
     run = load_json(run_path)
     attempts = run.setdefault("handoff_validation_attempts", [])
@@ -549,12 +604,33 @@ def main() -> int:
 
     print("\nRUN READY")
     print(f"Run folder: {run_dir}")
-    print(f"Main input: {run_dir / 'MAIN_INPUT.zip'}")
-    if args.condition == "AI_NATIVE":
+    if args.condition == "DIRECT":
+        print(f"Direct Goal: {run_dir / 'DIRECT_GOAL.md'}")
+    else:
+        print(f"Main input: {run_dir / 'MAIN_INPUT.zip'}")
         print(f"AI workflow: {WORKFLOW_ARCHIVE}")
-    print(f"Copy/paste prompt: {run_dir / 'MAIN_PROMPT.md'}")
+        print(f"Copy/paste prompt: {run_dir / 'MAIN_PROMPT.md'}")
     if args.stop_after_package:
         return 0
+
+    if args.condition == "DIRECT":
+        result = launch_direct(
+            task_root,
+            run_id,
+            run_dir / "DIRECT_GOAL.md",
+            ecosystem=args.ecosystem,
+            claude_model=args.claude_model,
+            qualification_root=args.qualification_root,
+        )
+        print(f"\nRun metadata: {run_path}")
+        return finish_run(
+            task_root,
+            run_id,
+            result,
+            qualification_root=args.qualification_root,
+            skip_auto_grade=args.skip_auto_grade,
+            skip_post_run_record=args.skip_post_run_record,
+        )
 
     route = ROUTES[args.ecosystem]
     main_model = args.main_model or route["main"]
@@ -619,41 +695,14 @@ def main() -> int:
         qualification_root=args.qualification_root,
     )
     print(f"\nRun metadata: {run_path}")
-    grade_result = 0
-    if not args.skip_auto_grade:
-        grade_command = [
-            sys.executable,
-            "-X",
-            "utf8",
-            str(ROOT / "scripts" / "grade_run.py"),
-            str(task_root),
-            "--run-id",
-            run_id,
-        ]
-        if args.qualification_root:
-            grade_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
-        print("\nRunning frozen private grader...")
-        grade_result = subprocess.run(grade_command, cwd=ROOT, check=False).returncode
-    if not args.skip_post_run_record:
-        record_command = [
-                sys.executable,
-                "-X",
-                "utf8",
-                str(ROOT / "scripts" / "record_run.py"),
-                str(task_root),
-                "--run-id",
-                run_id,
-            ]
-        if args.qualification_root:
-            record_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
-        record_result = subprocess.run(
-            record_command,
-            cwd=ROOT,
-            check=False,
-        ).returncode
-        if result == 0 and grade_result == 0:
-            return record_result
-    return result or grade_result
+    return finish_run(
+        task_root,
+        run_id,
+        result,
+        qualification_root=args.qualification_root,
+        skip_auto_grade=args.skip_auto_grade,
+        skip_post_run_record=args.skip_post_run_record,
+    )
 
 
 if __name__ == "__main__":
