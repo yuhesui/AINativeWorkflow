@@ -1,5 +1,14 @@
 # Frozen capsule setup report
 
+## Protocol revision required before scoring
+
+The operator-requested simplified harness now makes Direct a zero-Main coding-CLI Goal run, while
+AI-Native uses one Main inference per currently revealed scope. This is implemented and qualified
+as infrastructure, but it changes the Direct condition and resource allocation described in the
+currently frozen protocol/model policy. An explicit protocol revision and updated matched-budget
+lock are required before any scored use. Earlier Main-based Direct results are a different condition
+and must not be pooled with the revised Direct runs.
+
 Setup date: 2026-08-31 (Asia/Shanghai)
 
 ## Outcome
