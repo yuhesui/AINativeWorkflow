@@ -15,6 +15,24 @@ from task_environment import environment_spec  # noqa: E402
 
 
 class InfrastructureFailureTests(unittest.TestCase):
+    def test_ai_native_prompts_forbid_environment_preflight_gates(self) -> None:
+        initial = (ROOT / "prompts" / "ai_native" / "01_START_TASK.md").read_text(
+            encoding="utf-8"
+        )
+        continuation = (ROOT / "prompts" / "shared" / "01_CONTINUE_CHECKPOINT.md").read_text(
+            encoding="utf-8"
+        )
+        launcher = (ROOT / "scripts" / "launch_executor.py").read_text(encoding="utf-8")
+
+        for text in (initial, continuation, launcher):
+            self.assertIn("run_in_env.py exec-self", text)
+            self.assertIn("Docker", text)
+        self.assertIn("preflight", initial)
+        self.assertIn("preflight", continuation)
+        self.assertIn("already provisioned and started", launcher)
+        self.assertIn("retry it once", initial.lower())
+        self.assertIn("retry", continuation.lower())
+
     def test_pre_executor_failure_is_invalidated(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             run_path = Path(directory) / "RUN.json"

@@ -20,5 +20,10 @@ below.
 
 Tune the executor prompt for the frozen executor/model/effort in `CONTINUATION_CONTEXT.json`. Make
 the assignment capable of implementation, cumulative testing, bounded repair, and evidence return
-in one executor session where practical. Output only the single handoff ZIP plus a short statement
+in one executor session where practical. The harness starts the frozen task environment before the
+executor opens. In the Orchestrator and EPS prompts, tell the executor to start substantive work
+immediately and use `python .evaluation/run_in_env.py exec-self -- <command>` for task commands.
+Do not add Docker/WSL/sidecar/model-route preflight or operator-confirmation gates. Retry a genuinely
+failed wrapper command once, retain its exact output, and escalate only if the repeated failure blocks
+a current acceptance criterion. Output only the single handoff ZIP plus a short statement
 identifying its filename; do not merely describe the package contents.
