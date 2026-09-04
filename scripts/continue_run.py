@@ -253,6 +253,25 @@ def direct_launch_command(
     return command
 
 
+def grade_command(
+    task_root: Path,
+    run_id: str,
+    qualification_root: Path | None,
+) -> list[str]:
+    command = [
+        sys.executable,
+        "-X",
+        "utf8",
+        str(ROOT / "scripts" / "grade_run.py"),
+        str(task_root),
+        "--run-id",
+        run_id,
+    ]
+    if qualification_root:
+        command.extend(("--qualification-root", str(qualification_root.resolve())))
+    return command
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Continue one accepted progressive checkpoint run.")
     parser.add_argument("task_root", type=portable_path)
@@ -283,9 +302,32 @@ def main() -> int:
         raise SystemExit("all checkpoints are already revealed; grade/finalize the run")
     grade = run.get("latest_auto_grade")
     if not isinstance(grade, dict) or grade.get("checkpoint") != previous:
-        raise SystemExit("the current checkpoint must be graded before continuation")
+        print(
+            f"Checkpoint {previous} has no recorded grade. Grading the surviving workspace "
+            "before deciding whether another checkpoint may be revealed."
+        )
+        graded = subprocess.run(
+            grade_command(task_root, run_id, args.qualification_root),
+            cwd=ROOT,
+            check=False,
+        )
+        if graded.returncode:
+            raise SystemExit(
+                "the current checkpoint could not be graded; no executor was relaunched and "
+                "no later checkpoint was revealed"
+            )
+        run = load_json(run_path)
+        grade = run.get("latest_auto_grade")
+        if not isinstance(grade, dict) or grade.get("checkpoint") != previous:
+            raise SystemExit(
+                "grader completed without recording the current checkpoint; no executor was "
+                "relaunched and no later checkpoint was revealed"
+            )
     if not grade.get("grader_ok") or not grade.get("accepted_for_next_reveal"):
-        raise SystemExit("the current checkpoint grader has not authorized the next reveal")
+        raise SystemExit(
+            "the current checkpoint grader has not authorized the next reveal; the run remains "
+            "at this checkpoint and no executor was relaunched"
+        )
     loss_boundary = {"T03": 3, "T04": 4}.get(task_id)
     if run.get("state_mode") == "STATE_LOSS" and previous == loss_boundary:
         raise SystemExit(
@@ -361,14 +403,8 @@ def main() -> int:
             save_json(run_path, after_launch)
             print("Continuation did not start; marked INVALID_INFRASTRUCTURE and skipped grading.")
             return launched.returncode
-        grade_command = [
-            sys.executable, "-X", "utf8", str(ROOT / "scripts" / "grade_run.py"),
-            str(task_root), "--run-id", run_id,
-        ]
-        if args.qualification_root:
-            grade_command.extend(("--qualification-root", str(args.qualification_root.resolve())))
         graded = subprocess.run(
-            grade_command,
+            grade_command(task_root, run_id, args.qualification_root),
             cwd=ROOT,
             check=False,
         )

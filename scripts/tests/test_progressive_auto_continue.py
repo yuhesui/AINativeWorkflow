@@ -17,6 +17,44 @@ from start_run import finish_run  # noqa: E402
 
 
 class ProgressiveDirectTests(unittest.TestCase):
+    def test_ungraded_checkpoint_is_graded_before_any_relaunch(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            task_root = Path(directory) / "task"
+            run_dir = task_root / "runs" / "run-test"
+            state_dir = run_dir / "workspace" / ".evaluation"
+            state_dir.mkdir(parents=True)
+            run_path = run_dir / "RUN.json"
+            run = {
+                "condition": "AI_NATIVE",
+                "task_id": "T03",
+                "run_id": "run-test",
+                "state_mode": "NORMAL",
+            }
+            run_path.write_text(json.dumps(run) + "\n", encoding="utf-8")
+            (state_dir / "CHECKPOINT_STATE.json").write_text(
+                json.dumps({"current_checkpoint": 1, "accepted": [], "revealed": [1]}) + "\n",
+                encoding="utf-8",
+            )
+            calls: list[list[str]] = []
+
+            def fake_run(command: list[str], **_kwargs: object) -> subprocess.CompletedProcess[str]:
+                calls.append(command)
+                updated = json.loads(run_path.read_text(encoding="utf-8"))
+                updated["latest_auto_grade"] = {
+                    "checkpoint": 1,
+                    "grader_ok": True,
+                    "accepted_for_next_reveal": False,
+                }
+                run_path.write_text(json.dumps(updated) + "\n", encoding="utf-8")
+                return subprocess.CompletedProcess(command, 0)
+
+            argv = ["continue_run.py", str(task_root), "--run-id", "run-test"]
+            with patch("continue_run.subprocess.run", side_effect=fake_run), patch.object(sys, "argv", argv):
+                with self.assertRaisesRegex(SystemExit, "no executor was relaunched"):
+                    continue_main()
+
+            self.assertEqual([Path(command[3]).name for command in calls], ["grade_run.py"])
+
     def test_codex_continuation_requests_workspace_scoped_resume(self) -> None:
         command = direct_launch_command(
             {
