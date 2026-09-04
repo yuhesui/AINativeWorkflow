@@ -1,0 +1,9 @@
+{
+  "phase_id": "phase_05_checkpoint_5_dependencies",
+  "plan_id": "plan_t03_progressive_migrations",
+  "dic_id": "dic_t03_checkpoint_5_dependencies",
+  "dic_revision": 1,
+  "initial_eps_id": "eps_001_initial",
+  "depends_on": ["checkpoint_1_accepted", "checkpoint_2_accepted", "checkpoint_3_accepted", "checkpoint_4_accepted"],
+  "plan_nodes": {"P11": {"depends_on": []}, "P12": {"depends_on": ["P11"]}}
+}

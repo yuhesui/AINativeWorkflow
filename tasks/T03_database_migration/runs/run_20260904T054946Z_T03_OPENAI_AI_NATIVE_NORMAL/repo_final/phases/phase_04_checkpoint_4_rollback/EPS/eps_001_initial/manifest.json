@@ -1,0 +1,21 @@
+{
+  "id": "eps_001_initial",
+  "attempt": 1,
+  "dic_id": "dic_t03_checkpoint_4_rollback",
+  "dic_revision": 1,
+  "status": "externally_accepted",
+  "nodes": {
+    "P09": {
+      "depends_on": [],
+      "status": "externally_accepted",
+      "prompt_path": "phases/phase_04_checkpoint_4_rollback/EPS/eps_001_initial/prompts/P09.md",
+      "primary_outcome": "Transactional rollback implementation and focused cumulative evidence."
+    },
+    "P10": {
+      "depends_on": ["P09"],
+      "status": "not_started",
+      "prompt_path": "phases/phase_04_checkpoint_4_rollback/EPS/eps_001_initial/prompts/P10.md",
+      "primary_outcome": "Independent rollback verifier disposition."
+    }
+  }
+}

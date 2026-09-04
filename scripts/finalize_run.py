@@ -5,11 +5,22 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
 from eval_common import file_sha256, tree_sha256, validate_workspace
+
+
+def filesystem_path(path: Path) -> str:
+    """Return a Windows extended-length path without changing stored metadata."""
+    resolved = str(path.resolve())
+    if os.name != "nt" or resolved.startswith("\\\\?\\"):
+        return resolved
+    if resolved.startswith("\\\\"):
+        return "\\\\?\\UNC\\" + resolved[2:]
+    return "\\\\?\\" + resolved
 
 
 def main() -> int:
@@ -56,8 +67,17 @@ def main() -> int:
     final = run_dir / "repo_final"
     if final.exists() or result_dir.exists():
         raise SystemExit("final/result destination already exists; reruns require a new identifier")
-    shutil.copytree(workspace, final)
-    final_hash = tree_sha256(final, include_transient=True)
+    copy_source = filesystem_path(workspace)
+    copy_final = filesystem_path(final)
+    try:
+        shutil.copytree(copy_source, copy_final)
+    except Exception:
+        # A failed copy must not make the same run permanently unfinalizable.
+        # This destination did not exist before this invocation (checked above).
+        if os.path.exists(copy_final):
+            shutil.rmtree(copy_final)
+        raise
+    final_hash = tree_sha256(Path(copy_final), include_transient=True)
     run.update({
         "status": "FINALIZED",
         "validity": args.validity,

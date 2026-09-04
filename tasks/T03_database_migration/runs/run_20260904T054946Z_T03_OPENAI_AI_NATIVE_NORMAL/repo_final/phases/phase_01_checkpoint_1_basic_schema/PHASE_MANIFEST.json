@@ -1,0 +1,91 @@
+{
+  "depends_on": [],
+  "dic_id": "dic_t03_checkpoint_1_basic_schema",
+  "dic_revision": 1,
+  "initial_eps_id": "eps_001_initial",
+  "phase_id": "phase_01_checkpoint_1_basic_schema",
+  "phase_title": "Checkpoint 1 — Basic schema migrations",
+  "plan_goal": "Implement the database migration CLI incrementally against evaluator-revealed checkpoints, preserving all accepted behavior and never inferring or executing an unrevealed checkpoint.",
+  "plan_id": "plan_t03_progressive_migrations",
+  "plan_nodes": {
+    "P01": {
+      "depends_on": [],
+      "evidence_target": "Wrapper-run create/add/skip smoke cases with schema and _migrations inspection.",
+      "merge_node": false,
+      "parallel_group": null,
+      "reads": [
+        "TASK.md",
+        "CHECKPOINTS/01.md",
+        ".evaluation/CHECKPOINT_STATE.json"
+      ],
+      "subagent": false,
+      "title": "Core CLI, create/add, tracking and output contract",
+      "writes": [
+        "migration_tool.py",
+        "tests/ (optional)",
+        "phases/phase_01_checkpoint_1_basic_schema/{evidence,logs,reports}"
+      ]
+    },
+    "P02": {
+      "depends_on": [
+        "P01"
+      ],
+      "evidence_target": "Valid drop preserves rows and supported remaining schema; invalid drops fail without false tracking.",
+      "merge_node": false,
+      "parallel_group": null,
+      "reads": [
+        "migration_tool.py",
+        "P01 evidence"
+      ],
+      "subagent": false,
+      "title": "Drop-column reconstruction fidelity",
+      "writes": [
+        "migration_tool.py",
+        "tests/ (optional)",
+        "Phase evidence/logs"
+      ]
+    },
+    "P03": {
+      "depends_on": [
+        "P02"
+      ],
+      "evidence_target": "Error-path and multi-operation integrity matrix including exact skip semantics.",
+      "merge_node": false,
+      "parallel_group": null,
+      "reads": [
+        "migration_tool.py",
+        "P01/P02 evidence"
+      ],
+      "subagent": false,
+      "title": "Adversarial validation and failure integrity",
+      "writes": [
+        "migration_tool.py",
+        "tests/ (optional)",
+        "Phase evidence/logs"
+      ]
+    },
+    "P04": {
+      "depends_on": [
+        "P03"
+      ],
+      "evidence_target": "Fresh end-to-end verifier evidence and accept/repair/replan/escalate disposition for checkpoint 1.",
+      "merge_node": true,
+      "parallel_group": null,
+      "reads": [
+        "TASK.md",
+        "CHECKPOINTS/01.md",
+        "migration_tool.py",
+        "all current Phase evidence"
+      ],
+      "subagent": false,
+      "title": "Independent whole-checkpoint verification and disposition",
+      "writes": [
+        "migration_tool.py only for bounded verified repair",
+        "tests/ (optional)",
+        "Phase reports/evidence/state"
+      ]
+    }
+  },
+  "plan_title": "T03 progressive database migration tool",
+  "schema_version": "5.6.39"
+}

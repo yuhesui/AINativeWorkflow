@@ -1,0 +1,9 @@
+{
+  "phase_id": "phase_04_checkpoint_4_rollback",
+  "plan_id": "plan_t03_progressive_migrations",
+  "dic_id": "dic_t03_checkpoint_4_rollback",
+  "dic_revision": 1,
+  "initial_eps_id": "eps_001_initial",
+  "depends_on": ["checkpoint_1_accepted", "checkpoint_2_accepted", "checkpoint_3_accepted"],
+  "plan_nodes": {"P09": {"depends_on": []}, "P10": {"depends_on": ["P09"]}}
+}

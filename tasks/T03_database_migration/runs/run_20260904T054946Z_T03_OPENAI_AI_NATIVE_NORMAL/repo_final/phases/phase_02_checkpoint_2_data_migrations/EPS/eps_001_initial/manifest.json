@@ -1,0 +1,22 @@
+{
+  "id": "eps_001_initial",
+  "attempt": 1,
+  "origin": "orchestrator_continuation",
+  "dic_id": "dic_t03_checkpoint_2_data_migrations",
+  "dic_revision": 1,
+  "status": "externally_accepted",
+  "nodes": {
+    "P05": {
+      "depends_on": [],
+      "prompt_path": "phases/phase_02_checkpoint_2_data_migrations/EPS/eps_001_initial/prompts/P05.md",
+      "primary_outcome": "Implement revealed checkpoint-2 data operations with focused evidence.",
+      "status": "externally_accepted"
+    },
+    "P06": {
+      "depends_on": ["P05"],
+      "prompt_path": "phases/phase_02_checkpoint_2_data_migrations/EPS/eps_001_initial/prompts/P06.md",
+      "primary_outcome": "Independently verify cumulative checkpoint-2 behavior and record a disposition.",
+      "status": "not_started"
+    }
+  }
+}

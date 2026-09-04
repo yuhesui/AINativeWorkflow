@@ -1,0 +1,14 @@
+{
+  "condition": "AI_NATIVE",
+  "grader_raw": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\run_results\\run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL\\GRADER_RAW.ctrf.json",
+  "grader_raw_sha256": "572875ce8a9cbeeb29ff1024f09cb21fc419e1c9879a95e1f4b9d95dcbbbb8db",
+  "invalidation_reason": null,
+  "native_primary_metric": 86.22149705783444,
+  "normalized_completion_score": 86.22149705783444,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL\\repo_final",
+  "repo_final_tree_sha256": "53ef6d7cfe8a810c65462c57e51482e37df23b8c36326d2ef3485c62b67b0c0d",
+  "run_id": "run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL",
+  "schema_version": 1,
+  "task_id": "T03",
+  "validity": "VALID"
+}

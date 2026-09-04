@@ -1,0 +1,43 @@
+{
+  "phase_id": "phase_01_checkpoint_1_basic_schema",
+  "dic_id": "dic_t03_checkpoint_1_basic_schema",
+  "dic_revision": 1,
+  "eps_id": "eps_001_initial",
+  "checkpoint": 1,
+  "checkpoint_state": {
+    "current_checkpoint": 1,
+    "revealed": [1],
+    "accepted": []
+  },
+  "product_visible_model": "gpt-5.6-terra",
+  "execution_effort": "xhigh",
+  "nodes": {
+    "P01": {
+      "status": "escalate",
+      "implementation_path": "migration_tool.py",
+      "runtime_evidence": "blocked",
+      "evidence": [
+        "evidence/EXECUTION_LAUNCH.json",
+        "logs/P01_DIFF_AUDIT.md",
+        "logs/P01_WRAPPER_FAILURES.md"
+      ],
+      "limitation": "The required run_in_env.py interface reported an unavailable task sidecar on both mandated attempts for each required command."
+    },
+    "P02": {
+      "status": "not_started",
+      "reason": "P01 did not clear its focused runtime evidence gate."
+    },
+    "P03": {
+      "status": "not_started",
+      "reason": "P02 is not ready."
+    },
+    "P04": {
+      "status": "not_started",
+      "reason": "P03 is not ready; no verifier disposition exists."
+    }
+  },
+  "verifier_disposition": "not_run",
+  "checkpoint_gate": "passed: visible checkpoint state records checkpoint 1 as accepted",
+  "external_checkpoint_disposition": "accepted",
+  "external_checkpoint_note": "The visible checkpoint state records acceptance. Evaluator-private grader evidence was not accessed."
+}

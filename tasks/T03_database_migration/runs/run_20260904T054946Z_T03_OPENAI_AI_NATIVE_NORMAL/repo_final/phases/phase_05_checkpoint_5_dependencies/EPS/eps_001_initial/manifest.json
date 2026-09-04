@@ -1,0 +1,11 @@
+{
+  "id": "eps_001_initial",
+  "attempt": 1,
+  "dic_id": "dic_t03_checkpoint_5_dependencies",
+  "dic_revision": 1,
+  "status": "blocked",
+  "nodes": {
+    "P11": {"depends_on": [], "status": "escalate", "prompt_path": "phases/phase_05_checkpoint_5_dependencies/EPS/eps_001_initial/prompts/P11.md", "primary_outcome": "Dependency graph implementation and focused cumulative evidence."},
+    "P12": {"depends_on": ["P11"], "status": "not_started", "prompt_path": "phases/phase_05_checkpoint_5_dependencies/EPS/eps_001_initial/prompts/P12.md", "primary_outcome": "Independent dependency verifier disposition."}
+  }
+}

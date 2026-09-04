@@ -1,0 +1,123 @@
+{
+  "attempt": 1,
+  "created_at": "2026-09-04T05:58:29.865673+00:00",
+  "dic_hash": "1bec2e4816687379a00c9de29d4a6d503621adcfeab56f463e04e3f62de52d69",
+  "dic_id": "dic_t03_checkpoint_1_basic_schema",
+  "id": "eps_001_initial",
+  "nodes": {
+    "P01": {
+      "depends_on": [],
+      "execution_kind": "model",
+      "executor": "orchestrator",
+      "model_profile": "gpt-5.6-terra/xhigh",
+      "parallel_group": null,
+      "plan_node_id": "P01",
+      "primary_outcome": "Implement core CLI validation, migration tracking, create_table/add_column and output/error contract.",
+      "prompt_guides": [
+        ".ai-workflow/docs/PROMPTING_CORE.md",
+        ".ai-workflow/docs/GPT56_ROUTING.md",
+        ".ai-workflow/docs/CODEX_EXECUTION.md",
+        ".ai-workflow/docs/execution_levels/XHIGH.md"
+      ],
+      "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P01.md",
+      "prompt_tuned": true,
+      "status": "planned",
+      "subagent": false,
+      "surface": "Codex CLI",
+      "work_packages": [
+        "implementation",
+        "focused create/add/skip verification",
+        "durable evidence"
+      ]
+    },
+    "P02": {
+      "depends_on": [
+        "P01"
+      ],
+      "execution_kind": "model",
+      "executor": "orchestrator",
+      "model_profile": "gpt-5.6-terra/xhigh",
+      "parallel_group": null,
+      "plan_node_id": "P02",
+      "primary_outcome": "Implement and verify recreate-based drop_column with row/schema preservation.",
+      "prompt_guides": [
+        ".ai-workflow/docs/PROMPTING_CORE.md",
+        ".ai-workflow/docs/GPT56_ROUTING.md",
+        ".ai-workflow/docs/CODEX_EXECUTION.md",
+        ".ai-workflow/docs/execution_levels/XHIGH.md"
+      ],
+      "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P02.md",
+      "prompt_tuned": true,
+      "status": "planned",
+      "subagent": false,
+      "surface": "Codex CLI",
+      "work_packages": [
+        "drop reconstruction",
+        "schema/data preservation checks",
+        "forbidden-drop checks"
+      ]
+    },
+    "P03": {
+      "depends_on": [
+        "P02"
+      ],
+      "execution_kind": "model",
+      "executor": "orchestrator",
+      "model_profile": "gpt-5.6-terra/xhigh",
+      "parallel_group": null,
+      "plan_node_id": "P03",
+      "primary_outcome": "Harden validation, transaction/failure integrity, skip and adversarial error semantics.",
+      "prompt_guides": [
+        ".ai-workflow/docs/PROMPTING_CORE.md",
+        ".ai-workflow/docs/GPT56_ROUTING.md",
+        ".ai-workflow/docs/CODEX_EXECUTION.md",
+        ".ai-workflow/docs/execution_levels/XHIGH.md"
+      ],
+      "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P03.md",
+      "prompt_tuned": true,
+      "status": "planned",
+      "subagent": false,
+      "surface": "Codex CLI",
+      "work_packages": [
+        "adversarial validation",
+        "multi-operation rollback/tracking checks",
+        "error/output consistency"
+      ]
+    },
+    "P04": {
+      "depends_on": [
+        "P03"
+      ],
+      "execution_kind": "model",
+      "executor": "orchestrator",
+      "model_profile": "gpt-5.6-terra/xhigh",
+      "parallel_group": null,
+      "plan_node_id": "P04",
+      "primary_outcome": "Fresh whole-checkpoint verification, bounded repair if needed, and durable verifier disposition.",
+      "prompt_guides": [
+        ".ai-workflow/docs/PROMPTING_CORE.md",
+        ".ai-workflow/docs/GPT56_ROUTING.md",
+        ".ai-workflow/docs/CODEX_EXECUTION.md",
+        ".ai-workflow/docs/execution_levels/XHIGH.md"
+      ],
+      "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P04.md",
+      "prompt_tuned": true,
+      "status": "planned",
+      "subagent": false,
+      "surface": "Codex CLI",
+      "work_packages": [
+        "fresh end-to-end matrix",
+        "diff/scope audit",
+        "verifier report and durable closure"
+      ]
+    }
+  },
+  "origin": "main",
+  "plan_node_ids": [
+    "P01",
+    "P02",
+    "P03",
+    "P04"
+  ],
+  "status": "active"
+}

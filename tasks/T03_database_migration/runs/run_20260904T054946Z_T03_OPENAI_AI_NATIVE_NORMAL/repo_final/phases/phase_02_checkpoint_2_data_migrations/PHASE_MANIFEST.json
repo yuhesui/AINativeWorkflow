@@ -1,0 +1,13 @@
+{
+  "phase_id": "phase_02_checkpoint_2_data_migrations",
+  "phase_title": "Checkpoint 2 — Data migrations",
+  "plan_id": "plan_t03_progressive_migrations",
+  "dic_id": "dic_t03_checkpoint_2_data_migrations",
+  "dic_revision": 1,
+  "initial_eps_id": "eps_001_initial",
+  "depends_on": ["checkpoint_1_accepted"],
+  "plan_nodes": {
+    "P05": {"depends_on": [], "title": "Data operation implementation"},
+    "P06": {"depends_on": ["P05"], "title": "Cumulative verifier"}
+  }
+}

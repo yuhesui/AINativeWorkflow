@@ -1,0 +1,11 @@
+{
+  "id": "eps_001_initial",
+  "attempt": 1,
+  "dic_id": "dic_t03_checkpoint_3_constraints",
+  "dic_revision": 1,
+  "status": "externally_accepted",
+  "nodes": {
+    "P07": {"depends_on": [], "status": "externally_accepted", "prompt_path": "phases/phase_03_checkpoint_3_constraints/EPS/eps_001_initial/prompts/P07.md", "primary_outcome": "Constraint/index implementation and focused cumulative evidence."},
+    "P08": {"depends_on": ["P07"], "status": "not_started", "prompt_path": "phases/phase_03_checkpoint_3_constraints/EPS/eps_001_initial/prompts/P08.md", "primary_outcome": "Independent cumulative verifier disposition."}
+  }
+}

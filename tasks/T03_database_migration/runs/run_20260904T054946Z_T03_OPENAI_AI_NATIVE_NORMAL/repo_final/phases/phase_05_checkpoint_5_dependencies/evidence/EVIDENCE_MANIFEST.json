@@ -1,0 +1,31 @@
+{
+  "phase_id": "phase_05_checkpoint_5_dependencies",
+  "dic_id": "dic_t03_checkpoint_5_dependencies",
+  "dic_revision": 1,
+  "eps_id": "eps_001_initial",
+  "checkpoint_state": {
+    "current_checkpoint": 5,
+    "revealed": [1, 2, 3, 4, 5],
+    "accepted": [1, 2, 3, 4]
+  },
+  "nodes": {
+    "P11": {
+      "status": "escalate",
+      "files_changed": ["migration_tool.py", "tests/test_migration_tool.py"],
+      "test_status": "unverified_in_required_environment",
+      "evidence": [
+        "evidence/EXECUTION_LAUNCH.json",
+        "logs/P11_DIFF_AUDIT.md",
+        "logs/P11_WRAPPER_FAILURE.md"
+      ],
+      "limitation": "The required wrapper reported an unavailable sidecar on both the original suite invocation and its one escalated retry."
+    },
+    "P12": {
+      "status": "not_started",
+      "reason": "P11 cannot clear its frozen-environment evidence gate."
+    }
+  },
+  "verifier_disposition": "not_run",
+  "checkpoint_gate": "not_reached",
+  "unrevealed_scope_accessed": false
+}

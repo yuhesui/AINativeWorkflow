@@ -1,0 +1,17 @@
+{
+  "plan_id": "plan_t03_progressive_migrations",
+  "phase_id": "phase_01_checkpoint_1_basic_schema",
+  "dic_id": "dic_t03_checkpoint_1_basic_schema",
+  "dic_revision": 1,
+  "eps_id": "eps_001_initial",
+  "launched_node": "P01",
+  "product_visible_model": "gpt-5.6-terra",
+  "execution_effort": "xhigh",
+  "surface": "Codex CLI",
+  "checkpoint_state_at_launch": {
+    "current_checkpoint": 1,
+    "revealed": [1],
+    "accepted": []
+  },
+  "scope": "checkpoint 1 only"
+}

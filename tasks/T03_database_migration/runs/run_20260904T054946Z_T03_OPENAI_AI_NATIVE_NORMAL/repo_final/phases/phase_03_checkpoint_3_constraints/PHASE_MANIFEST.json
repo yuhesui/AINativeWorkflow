@@ -1,0 +1,9 @@
+{
+  "phase_id": "phase_03_checkpoint_3_constraints",
+  "plan_id": "plan_t03_progressive_migrations",
+  "dic_id": "dic_t03_checkpoint_3_constraints",
+  "dic_revision": 1,
+  "initial_eps_id": "eps_001_initial",
+  "depends_on": ["checkpoint_1_accepted", "checkpoint_2_accepted"],
+  "plan_nodes": {"P07": {"depends_on": []}, "P08": {"depends_on": ["P07"]}}
+}

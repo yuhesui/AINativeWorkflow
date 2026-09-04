@@ -1,0 +1,33 @@
+{
+  "phase_id": "phase_02_checkpoint_2_data_migrations",
+  "dic_id": "dic_t03_checkpoint_2_data_migrations",
+  "dic_revision": 1,
+  "eps_id": "eps_001_initial",
+  "checkpoint_state": {
+    "current_checkpoint": 2,
+    "revealed": [1, 2],
+    "checkpoint_1": "accepted"
+  },
+  "nodes": {
+    "P05": {
+      "status": "escalate",
+      "files_changed": ["migration_tool.py", "tests/test_migration_tool.py"],
+      "evidence": [
+        "evidence/EXECUTION_LAUNCH.json",
+        "logs/P05_DIFF_AUDIT.md",
+        "logs/P05_WRAPPER_FAILURE.md"
+      ],
+      "test_status": "unverified_in_required_environment",
+      "limitation": "The required wrapper reported an unavailable sidecar on the initial test attempt and its single escalated retry."
+    },
+    "P06": {
+      "status": "not_started",
+      "reason": "P05 cannot clear its required frozen-environment test gate."
+    }
+  },
+  "verifier_disposition": "externally_accepted",
+  "checkpoint_gate": "passed: visible checkpoint state records checkpoint 2 as accepted",
+  "external_checkpoint_disposition": "accepted",
+  "external_checkpoint_note": "The visible checkpoint state records acceptance. Evaluator-private grader evidence was not accessed.",
+  "unrevealed_scope_accessed": false
+}

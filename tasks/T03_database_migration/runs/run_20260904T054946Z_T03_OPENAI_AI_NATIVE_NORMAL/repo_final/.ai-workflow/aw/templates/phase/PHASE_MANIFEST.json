@@ -1,0 +1,23 @@
+{
+  "schema_version": "5.6.39",
+  "plan_id": "plan_01",
+  "plan_title": "Programme plan",
+  "plan_goal": "Replace with the durable programme goal.",
+  "phase_id": "phase_01_example",
+  "phase_title": "Replace with one coherent Phase milestone",
+  "depends_on": [],
+  "dic_id": "dic_phase_01_example",
+  "dic_revision": 1,
+  "plan_nodes": {
+    "P01": {
+      "title": "Replace with first bounded outcome",
+      "depends_on": [],
+      "parallel_group": null,
+      "subagent": false,
+      "reads": [],
+      "writes": [],
+      "evidence_target": "Replace with decisive evidence."
+    }
+  },
+  "initial_eps_id": "eps_001"
+}

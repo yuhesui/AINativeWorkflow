@@ -1,0 +1,15 @@
+{
+  "plan_node_ids": ["P01"],
+  "nodes": {
+    "P01": {
+      "depends_on": [],
+      "parallel_group": null,
+      "subagent": false,
+      "executor": "orchestrator",
+      "execution_kind": "model",
+      "prompt_tuned": false,
+      "primary_outcome": "Replace with the bounded execution outcome.",
+      "work_packages": []
+    }
+  }
+}

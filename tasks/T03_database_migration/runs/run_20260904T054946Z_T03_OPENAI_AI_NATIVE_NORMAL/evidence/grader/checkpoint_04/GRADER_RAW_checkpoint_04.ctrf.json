@@ -1,0 +1,1454 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.0.3"
+        },
+        "summary": {
+            "tests": 117,
+            "passed": 92,
+            "failed": 24,
+            "skipped": 1,
+            "pending": 0,
+            "other": 0,
+            "start": 1788512411545,
+            "stop": 1788512444108
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_table",
+                "status": "passed",
+                "duration": 191,
+                "start": 1788512411989,
+                "stop": 1788512412180,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column",
+                "status": "passed",
+                "duration": 195,
+                "start": 1788512412180,
+                "stop": 1788512412375,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_operations",
+                "status": "passed",
+                "duration": 208,
+                "start": 1788512412375,
+                "stop": 1788512412583,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_skip_already_applied",
+                "status": "passed",
+                "duration": 196,
+                "start": 1788512412583,
+                "stop": 1788512412779,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_single_column",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788512412779,
+                "stop": 1788512412979,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserve_data",
+                "status": "passed",
+                "duration": 207,
+                "start": 1788512412979,
+                "stop": 1788512413186,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_drop_columns",
+                "status": "passed",
+                "duration": 221,
+                "start": 1788512413186,
+                "stop": 1788512413407,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserves_existing_data",
+                "status": "passed",
+                "duration": 210,
+                "start": 1788512413407,
+                "stop": 1788512413617,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_foreign_keys_disabled_during_drop_column",
+                "status": "skipped",
+                "duration": 1,
+                "start": 1788512413618,
+                "stop": 1788512413619,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py', 436, 'Skipped: Applies only to checkpoints 1-2')"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_primary_key",
+                "status": "passed",
+                "duration": 187,
+                "start": 1788512413619,
+                "stop": 1788512413806,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_unique_and_not_null_constraints",
+                "status": "passed",
+                "duration": 185,
+                "start": 1788512413806,
+                "stop": 1788512413991,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_default_values_various_types",
+                "status": "passed",
+                "duration": 198,
+                "start": 1788512413991,
+                "stop": 1788512414189,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_with_default_to_populated_table",
+                "status": "passed",
+                "duration": 471,
+                "start": 1788512414189,
+                "stop": 1788512414660,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_complex_data_preservation",
+                "status": "passed",
+                "duration": 260,
+                "start": 1788512414660,
+                "stop": 1788512414920,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_not_null_with_default",
+                "status": "passed",
+                "duration": 197,
+                "start": 1788512414920,
+                "stop": 1788512415117,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_multiple_tables",
+                "status": "passed",
+                "duration": 182,
+                "start": 1788512415117,
+                "stop": 1788512415299,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_reserved_word_identifiers_are_quoted",
+                "status": "passed",
+                "duration": 183,
+                "start": 1788512415299,
+                "stop": 1788512415482,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_mixed_operations_all_types",
+                "status": "passed",
+                "duration": 211,
+                "start": 1788512415482,
+                "stop": 1788512415693,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_non_sequential_versions",
+                "status": "passed",
+                "duration": 196,
+                "start": 1788512415693,
+                "stop": 1788512415889,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_table_multiple_primary_keys_rejected",
+                "status": "passed",
+                "duration": 142,
+                "start": 1788512415889,
+                "stop": 1788512416031,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_requires_integer_primary_key",
+                "status": "passed",
+                "duration": 148,
+                "start": 1788512416031,
+                "stop": 1788512416179,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_rejects_invalid_identifier",
+                "status": "passed",
+                "duration": 156,
+                "start": 1788512416179,
+                "stop": 1788512416335,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_missing_table",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788512416336,
+                "stop": 1788512416516,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_table_exists",
+                "status": "passed",
+                "duration": 190,
+                "start": 1788512416516,
+                "stop": 1788512416706,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_missing_migration_file",
+                "status": "passed",
+                "duration": 158,
+                "start": 1788512416706,
+                "stop": 1788512416864,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_json",
+                "status": "passed",
+                "duration": 143,
+                "start": 1788512416864,
+                "stop": 1788512417007,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_schema_missing_operations",
+                "status": "passed",
+                "duration": 149,
+                "start": 1788512417007,
+                "stop": 1788512417156,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_table_missing_for_add_column",
+                "status": "passed",
+                "duration": 178,
+                "start": 1788512417156,
+                "stop": 1788512417334,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_column_already_exists",
+                "status": "passed",
+                "duration": 195,
+                "start": 1788512417334,
+                "stop": 1788512417529,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_column_missing_for_drop",
+                "status": "passed",
+                "duration": 190,
+                "start": 1788512417529,
+                "stop": 1788512417719,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_only_column",
+                "status": "passed",
+                "duration": 187,
+                "start": 1788512417719,
+                "stop": 1788512417906,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_primary_key_column",
+                "status": "passed",
+                "duration": 207,
+                "start": 1788512417906,
+                "stop": 1788512418113,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_identifier_rejected",
+                "status": "passed",
+                "duration": 155,
+                "start": 1788512418113,
+                "stop": 1788512418268,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_column_type_rejected",
+                "status": "passed",
+                "duration": 148,
+                "start": 1788512418269,
+                "stop": 1788512418417,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_unique_constraint_prevents_duplicates",
+                "status": "passed",
+                "duration": 198,
+                "start": 1788512418417,
+                "stop": 1788512418615,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_zero_rejected",
+                "status": "passed",
+                "duration": 154,
+                "start": 1788512418615,
+                "stop": 1788512418769,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_negative_rejected",
+                "status": "passed",
+                "duration": 150,
+                "start": 1788512418770,
+                "stop": 1788512418920,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_string_rejected",
+                "status": "passed",
+                "duration": 150,
+                "start": 1788512418920,
+                "stop": 1788512419070,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_removes_unique_index_on_dropped_column",
+                "status": "passed",
+                "duration": 415,
+                "start": 1788512419070,
+                "stop": 1788512419485,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 311,
+                "start": 1788512419486,
+                "stop": 1788512419797,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_migrate_column_data0')\n\n    def test_migrate_column_data(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Migrate data from one column to another.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Add email column and migrate data from old_email\",\n            \"operations\": [\n                {\n                    \"type\": \"add_column\",\n                    \"table\": \"users\",\n                    \"column\": {\"name\": \"new_email\", \"type\": \"TEXT\", \"not_null\": False},\n                },\n                {\n                    \"type\": \"migrate_column_data\",\n                    \"table\": \"users\",\n                    \"from_column\": \"old_email\",\n                    \"to_column\": \"new_email\",\n                },\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"new_email\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"migrate_column_data\", \"table\": \"users\", \"from_column\": \"old_email\", \"to_column\": \"new_email\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 2},\n        ]\nE       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:69: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 324,
+                "start": 1788512419797,
+                "stop": 1788512420121,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_backfill_data0')\n\n    def test_backfill_data(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Backfill a column with constant value.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Add and backfill status column\",\n            \"operations\": [\n                {\n                    \"type\": \"add_column\",\n                    \"table\": \"users\",\n                    \"column\": {\"name\": \"status\", \"type\": \"TEXT\", \"not_null\": False},\n                },\n                {\n                    \"type\": \"backfill_data\",\n                    \"table\": \"users\",\n                    \"column\": \"status\",\n                    \"value\": \"'active'\",\n                    \"where\": \"status IS NULL\",\n                },\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"status\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"backfill_data\", \"table\": \"users\", \"column\": \"status\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 2},\n        ]\nE       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 1 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:116: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_transform_data",
+                "status": "passed",
+                "duration": 328,
+                "start": 1788512420122,
+                "stop": 1788512420450,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_complete_column_migration",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 266,
+                "start": 1788512420450,
+                "stop": 1788512420716,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_complete_column_migration0')\n\n    @pytest.mark.functionality\n    def test_complete_column_migration(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Complete column migration pattern (add, migrate, drop).\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        # Capture original email values before migration\n        with sqlite3.connect(db_file) as conn:\n            original_emails = conn.execute(\n                \"SELECT id, email FROM users ORDER BY id\"\n            ).fetchall()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Migrate email to email_address\",\n            \"operations\": [\n                {\n                    \"type\": \"add_column\",\n                    \"table\": \"users\",\n                    \"column\": {\"name\": \"email_address\", \"type\": \"TEXT\", \"not_null\": False},\n                },\n                {\n                    \"type\": \"migrate_column_data\",\n                    \"table\": \"users\",\n                    \"from_column\": \"email\",\n                    \"to_column\": \"email_address\",\n                },\n                {\"type\": \"drop_column\", \"table\": \"users\", \"column\": \"email\"},\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"email_address\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"migrate_column_data\", \"table\": \"users\", \"from_column\": \"email\", \"to_column\": \"email_address\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"drop_column\", \"table\": \"users\", \"column\": \"email\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 3},\n        ]\nE       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'email', 'to_column': 'email_address', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:217: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_overwrites_existing_values",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 244,
+                "start": 1788512420716,
+                "stop": 1788512420960,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_migrate_column_data_overw0')\n\n    @pytest.mark.functionality\n    def test_migrate_column_data_overwrites_existing_values(\n        entrypoint_argv, seeds_dir, tmp_path\n    ):\n        \"\"\"Functionality: Migrate column data overwrites existing values.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        with sqlite3.connect(db_file) as conn:\n            conn.execute(\"UPDATE users SET email = 'temp@example.com'\")\n            conn.commit()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Overwrite email with old_email\",\n            \"operations\": [\n                {\n                    \"type\": \"migrate_column_data\",\n                    \"table\": \"users\",\n                    \"from_column\": \"old_email\",\n                    \"to_column\": \"email\",\n                }\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"migrate_column_data\", \"table\": \"users\", \"from_column\": \"old_email\", \"to_column\": \"email\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 1},\n        ]\nE       AssertionError: assert [{'event': 'o...'version': 2}] == [{'event': 'o...'version': 2}]\nE         \nE         At index 0 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'email', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:273: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_default_value_for_null",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 234,
+                "start": 1788512420960,
+                "stop": 1788512421194,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_migrate_column_data_defau0')\n\n    @pytest.mark.functionality\n    def test_migrate_column_data_default_value_for_null(\n        entrypoint_argv, seeds_dir, tmp_path\n    ):\n        \"\"\"Functionality: Default value is used when from_column is NULL.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        with sqlite3.connect(db_file) as conn:\n            conn.execute(\"UPDATE users SET old_email = NULL WHERE id = 1\")\n            conn.commit()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Migrate emails with default for NULL\",\n            \"operations\": [\n                {\n                    \"type\": \"add_column\",\n                    \"table\": \"users\",\n                    \"column\": {\"name\": \"new_email\", \"type\": \"TEXT\", \"not_null\": False},\n                },\n                {\n                    \"type\": \"migrate_column_data\",\n                    \"table\": \"users\",\n                    \"from_column\": \"old_email\",\n                    \"to_column\": \"new_email\",\n                    \"default_value\": \"'unknown'\",\n                },\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"new_email\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"migrate_column_data\", \"table\": \"users\", \"from_column\": \"old_email\", \"to_column\": \"new_email\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 2},\n        ]\nE       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:325: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data_without_where_updates_all",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 232,
+                "start": 1788512421194,
+                "stop": 1788512421426,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_backfill_data_without_whe0')\n\n    @pytest.mark.functionality\n    def test_backfill_data_without_where_updates_all(\n        entrypoint_argv, seeds_dir, tmp_path\n    ):\n        \"\"\"Functionality: Backfill without where updates all rows.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_2_users.db\", db_file)\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Backfill status for all users\",\n            \"operations\": [\n                {\n                    \"type\": \"add_column\",\n                    \"table\": \"users\",\n                    \"column\": {\"name\": \"status\", \"type\": \"TEXT\", \"not_null\": False},\n                },\n                {\n                    \"type\": \"backfill_data\",\n                    \"table\": \"users\",\n                    \"column\": \"status\",\n                    \"value\": \"'inactive'\",\n                },\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"status\", \"version\": 2},\n            {\"event\": \"operation_applied\", \"type\": \"backfill_data\", \"table\": \"users\", \"column\": \"status\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 2},\n        ]\nE       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 1 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:374: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_transformations_applied_in_order",
+                "status": "passed",
+                "duration": 220,
+                "start": 1788512421426,
+                "stop": 1788512421646,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_transform_then_backfill_uses_transformed_values",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788512421646,
+                "stop": 1788512421846,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_where_filters_rows",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 229,
+                "start": 1788512421846,
+                "stop": 1788512422075,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_backfill_where_filters_ro0')\n\n    @pytest.mark.functionality\n    def test_backfill_where_filters_rows(entrypoint_argv, tmp_path):\n        \"\"\"Functionality: Backfill updates only rows matching WHERE.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n    \n        with sqlite3.connect(db_file) as conn:\n            conn.execute(\n                \"CREATE TABLE users (id INTEGER PRIMARY KEY, status TEXT)\"\n            )\n            conn.executemany(\n                \"INSERT INTO users (id, status) VALUES (?, ?)\",\n                [(1, None), (2, \"active\"), (3, None)],\n            )\n            conn.commit()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Backfill status for NULL rows\",\n            \"operations\": [\n                {\n                    \"type\": \"backfill_data\",\n                    \"table\": \"users\",\n                    \"column\": \"status\",\n                    \"value\": \"'inactive'\",\n                    \"where\": \"status IS NULL\",\n                }\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"backfill_data\", \"table\": \"users\", \"column\": \"status\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 1},\n        ]\nE       AssertionError: assert [{'event': 'o...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 0 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:532: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_value_expression",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 238,
+                "start": 1788512422075,
+                "stop": 1788512422313,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_backfill_value_expression0')\n\n    @pytest.mark.functionality\n    def test_backfill_value_expression(entrypoint_argv, tmp_path):\n        \"\"\"Functionality: Backfill supports SQL expressions.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n    \n        with sqlite3.connect(db_file) as conn:\n            conn.execute(\n                \"CREATE TABLE users (id INTEGER PRIMARY KEY, first_name TEXT, \"\n                \"last_name TEXT, full_name TEXT)\"\n            )\n            conn.executemany(\n                \"INSERT INTO users (id, first_name, last_name, full_name) \"\n                \"VALUES (?, ?, ?, ?)\",\n                [(1, \"Jane\", \"Doe\", None), (2, \"Sam\", \"Lee\", None)],\n            )\n            conn.commit()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Backfill full_name from first and last\",\n            \"operations\": [\n                {\n                    \"type\": \"backfill_data\",\n                    \"table\": \"users\",\n                    \"column\": \"full_name\",\n                    \"value\": \"first_name || ' ' || last_name\",\n                    \"where\": \"full_name IS NULL\",\n                }\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"backfill_data\", \"table\": \"users\", \"column\": \"full_name\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 1},\n        ]\nE       AssertionError: assert [{'event': 'o...'version': 2}] == [{'column': '...'version': 2}]\nE         \nE         At index 0 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'full_name', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:584: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_null_without_default",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 218,
+                "start": 1788512422313,
+                "stop": 1788512422531,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_migrate_column_data_null_0')\n\n    @pytest.mark.functionality\n    def test_migrate_column_data_null_without_default(entrypoint_argv, tmp_path):\n        \"\"\"Functionality: NULL values remain NULL without default_value.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n    \n        with sqlite3.connect(db_file) as conn:\n            conn.execute(\n                \"CREATE TABLE users (id INTEGER PRIMARY KEY, \"\n                \"old_email TEXT, new_email TEXT)\"\n            )\n            conn.executemany(\n                \"INSERT INTO users (id, old_email, new_email) VALUES (?, ?, ?)\",\n                [(1, None, \"existing@example.com\"), (2, \"a@b.com\", None)],\n            )\n            conn.commit()\n    \n        migration = {\n            \"version\": 2,\n            \"description\": \"Migrate without default value\",\n            \"operations\": [\n                {\n                    \"type\": \"migrate_column_data\",\n                    \"table\": \"users\",\n                    \"from_column\": \"old_email\",\n                    \"to_column\": \"new_email\",\n                }\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"operation_applied\", \"type\": \"migrate_column_data\", \"table\": \"users\", \"from_column\": \"old_email\", \"to_column\": \"new_email\", \"version\": 2},\n            {\"event\": \"migration_complete\", \"version\": 2, \"operations_count\": 1},\n        ]\nE       AssertionError: assert [{'event': 'o...'version': 2}] == [{'event': 'o...'version': 2}]\nE         \nE         At index 0 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_2.py:634: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_column_not_exists",
+                "status": "passed",
+                "duration": 330,
+                "start": 1788512422531,
+                "stop": 1788512422861,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_invalid_expression",
+                "status": "passed",
+                "duration": 197,
+                "start": 1788512422862,
+                "stop": 1788512423059,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migration_rolls_back_on_failure",
+                "status": "passed",
+                "duration": 194,
+                "start": 1788512423059,
+                "stop": 1788512423253,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_from_column",
+                "status": "passed",
+                "duration": 193,
+                "start": 1788512423253,
+                "stop": 1788512423446,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_to_column",
+                "status": "passed",
+                "duration": 191,
+                "start": 1788512423447,
+                "stop": 1788512423638,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_with_numeric_constant",
+                "status": "passed",
+                "duration": 213,
+                "start": 1788512423638,
+                "stop": 1788512423851,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_transform_target_column_not_exists",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788512423851,
+                "stop": 1788512424057,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_table_not_exists",
+                "status": "passed",
+                "duration": 175,
+                "start": 1788512424057,
+                "stop": 1788512424232,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_table_not_exists",
+                "status": "passed",
+                "duration": 186,
+                "start": 1788512424232,
+                "stop": 1788512424418,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_invalid_where_clause",
+                "status": "passed",
+                "duration": 210,
+                "start": 1788512424418,
+                "stop": 1788512424628,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_2.py::test_transform_table_not_exists",
+                "status": "passed",
+                "duration": 188,
+                "start": 1788512424628,
+                "stop": 1788512424816,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_2.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788512424817,
+                "stop": 1788512425023,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_create_index",
+                "status": "passed",
+                "duration": 202,
+                "start": 1788512425024,
+                "stop": 1788512425226,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_add_check_constraint",
+                "status": "passed",
+                "duration": 196,
+                "start": 1788512425226,
+                "stop": 1788512425422,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_complex_migration",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788512425422,
+                "stop": 1788512425627,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_create_unique_index",
+                "status": "passed",
+                "duration": 175,
+                "start": 1788512425628,
+                "stop": 1788512425803,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index",
+                "status": "passed",
+                "duration": 322,
+                "start": 1788512425804,
+                "stop": 1788512426126,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key",
+                "status": "passed",
+                "duration": 353,
+                "start": 1788512426127,
+                "stop": 1788512426480,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint",
+                "status": "passed",
+                "duration": 561,
+                "start": 1788512426480,
+                "stop": 1788512427041,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_on_delete_set_null",
+                "status": "passed",
+                "duration": 254,
+                "start": 1788512427042,
+                "stop": 1788512427296,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key_on_empty_table_enforces_future_writes",
+                "status": "passed",
+                "duration": 208,
+                "start": 1788512427297,
+                "stop": 1788512427505,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_action",
+                "status": "passed",
+                "duration": 180,
+                "start": 1788512427505,
+                "stop": 1788512427685,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name_other_table",
+                "status": "passed",
+                "duration": 338,
+                "start": 1788512427685,
+                "stop": 1788512428023,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key_missing",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788512428023,
+                "stop": 1788512428223,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint_missing",
+                "status": "passed",
+                "duration": 189,
+                "start": 1788512428223,
+                "stop": 1788512428412,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_with_restrict",
+                "status": "passed",
+                "duration": 206,
+                "start": 1788512428412,
+                "stop": 1788512428618,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_violation_existing_data",
+                "status": "passed",
+                "duration": 200,
+                "start": 1788512428618,
+                "stop": 1788512428818,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_table",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788512428818,
+                "stop": 1788512429010,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_column",
+                "status": "passed",
+                "duration": 198,
+                "start": 1788512429011,
+                "stop": 1788512429209,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_referencing_column_missing",
+                "status": "passed",
+                "duration": 216,
+                "start": 1788512429209,
+                "stop": 1788512429425,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_column_count_mismatch",
+                "status": "passed",
+                "duration": 173,
+                "start": 1788512429425,
+                "stop": 1788512429598,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_circular_foreign_key_dependencies",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 218,
+                "start": 1788512429598,
+                "stop": 1788512429816,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_circular_foreign_key_depe0')\n\n    @pytest.mark.error\n    def test_circular_foreign_key_dependencies(entrypoint_argv, tmp_path):\n        \"\"\"Error: Circular foreign key dependencies should fail.\"\"\"\n        migration_file = tmp_path / \"migration.json\"\n        db_file = tmp_path / \"app.db\"\n    \n        migration = {\n            \"version\": 1,\n            \"description\": \"Create circular foreign keys\",\n            \"operations\": [\n                {\n                    \"type\": \"create_table\",\n                    \"table\": \"table_a\",\n                    \"columns\": [\n                        {\"name\": \"id\", \"type\": \"INTEGER\", \"primary_key\": True},\n                        {\"name\": \"b_id\", \"type\": \"INTEGER\", \"not_null\": True},\n                    ],\n                },\n                {\n                    \"type\": \"create_table\",\n                    \"table\": \"table_b\",\n                    \"columns\": [\n                        {\"name\": \"id\", \"type\": \"INTEGER\", \"primary_key\": True},\n                        {\"name\": \"a_id\", \"type\": \"INTEGER\", \"not_null\": True},\n                    ],\n                },\n                {\n                    \"type\": \"add_foreign_key\",\n                    \"table\": \"table_a\",\n                    \"name\": \"fk_table_a_b_id\",\n                    \"columns\": [\"b_id\"],\n                    \"references\": {\"table\": \"table_b\", \"columns\": [\"id\"]},\n                },\n                {\n                    \"type\": \"add_foreign_key\",\n                    \"table\": \"table_b\",\n                    \"name\": \"fk_table_b_a_id\",\n                    \"columns\": [\"a_id\"],\n                    \"references\": {\"table\": \"table_a\", \"columns\": [\"id\"]},\n                },\n            ],\n        }\n    \n        migration_file.write_text(json.dumps(migration))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_file), str(db_file)\n        )\n    \n>       assert result.returncode == 1, \"Expected command to fail with exit code 1\"\nE       AssertionError: Expected command to fail with exit code 1\nE       assert 0 == 1\nE        +  where 0 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'migrate', '/tmp/ai-nativ...: \"fk_table_b_a_id\", \"version\": 1}\\n{\"event\": \"migration_complete\", \"version\": 1, \"operations_count\": 4}\\n', stderr='').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_3.py:1083: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name",
+                "status": "passed",
+                "duration": 332,
+                "start": 1788512429816,
+                "stop": 1788512430148,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index_missing",
+                "status": "passed",
+                "duration": 183,
+                "start": 1788512430148,
+                "stop": 1788512430331,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_check_constraint_violation_on_add",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788512430331,
+                "stop": 1788512430536,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_3.py::test_transactional_rollback_on_failure",
+                "status": "passed",
+                "duration": 212,
+                "start": 1788512430537,
+                "stop": 1788512430749,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_3.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_simple_rollback",
+                "status": "passed",
+                "duration": 208,
+                "start": 1788512430749,
+                "stop": 1788512430957,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 227,
+                "start": 1788512430957,
+                "stop": 1788512431184,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_multiple0')\n\n    def test_rollback_multiple(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Rollback multiple migrations using --count.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_multiple.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file), \"--count\", \"2\")\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...out='', stderr=\"Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\\n\").returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:61: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_to_version",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 226,
+                "start": 1788512431184,
+                "stop": 1788512431410,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_to_version0')\n\n    def test_rollback_to_version(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Rollback to a specific version using --to-version.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_to_version.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file), \"--to-version\", \"2\")\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...out='', stderr=\"Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\\n\").returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:81: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 223,
+                "start": 1788512431410,
+                "stop": 1788512431633,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_explicit_rollback0')\n\n    def test_explicit_rollback(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Rollback uses explicit rollback_operations when provided.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_explicit_rollback.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: cannot rollback version 2: missing valid operation metadata\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...back0/app.db'], returncode=1, stdout='', stderr='Error: cannot rollback version 2: missing valid operation metadata\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:101: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_data_migration",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 215,
+                "start": 1788512431633,
+                "stop": 1788512431848,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_data_migration0')\n\n    def test_rollback_data_migration(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Core: Rollback data migration reverses operations in reverse order.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_data_migration.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Traceback (most recent call last):\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1405, in <module>\nE             raise SystemExit(main())\nE                              ^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1391, in main\nE             events = rollback_migrations(\nE                      ^^^^^^^^^^^^^^^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1339, in rollback_migrations\nE             apply_rollback_operation(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1137, in apply_rollback_operation\nE             apply_operation(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 944, in apply_operation\nE             apply_add_column(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 405, in apply_add_column\nE             f\"ALTER TABLE {quote_identifier(table)} ADD COLUMN {column_sql(column)}\"\nE                                                                 ^^^^^^^^^^^^^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 365, in column_sql\nE             if column[\"auto_increment\"]:\nE                ~~~~~~^^^^^^^^^^^^^^^^^^\nE         KeyError: 'auto_increment'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...365, in column_sql\\n    if column[\"auto_increment\"]:\\n       ~~~~~~^^^^^^^^^^^^^^^^^^\\nKeyError: \\'auto_increment\\'\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:118: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 225,
+                "start": 1788512431849,
+                "stop": 1788512432074,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_drop_column0')\n\n    @pytest.mark.functionality\n    def test_rollback_drop_column(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback drop_column restores column metadata.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_drop_column.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Traceback (most recent call last):\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1405, in <module>\nE             raise SystemExit(main())\nE                              ^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1391, in main\nE             events = rollback_migrations(\nE                      ^^^^^^^^^^^^^^^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1339, in rollback_migrations\nE             apply_rollback_operation(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 1137, in apply_rollback_operation\nE             apply_operation(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 944, in apply_operation\nE             apply_add_column(connection, operation)\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 405, in apply_add_column\nE             f\"ALTER TABLE {quote_identifier(table)} ADD COLUMN {column_sql(column)}\"\nE                                                                 ^^^^^^^^^^^^^^^^^^\nE           File \"/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260904T054946Z_T03_OPENAI_AI_NATIVE_NORMAL/workspace/migration_tool.py\", line 363, in column_sql\nE             if column[\"primary_key\"]:\nE                ~~~~~~^^^^^^^^^^^^^^^\nE         KeyError: 'primary_key'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...y\", line 363, in column_sql\\n    if column[\"primary_key\"]:\\n       ~~~~~~^^^^^^^^^^^^^^^\\nKeyError: \\'primary_key\\'\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:151: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_create_index",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 226,
+                "start": 1788512432074,
+                "stop": 1788512432300,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_create_index0')\n\n    @pytest.mark.functionality\n    def test_rollback_create_index(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback create_index drops the index.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_create_index.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"rollback_started\", \"version\": 2, \"description\": \"Add email index\"},\n            {\"event\": \"operation_rolled_back\", \"type\": \"create_index\", \"name\": \"idx_users_email\", \"table\": \"users\", \"version\": 2},\n            {\"event\": \"rollback_complete\", \"version\": 2},\n            {\"event\": \"rollback_finished\", \"versions_rolled_back\": [2], \"final_version\": 1},\n        ]\nE       AssertionError: assert [{'descriptio...d_back': [2]}] == [{'descriptio...d_back': [2]}]\nE         \nE         At index 1 diff: {'event': 'operation_rolled_back', 'type': 'create_index', 'name': 'idx_users_email', 'version': 2} != {'event': 'operation_rolled_back', 'type': 'create_index', 'name': 'idx_users_email', 'table': 'users', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:176: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 214,
+                "start": 1788512432300,
+                "stop": 1788512432514,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_drop_index0')\n\n    @pytest.mark.functionality\n    def test_rollback_drop_index(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback drop_index recreates the index.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_drop_index.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: cannot rollback version 2: missing original definition for drop_index\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...db'], returncode=1, stdout='', stderr='Error: cannot rollback version 2: missing original definition for drop_index\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:192: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_check_constraint",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 205,
+                "start": 1788512432514,
+                "stop": 1788512432719,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_add_check_constr0')\n\n    @pytest.mark.functionality\n    def test_rollback_add_check_constraint(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback add_check_constraint drops the constraint.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_add_check.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: invalid operation: check constraint 'chk_users_age' does not exist in table 'users'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...de=1, stdout='', stderr=\"Error: invalid operation: check constraint 'chk_users_age' does not exist in table 'users'\\n\").returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:214: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 207,
+                "start": 1788512432719,
+                "stop": 1788512432926,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_drop_check_const0')\n\n    @pytest.mark.functionality\n    def test_rollback_drop_check_constraint(\n        entrypoint_argv, seeds_dir, tmp_path\n    ):\n        \"\"\"Functionality: Rollback drop_check_constraint recreates the constraint.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_drop_check.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: cannot rollback version 3: missing original definition for drop_check_constraint\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...ncode=1, stdout='', stderr='Error: cannot rollback version 3: missing original definition for drop_check_constraint\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:234: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_foreign_key",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 212,
+                "start": 1788512432926,
+                "stop": 1788512433138,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_add_foreign_key0')\n\n    @pytest.mark.functionality\n    def test_rollback_add_foreign_key(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback add_foreign_key drops the foreign key.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_add_fk.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...out='', stderr=\"Error: invalid operation: foreign key constraint 'fk_posts_user_id' does not exist in table 'posts'\\n\").returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:258: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 207,
+                "start": 1788512433139,
+                "stop": 1788512433346,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_drop_foreign_key0')\n\n    @pytest.mark.functionality\n    def test_rollback_drop_foreign_key(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback drop_foreign_key recreates the foreign key.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_rollback_drop_fk.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: cannot rollback version 4: missing original definition for drop_foreign_key\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...returncode=1, stdout='', stderr='Error: cannot rollback version 4: missing original definition for drop_foreign_key\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:276: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_migrations_store_operations",
+                "status": "passed",
+                "duration": 189,
+                "start": 1788512433346,
+                "stop": 1788512433535,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple_ops_one_migration",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 226,
+                "start": 1788512433535,
+                "stop": 1788512433761,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_multiple_ops_one0')\n\n    @pytest.mark.functionality\n    def test_rollback_multiple_ops_one_migration(\n        entrypoint_argv, seeds_dir, tmp_path\n    ):\n        \"\"\"Functionality: Rollback reverses multiple operations in reverse order.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_multiple_ops.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n        # Operations should be rolled back in reverse order: index first, then column\n>       assert events == [\n            {\"event\": \"rollback_started\", \"version\": 2, \"description\": \"Add email with index\"},\n            {\"event\": \"operation_rolled_back\", \"type\": \"create_index\", \"name\": \"idx_users_email\", \"table\": \"users\", \"version\": 2},\n            {\"event\": \"operation_rolled_back\", \"type\": \"add_column\", \"table\": \"users\", \"column\": \"email\", \"version\": 2},\n            {\"event\": \"rollback_complete\", \"version\": 2},\n            {\"event\": \"rollback_finished\", \"versions_rolled_back\": [2], \"final_version\": 1},\n        ]\nE       AssertionError: assert [{'descriptio...d_back': [2]}] == [{'descriptio...d_back': [2]}]\nE         \nE         At index 1 diff: {'event': 'operation_rolled_back', 'type': 'create_index', 'name': 'idx_users_email', 'version': 2} != {'event': 'operation_rolled_back', 'type': 'create_index', 'name': 'idx_users_email', 'table': 'users', 'version': 2}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:339: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_only_one_migration",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 221,
+                "start": 1788512433761,
+                "stop": 1788512433982,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\nseeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_only_one_migrati0')\n\n    @pytest.mark.functionality\n    def test_rollback_only_one_migration(entrypoint_argv, seeds_dir, tmp_path):\n        \"\"\"Functionality: Rollback when only one migration exists.\"\"\"\n        db_file = tmp_path / \"app.db\"\n        shutil.copy(seeds_dir / \"checkpoint_4_only_one.db\", db_file)\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n    \n        assert result.returncode == 0, f\"Command failed: {result.stderr}\"\n        events = parse_jsonl(result.stdout)\n>       assert events == [\n            {\"event\": \"rollback_started\", \"version\": 1, \"description\": \"Create users table\"},\n            {\"event\": \"operation_rolled_back\", \"type\": \"create_table\", \"table\": \"users\", \"version\": 1},\n            {\"event\": \"rollback_complete\", \"version\": 1},\n            {\"event\": \"rollback_finished\", \"versions_rolled_back\": [1], \"final_version\": 0},\n        ]\nE       AssertionError: assert [{'descriptio...d_back': [1]}] == [{'descriptio...d_back': [1]}]\nE         \nE         At index 3 diff: {'event': 'rollback_finished', 'versions_rolled_back': [1], 'final_version': None} != {'event': 'rollback_finished', 'versions_rolled_back': [1], 'final_version': 0}\nE         Use -v to get more diff\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:363: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_non_sequential_versions",
+                "status": "passed",
+                "duration": 205,
+                "start": 1788512433982,
+                "stop": 1788512434187,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_column_drops_column_and_loses_data",
+                "status": "passed",
+                "duration": 545,
+                "start": 1788512434188,
+                "stop": 1788512434733,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback_operations_override_automatic_rollback",
+                "status": "passed",
+                "duration": 547,
+                "start": 1788512434734,
+                "stop": 1788512435281,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_default_and_not_null",
+                "status": "passed",
+                "duration": 526,
+                "start": 1788512435281,
+                "stop": 1788512435807,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_unique_constraint",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 533,
+                "start": 1788512435808,
+                "stop": 1788512436341,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ],
+                "trace": "entrypoint_argv = ['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py']\ntmp_path = PosixPath('/tmp/ai-native-grader-5305aa539183/pytest/test_rollback_drop_column_rest1')\n\n    @pytest.mark.functionality\n    def test_rollback_drop_column_restores_unique_constraint(\n        entrypoint_argv, tmp_path\n    ):\n        \"\"\"Functionality: Restores UNIQUE when rolling back drop_column.\"\"\"\n        migration_v1_file = tmp_path / \"migration_v1.json\"\n        migration_v2_file = tmp_path / \"migration_v2.json\"\n        db_file = tmp_path / \"app.db\"\n    \n        migration_v1 = {\n            \"version\": 1,\n            \"description\": \"Create users with unique email\",\n            \"operations\": [\n                {\n                    \"type\": \"create_table\",\n                    \"table\": \"users\",\n                    \"columns\": [\n                        {\"name\": \"id\", \"type\": \"INTEGER\", \"primary_key\": True},\n                        {\"name\": \"email\", \"type\": \"TEXT\", \"unique\": True},\n                    ],\n                }\n            ],\n        }\n    \n        migration_v2 = {\n            \"version\": 2,\n            \"description\": \"Drop email column\",\n            \"operations\": [\n                {\"type\": \"drop_column\", \"table\": \"users\", \"column\": \"email\"}\n            ],\n        }\n    \n        migration_v1_file.write_text(json.dumps(migration_v1))\n        migration_v2_file.write_text(json.dumps(migration_v2))\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_v1_file), str(db_file)\n        )\n        assert result.returncode == 0, f\"Setup failed: {result.stderr}\"\n    \n        result = run_command(\n            entrypoint_argv, \"migrate\", str(migration_v2_file), str(db_file)\n        )\n        assert result.returncode == 0, f\"Setup failed: {result.stderr}\"\n    \n        result = run_command(entrypoint_argv, \"rollback\", str(db_file))\n>       assert result.returncode == 0, f\"Command failed: {result.stderr}\"\nE       AssertionError: Command failed: Error: rollback failed: Cannot add a UNIQUE column\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-5305aa539183/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...ack_drop_column_rest1/app.db'], returncode=1, stdout='', stderr='Error: rollback failed: Cannot add a UNIQUE column\\n').returncode\n\n../../../qualification/private_eval/tests/test_checkpoint_4.py:657: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index_restores_unique_definition",
+                "status": "passed",
+                "duration": 525,
+                "start": 1788512436341,
+                "stop": 1788512436866,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key_restores_actions",
+                "status": "passed",
+                "duration": 536,
+                "start": 1788512436866,
+                "stop": 1788512437402,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint_restores_expression",
+                "status": "passed",
+                "duration": 697,
+                "start": 1788512437402,
+                "stop": 1788512438099,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_removes_migration_records",
+                "status": "passed",
+                "duration": 4502,
+                "start": 1788512438099,
+                "stop": 1788512442601,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_no_migrations",
+                "status": "passed",
+                "duration": 192,
+                "start": 1788512442601,
+                "stop": 1788512442793,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_version_not_found",
+                "status": "passed",
+                "duration": 191,
+                "start": 1788512442793,
+                "stop": 1788512442984,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_transform_data_no_rollback_ops",
+                "status": "passed",
+                "duration": 185,
+                "start": 1788512442984,
+                "stop": 1788512443169,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_backfill_data_no_rollback_ops",
+                "status": "passed",
+                "duration": 194,
+                "start": 1788512443169,
+                "stop": 1788512443363,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_transactional_on_failure",
+                "status": "passed",
+                "duration": 365,
+                "start": 1788512443363,
+                "stop": 1788512443728,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_fails_with_dependent_index",
+                "status": "passed",
+                "duration": 368,
+                "start": 1788512443729,
+                "stop": 1788512444097,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_4.py",
+                "tags": [
+                    "error"
+                ]
+            }
+        ]
+    }
+}

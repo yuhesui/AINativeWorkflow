@@ -1,0 +1,252 @@
+{
+  "active_plan_id": "plan_t03_progressive_migrations",
+  "created_at": "2026-09-01T00:00:00+00:00",
+  "plans": {
+    "plan_t03_progressive_migrations": {
+      "approved_at": "2026-09-04T05:58:29.864795+00:00",
+      "created_at": "2026-09-04T05:58:29.862389+00:00",
+      "goal": "Implement the database migration CLI incrementally against evaluator-revealed checkpoints, preserving all accepted behavior and never inferring or executing an unrevealed checkpoint.",
+      "id": "plan_t03_progressive_migrations",
+      "phases": {
+        "phase_01_checkpoint_1_basic_schema": {
+          "actions": {},
+          "created_at": "2026-09-04T05:58:29.862797+00:00",
+          "depends_on": [],
+          "dic": {
+            "contract_hash": "1bec2e4816687379a00c9de29d4a6d503621adcfeab56f463e04e3f62de52d69",
+            "core_views": [
+              "README.md",
+              "REQUESTS.md",
+              "PLAN.md"
+            ],
+            "created_at": "2026-09-04T05:58:29.864131+00:00",
+            "id": "dic_t03_checkpoint_1_basic_schema",
+            "plan_nodes": {
+              "P01": {
+                "depends_on": [],
+                "evidence_target": "Wrapper-run create/add/skip smoke cases with schema and _migrations inspection.",
+                "id": "P01",
+                "merge_node": false,
+                "parallel_group": null,
+                "reads": [
+                  "TASK.md",
+                  "CHECKPOINTS/01.md",
+                  ".evaluation/CHECKPOINT_STATE.json"
+                ],
+                "subagent": false,
+                "title": "Core CLI, create/add, tracking and output contract",
+                "writes": [
+                  "migration_tool.py",
+                  "tests/ (optional)",
+                  "phases/phase_01_checkpoint_1_basic_schema/{evidence,logs,reports}"
+                ]
+              },
+              "P02": {
+                "depends_on": [
+                  "P01"
+                ],
+                "evidence_target": "Valid drop preserves rows and supported remaining schema; invalid drops fail without false tracking.",
+                "id": "P02",
+                "merge_node": false,
+                "parallel_group": null,
+                "reads": [
+                  "migration_tool.py",
+                  "P01 evidence"
+                ],
+                "subagent": false,
+                "title": "Drop-column reconstruction fidelity",
+                "writes": [
+                  "migration_tool.py",
+                  "tests/ (optional)",
+                  "Phase evidence/logs"
+                ]
+              },
+              "P03": {
+                "depends_on": [
+                  "P02"
+                ],
+                "evidence_target": "Error-path and multi-operation integrity matrix including exact skip semantics.",
+                "id": "P03",
+                "merge_node": false,
+                "parallel_group": null,
+                "reads": [
+                  "migration_tool.py",
+                  "P01/P02 evidence"
+                ],
+                "subagent": false,
+                "title": "Adversarial validation and failure integrity",
+                "writes": [
+                  "migration_tool.py",
+                  "tests/ (optional)",
+                  "Phase evidence/logs"
+                ]
+              },
+              "P04": {
+                "depends_on": [
+                  "P03"
+                ],
+                "evidence_target": "Fresh end-to-end verifier evidence and accept/repair/replan/escalate disposition for checkpoint 1.",
+                "id": "P04",
+                "merge_node": true,
+                "parallel_group": null,
+                "reads": [
+                  "TASK.md",
+                  "CHECKPOINTS/01.md",
+                  "migration_tool.py",
+                  "all current Phase evidence"
+                ],
+                "subagent": false,
+                "title": "Independent whole-checkpoint verification and disposition",
+                "writes": [
+                  "migration_tool.py only for bounded verified repair",
+                  "tests/ (optional)",
+                  "Phase reports/evidence/state"
+                ]
+              }
+            },
+            "revision": 1,
+            "views": {
+              "PLAN.md": "phases/phase_01_checkpoint_1_basic_schema/DIC/PLAN.md",
+              "README.md": "phases/phase_01_checkpoint_1_basic_schema/DIC/README.md",
+              "REQUESTS.md": "phases/phase_01_checkpoint_1_basic_schema/DIC/REQUESTS.md"
+            }
+          },
+          "eps_attempts": {
+            "eps_001_initial": {
+              "attempt": 1,
+              "created_at": "2026-09-04T05:58:29.865673+00:00",
+              "dic_hash": "1bec2e4816687379a00c9de29d4a6d503621adcfeab56f463e04e3f62de52d69",
+              "dic_id": "dic_t03_checkpoint_1_basic_schema",
+              "id": "eps_001_initial",
+              "nodes": {
+                "P01": {
+                  "depends_on": [],
+                  "execution_kind": "model",
+                  "executor": "orchestrator",
+                  "model_profile": "gpt-5.6-terra/xhigh",
+                  "parallel_group": null,
+                  "plan_node_id": "P01",
+                  "primary_outcome": "Implement core CLI validation, migration tracking, create_table/add_column and output/error contract.",
+                  "prompt_guides": [
+                    ".ai-workflow/docs/PROMPTING_CORE.md",
+                    ".ai-workflow/docs/GPT56_ROUTING.md",
+                    ".ai-workflow/docs/CODEX_EXECUTION.md",
+                    ".ai-workflow/docs/execution_levels/XHIGH.md"
+                  ],
+                  "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P01.md",
+                  "prompt_tuned": true,
+                  "status": "planned",
+                  "subagent": false,
+                  "surface": "Codex CLI",
+                  "work_packages": [
+                    "implementation",
+                    "focused create/add/skip verification",
+                    "durable evidence"
+                  ]
+                },
+                "P02": {
+                  "depends_on": [
+                    "P01"
+                  ],
+                  "execution_kind": "model",
+                  "executor": "orchestrator",
+                  "model_profile": "gpt-5.6-terra/xhigh",
+                  "parallel_group": null,
+                  "plan_node_id": "P02",
+                  "primary_outcome": "Implement and verify recreate-based drop_column with row/schema preservation.",
+                  "prompt_guides": [
+                    ".ai-workflow/docs/PROMPTING_CORE.md",
+                    ".ai-workflow/docs/GPT56_ROUTING.md",
+                    ".ai-workflow/docs/CODEX_EXECUTION.md",
+                    ".ai-workflow/docs/execution_levels/XHIGH.md"
+                  ],
+                  "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P02.md",
+                  "prompt_tuned": true,
+                  "status": "planned",
+                  "subagent": false,
+                  "surface": "Codex CLI",
+                  "work_packages": [
+                    "drop reconstruction",
+                    "schema/data preservation checks",
+                    "forbidden-drop checks"
+                  ]
+                },
+                "P03": {
+                  "depends_on": [
+                    "P02"
+                  ],
+                  "execution_kind": "model",
+                  "executor": "orchestrator",
+                  "model_profile": "gpt-5.6-terra/xhigh",
+                  "parallel_group": null,
+                  "plan_node_id": "P03",
+                  "primary_outcome": "Harden validation, transaction/failure integrity, skip and adversarial error semantics.",
+                  "prompt_guides": [
+                    ".ai-workflow/docs/PROMPTING_CORE.md",
+                    ".ai-workflow/docs/GPT56_ROUTING.md",
+                    ".ai-workflow/docs/CODEX_EXECUTION.md",
+                    ".ai-workflow/docs/execution_levels/XHIGH.md"
+                  ],
+                  "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P03.md",
+                  "prompt_tuned": true,
+                  "status": "planned",
+                  "subagent": false,
+                  "surface": "Codex CLI",
+                  "work_packages": [
+                    "adversarial validation",
+                    "multi-operation rollback/tracking checks",
+                    "error/output consistency"
+                  ]
+                },
+                "P04": {
+                  "depends_on": [
+                    "P03"
+                  ],
+                  "execution_kind": "model",
+                  "executor": "orchestrator",
+                  "model_profile": "gpt-5.6-terra/xhigh",
+                  "parallel_group": null,
+                  "plan_node_id": "P04",
+                  "primary_outcome": "Fresh whole-checkpoint verification, bounded repair if needed, and durable verifier disposition.",
+                  "prompt_guides": [
+                    ".ai-workflow/docs/PROMPTING_CORE.md",
+                    ".ai-workflow/docs/GPT56_ROUTING.md",
+                    ".ai-workflow/docs/CODEX_EXECUTION.md",
+                    ".ai-workflow/docs/execution_levels/XHIGH.md"
+                  ],
+                  "prompt_path": "phases/phase_01_checkpoint_1_basic_schema/EPS/eps_001_initial/prompts/P04.md",
+                  "prompt_tuned": true,
+                  "status": "planned",
+                  "subagent": false,
+                  "surface": "Codex CLI",
+                  "work_packages": [
+                    "fresh end-to-end matrix",
+                    "diff/scope audit",
+                    "verifier report and durable closure"
+                  ]
+                }
+              },
+              "origin": "main",
+              "plan_node_ids": [
+                "P01",
+                "P02",
+                "P03",
+                "P04"
+              ],
+              "status": "active"
+            }
+          },
+          "id": "phase_01_checkpoint_1_basic_schema",
+          "status": "active",
+          "title": "Checkpoint 1 — Basic schema migrations",
+          "verifications": []
+        }
+      },
+      "status": "approved",
+      "title": "T03 progressive database migration tool"
+    }
+  },
+  "project_name": "Uninitialized project",
+  "schema_version": "5.6.39",
+  "updated_at": "2026-09-04T05:58:29.865802+00:00"
+}
