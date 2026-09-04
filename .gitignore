@@ -29,6 +29,7 @@ venv/
 *.tar.gz
 *.img
 /.qualification_tmp/
+/.tmp/
 
 # editor/OS
 .DS_Store
