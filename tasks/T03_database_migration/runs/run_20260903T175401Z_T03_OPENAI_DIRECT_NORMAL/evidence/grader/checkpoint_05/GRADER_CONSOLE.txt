@@ -1,0 +1,1853 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration
+plugins: metadata-3.1.1, timeout-2.4.0, json-report-1.5.0, json-ctrf-0.4.1
+timeout: 60.0s
+timeout method: signal
+timeout func_only: False
+collected 137 items
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py ........s [  6%]
+..............................                                           [ 28%]
+../../../qualification/private_eval/tests/test_checkpoint_2.py FF.FFFF.. [ 35%]
+FFF......F....                                                           [ 45%]
+../../../qualification/private_eval/tests/test_checkpoint_3.py ......... [ 51%]
+................                                                         [ 63%]
+../../../qualification/private_eval/tests/test_checkpoint_4.py ...FFF.F. [ 70%]
+.....F..............F                                                    [ 85%]
+../../../qualification/private_eval/tests/test_checkpoint_5.py F....F... [ 91%]
+.FFFF......                                                              [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_migrate_column_data ___________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_column_data0')
+
+    def test_migrate_column_data(entrypoint_argv, seeds_dir, tmp_path):
+        """Core: Migrate data from one column to another."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        migration = {
+            "version": 2,
+            "description": "Add email column and migrate data from old_email",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "new_email", "type": "TEXT", "not_null": False},
+                },
+                {
+                    "type": "migrate_column_data",
+                    "table": "users",
+                    "from_column": "old_email",
+                    "to_column": "new_email",
+                },
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "add_column", "table": "users", "column": "new_email", "version": 2},
+            {"event": "operation_applied", "type": "migrate_column_data", "table": "users", "from_column": "old_email", "to_column": "new_email", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 2},
+        ]
+E       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:69: AssertionError
+______________________________ test_backfill_data ______________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_backfill_data0')
+
+    def test_backfill_data(entrypoint_argv, seeds_dir, tmp_path):
+        """Core: Backfill a column with constant value."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        migration = {
+            "version": 2,
+            "description": "Add and backfill status column",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "status", "type": "TEXT", "not_null": False},
+                },
+                {
+                    "type": "backfill_data",
+                    "table": "users",
+                    "column": "status",
+                    "value": "'active'",
+                    "where": "status IS NULL",
+                },
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "add_column", "table": "users", "column": "status", "version": 2},
+            {"event": "operation_applied", "type": "backfill_data", "table": "users", "column": "status", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 2},
+        ]
+E       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 1 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:116: AssertionError
+________________________ test_complete_column_migration ________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_complete_column_migration0')
+
+    @pytest.mark.functionality
+    def test_complete_column_migration(entrypoint_argv, seeds_dir, tmp_path):
+        """Functionality: Complete column migration pattern (add, migrate, drop)."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        # Capture original email values before migration
+        with sqlite3.connect(db_file) as conn:
+            original_emails = conn.execute(
+                "SELECT id, email FROM users ORDER BY id"
+            ).fetchall()
+    
+        migration = {
+            "version": 2,
+            "description": "Migrate email to email_address",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "email_address", "type": "TEXT", "not_null": False},
+                },
+                {
+                    "type": "migrate_column_data",
+                    "table": "users",
+                    "from_column": "email",
+                    "to_column": "email_address",
+                },
+                {"type": "drop_column", "table": "users", "column": "email"},
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "add_column", "table": "users", "column": "email_address", "version": 2},
+            {"event": "operation_applied", "type": "migrate_column_data", "table": "users", "from_column": "email", "to_column": "email_address", "version": 2},
+            {"event": "operation_applied", "type": "drop_column", "table": "users", "column": "email", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 3},
+        ]
+E       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'email', 'to_column': 'email_address', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:217: AssertionError
+_____________ test_migrate_column_data_overwrites_existing_values ______________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_column_data_overw0')
+
+    @pytest.mark.functionality
+    def test_migrate_column_data_overwrites_existing_values(
+        entrypoint_argv, seeds_dir, tmp_path
+    ):
+        """Functionality: Migrate column data overwrites existing values."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute("UPDATE users SET email = 'temp@example.com'")
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Overwrite email with old_email",
+            "operations": [
+                {
+                    "type": "migrate_column_data",
+                    "table": "users",
+                    "from_column": "old_email",
+                    "to_column": "email",
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "migrate_column_data", "table": "users", "from_column": "old_email", "to_column": "email", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 1},
+        ]
+E       AssertionError: assert [{'event': 'o...'version': 2}] == [{'event': 'o...'version': 2}]
+E         
+E         At index 0 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'email', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:273: AssertionError
+_______________ test_migrate_column_data_default_value_for_null ________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_column_data_defau0')
+
+    @pytest.mark.functionality
+    def test_migrate_column_data_default_value_for_null(
+        entrypoint_argv, seeds_dir, tmp_path
+    ):
+        """Functionality: Default value is used when from_column is NULL."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute("UPDATE users SET old_email = NULL WHERE id = 1")
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Migrate emails with default for NULL",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "new_email", "type": "TEXT", "not_null": False},
+                },
+                {
+                    "type": "migrate_column_data",
+                    "table": "users",
+                    "from_column": "old_email",
+                    "to_column": "new_email",
+                    "default_value": "'unknown'",
+                },
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "add_column", "table": "users", "column": "new_email", "version": 2},
+            {"event": "operation_applied", "type": "migrate_column_data", "table": "users", "from_column": "old_email", "to_column": "new_email", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 2},
+        ]
+E       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 1 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:325: AssertionError
+_________________ test_backfill_data_without_where_updates_all _________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_backfill_data_without_whe0')
+
+    @pytest.mark.functionality
+    def test_backfill_data_without_where_updates_all(
+        entrypoint_argv, seeds_dir, tmp_path
+    ):
+        """Functionality: Backfill without where updates all rows."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_2_users.db", db_file)
+    
+        migration = {
+            "version": 2,
+            "description": "Backfill status for all users",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "status", "type": "TEXT", "not_null": False},
+                },
+                {
+                    "type": "backfill_data",
+                    "table": "users",
+                    "column": "status",
+                    "value": "'inactive'",
+                },
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "add_column", "table": "users", "column": "status", "version": 2},
+            {"event": "operation_applied", "type": "backfill_data", "table": "users", "column": "status", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 2},
+        ]
+E       AssertionError: assert [{'column': '...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 1 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:374: AssertionError
+_______________________ test_backfill_where_filters_rows _______________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_backfill_where_filters_ro0')
+
+    @pytest.mark.functionality
+    def test_backfill_where_filters_rows(entrypoint_argv, tmp_path):
+        """Functionality: Backfill updates only rows matching WHERE."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute(
+                "CREATE TABLE users (id INTEGER PRIMARY KEY, status TEXT)"
+            )
+            conn.executemany(
+                "INSERT INTO users (id, status) VALUES (?, ?)",
+                [(1, None), (2, "active"), (3, None)],
+            )
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Backfill status for NULL rows",
+            "operations": [
+                {
+                    "type": "backfill_data",
+                    "table": "users",
+                    "column": "status",
+                    "value": "'inactive'",
+                    "where": "status IS NULL",
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "backfill_data", "table": "users", "column": "status", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 1},
+        ]
+E       AssertionError: assert [{'event': 'o...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 0 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'status', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:532: AssertionError
+________________________ test_backfill_value_expression ________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_backfill_value_expression0')
+
+    @pytest.mark.functionality
+    def test_backfill_value_expression(entrypoint_argv, tmp_path):
+        """Functionality: Backfill supports SQL expressions."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute(
+                "CREATE TABLE users (id INTEGER PRIMARY KEY, first_name TEXT, "
+                "last_name TEXT, full_name TEXT)"
+            )
+            conn.executemany(
+                "INSERT INTO users (id, first_name, last_name, full_name) "
+                "VALUES (?, ?, ?, ?)",
+                [(1, "Jane", "Doe", None), (2, "Sam", "Lee", None)],
+            )
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Backfill full_name from first and last",
+            "operations": [
+                {
+                    "type": "backfill_data",
+                    "table": "users",
+                    "column": "full_name",
+                    "value": "first_name || ' ' || last_name",
+                    "where": "full_name IS NULL",
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "backfill_data", "table": "users", "column": "full_name", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 1},
+        ]
+E       AssertionError: assert [{'event': 'o...'version': 2}] == [{'column': '...'version': 2}]
+E         
+E         At index 0 diff: {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'backfill_data', 'table': 'users', 'column': 'full_name', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:584: AssertionError
+________________ test_migrate_column_data_null_without_default _________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_column_data_null_0')
+
+    @pytest.mark.functionality
+    def test_migrate_column_data_null_without_default(entrypoint_argv, tmp_path):
+        """Functionality: NULL values remain NULL without default_value."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute(
+                "CREATE TABLE users (id INTEGER PRIMARY KEY, "
+                "old_email TEXT, new_email TEXT)"
+            )
+            conn.executemany(
+                "INSERT INTO users (id, old_email, new_email) VALUES (?, ?, ?)",
+                [(1, None, "existing@example.com"), (2, "a@b.com", None)],
+            )
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Migrate without default value",
+            "operations": [
+                {
+                    "type": "migrate_column_data",
+                    "table": "users",
+                    "from_column": "old_email",
+                    "to_column": "new_email",
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "operation_applied", "type": "migrate_column_data", "table": "users", "from_column": "old_email", "to_column": "new_email", "version": 2},
+            {"event": "migration_complete", "version": 2, "operations_count": 1},
+        ]
+E       AssertionError: assert [{'event': 'o...'version': 2}] == [{'event': 'o...'version': 2}]
+E         
+E         At index 0 diff: {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'version': 2} != {'event': 'operation_applied', 'type': 'migrate_column_data', 'table': 'users', 'from_column': 'old_email', 'to_column': 'new_email', 'version': 2}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:634: AssertionError
+___________________ test_transform_target_column_not_exists ____________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_transform_target_column_n0')
+
+    @pytest.mark.error
+    def test_transform_target_column_not_exists(entrypoint_argv, tmp_path):
+        """Error: transform_data on non-existent target column should fail.
+    
+        Spec line 29: 'Column must exist (for updates)'.
+        """
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute(
+                "CREATE TABLE users (id INTEGER PRIMARY KEY, first_name TEXT)"
+            )
+            conn.execute("INSERT INTO users (id, first_name) VALUES (1, 'John')")
+            conn.commit()
+    
+        migration = {
+            "version": 2,
+            "description": "Transform non-existent column",
+            "operations": [
+                {
+                    "type": "transform_data",
+                    "table": "users",
+                    "transformations": [
+                        {"column": "nonexistent_column", "expression": "first_name"}
+                    ],
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_file), str(db_file)
+        )
+    
+>       assert result.returncode == 1, "Expected command to fail with exit code 1"
+E       AssertionError: Expected command to fail with exit code 1
+E       assert 0 == 1
+E        +  where 0 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'migrate', '/tmp/ai-nativ...", "table": "users", "version": 2}\n{"event": "migration_complete", "version": 2, "operations_count": 1}\n', stderr='').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:936: AssertionError
+____________________________ test_explicit_rollback ____________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_explicit_rollback0')
+
+    def test_explicit_rollback(entrypoint_argv, seeds_dir, tmp_path):
+        """Core: Rollback uses explicit rollback_operations when provided."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_4_explicit_rollback.db", db_file)
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: cannot rollback version 2: invalid operations metadata
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati..._rollback0/app.db'], returncode=1, stdout='', stderr='Error: cannot rollback version 2: invalid operations metadata\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:101: AssertionError
+_________________________ test_rollback_data_migration _________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_rollback_data_migration0')
+
+    def test_rollback_data_migration(entrypoint_argv, seeds_dir, tmp_path):
+        """Core: Rollback data migration reverses operations in reverse order."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_4_rollback_data_migration.db", db_file)
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Traceback (most recent call last):
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1748, in <module>
+E             raise SystemExit(main(sys.argv[1:]))
+E                              ^^^^^^^^^^^^^^^^^^
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1733, in main
+E             rollback(database_path, to_version, count)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1640, in rollback
+E             execute_rollback_instruction(connection, instruction)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1129, in execute_rollback_instruction
+E             restore_dropped_column(connection, operation)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1049, in restore_dropped_column
+E             original_sql_definition = render_column(original)
+E                                       ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 362, in render_column
+E             if column["auto_increment"]:
+E                ~~~~~~^^^^^^^^^^^^^^^^^^
+E         KeyError: 'auto_increment'
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati..., in render_column\n    if column["auto_increment"]:\n       ~~~~~~^^^^^^^^^^^^^^^^^^\nKeyError: \'auto_increment\'\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:118: AssertionError
+__________________________ test_rollback_drop_column ___________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_rollback_drop_column0')
+
+    @pytest.mark.functionality
+    def test_rollback_drop_column(entrypoint_argv, seeds_dir, tmp_path):
+        """Functionality: Rollback drop_column restores column metadata."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_4_rollback_drop_column.db", db_file)
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Traceback (most recent call last):
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1748, in <module>
+E             raise SystemExit(main(sys.argv[1:]))
+E                              ^^^^^^^^^^^^^^^^^^
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1733, in main
+E             rollback(database_path, to_version, count)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1640, in rollback
+E             execute_rollback_instruction(connection, instruction)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1129, in execute_rollback_instruction
+E             restore_dropped_column(connection, operation)
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 1049, in restore_dropped_column
+E             original_sql_definition = render_column(original)
+E                                       ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/workspace/migration_tool.py", line 360, in render_column
+E             if column["primary_key"]:
+E                ~~~~~~^^^^^^^^^^^^^^^
+E         KeyError: 'primary_key'
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati... line 360, in render_column\n    if column["primary_key"]:\n       ~~~~~~^^^^^^^^^^^^^^^\nKeyError: \'primary_key\'\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:151: AssertionError
+___________________________ test_rollback_drop_index ___________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_rollback_drop_index0')
+
+    @pytest.mark.functionality
+    def test_rollback_drop_index(entrypoint_argv, seeds_dir, tmp_path):
+        """Functionality: Rollback drop_index recreates the index."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_4_rollback_drop_index.db", db_file)
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: cannot rollback: missing original index definition
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...ck_drop_index0/app.db'], returncode=1, stdout='', stderr='Error: cannot rollback: missing original index definition\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:192: AssertionError
+_______________________ test_rollback_only_one_migration _______________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_rollback_only_one_migrati0')
+
+    @pytest.mark.functionality
+    def test_rollback_only_one_migration(entrypoint_argv, seeds_dir, tmp_path):
+        """Functionality: Rollback when only one migration exists."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_4_only_one.db", db_file)
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+        assert result.returncode == 0, f"Command failed: {result.stderr}"
+        events = parse_jsonl(result.stdout)
+>       assert events == [
+            {"event": "rollback_started", "version": 1, "description": "Create users table"},
+            {"event": "operation_rolled_back", "type": "create_table", "table": "users", "version": 1},
+            {"event": "rollback_complete", "version": 1},
+            {"event": "rollback_finished", "versions_rolled_back": [1], "final_version": 0},
+        ]
+E       AssertionError: assert [{'descriptio...d_back': [1]}] == [{'descriptio...d_back': [1]}]
+E         
+E         At index 3 diff: {'event': 'rollback_finished', 'versions_rolled_back': [1], 'final_version': None} != {'event': 'rollback_finished', 'versions_rolled_back': [1], 'final_version': 0}
+E         Use -v to get more diff
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:363: AssertionError
+___________________ test_rollback_fails_with_dependent_index ___________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_rollback_fails_with_depen0')
+
+    @pytest.mark.error
+    def test_rollback_fails_with_dependent_index(entrypoint_argv, tmp_path):
+        """Error: Rollback fails when dependent objects exist."""
+        migration_file = tmp_path / "migration.json"
+        db_file = tmp_path / "app.db"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute(
+                "CREATE TABLE users (id INTEGER PRIMARY KEY)"
+            )
+            conn.commit()
+    
+        migration = {
+            "version": 1,
+            "description": "Add email column",
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "email", "type": "TEXT"},
+                }
+            ],
+        }
+    
+        migration_file.write_text(json.dumps(migration))
+    
+        result = run_command(entrypoint_argv, "migrate", str(migration_file), str(db_file))
+        assert result.returncode == 0, f"Setup failed: {result.stderr}"
+    
+        with sqlite3.connect(db_file) as conn:
+            conn.execute("CREATE INDEX idx_users_email ON users(email)")
+            conn.commit()
+    
+        result = run_command(entrypoint_argv, "rollback", str(db_file))
+    
+>       assert result.returncode == 1, "Expected command to fail with exit code 1"
+E       AssertionError: Expected command to fail with exit code 1
+E       assert 0 == 1
+E        +  where 0 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'rollback', '/tmp/ai-nati...lete", "version": 1}\n{"event": "rollback_finished", "versions_rolled_back": [1], "final_version": null}\n', stderr='').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:1093: AssertionError
+____________________________ test_simple_dependency ____________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+seeds_dir = PosixPath('/mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/assets/seeds')
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_simple_dependency0')
+
+    def test_simple_dependency(entrypoint_argv, seeds_dir, tmp_path):
+        """Core: Apply migration with dependency resolution via --migrations-dir."""
+        db_file = tmp_path / "app.db"
+        shutil.copy(seeds_dir / "checkpoint_5_simple_dependency.db", db_file)
+    
+        migrations_dir = tmp_path / "migrations"
+        migrations_dir.mkdir()
+    
+        # Migration v1: Create users table (no dependencies)
+        (migrations_dir / "migration_v1.json").write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "description": "Create users table",
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "users",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                },
+                                {
+                                    "name": "email",
+                                    "type": "TEXT",
+                                    "not_null": True,
+                                    "unique": True,
+                                },
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        # Migration v2: Create posts table (depends on v1)
+        (migrations_dir / "migration_v2.json").write_text(
+            json.dumps(
+                {
+                    "version": 2,
+                    "description": "Create posts table",
+                    "depends_on": [1],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "posts",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                },
+                                {
+                                    "name": "user_id",
+                                    "type": "INTEGER",
+                                    "not_null": True,
+                                },
+                                {"name": "title", "type": "TEXT", "not_null": True},
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        # Migration v3: Add foreign key (depends on v1 and v2)
+        migration_v3 = {
+            "version": 3,
+            "description": "Add foreign key",
+            "depends_on": [1, 2],
+            "operations": [
+                {
+                    "type": "add_foreign_key",
+                    "table": "posts",
+                    "name": "fk_posts_user_id",
+                    "columns": ["user_id"],
+                    "references": {"table": "users", "columns": ["id"]},
+                    "on_delete": "CASCADE",
+                }
+            ],
+        }
+        (migrations_dir / "migration_v3.json").write_text(json.dumps(migration_v3))
+        migration_file = tmp_path / "migration_v3.json"
+        migration_file.write_text(json.dumps(migration_v3))
+    
+        result = run_command(
+            entrypoint_argv,
+            "migrate",
+            str(migration_file),
+            str(db_file),
+            "--migrations-dir",
+            str(migrations_dir) + "/",
+        )
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: usage: migration_tool.py migrate <migration.json> <database.db> | migration_tool.py rollback <database.db> [--to-version <version>] [--count <n>] | migration_tool.py validate <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'migrate', '/tmp/ai-nativ...date <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:134: AssertionError
+___________________________ test_circular_dependency ___________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_circular_dependency0')
+
+    @pytest.mark.error
+    def test_circular_dependency(entrypoint_argv, tmp_path):
+        """Error: Detect and reject circular dependency in migration graph."""
+        migrations_dir = tmp_path / "migrations"
+        migrations_dir.mkdir()
+    
+        # Create circular dependency: 1 -> 3 -> 2 -> 1
+        (migrations_dir / "migration_v1.json").write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "description": "Migration 1",
+                    "depends_on": [3],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "table1",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        (migrations_dir / "migration_v2.json").write_text(
+            json.dumps(
+                {
+                    "version": 2,
+                    "description": "Migration 2",
+                    "depends_on": [1],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "table2",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        (migrations_dir / "migration_v3.json").write_text(
+            json.dumps(
+                {
+                    "version": 3,
+                    "description": "Migration 3",
+                    "depends_on": [2],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "table3",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        # Also write target migration in current dir
+        migration_file = tmp_path / "migration_v1.json"
+        migration_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "description": "Migration 1",
+                    "depends_on": [3],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "table1",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                    "auto_increment": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        result = run_command(
+            entrypoint_argv,
+            "validate",
+            str(migration_file),
+            "--migrations-dir",
+            str(migrations_dir) + "/",
+        )
+    
+        assert result.returncode == 1, f"Expected failure but got: {result.stdout}"
+        events = parse_jsonl(result.stdout)
+    
+        # Verify validation_started event
+        assert events[0].get("event") == "validation_started"
+        assert "migration_v1.json" in events[0].get("migration_file", "")
+    
+        # Verify circular_dependency_detected event exists with correct nodes
+        cycle_event = next(
+            (e for e in events if e.get("event") == "circular_dependency_detected"),
+            None,
+        )
+>       assert cycle_event is not None, (
+            "Expected circular_dependency_detected event"
+        )
+E       AssertionError: Expected circular_dependency_detected event
+E       assert None is not None
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1050: AssertionError
+_____________________ test_validate_without_migrations_dir _____________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_validate_without_migratio0')
+
+    @pytest.mark.functionality
+    def test_validate_without_migrations_dir(entrypoint_argv, tmp_path):
+        """Edge case: Validate migration with dependencies but no --migrations-dir.
+    
+        Spec says (lines 332-337):
+        {"event": "dependency_check", "version": 5, "depends_on": [3, 4], "status": "warning",
+         "message": "cannot verify dependencies without --migrations-dir"}
+        """
+        migration_file = tmp_path / "migration_v5.json"
+        migration_file.write_text(
+            json.dumps(
+                {
+                    "version": 5,
+                    "description": "Migration with deps",
+                    "depends_on": [1, 2],
+                    "operations": [
+                        {"type": "create_table", "table": "t1", "columns": []}
+                    ],
+                }
+            )
+        )
+    
+        result = run_command(entrypoint_argv, "validate", str(migration_file))
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: invalid migration schema: operation 1 field 'columns' must be a non-empty array
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'validate', '/tmp/ai-nati...ration_v5.json"}\n', stderr="Error: invalid migration schema: operation 1 field 'columns' must be a non-empty array\n").returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1317: AssertionError
+_________________________ test_empty_depends_on_array __________________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_empty_depends_on_array0')
+
+    @pytest.mark.functionality
+    def test_empty_depends_on_array(entrypoint_argv, tmp_path):
+        """Edge case: Migration with explicit empty depends_on array.
+    
+        Spec says: "Dependency arrays can be empty (no dependencies)"
+        """
+        migrations_dir = tmp_path / "migrations"
+        migrations_dir.mkdir()
+    
+        migration_file = tmp_path / "migration_v1.json"
+        migration_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "description": "No dependencies",
+                    "depends_on": [],
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "t1",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+        (migrations_dir / "migration_v1.json").write_text(
+            migration_file.read_text()
+        )
+    
+        result = run_command(
+            entrypoint_argv,
+            "validate",
+            str(migration_file),
+            "--migrations-dir",
+            str(migrations_dir) + "/",
+        )
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: duplicate migration version 1
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'validate', '/tmp/ai-nati..."event": "validation_complete", "version": 1, "status": "invalid"}\n', stderr='Error: duplicate migration version 1\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1382: AssertionError
+_____________________ test_migrate_transitive_dependencies _____________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_transitive_depend0')
+
+    @pytest.mark.functionality
+    def test_migrate_transitive_dependencies(entrypoint_argv, tmp_path):
+        """Edge case: migrate applies transitive dependencies in order."""
+        db_file = tmp_path / "app.db"
+        migrations_dir = tmp_path / "migrations"
+        migrations_dir.mkdir()
+    
+        (migrations_dir / "migration_v1.json").write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "description": "Create users table",
+                    "operations": [
+                        {
+                            "type": "create_table",
+                            "table": "users",
+                            "columns": [
+                                {
+                                    "name": "id",
+                                    "type": "INTEGER",
+                                    "primary_key": True,
+                                }
+                            ],
+                        }
+                    ],
+                }
+            )
+        )
+    
+        (migrations_dir / "migration_v2.json").write_text(
+            json.dumps(
+                {
+                    "version": 2,
+                    "description": "Add age column",
+                    "depends_on": [1],
+                    "operations": [
+                        {
+                            "type": "add_column",
+                            "table": "users",
+                            "column": {"name": "age", "type": "INTEGER"},
+                        }
+                    ],
+                }
+            )
+        )
+    
+        migration_v3 = {
+            "version": 3,
+            "description": "Add name column",
+            "depends_on": [2],
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "name", "type": "TEXT"},
+                }
+            ],
+        }
+        (migrations_dir / "migration_v3.json").write_text(json.dumps(migration_v3))
+        migration_file = tmp_path / "migration_v3.json"
+        migration_file.write_text(json.dumps(migration_v3))
+    
+        result = run_command(
+            entrypoint_argv,
+            "migrate",
+            str(migration_file),
+            str(db_file),
+            "--migrations-dir",
+            str(migrations_dir) + "/",
+        )
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: usage: migration_tool.py migrate <migration.json> <database.db> | migration_tool.py rollback <database.db> [--to-version <version>] [--count <n>] | migration_tool.py validate <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'migrate', '/tmp/ai-nativ...date <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1456: AssertionError
+_______________ test_migrate_skips_already_applied_dependencies ________________
+
+entrypoint_argv = ['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py']
+tmp_path = PosixPath('/tmp/ai-native-grader-46df0328e348/pytest/test_migrate_skips_already_app0')
+
+    @pytest.mark.functionality
+    def test_migrate_skips_already_applied_dependencies(entrypoint_argv, tmp_path):
+        """Functionality: Single-target migrate skips already-applied ancestors."""
+        db_file = tmp_path / "app.db"
+        migrations_dir = tmp_path / "migrations"
+        migrations_dir.mkdir()
+    
+        migration_v1 = {
+            "version": 1,
+            "description": "Create users table",
+            "operations": [
+                {
+                    "type": "create_table",
+                    "table": "users",
+                    "columns": [
+                        {"name": "id", "type": "INTEGER", "primary_key": True}
+                    ],
+                }
+            ],
+        }
+        migration_v2 = {
+            "version": 2,
+            "description": "Add age column",
+            "depends_on": [1],
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "age", "type": "INTEGER"},
+                }
+            ],
+        }
+        migration_v3 = {
+            "version": 3,
+            "description": "Add name column",
+            "depends_on": [2],
+            "operations": [
+                {
+                    "type": "add_column",
+                    "table": "users",
+                    "column": {"name": "name", "type": "TEXT"},
+                }
+            ],
+        }
+    
+        (migrations_dir / "migration_v1.json").write_text(json.dumps(migration_v1))
+        (migrations_dir / "migration_v2.json").write_text(json.dumps(migration_v2))
+        (migrations_dir / "migration_v3.json").write_text(json.dumps(migration_v3))
+    
+        migration_v1_file = tmp_path / "migration_v1.json"
+        migration_v1_file.write_text(json.dumps(migration_v1))
+        migration_v3_file = tmp_path / "migration_v3.json"
+        migration_v3_file.write_text(json.dumps(migration_v3))
+    
+        result = run_command(
+            entrypoint_argv, "migrate", str(migration_v1_file), str(db_file)
+        )
+        assert result.returncode == 0, f"Setup failed: {result.stderr}"
+    
+        result = run_command(
+            entrypoint_argv,
+            "migrate",
+            str(migration_v3_file),
+            str(db_file),
+            "--migrations-dir",
+            str(migrations_dir) + "/",
+        )
+    
+>       assert result.returncode == 0, f"Command failed: {result.stderr}"
+E       AssertionError: Command failed: Error: usage: migration_tool.py migrate <migration.json> <database.db> | migration_tool.py rollback <database.db> [--to-version <version>] [--count <n>] | migration_tool.py validate <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/tmp/ai-native-grader-46df0328e348/bin/python', 'migration_tool.py', 'migrate', '/tmp/ai-nativ...date <migration.json> [--migrations-dir <dir>] | migration_tool.py migrate-all --migrations-dir <dir> <database.db>\n').returncode
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1537: AssertionError
+=============================== warnings summary ===============================
+../../../qualification/private_eval/tests/test_checkpoint_1.py:130
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:130: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:290
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:290: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:329
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:329: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:376
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:376: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:430
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:430: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:483
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:483: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:533
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:533: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:585
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:585: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:638
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:638: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:701
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:701: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:764
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:764: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:808
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:808: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:896
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:896: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:943
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:943: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1033
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1033: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1084
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1084: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1115
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1115: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1150
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1150: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1182
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1182: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1212
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1212: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1247
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1247: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1261
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1261: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1276
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1276: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1293
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1293: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1322
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1322: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1355
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1355: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1384
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1384: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1412
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1412: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1442
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1442: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1477
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1477: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1513
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1513: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1561
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1561: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1596
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1596: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1630
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1630: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1664
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1664: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:177
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:177: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:239
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:239: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:285
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:285: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:339
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:339: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:387
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:387: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:440
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:440: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:494
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:494: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:544
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:544: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:596
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:596: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:651
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:651: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:704
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:704: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:739
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:739: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:790
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:790: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:819
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:819: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:853
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:853: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:900
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:900: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:939
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:939: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:975
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:975: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:1010
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:1010: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_2.py:1046
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_2.py:1046: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:152
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:152: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:223
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:223: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:280
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:280: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:343
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:343: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:421
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:421: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:509
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:509: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:568
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:568: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:616
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:616: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:654
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:654: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:725
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:725: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:760
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:760: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:797
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:797: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:841
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:841: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:891
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:891: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:926
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:926: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:962
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:962: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:996
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:996: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:1034
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:1034: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:1086
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:1086: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:1144
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:1144: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:1165
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:1165: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_3.py:1215
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_3.py:1215: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:143
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:143: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:166
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:166: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:184
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:184: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:206
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:206: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:224
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:224: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:250
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:250: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:268
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:268: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:326
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:326: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:353
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:353: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:371
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:371: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:387
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:387: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:459
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:459: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:551
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:551: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:611
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:611: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:672
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:672: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:733
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:733: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:808
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:808: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:889
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:889: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:951
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:951: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:964
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:964: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:977
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:977: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:989
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:989: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:1001
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:1001: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_4.py:1058
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_4.py:1058: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:344
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:344: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:591
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:591: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:925
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:925: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1077
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1077: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1137
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1137: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1204
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1204: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1253
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1253: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1293
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1293: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1338
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1338: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1385
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1385: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1469
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1469: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1557
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1557: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1592
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1592: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1639
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1639: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1701
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1701: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1764
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1764: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_5.py:1805
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_5.py:1805: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+--------------------------------- JSON report ----------------------------------
+report saved to: /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/evidence/grader/checkpoint_05/pytest_report_checkpoint_05.json
+=========================== short test summary info ============================
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_operations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_skip_already_applied
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_single_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserve_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_drop_columns
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserves_existing_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_primary_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_unique_and_not_null_constraints
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_default_values_various_types
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_with_default_to_populated_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_complex_data_preservation
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_not_null_with_default
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_multiple_tables
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_reserved_word_identifiers_are_quoted
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_mixed_operations_all_types
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_non_sequential_versions
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_table_multiple_primary_keys_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_requires_integer_primary_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_rejects_invalid_identifier
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_missing_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_table_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_missing_migration_file
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_json
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_schema_missing_operations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_table_missing_for_add_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_column_already_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_column_missing_for_drop
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_only_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_primary_key_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_identifier_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_column_type_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_unique_constraint_prevents_duplicates
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_zero_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_negative_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_string_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_removes_unique_index_on_dropped_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_transform_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_transformations_applied_in_order
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_transform_then_backfill_uses_transformed_values
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_column_not_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_invalid_expression
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migration_rolls_back_on_failure
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_from_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_missing_to_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_with_numeric_constant
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_table_not_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_table_not_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_invalid_where_clause
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_transform_table_not_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_create_index
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_add_check_constraint
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_complex_migration
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_create_unique_index
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_on_delete_set_null
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_add_foreign_key_on_empty_table_enforces_future_writes
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_action
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name_other_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_foreign_key_missing
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_check_constraint_missing
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_with_restrict
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_violation_existing_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_invalid_foreign_key_reference_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_referencing_column_missing
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_foreign_key_column_count_mismatch
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_circular_foreign_key_dependencies
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_duplicate_index_name
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_drop_index_missing
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_check_constraint_violation_on_add
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_3.py::test_transactional_rollback_on_failure
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_simple_rollback
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_to_version
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_create_index
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_check_constraint
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_foreign_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_migrations_store_operations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_multiple_ops_one_migration
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_non_sequential_versions
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_add_column_drops_column_and_loses_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback_operations_override_automatic_rollback
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_default_and_not_null
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column_restores_unique_constraint
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index_restores_unique_definition
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_foreign_key_restores_actions
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_check_constraint_restores_expression
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_removes_migration_records
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_no_migrations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_version_not_found
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_transform_data_no_rollback_ops
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_backfill_data_no_rollback_ops
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_transactional_on_failure
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_complex_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_parallel_dependencies
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_validate_command
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_forward_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_missing_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_duplicate_version_numbers
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_self_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_missing_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_validate_duplicate_versions
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_future_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_circular_dependency
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_invalid_json
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_all_skips_applied
+SKIPPED [1] ../../../qualification/private_eval/tests/test_checkpoint_1.py:436: Applies only to checkpoints 1-2
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_complete_column_migration
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_overwrites_existing_values
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_default_value_for_null
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_data_without_where_updates_all
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_where_filters_rows
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_backfill_value_expression
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_migrate_column_data_null_without_default
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_2.py::test_transform_target_column_not_exists
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_explicit_rollback
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_data_migration
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_column
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_drop_index
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_only_one_migration
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_4.py::test_rollback_fails_with_dependent_index
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_simple_dependency
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_circular_dependency
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_validate_without_migrations_dir
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_empty_depends_on_array
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_transitive_dependencies
+FAILED ../../../qualification/private_eval/tests/test_checkpoint_5.py::test_migrate_skips_already_applied_dependencies
+=========== 22 failed, 114 passed, 1 skipped, 118 warnings in 30.33s ===========
+[shim:pytest-json-report] checkpoint_5: core=0.667 (2/3) isolated=0.700 (14/20) strict=0.838 (114/136) verbosity=0.237 erosion=0.538 has_prior=1 v_up=1 e_up=1

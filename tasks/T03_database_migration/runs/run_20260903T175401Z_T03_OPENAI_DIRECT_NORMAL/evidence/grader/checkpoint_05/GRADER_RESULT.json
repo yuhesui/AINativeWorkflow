@@ -1,0 +1,23 @@
+{
+  "accepted_for_next_reveal": true,
+  "all_checkpoints_graded": true,
+  "checkpoint": 5,
+  "checkpoint_primary_score": 83.82352941176471,
+  "checkpoint_total": 5,
+  "core_pass_rate": 0.6666666666666666,
+  "graded_utc": "2026-09-04T05:46:17.399585+00:00",
+  "grader_ok": true,
+  "grader_runtime": "WSL2",
+  "isolated_pass_rate": 0.7,
+  "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\native_reward\\reward_details.json",
+  "native_primary_metric": 88.45469734573604,
+  "normalized_completion_score": 88.45469734573604,
+  "pytest_exit_code": 1,
+  "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\GRADER_RAW_checkpoint_05.ctrf.json",
+  "raw_grader_sha256": "149ab8b6f739013cf8b58937b6358b5fbfe47d2032e72c511eaac0790ae74746",
+  "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+  "schema_version": 1,
+  "strict_pass_rate": 0.8382352941176471,
+  "task_completion": "COMPLETE",
+  "task_id": "T03"
+}

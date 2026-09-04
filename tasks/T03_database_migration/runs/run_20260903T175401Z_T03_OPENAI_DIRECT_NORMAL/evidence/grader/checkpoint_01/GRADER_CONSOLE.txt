@@ -1,0 +1,199 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration
+plugins: metadata-3.1.1, timeout-2.4.0, json-report-1.5.0, json-ctrf-0.4.1
+timeout: 60.0s
+timeout method: signal
+timeout func_only: False
+collected 39 items
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py ......... [ 23%]
+..............................                                           [100%]
+
+=============================== warnings summary ===============================
+../../../qualification/private_eval/tests/test_checkpoint_1.py:130
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:130: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:290
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:290: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:329
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:329: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:376
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:376: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:430
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:430: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:483
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:483: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:533
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:533: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:585
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:585: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:638
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:638: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:701
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:701: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:764
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:764: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:808
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:808: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:896
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:896: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:943
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:943: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1033
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1033: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1084
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1084: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1115
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1115: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1150
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1150: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1182
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1182: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1212
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1212: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1247
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1247: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1261
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1261: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1276
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1276: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1293
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1293: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1322
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1322: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1355
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1355: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1384
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1384: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1412
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1412: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1442
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1442: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1477
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1477: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1513
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1513: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1561
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1561: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1596
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1596: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1630
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1630: PytestUnknownMarkWarning: Unknown pytest.mark.error - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.error
+
+../../../qualification/private_eval/tests/test_checkpoint_1.py:1664
+  /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/qualification/private_eval/tests/test_checkpoint_1.py:1664: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.functionality
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+--------------------------------- JSON report ----------------------------------
+report saved to: /mnt/d/Projects/AI Native Workflow/tasks/T03_database_migration/runs/run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL/evidence/grader/checkpoint_01/pytest_report_checkpoint_01.json
+=========================== short test summary info ============================
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_operations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_skip_already_applied
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_single_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserve_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_drop_columns
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserves_existing_data
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_foreign_keys_disabled_during_drop_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_primary_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_unique_and_not_null_constraints
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_default_values_various_types
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_with_default_to_populated_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_complex_data_preservation
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_not_null_with_default
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_multiple_tables
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_reserved_word_identifiers_are_quoted
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_mixed_operations_all_types
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_non_sequential_versions
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_create_table_multiple_primary_keys_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_requires_integer_primary_key
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_rejects_invalid_identifier
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_missing_table
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_table_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_missing_migration_file
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_json
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_schema_missing_operations
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_table_missing_for_add_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_column_already_exists
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_column_missing_for_drop
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_only_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_primary_key_column
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_identifier_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_column_type_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_unique_constraint_prevents_duplicates
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_zero_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_negative_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_version_string_rejected
+PASSED ../../../qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_removes_unique_index_on_dropped_column
+======================= 39 passed, 35 warnings in 5.88s ========================
+[shim:pytest-json-report] checkpoint_1: core=1.000 (4/4) isolated=1.000 (39/39) strict=1.000 (39/39) verbosity=0.225 erosion=0.466 has_prior=0 v_up=0 e_up=0

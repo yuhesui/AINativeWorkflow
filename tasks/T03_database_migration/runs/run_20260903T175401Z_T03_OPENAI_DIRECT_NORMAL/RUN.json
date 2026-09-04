@@ -1,0 +1,571 @@
+{
+  "active_executor_effort": "xhigh",
+  "active_executor_product_visible": "gpt-5.6-terra",
+  "attempt_id": "attempt-20260903T175401Z",
+  "auto_grades": [
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": false,
+      "checkpoint": 1,
+      "checkpoint_primary_score": 100.0,
+      "checkpoint_total": 5,
+      "core_pass_rate": 1.0,
+      "graded_utc": "2026-09-03T18:19:03.195750+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 1.0,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\native_reward\\reward_details.json",
+      "native_primary_metric": null,
+      "normalized_completion_score": null,
+      "pytest_exit_code": 0,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_01\\GRADER_RAW_checkpoint_01.ctrf.json",
+      "raw_grader_sha256": "3a8aedf7f73f5425fea1057cb8a8d5f89926059c3f07189c96a95f3f96faca87",
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 1.0,
+      "task_completion": "INCOMPLETE_CHECKPOINTS",
+      "task_id": "T03"
+    },
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": false,
+      "checkpoint": 2,
+      "checkpoint_primary_score": 83.87096774193549,
+      "checkpoint_total": 5,
+      "core_pass_rate": 0.3333333333333333,
+      "graded_utc": "2026-09-03T18:54:15.792848+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 0.5652173913043478,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_02\\native_reward\\reward_details.json",
+      "native_primary_metric": null,
+      "normalized_completion_score": null,
+      "pytest_exit_code": 1,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_02\\GRADER_RAW_checkpoint_02.ctrf.json",
+      "raw_grader_sha256": "5493902a978f4dd17c2ca6cb0c39c1467f7a5c0e7507259147ecdfb377af6e08",
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 0.8387096774193549,
+      "task_completion": "INCOMPLETE_CHECKPOINTS",
+      "task_id": "T03"
+    },
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": false,
+      "checkpoint": 3,
+      "checkpoint_primary_score": 88.37209302325581,
+      "checkpoint_total": 5,
+      "core_pass_rate": 1.0,
+      "graded_utc": "2026-09-03T19:09:43.898297+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 1.0,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_03\\native_reward\\reward_details.json",
+      "native_primary_metric": null,
+      "normalized_completion_score": null,
+      "pytest_exit_code": 1,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_03\\GRADER_RAW_checkpoint_03.ctrf.json",
+      "raw_grader_sha256": "33d8fe2bbe28e0ff04361f495d797f9e6118e63d43bb160a96a0b4ecab775403",
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 0.8837209302325582,
+      "task_completion": "INCOMPLETE_CHECKPOINTS",
+      "task_id": "T03"
+    },
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": false,
+      "checkpoint": 4,
+      "checkpoint_primary_score": 86.20689655172413,
+      "checkpoint_total": 5,
+      "core_pass_rate": 0.6666666666666666,
+      "graded_utc": "2026-09-04T05:12:20.377380+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 0.8,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_04\\native_reward\\reward_details.json",
+      "native_primary_metric": null,
+      "normalized_completion_score": null,
+      "pytest_exit_code": 1,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_04\\GRADER_RAW_checkpoint_04.ctrf.json",
+      "raw_grader_sha256": "0b5b99d56e1b6793931308f78057cb3311bd9a55958aefff5d50216b057ac369",
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 0.8620689655172413,
+      "task_completion": "INCOMPLETE_CHECKPOINTS",
+      "task_id": "T03"
+    },
+    {
+      "accepted_for_next_reveal": true,
+      "all_checkpoints_graded": true,
+      "checkpoint": 5,
+      "checkpoint_primary_score": 83.82352941176471,
+      "checkpoint_total": 5,
+      "core_pass_rate": 0.6666666666666666,
+      "graded_utc": "2026-09-04T05:46:17.399585+00:00",
+      "grader_ok": true,
+      "grader_runtime": "WSL2",
+      "isolated_pass_rate": 0.7,
+      "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\native_reward\\reward_details.json",
+      "native_primary_metric": 88.45469734573604,
+      "normalized_completion_score": 88.45469734573604,
+      "pytest_exit_code": 1,
+      "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\GRADER_RAW_checkpoint_05.ctrf.json",
+      "raw_grader_sha256": "149ab8b6f739013cf8b58937b6358b5fbfe47d2032e72c511eaac0790ae74746",
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "strict_pass_rate": 0.8382352941176471,
+      "task_completion": "COMPLETE",
+      "task_id": "T03"
+    }
+  ],
+  "condition": "DIRECT",
+  "created_utc": "2026-09-03T17:54:01.173216+00:00",
+  "direct_continuations": [
+    {
+      "checkpoint": 2,
+      "created_utc": "2026-09-03T18:37:55.877357+00:00",
+      "executor_return": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\EXECUTOR_RETURN_CHECKPOINT_01.md",
+      "executor_return_sha256": "301d908a251ce33b30d4c9edee6d9e50fb105965d3c9fcefcda186cf17c58221",
+      "prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_02.md",
+      "prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73"
+    },
+    {
+      "checkpoint": 3,
+      "created_utc": "2026-09-03T18:54:15.994055+00:00",
+      "executor_return": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\EXECUTOR_RETURN_CHECKPOINT_02.md",
+      "executor_return_sha256": "f4e87e3db3486fae13102b741c275498efa4c5eff00f3f3727febd0c2f907f75",
+      "prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_03.md",
+      "prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73"
+    },
+    {
+      "checkpoint": 4,
+      "created_utc": "2026-09-03T19:09:44.083973+00:00",
+      "executor_return": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\EXECUTOR_RETURN_CHECKPOINT_03.md",
+      "executor_return_sha256": "5e69701bdbe22e9a9ebc06007a3f14ec1bd3004a506ed68064a75ef045a49fdc",
+      "prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_04.md",
+      "prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73"
+    },
+    {
+      "checkpoint": 5,
+      "created_utc": "2026-09-04T05:12:20.545858+00:00",
+      "executor_return": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\EXECUTOR_RETURN_CHECKPOINT_04.md",
+      "executor_return_sha256": "abf87305ae6fb6174614c638665374ec939e83cdeebf5a6e87a9052e8a5915df",
+      "prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_05.md",
+      "prompt_sha256": "2d4ff3639e966a644f4d56d909b94195bb4c9fbbc902f5a7e9e8fe9cc35d33ad"
+    }
+  ],
+  "direct_goal_prompt": {
+    "path": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL.md",
+    "sha256": "78f37e3cd9d003949bfd90336fbfae849f1a81ac06a912a9988de6b2c1a8f405"
+  },
+  "ecosystem": "OPENAI",
+  "execution_mode": "DIRECT_CLI_GOAL_RESUME",
+  "executor": "CODEX",
+  "executor_sessions": [
+    {
+      "cli_version": "codex-cli 0.152.1",
+      "ended_utc": "2026-09-03T18:18:43.681144+00:00",
+      "execution_mode": "DIRECT_CLI_GOAL",
+      "executor": "CODEX",
+      "executor_effort": "xhigh",
+      "executor_model_product_visible": "gpt-5.6-terra",
+      "executor_prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL.md",
+      "executor_prompt_sha256": "78f37e3cd9d003949bfd90336fbfae849f1a81ac06a912a9988de6b2c1a8f405",
+      "handoff_id": null,
+      "process_exit_code": 0,
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "session_id": "20260903T181849Z-direct-01",
+      "source_bundle": null,
+      "started_utc": "2026-09-03T17:54:06.661654+00:00",
+      "usage": {
+        "api_equivalent_cost_estimate": {
+          "actual_incremental_charge_known": false,
+          "billable_tokens_used": {
+            "cache_creation_input": 0,
+            "cached_input": 1263616,
+            "output": 25375,
+            "uncached_input": 68650
+          },
+          "components": {
+            "cache_creation_input_usd": 0.0,
+            "cached_input_usd": 0.2527232,
+            "output_usd": 0.3045,
+            "uncached_input_usd": 0.1373
+          },
+          "estimated_cost_usd": 0.6945232,
+          "kind": "standard_api_equivalent",
+          "long_context_surcharge_included": false,
+          "model_pricing_key": "gpt-5.6-terra",
+          "notes": "API-equivalent estimate only; subscription usage may have no incremental dollar charge. Aggregate token summaries cannot determine per-request long-context pricing. Reasoning tokens are already included in output tokens and are not added again.",
+          "pricing_snapshot_utc": "2026-09-02",
+          "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "rates_usd_per_million_tokens": {
+            "cache_creation_input": 2.5,
+            "cached_input": 0.2,
+            "output": 12.0,
+            "uncached_input": 2.0
+          }
+        },
+        "cached_input_tokens": 1263616,
+        "input_tokens": 68650,
+        "output_tokens": 25375,
+        "reasoning_tokens": 12867,
+        "total_tokens": 94025
+      },
+      "usage_source": "operator_transcription",
+      "wall_seconds": 1477.024824
+    },
+    {
+      "cli_version": "codex-cli 0.152.1",
+      "ended_utc": "2026-09-03T18:53:57.143274+00:00",
+      "execution_mode": "DIRECT_CLI_GOAL_RESUME",
+      "executor": "CODEX",
+      "executor_effort": "xhigh",
+      "executor_model_product_visible": "gpt-5.6-terra",
+      "executor_prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_02.md",
+      "executor_prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73",
+      "handoff_id": null,
+      "process_exit_code": 0,
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "session_id": "20260903T185359Z-direct-02",
+      "source_bundle": null,
+      "started_utc": "2026-09-03T18:38:03.094919+00:00",
+      "usage": {
+        "api_equivalent_cost_estimate": {
+          "actual_incremental_charge_known": false,
+          "billable_tokens_used": {
+            "cache_creation_input": 0,
+            "cached_input": 791552,
+            "output": 9667,
+            "uncached_input": 25907
+          },
+          "components": {
+            "cache_creation_input_usd": 0.0,
+            "cached_input_usd": 0.1583104,
+            "output_usd": 0.116004,
+            "uncached_input_usd": 0.051814
+          },
+          "estimated_cost_usd": 0.3261284,
+          "kind": "standard_api_equivalent",
+          "long_context_surcharge_included": false,
+          "model_pricing_key": "gpt-5.6-terra",
+          "notes": "API-equivalent estimate only; subscription usage may have no incremental dollar charge. Aggregate token summaries cannot determine per-request long-context pricing. Reasoning tokens are already included in output tokens and are not added again.",
+          "pricing_snapshot_utc": "2026-09-02",
+          "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "rates_usd_per_million_tokens": {
+            "cache_creation_input": 2.5,
+            "cached_input": 0.2,
+            "output": 12.0,
+            "uncached_input": 2.0
+          }
+        },
+        "cached_input_tokens": 791552,
+        "input_tokens": 25907,
+        "output_tokens": 9667,
+        "reasoning_tokens": 4396,
+        "total_tokens": 35574
+      },
+      "usage_source": "operator_transcription",
+      "wall_seconds": 954.049443
+    },
+    {
+      "cli_version": "codex-cli 0.152.1",
+      "ended_utc": "2026-09-03T19:09:19.778669+00:00",
+      "execution_mode": "DIRECT_CLI_GOAL_RESUME",
+      "executor": "CODEX",
+      "executor_effort": "xhigh",
+      "executor_model_product_visible": "gpt-5.6-terra",
+      "executor_prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_03.md",
+      "executor_prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73",
+      "handoff_id": null,
+      "process_exit_code": 0,
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "session_id": "20260903T190921Z-direct-03",
+      "source_bundle": null,
+      "started_utc": "2026-09-03T18:54:17.771044+00:00",
+      "usage": {
+        "api_equivalent_cost_estimate": {
+          "actual_incremental_charge_known": false,
+          "billable_tokens_used": {
+            "cache_creation_input": 0,
+            "cached_input": 2906112,
+            "output": 33685,
+            "uncached_input": 63853
+          },
+          "components": {
+            "cache_creation_input_usd": 0.0,
+            "cached_input_usd": 0.5812224,
+            "output_usd": 0.40422,
+            "uncached_input_usd": 0.127706
+          },
+          "estimated_cost_usd": 1.1131484,
+          "kind": "standard_api_equivalent",
+          "long_context_surcharge_included": false,
+          "model_pricing_key": "gpt-5.6-terra",
+          "notes": "API-equivalent estimate only; subscription usage may have no incremental dollar charge. Aggregate token summaries cannot determine per-request long-context pricing. Reasoning tokens are already included in output tokens and are not added again.",
+          "pricing_snapshot_utc": "2026-09-02",
+          "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "rates_usd_per_million_tokens": {
+            "cache_creation_input": 2.5,
+            "cached_input": 0.2,
+            "output": 12.0,
+            "uncached_input": 2.0
+          }
+        },
+        "cached_input_tokens": 2906112,
+        "input_tokens": 63853,
+        "output_tokens": 33685,
+        "reasoning_tokens": 15403,
+        "total_tokens": 97538
+      },
+      "usage_source": "operator_transcription",
+      "wall_seconds": 902.005041
+    },
+    {
+      "cli_version": "codex-cli 0.152.1",
+      "ended_utc": "2026-09-04T05:11:44.132199+00:00",
+      "execution_mode": "DIRECT_CLI_GOAL_RESUME",
+      "executor": "CODEX",
+      "executor_effort": "xhigh",
+      "executor_model_product_visible": "gpt-5.6-terra",
+      "executor_prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_04.md",
+      "executor_prompt_sha256": "b9999972f5d8ffeb6edba507ea8b5778e9335936f6fffe73061c53623bb8da73",
+      "handoff_id": null,
+      "process_exit_code": 0,
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "session_id": "20260904T051148Z-direct-04",
+      "source_bundle": null,
+      "started_utc": "2026-09-03T19:09:46.301120+00:00",
+      "usage": {
+        "api_equivalent_cost_estimate": {
+          "actual_incremental_charge_known": false,
+          "billable_tokens_used": {
+            "cache_creation_input": 0,
+            "cached_input": 3607040,
+            "output": 25177,
+            "uncached_input": 68275
+          },
+          "components": {
+            "cache_creation_input_usd": 0.0,
+            "cached_input_usd": 0.721408,
+            "output_usd": 0.302124,
+            "uncached_input_usd": 0.13655
+          },
+          "estimated_cost_usd": 1.160082,
+          "kind": "standard_api_equivalent",
+          "long_context_surcharge_included": false,
+          "model_pricing_key": "gpt-5.6-terra",
+          "notes": "API-equivalent estimate only; subscription usage may have no incremental dollar charge. Aggregate token summaries cannot determine per-request long-context pricing. Reasoning tokens are already included in output tokens and are not added again.",
+          "pricing_snapshot_utc": "2026-09-02",
+          "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "rates_usd_per_million_tokens": {
+            "cache_creation_input": 2.5,
+            "cached_input": 0.2,
+            "output": 12.0,
+            "uncached_input": 2.0
+          }
+        },
+        "cached_input_tokens": 3607040,
+        "input_tokens": 68275,
+        "output_tokens": 25177,
+        "reasoning_tokens": 11337,
+        "total_tokens": 93452
+      },
+      "usage_source": "operator_transcription",
+      "wall_seconds": 36129.151604
+    },
+    {
+      "cli_version": "codex-cli 0.152.1",
+      "ended_utc": "2026-09-04T05:45:36.878875+00:00",
+      "execution_mode": "DIRECT_CLI_GOAL_RESUME",
+      "executor": "CODEX",
+      "executor_effort": "xhigh",
+      "executor_model_product_visible": "gpt-5.6-terra",
+      "executor_prompt": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\DIRECT_GOAL_CHECKPOINT_05.md",
+      "executor_prompt_sha256": "2d4ff3639e966a644f4d56d909b94195bb4c9fbbc902f5a7e9e8fe9cc35d33ad",
+      "handoff_id": null,
+      "process_exit_code": 0,
+      "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+      "schema_version": 1,
+      "session_id": "20260904T054538Z-direct-05",
+      "source_bundle": null,
+      "started_utc": "2026-09-04T05:12:22.591111+00:00",
+      "usage": {
+        "api_equivalent_cost_estimate": {
+          "actual_incremental_charge_known": false,
+          "billable_tokens_used": {
+            "cache_creation_input": 0,
+            "cached_input": 3540992,
+            "output": 21699,
+            "uncached_input": 239299
+          },
+          "components": {
+            "cache_creation_input_usd": 0.0,
+            "cached_input_usd": 0.7081984,
+            "output_usd": 0.260388,
+            "uncached_input_usd": 0.478598
+          },
+          "estimated_cost_usd": 1.4471844,
+          "kind": "standard_api_equivalent",
+          "long_context_surcharge_included": false,
+          "model_pricing_key": "gpt-5.6-terra",
+          "notes": "API-equivalent estimate only; subscription usage may have no incremental dollar charge. Aggregate token summaries cannot determine per-request long-context pricing. Reasoning tokens are already included in output tokens and are not added again.",
+          "pricing_snapshot_utc": "2026-09-02",
+          "pricing_source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "rates_usd_per_million_tokens": {
+            "cache_creation_input": 2.5,
+            "cached_input": 0.2,
+            "output": 12.0,
+            "uncached_input": 2.0
+          }
+        },
+        "cached_input_tokens": 3540992,
+        "input_tokens": 239299,
+        "output_tokens": 21699,
+        "reasoning_tokens": 11065,
+        "total_tokens": 260998
+      },
+      "usage_source": "operator_transcription",
+      "wall_seconds": 1994.091558
+    }
+  ],
+  "finalized_utc": "2026-09-04T05:49:28.527126+00:00",
+  "inputs_packaged_utc": "2026-09-03T17:54:01.230859+00:00",
+  "invalidation_reason": null,
+  "last_recorded_utc": "2026-09-04T05:48:32.430382+00:00",
+  "latest_auto_grade": {
+    "accepted_for_next_reveal": true,
+    "all_checkpoints_graded": true,
+    "checkpoint": 5,
+    "checkpoint_primary_score": 83.82352941176471,
+    "checkpoint_total": 5,
+    "core_pass_rate": 0.6666666666666666,
+    "graded_utc": "2026-09-04T05:46:17.399585+00:00",
+    "grader_ok": true,
+    "grader_runtime": "WSL2",
+    "isolated_pass_rate": 0.7,
+    "metrics": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\native_reward\\reward_details.json",
+    "native_primary_metric": 88.45469734573604,
+    "normalized_completion_score": 88.45469734573604,
+    "pytest_exit_code": 1,
+    "raw_grader": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\evidence\\grader\\checkpoint_05\\GRADER_RAW_checkpoint_05.ctrf.json",
+    "raw_grader_sha256": "149ab8b6f739013cf8b58937b6358b5fbfe47d2032e72c511eaac0790ae74746",
+    "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+    "schema_version": 1,
+    "strict_pass_rate": 0.8382352941176471,
+    "task_completion": "COMPLETE",
+    "task_id": "T03"
+  },
+  "layout_version": "simple-v2",
+  "main_inference_count": 0,
+  "matrix_run_id": "T03_OPENAI_DIRECT_NORMAL",
+  "metadata_file": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\RUN.json",
+  "non_scored": false,
+  "observed_executor_sessions": [
+    {
+      "effort": "xhigh",
+      "executor": "CODEX",
+      "model": "gpt-5.6-terra",
+      "session_id": "20260903T181849Z-direct-01"
+    },
+    {
+      "effort": "xhigh",
+      "executor": "CODEX",
+      "model": "gpt-5.6-terra",
+      "session_id": "20260903T185359Z-direct-02"
+    },
+    {
+      "effort": "xhigh",
+      "executor": "CODEX",
+      "model": "gpt-5.6-terra",
+      "session_id": "20260903T190921Z-direct-03"
+    },
+    {
+      "effort": "xhigh",
+      "executor": "CODEX",
+      "model": "gpt-5.6-terra",
+      "session_id": "20260904T051148Z-direct-04"
+    },
+    {
+      "effort": "xhigh",
+      "executor": "CODEX",
+      "model": "gpt-5.6-terra",
+      "session_id": "20260904T054538Z-direct-05"
+    }
+  ],
+  "operator_records": [
+    {
+      "executor_usage_reported": {},
+      "main_time_reused_from_initial_record": false,
+      "main_usage_reported": {},
+      "notes": null,
+      "recorded_utc": "2026-09-03T18:19:12.871358+00:00"
+    },
+    {
+      "executor_usage_reported": {},
+      "main_time_reused_from_initial_record": false,
+      "main_usage_reported": {},
+      "notes": null,
+      "recorded_utc": "2026-09-04T05:48:32.430382+00:00"
+    }
+  ],
+  "qualification_root": null,
+  "repo_final": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\repo_final",
+  "repo_final_tree_sha256": "d43983e98fd75abef3e9c9a0bd09ef1a5946f51e298a308322d7b98d8774fef9",
+  "repo_initial_storage": "hash_ref",
+  "repo_initial_tree_sha256": "a0148765cf7352cf85ebe96cfde67873494e258bf371b217ccb2f886de9396e1",
+  "resource_summary": {
+    "cached_input_tokens": 12109312,
+    "combined_api_equivalent_cost_estimated_usd": 4.7410664,
+    "elapsed_since_materialization_seconds": 42871.257166,
+    "executor_api_equivalent_cost_estimated_usd": 4.7410664,
+    "executor_wall_seconds": 41456.32247,
+    "input_tokens": 465984,
+    "output_tokens": 115603,
+    "reasoning_tokens": 55068,
+    "total_tokens": 581587
+  },
+  "run_folder_timestamp_utc": "20260903T175401Z",
+  "run_id": "run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL",
+  "schema_version": 1,
+  "source_task_lock_sha256": "ccf7875ad006be0113af87c7407260177a243b0968ad269651a54fb74391f7ea",
+  "source_test_repo": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\test_repo",
+  "source_test_repo_tree_sha256": "810bcc6b648f7f6f4d1042b73b06cf1da0563aa5465c87d321ec238be9614468",
+  "started_utc": "2026-09-03T17:54:06.661654+00:00",
+  "state_mode": "NORMAL",
+  "status": "FINALIZED",
+  "task_environment": {
+    "container_name": "ai-eval-t03-73cecc85e4f1",
+    "container_workspace": "/app",
+    "dockerfile": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\qualification\\environment\\Dockerfile",
+    "dockerfile_sha256": "4752a6381a8dad46dc8d25ce1d99483b4681c76764f9566d84a0ee7d43701eb1",
+    "environment_adapted": true,
+    "host_workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\workspace",
+    "image_built_this_session": false,
+    "image_id": "sha256:dba61c77a29fd97e740f99e213945d3dab9e1b18c1f2a5ebac22ae6257f24ecf",
+    "image_tag": "ai-native-eval-t03:4752a6381a8d",
+    "kind": "docker_sidecar",
+    "schema_version": 1,
+    "started_utc": "2026-09-04T05:12:22.591085+00:00",
+    "status": "STOPPED",
+    "stopped_utc": "2026-09-04T05:45:36.878846+00:00",
+    "upstream_dockerfile": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\original_task\\environment\\Dockerfile"
+  },
+  "task_id": "T03",
+  "usage_totals": {
+    "cached_input_tokens": 12109312,
+    "executor_api_equivalent_cost_estimated_usd": 4.7410664,
+    "executor_wall_seconds": 41456.32247,
+    "input_tokens": 465984,
+    "output_tokens": 115603,
+    "reasoning_tokens": 55068,
+    "total_tokens": 581587
+  },
+  "validity": "VALID",
+  "workspace": "D:\\Projects\\AI Native Workflow\\tasks\\T03_database_migration\\runs\\run_20260903T175401Z_T03_OPENAI_DIRECT_NORMAL\\workspace"
+}

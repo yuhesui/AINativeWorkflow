@@ -1,0 +1,32 @@
+{
+  "accepted": [
+    {
+      "checkpoint": 1,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_01_grader_raw.json",
+      "grader_raw_sha256": "3a8aedf7f73f5425fea1057cb8a8d5f89926059c3f07189c96a95f3f96faca87"
+    },
+    {
+      "checkpoint": 2,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_02_grader_raw.json",
+      "grader_raw_sha256": "5493902a978f4dd17c2ca6cb0c39c1467f7a5c0e7507259147ecdfb377af6e08"
+    },
+    {
+      "checkpoint": 3,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_03_grader_raw.json",
+      "grader_raw_sha256": "33d8fe2bbe28e0ff04361f495d797f9e6118e63d43bb160a96a0b4ecab775403"
+    },
+    {
+      "checkpoint": 4,
+      "grader_raw": ".evaluation/acceptance_evidence/checkpoint_04_grader_raw.json",
+      "grader_raw_sha256": "0b5b99d56e1b6793931308f78057cb3311bd9a55958aefff5d50216b057ac369"
+    }
+  ],
+  "current_checkpoint": 5,
+  "revealed": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

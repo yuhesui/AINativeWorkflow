@@ -1,0 +1,481 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.0.3"
+        },
+        "summary": {
+            "tests": 39,
+            "passed": 39,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1788459535896,
+            "stop": 1788459541758
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_table",
+                "status": "passed",
+                "duration": 173,
+                "start": 1788459536189,
+                "stop": 1788459536362,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column",
+                "status": "passed",
+                "duration": 155,
+                "start": 1788459536363,
+                "stop": 1788459536518,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_operations",
+                "status": "passed",
+                "duration": 173,
+                "start": 1788459536518,
+                "stop": 1788459536691,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_skip_already_applied",
+                "status": "passed",
+                "duration": 135,
+                "start": 1788459536691,
+                "stop": 1788459536826,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_single_column",
+                "status": "passed",
+                "duration": 147,
+                "start": 1788459536826,
+                "stop": 1788459536973,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py"
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserve_data",
+                "status": "passed",
+                "duration": 142,
+                "start": 1788459536973,
+                "stop": 1788459537115,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_multiple_drop_columns",
+                "status": "passed",
+                "duration": 181,
+                "start": 1788459537116,
+                "stop": 1788459537297,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_preserves_existing_data",
+                "status": "passed",
+                "duration": 155,
+                "start": 1788459537298,
+                "stop": 1788459537453,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_foreign_keys_disabled_during_drop_column",
+                "status": "passed",
+                "duration": 157,
+                "start": 1788459537453,
+                "stop": 1788459537610,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_primary_key",
+                "status": "passed",
+                "duration": 136,
+                "start": 1788459537611,
+                "stop": 1788459537747,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_unique_and_not_null_constraints",
+                "status": "passed",
+                "duration": 136,
+                "start": 1788459537747,
+                "stop": 1788459537883,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_default_values_various_types",
+                "status": "passed",
+                "duration": 145,
+                "start": 1788459537883,
+                "stop": 1788459538028,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_with_default_to_populated_table",
+                "status": "passed",
+                "duration": 150,
+                "start": 1788459538029,
+                "stop": 1788459538179,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_complex_data_preservation",
+                "status": "passed",
+                "duration": 151,
+                "start": 1788459538179,
+                "stop": 1788459538330,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_not_null_with_default",
+                "status": "passed",
+                "duration": 154,
+                "start": 1788459538330,
+                "stop": 1788459538484,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_multiple_tables",
+                "status": "passed",
+                "duration": 147,
+                "start": 1788459538484,
+                "stop": 1788459538631,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_reserved_word_identifiers_are_quoted",
+                "status": "passed",
+                "duration": 138,
+                "start": 1788459538631,
+                "stop": 1788459538769,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_mixed_operations_all_types",
+                "status": "passed",
+                "duration": 140,
+                "start": 1788459538769,
+                "stop": 1788459538909,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_non_sequential_versions",
+                "status": "passed",
+                "duration": 147,
+                "start": 1788459538909,
+                "stop": 1788459539056,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_create_table_multiple_primary_keys_rejected",
+                "status": "passed",
+                "duration": 116,
+                "start": 1788459539056,
+                "stop": 1788459539172,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_auto_increment_requires_integer_primary_key",
+                "status": "passed",
+                "duration": 116,
+                "start": 1788459539172,
+                "stop": 1788459539288,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_add_column_rejects_invalid_identifier",
+                "status": "passed",
+                "duration": 134,
+                "start": 1788459539288,
+                "stop": 1788459539422,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_missing_table",
+                "status": "passed",
+                "duration": 129,
+                "start": 1788459539423,
+                "stop": 1788459539552,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_table_exists",
+                "status": "passed",
+                "duration": 123,
+                "start": 1788459539552,
+                "stop": 1788459539675,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_missing_migration_file",
+                "status": "passed",
+                "duration": 119,
+                "start": 1788459539675,
+                "stop": 1788459539794,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_json",
+                "status": "passed",
+                "duration": 116,
+                "start": 1788459539794,
+                "stop": 1788459539910,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_schema_missing_operations",
+                "status": "passed",
+                "duration": 115,
+                "start": 1788459539910,
+                "stop": 1788459540025,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_table_missing_for_add_column",
+                "status": "passed",
+                "duration": 132,
+                "start": 1788459540026,
+                "stop": 1788459540158,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_column_already_exists",
+                "status": "passed",
+                "duration": 138,
+                "start": 1788459540158,
+                "stop": 1788459540296,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_column_missing_for_drop",
+                "status": "passed",
+                "duration": 132,
+                "start": 1788459540296,
+                "stop": 1788459540428,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_only_column",
+                "status": "passed",
+                "duration": 140,
+                "start": 1788459540428,
+                "stop": 1788459540568,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_primary_key_column",
+                "status": "passed",
+                "duration": 148,
+                "start": 1788459540568,
+                "stop": 1788459540716,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_identifier_rejected",
+                "status": "passed",
+                "duration": 118,
+                "start": 1788459540716,
+                "stop": 1788459540834,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_invalid_column_type_rejected",
+                "status": "passed",
+                "duration": 116,
+                "start": 1788459540834,
+                "stop": 1788459540950,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_unique_constraint_prevents_duplicates",
+                "status": "passed",
+                "duration": 139,
+                "start": 1788459540950,
+                "stop": 1788459541089,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_zero_rejected",
+                "status": "passed",
+                "duration": 118,
+                "start": 1788459541089,
+                "stop": 1788459541207,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_negative_rejected",
+                "status": "passed",
+                "duration": 116,
+                "start": 1788459541207,
+                "stop": 1788459541323,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_version_string_rejected",
+                "status": "passed",
+                "duration": 114,
+                "start": 1788459541324,
+                "stop": 1788459541438,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "error"
+                ]
+            },
+            {
+                "name": "qualification/private_eval/tests/test_checkpoint_1.py::test_drop_column_removes_unique_index_on_dropped_column",
+                "status": "passed",
+                "duration": 313,
+                "start": 1788459541439,
+                "stop": 1788459541752,
+                "retries": 0,
+                "file_path": "qualification/private_eval/tests/test_checkpoint_1.py",
+                "tags": [
+                    "functionality"
+                ]
+            }
+        ]
+    }
+}
