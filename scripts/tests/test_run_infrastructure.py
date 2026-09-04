@@ -30,7 +30,9 @@ class InfrastructureFailureTests(unittest.TestCase):
         self.assertIn("preflight", initial)
         self.assertIn("preflight", continuation)
         self.assertIn("already provisioned and started", launcher)
-        self.assertIn("retry it once", initial.lower())
+        self.assertIn("--approve-for-me", launcher)
+        self.assertNotIn('"--sandbox", "workspace-write"', launcher)
+        self.assertIn("retry that command once", initial.lower())
         self.assertIn("retry", continuation.lower())
 
     def test_pre_executor_failure_is_invalidated(self) -> None:

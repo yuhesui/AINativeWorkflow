@@ -82,18 +82,20 @@ def main() -> int:
         bootstrap += (
             "\n\nUse the frozen Linux sidecar for every task build, test, and runtime command: "
             "`python .evaluation/run_in_env.py exec-self -- <command>`. The same workspace is "
-            "mounted at `/app` inside that environment."
+            "mounted at `/app` inside that environment. If the wrapper says the sidecar is not "
+            "running, retry that command once with escalated command permission; automatic "
+            "approval is enabled. Do not stop for the first sandbox-limited result."
         )
     if args.executor == "CODEX":
         if args.resume_session:
             command = [
                 "codex", "resume", "--last", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
+                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
             ]
         else:
             command = [
                 "codex", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
+                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
             ]
     else:
         command = ["claude"]

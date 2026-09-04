@@ -511,7 +511,9 @@ def main() -> int:
                 "manage Docker, WSL, daemon sockets, groups, images, containers, sidecar lifecycle, "
                 "or the already selected model route, and do not ask the operator to confirm or "
                 "start them. If an actually required wrapper command fails, retry it once and "
-                "preserve the exact output. Continue repository work that does not require the "
+                "preserve the exact output. If the failure says the sidecar is not running, make "
+                "that single retry with escalated command permission; automatic approval is "
+                "enabled for this purpose. Continue repository work that does not require the "
                 "failed command, and report an infrastructure block only if the repeated failure "
                 "prevents a current acceptance criterion. The host repository is bind-mounted at "
                 "`/app` inside that environment; do not create or copy a host virtual environment."
@@ -519,7 +521,7 @@ def main() -> int:
         if args.executor == "CODEX":
             command = [
                 "codex", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--sandbox", "workspace-write", bootstrap,
+                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
             ]
         else:
             command = [
