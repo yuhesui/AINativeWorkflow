@@ -57,6 +57,19 @@ ROUTES = {
             "product-visible model and effort at launch; do not silently substitute."
         ),
     },
+    "T06_SOL": {
+        "main": "ChatGPT GPT-5.6 Sol — xhigh",
+        "executor": "Codex CLI GPT-5.6 Sol — medium",
+        "guidance": (
+            "T06 control route: ChatGPT GPT-5.6 Sol at xhigh is Main and Codex CLI "
+            "GPT-5.6 Sol at medium is the persistent Phase orchestrator. In "
+            "HANDOFF_MANIFEST.json use selected_executor CODEX, requested_model gpt-5.6-sol, "
+            "and requested_effort medium. The orchestrator may delegate bounded worker jobs "
+            "from the permitted worker pool, including Codex Terra xhigh, but remains responsible "
+            "for integration, evidence, and Phase completion. Record every observed route and do "
+            "not silently substitute the Main or orchestrator."
+        ),
+    },
 }
 
 

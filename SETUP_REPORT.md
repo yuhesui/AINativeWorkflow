@@ -147,9 +147,12 @@ including network and storage rules, are in the task's `RESOURCE_POLICY.md`.
 | T6 | 8 h | 160 | 240 min | 2 | no GPU unless capsule requires it |
 | T7 | 24 h | 400 | 720 min | 2 | max 12 GPU-h and 6 full reproductions |
 
-No cloud or API compute was purchased. T5-T7 use the same mixed model/research
-resource menu in both conditions. T1-T4 require the exact product-visible model
-families in the frozen protocol, with actual identifiers recorded at run time.
+No cloud or API compute was purchased. T5 and T7 use the same mixed model/research
+resource menu in both conditions. T6 uses the explicit Sol control route recorded in
+`protocol/04_MODEL_POLICY.md`: Direct has no Main and opens Sol-medium Codex with one Goal,
+while AI-Native uses Sol xhigh Main and a persistent Sol-medium Phase orchestrator. Both
+T6 conditions retain the same bounded worker pool. T1-T4 require the exact product-visible
+model families in the frozen protocol, with actual identifiers recorded at run time.
 
 ## Run harness and dry qualification
 

@@ -103,7 +103,7 @@ def write_main_prompt(
     ecosystem: str,
     run: dict,
 ) -> Path:
-    route = ROUTES[ecosystem]
+    route = ROUTES[str(run.get("control_route") or ecosystem)]
     task = read(task_root / "TASK.md")
     binding = f"""Frozen handoff identity — copy these exact values into every HANDOFF_MANIFEST.json:
 
@@ -117,9 +117,14 @@ def write_main_prompt(
 
 A package with missing or different binding values will be rejected before import.
 """
-    interaction_guidance = """Interaction policy: use exactly one Main inference for this normal run's progressive trajectory. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. The harness will reveal accepted later checkpoints and resume the same executor without another Main inference; preserve durable workflow state for that continuation, but never infer or cross an unrevealed-checkpoint gate. The harness provisions and starts the task environment before the executor opens: make the Orchestrator start substantive work immediately through `.evaluation/run_in_env.py`, without Docker/WSL/sidecar/model-route preflight or operator-confirmation gates."""
+    if run["task_id"] == "T06":
+        interaction_guidance = """Interaction policy for this non-progressive research task: create the complete overall Plan and likely Phase sequence, but fully materialize only the current active Phase. Return its complete DIC, complete EPS graph with one substantive prompt per node, evidence/acceptance contract, and ORCHESTRATOR_START.md tuned for Codex CLI GPT-5.6 Sol at medium. The orchestrator executes the whole active Phase autonomously and may delegate bounded worker jobs. After execution, the surviving repository and evidence may return to Main with the fixed continuation prompt so Main can accept, repair, replan, or materialize the next Phase. Do not invent benchmark checkpoints or fully specify unevidenced repair Phases in advance."""
+        base_prompt = read(ROOT / "prompts" / "ai_native" / "02_START_T06_RESEARCH.md")
+    else:
+        interaction_guidance = """Interaction policy: use exactly one Main inference for this normal run's progressive trajectory. Return one complete whole-Phase package whose Orchestrator entrypoint executes the full initial EPS prompt graph. A single ZIP is a transport boundary, not permission to collapse independently verifiable EPS nodes into one prompt. The harness will reveal accepted later checkpoints and resume the same executor without another Main inference; preserve durable workflow state for that continuation, but never infer or cross an unrevealed-checkpoint gate. The harness provisions and starts the task environment before the executor opens: make the Orchestrator start substantive work immediately through `.evaluation/run_in_env.py`, without Docker/WSL/sidecar/model-route preflight or operator-confirmation gates."""
+        base_prompt = read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md")
     loader = read(ROOT / "prompts" / "ai_native" / "00_LOAD_AI_NATIVE.md")
-    body = main_prompt(read(ROOT / "prompts" / "ai_native" / "01_START_TASK.md"), route, task)
+    body = main_prompt(base_prompt, route, task)
     text = f"""# Main chat prompt
 
 Upload `MAIN_INPUT.zip` from the printed run folder and
@@ -144,12 +149,18 @@ Then paste this single complete message:
 
 
 def write_direct_goal(task_root: Path, run_dir: Path, ecosystem: str) -> Path:
-    route = ROUTES[ecosystem]
+    task_id = str(load_json(task_root / "TASK_LOCK.json").get("task_id", ""))
+    route = ROUTES["T06_SOL" if task_id == "T06" else ecosystem]
     task = read(task_root / "TASK.md")
+    base_prompt = (
+        read(ROOT / "prompts" / "direct" / "01_T06_RESEARCH_GOAL.md")
+        if task_id == "T06"
+        else read(ROOT / "prompts" / "direct" / "00_START_TASK.md")
+    )
     destination = run_dir / "DIRECT_GOAL.md"
     destination.write_text(
         "# Direct CLI Goal\n\n"
-        + read(ROOT / "prompts" / "direct" / "00_START_TASK.md")
+        + base_prompt
         + "\n\nFrozen executor route: " + route["executor"] + ". Do not silently substitute.\n\n"
         + "Frozen task prompt follows exactly:\n\n" + task + "\n",
         encoding="utf-8",
@@ -188,6 +199,31 @@ def package_inputs(task_root: Path, run_dir: Path, condition: str, run: dict) ->
     }
     prompt = write_main_prompt(task_root, run_dir, condition, run["ecosystem"], run)
     run["main_prompt"] = {"path": str(prompt), "sha256": file_sha256(prompt)}
+    if run["task_id"] == "T06":
+        continuation = run_dir / "MAIN_CONTINUE_PROMPT.md"
+        continuation.write_text(
+            "# T06 Main continuation prompt\n\n"
+            "Upload the continuation archive containing the surviving agent-visible repository "
+            "and completed Phase evidence, then paste this single message:\n\n"
+            "````text\n"
+            + read(ROOT / "prompts" / "shared" / "02_CONTINUE_T06_PHASE.md")
+            + "\n\nFrozen handoff identity; copy these exact values into HANDOFF_MANIFEST.json:\n\n"
+            + json.dumps(
+                {
+                    "task_id": run["task_id"],
+                    "run_id": run["run_id"],
+                    "task_lock_sha256": run["source_task_lock_sha256"],
+                },
+                indent=2,
+            )
+            + "\n````\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        run["main_continuation_prompt"] = {
+            "path": str(continuation),
+            "sha256": file_sha256(continuation),
+        }
     run["status"] = "AWAITING_MAIN"
     run["main_inference_count"] = 1
     run["inputs_packaged_utc"] = utc_now()
@@ -255,7 +291,7 @@ def prompt_optional_minutes(current: float | None, label: str) -> float | None:
 
 def handoff_zip_candidates(run_dir: Path) -> list[Path]:
     """Return unimported ZIPs stored directly in the run folder."""
-    reserved = {"main_input.zip", ".ai-workflow.zip"}
+    reserved = {"main_input.zip", "main_continue_input.zip", ".ai-workflow.zip"}
     return sorted(
         (
             path.resolve()
@@ -389,6 +425,8 @@ def launch_direct(
     *,
     ecosystem: str,
     claude_model: str | None,
+    codex_model: str | None,
+    codex_effort: str | None,
     qualification_root: Path | None,
 ) -> int:
     command = [
@@ -398,6 +436,10 @@ def launch_direct(
     ]
     if claude_model:
         command.extend(("--claude-model", claude_model))
+    if codex_model:
+        command.extend(("--codex-model", codex_model))
+    if codex_effort:
+        command.extend(("--codex-effort", codex_effort))
     if qualification_root:
         command.extend(("--qualification-root", str(qualification_root.resolve())))
     return subprocess.run(command, cwd=ROOT, check=False).returncode
@@ -412,6 +454,26 @@ def finish_run(
     skip_auto_grade: bool,
     skip_post_run_record: bool,
 ) -> int:
+    run_base = qualification_root.resolve() if qualification_root else task_root
+    run_path = run_base / "runs" / run_id / "RUN.json"
+    run = load_json(run_path)
+    workspace = run_base / "runs" / run_id / "workspace"
+    if (
+        result == 0
+        and run.get("task_id") == "T06"
+        and run.get("condition") == "AI_NATIVE"
+        and not (workspace / "report.json").is_file()
+    ):
+        run["status"] = "AWAITING_MAIN_CONTINUATION"
+        run["awaiting_main_continuation_utc"] = utc_now()
+        save_json(run_path, run)
+        print("\nT06 active Phase returned without final report.json; private grading is deferred.")
+        print("Continue the same run with:")
+        print(
+            f'{sys.executable} -X utf8 scripts/continue_t06_run.py "{task_root}" '
+            f'--run-id "{run_id}"'
+        )
+        return 0
     grade_result = 0
     if not skip_auto_grade:
         grade_command = [
@@ -423,8 +485,6 @@ def finish_run(
         print("\nRunning frozen private grader...")
         grade_result = subprocess.run(grade_command, cwd=ROOT, check=False).returncode
     if result == 0 and grade_result == 0 and not skip_auto_grade:
-        run_base = qualification_root.resolve() if qualification_root else task_root
-        run_path = run_base / "runs" / run_id / "RUN.json"
         run = load_json(run_path)
         latest_grade = run.get("latest_auto_grade")
         if (
@@ -556,7 +616,11 @@ def main() -> int:
     if not lock_path.is_file():
         raise SystemExit("task_root must contain TASK_LOCK.json")
     task_id = str(load_json(lock_path).get("task_id", ""))
-    row = find_matrix_row(task_id, args.ecosystem, args.condition, args.state_mode)
+    if task_id == "T06" and args.ecosystem != "OPENAI":
+        raise SystemExit("T06 uses the fixed Sol control route; omit --ecosystem or use OPENAI")
+    matrix_ecosystem = "MIXED" if task_id == "T06" else args.ecosystem
+    control_route = "T06_SOL" if task_id == "T06" else args.ecosystem
+    row = find_matrix_row(task_id, matrix_ecosystem, args.condition, args.state_mode)
     stamp = timestamp_slug()
     run_base = args.qualification_root.resolve() if args.qualification_root else task_root
     run_id = unique_run_id(run_base, row["run_id"], stamp)
@@ -592,11 +656,12 @@ def main() -> int:
     run.update(
         {
             "matrix_run_id": row["run_id"],
-            "ecosystem": args.ecosystem,
+            "ecosystem": matrix_ecosystem,
+            "control_route": control_route,
             "state_mode": args.state_mode,
             "run_folder_timestamp_utc": stamp,
             "metadata_file": str(run_path),
-            "executor": "CODEX" if args.ecosystem == "OPENAI" else "CLAUDE",
+            "executor": "CODEX" if control_route != "ANTHROPIC" else "CLAUDE",
         }
     )
     package_inputs(task_root, run_dir, args.condition, run)
@@ -618,8 +683,10 @@ def main() -> int:
             task_root,
             run_id,
             run_dir / "DIRECT_GOAL.md",
-            ecosystem=args.ecosystem,
+            ecosystem="OPENAI" if control_route == "T06_SOL" else args.ecosystem,
             claude_model=args.claude_model,
+            codex_model="gpt-5.6-sol" if task_id == "T06" else None,
+            codex_effort="medium" if task_id == "T06" else None,
             qualification_root=args.qualification_root,
         )
         print(f"\nRun metadata: {run_path}")
@@ -634,7 +701,7 @@ def main() -> int:
             skip_post_run_record=args.skip_post_run_record,
         )
 
-    route = ROUTES[args.ecosystem]
+    route = ROUTES[control_route]
     main_model = args.main_model or route["main"]
     print("\nIn a fresh Main chat, upload:")
     print(f"  - {run_dir / 'MAIN_INPUT.zip'}")
@@ -646,7 +713,12 @@ def main() -> int:
         args.main_wall_minutes,
         "Main total active/compute time for this prompt and handoff",
     )
-    main_effort = prompt_main_effort(args.main_effort, args.ecosystem)
+    main_effort = prompt_main_effort(
+        args.main_effort or ("xhigh" if task_id == "T06" else None),
+        "OPENAI" if control_route == "T06_SOL" else args.ecosystem,
+    )
+    if task_id == "T06" and main_effort != "xhigh":
+        raise SystemExit("T06 Main effort is fixed at xhigh")
     main_chat_url = args.main_chat_url or required_input(
         "Main chat link (normal or shared ChatGPT URL): "
     )
@@ -665,7 +737,7 @@ def main() -> int:
             task_root,
             run_id,
             handoff,
-            ecosystem=args.ecosystem,
+            ecosystem="OPENAI" if control_route == "T06_SOL" else args.ecosystem,
             main_chat_url=main_chat_url,
             main_model=main_model,
             main_effort=main_effort,
@@ -686,7 +758,7 @@ def main() -> int:
         task_root,
         run_id,
         handoff,
-        ecosystem=args.ecosystem,
+        ecosystem="OPENAI" if control_route == "T06_SOL" else args.ecosystem,
         main_chat_url=main_chat_url,
         main_model=main_model,
         main_effort=main_effort,

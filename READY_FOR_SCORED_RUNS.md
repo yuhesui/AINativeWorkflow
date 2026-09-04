@@ -1,10 +1,10 @@
 # Scored-run operations and readiness gates
 
 > **Protocol-revision gate:** The current harness implements the operator-requested Direct
-> condition as a coding-CLI Goal run with zero Main inferences. That differs from the still-frozen
+> T1–T4 condition as a coding-CLI Goal run with zero Main inferences. That differs from the still-frozen
 > definitions in `protocol/01_CONDITIONS.md`, `protocol/04_MODEL_POLICY.md`, and
 > `EXPERIMENT_FREEZE.yaml`, which assign Main to both conditions. Do not use this revised Direct
-> harness for a scored row until an explicit protocol revision freezes the new condition and matched
+> harness for a T1–T4 scored row until an explicit protocol revision freezes the new condition and matched
 > budgets. Do not pool earlier Main-based Direct runs with the revised zero-Main condition.
 
 Repository-wide qualification status: **QUALIFIED_WITH_BLOCKERS**.
@@ -28,9 +28,11 @@ runbook; it is not authorization to start a row of `manifests/RUN_MATRIX.csv`.
 3. Record the exact product-visible Main and executor identifiers. For T1-T4,
    OpenAI routing is ChatGPT GPT-5.6 Sol at the highest exposed reasoning level
    with Codex GPT-5.6 Terra xhigh; Anthropic routing is Claude Opus 5 high with
-   Claude Code Sonnet 5 high. Do not substitute silently. T5-T7 expose the same
+   Claude Code Sonnet 5 high. Do not substitute silently. T5 and T7 expose the same
    frozen mixed research resource menu to both conditions and let Main choose
-   routing.
+   routing. T6 instead uses its task-specific Sol control route: Direct opens
+   Sol-medium Codex with no Main, while AI-Native uses Sol xhigh Main and a
+   persistent Sol-medium Codex Phase orchestrator; both retain the same worker pool.
 4. Confirm the matched task budget in `test_repo/RESOURCE_POLICY.md`, available
    disk, network policy, and required hardware. Do not buy compute without
    human approval.
@@ -152,6 +154,16 @@ as setup debris.
 Preserve every durable runtime mutation. The final AI-Native repository must
 include its full final `.ai-workflow/`; the final Direct repository must not
 contain that directory.
+
+## T6 research/reproduction loop
+
+Use `tasks/T06_corebench_4252248/TESTING_STEPS.md`. T6 has no progressive benchmark checkpoints.
+Direct creates one complete Goal prompt and immediately opens Codex GPT-5.6 Sol at medium with no
+Main chat. AI-Native asks ChatGPT GPT-5.6 Sol at xhigh to create the overall Plan and one fully
+materialized current Phase, then opens the same Sol-medium Codex route to execute the whole Phase.
+When further work is warranted, return the sanitized surviving repository and Phase evidence to
+the same Main chat with the generated `MAIN_CONTINUE_PROMPT.md`; Main accepts, repairs, replans, or
+materializes the next Phase. Worker calls are bounded and separately recorded.
 
 ## Frozen state-loss loop
 
