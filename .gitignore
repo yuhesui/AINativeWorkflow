@@ -35,4 +35,3 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
-/.tmp/
