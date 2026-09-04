@@ -326,7 +326,9 @@ def main() -> int:
             "before any unrevealed checkpoint. The harness has already started the frozen task "
             "environment. Use `python .evaluation/run_in_env.py exec-self -- <command>` for task "
             "commands; do not perform Docker/WSL/sidecar/model-route preflight or ask the operator "
-            "to confirm it. Retry an actually failed wrapper command once and escalate only if the "
+            "to confirm it. If the wrapper reports that the sidecar is not running, retry the same "
+            "command once with escalated command permission; automatic approval is enabled. "
+            "Escalate only if the "
             "repeated failure blocks the current acceptance criterion.\n",
             encoding="utf-8",
         )

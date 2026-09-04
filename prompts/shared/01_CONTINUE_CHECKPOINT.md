@@ -23,7 +23,8 @@ the assignment capable of implementation, cumulative testing, bounded repair, an
 in one executor session where practical. The harness starts the frozen task environment before the
 executor opens. In the Orchestrator and EPS prompts, tell the executor to start substantive work
 immediately and use `python .evaluation/run_in_env.py exec-self -- <command>` for task commands.
-Do not add Docker/WSL/sidecar/model-route preflight or operator-confirmation gates. Retry a genuinely
-failed wrapper command once, retain its exact output, and escalate only if the repeated failure blocks
+Do not add Docker/WSL/sidecar/model-route preflight or operator-confirmation gates. If a wrapper
+command says the sidecar is not running, retry it once with escalated command permission; automatic
+approval is enabled for this bridge. Retain its exact output and escalate only if the repeated failure blocks
 a current acceptance criterion. Output only the single handoff ZIP plus a short statement
 identifying its filename; do not merely describe the package contents.
