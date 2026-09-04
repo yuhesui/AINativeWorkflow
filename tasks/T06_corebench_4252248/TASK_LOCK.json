@@ -15,7 +15,7 @@
     "scored_run_created": false,
     "status": "QUALIFIED"
   },
-  "resource_policy_sha256": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe",
+  "resource_policy_sha256": "7f6b122dcddbd0d1f7be645966b79ea4abd373c63a2bfe9d56ad42ce6d85500f",
   "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
   "schema_version": 1,
   "sources": [
@@ -56,9 +56,9 @@
       "tree_sha256": "ccb2990264b1f1a9d4ae59f70e25567fe5e69547502508313604c5d0820dc9aa"
     },
     "test_repo": {
-      "bytes": 52660983,
+      "bytes": 52661211,
       "file_count": 148,
-      "tree_sha256": "3a8651a77217e2e81e6fc7f3e0da6e07a6cdc27cee68cdd077253273dcedbc54"
+      "tree_sha256": "65c4dd434f4e44f470b432c488b5fbaca6a09013ad45d12261a173eba61a967f"
     }
   },
   "task_id": "T06",

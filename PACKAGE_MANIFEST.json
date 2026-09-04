@@ -1,8 +1,8 @@
 {
-  "bytes": 817311710,
+  "bytes": 817337004,
   "dynamic_run_artifacts_excluded": true,
   "expanded_runtime_copies_excluded": true,
-  "file_count": 6075,
+  "file_count": 6081,
   "files": {
     ".gitattributes": {
       "bytes": 110,
@@ -1225,8 +1225,8 @@
       "sha256": "0f52a1da7b041d495a601f82d1806ab7424caa44fd9d426459d672dbdc48ba3c"
     },
     "EXPERIMENT_FREEZE.yaml": {
-      "bytes": 2005,
-      "sha256": "d43df2dfaf249672fc8ede4d124dd8e0eed6ea2ecc0f38947c0eba1d34a3d66d"
+      "bytes": 2564,
+      "sha256": "fb59cf7e1cc37c891b538de215750b8ef933806305f1c1c7c6a8e650ecc46bb0"
     },
     "QuickStart.md": {
       "bytes": 2576,
@@ -1237,8 +1237,8 @@
       "sha256": "2b033d8f819026a800d0ef1451f8e36d844a1231ec6217804255a61212a73ec7"
     },
     "READY_FOR_SCORED_RUNS.md": {
-      "bytes": 12595,
-      "sha256": "213778d882f9f7e9ad95ab28b252cac17c9ced74b1bca506f4041ca8e208434d"
+      "bytes": 13554,
+      "sha256": "04875c9f40e8fd7d43b54b246254c8a797be9c860594555f128f30488bc93aa1"
     },
     "RUNTIME_COPY_HASHES.json": {
       "bytes": 1113,
@@ -1249,8 +1249,8 @@
       "sha256": "39735f53b94c07b0716af5ee9950e48068e45ca2fe138ccf7e0a560222909de5"
     },
     "SETUP_REPORT.md": {
-      "bytes": 14206,
-      "sha256": "555f1aa2f95ceb21b5e04012ea2827af3c6c16cfaed3060108dd71d08e85ead2"
+      "bytes": 14705,
+      "sha256": "de3646097db5e10154e7bb13cc0bd8474420aff9f2bb08bc3c11b594656d8a24"
     },
     "VALIDATION_RUNTIME_TESTS.txt": {
       "bytes": 114,
@@ -1261,16 +1261,16 @@
       "sha256": "59a4b3e5e5003580dd86d72402fb766eb8be2d26bafcdc65d9dcc4d232bda56f"
     },
     "manifests/MODEL_POLICY.json": {
-      "bytes": 627,
-      "sha256": "722067745f5bef71a11e7fb95831e7c8e4bb1bdf5dcfb2ba89cce417c678a9df"
+      "bytes": 1247,
+      "sha256": "94e490fa8ae543107e7a61100277df7160fcccb063941ce2c4c82e3b9e5635c5"
     },
     "manifests/RUN_MATRIX.csv": {
       "bytes": 2579,
       "sha256": "ea1811a72c2027951ea3658277ba2e179e1b1b137aea3461e5d8df2d1910a867"
     },
     "manifests/TASK_LOCK.json": {
-      "bytes": 4073,
-      "sha256": "d642bd73477f2e01ab7030e597a0ea424ed8cba9a6201f68eefc6ae71ed9880a"
+      "bytes": 4071,
+      "sha256": "bde46dbace066a9b1c73b4e720c8f7a81bfed695b0c3f23690baf4af4688fd46"
     },
     "prompts/ai_native/00_LOAD_AI_NATIVE.md": {
       "bytes": 1044,
@@ -1280,6 +1280,10 @@
       "bytes": 5597,
       "sha256": "44f2cac12c0b406f7da3a77664f1c11effe6d26b912b19971aeb4e3be3d5fe3d"
     },
+    "prompts/ai_native/02_START_T06_RESEARCH.md": {
+      "bytes": 1869,
+      "sha256": "a538384c052a5d67deeb44bcc660098fe6890aebbc862bb3cedeaed5cc3182c1"
+    },
     "prompts/common/STATE_LOSS_RECOVERY.md": {
       "bytes": 368,
       "sha256": "2810a3d893361f3830cb318d530910c14f8d3ee109d3766a64914254f5fb56fe"
@@ -1288,29 +1292,37 @@
       "bytes": 1028,
       "sha256": "377eb418ad5880c7e498a8fbe0f3731890dfd925e63750f4585dba3513a927b3"
     },
+    "prompts/direct/01_T06_RESEARCH_GOAL.md": {
+      "bytes": 1235,
+      "sha256": "ff019f45bc928a35210c95c45f36ce6ed93d2e820360e38ca9e85d4d59f214a7"
+    },
     "prompts/shared/01_CONTINUE_CHECKPOINT.md": {
       "bytes": 2419,
       "sha256": "b2b7547e0b24505ed2a52b7a346cf4026e342686cda30bd6786ebaa84997ee62"
     },
+    "prompts/shared/02_CONTINUE_T06_PHASE.md": {
+      "bytes": 1178,
+      "sha256": "6137e56e7f73f3a46f699ca4e940d592ba6ed3dddd3f86ff582ae3c18466a199"
+    },
     "protocol/00_PROTOCOL.md": {
-      "bytes": 668,
-      "sha256": "3a01a2ed2c910c386d4634fc96adb78c8f00f69e9a23cbad65f447ffc5b66bfc"
+      "bytes": 883,
+      "sha256": "e86f18153e0dca722474bc276e75a0ec3b1679e1db4ed677d84c0d8fb83feb22"
     },
     "protocol/01_CONDITIONS.md": {
-      "bytes": 713,
-      "sha256": "d134ccef901bc6ff7536815160fed881453bc79a04c047e0299796a876664c44"
+      "bytes": 1105,
+      "sha256": "e5674a6c4346116e75f9632db7b17786aca5ff9574f1cc5159cddf2eb4075d7a"
     },
     "protocol/02_STATE_LOSS.md": {
-      "bytes": 926,
-      "sha256": "92b1fbb0dc23c48299eff2de7bac7210cbbc653700bda6e4f76aa3ae7bab3c54"
+      "bytes": 1471,
+      "sha256": "4b3fdaf1bc46fcd384bc0da29732f9d992680d0f8bddc956f61f35d86978b55c"
     },
     "protocol/03_SCORING.md": {
       "bytes": 1087,
       "sha256": "b959fd1b90245c50b56194093399ddd28103b8ced1bf2abfcd0f1cb9c3d98799"
     },
     "protocol/04_MODEL_POLICY.md": {
-      "bytes": 895,
-      "sha256": "d4fc8ae45f82e76384bf205911f28f0f72d17425c1561c93220de6a88ac4ed8b"
+      "bytes": 1805,
+      "sha256": "766d072a1c67aabf0c6c841056d3df32152ab7860611ac3327689a5b61a49a55"
     },
     "protocol/05_ANALYSIS_PLAN.md": {
       "bytes": 496,
@@ -1396,6 +1408,10 @@
       "bytes": 21176,
       "sha256": "2f49abb331e78ef8a9a25c5e276aed0aa7d9f320061978622323ec6b8fdf0516"
     },
+    "scripts/continue_t06_run.py": {
+      "bytes": 4818,
+      "sha256": "d39a01badaf2e9b64e8bba66680076aaa51653047e0fcca8eaaf7670edb6cf0a"
+    },
     "scripts/eval_common.py": {
       "bytes": 7270,
       "sha256": "5a2a522fc77840edb54441f29a125cf9972f3ec91f07b785a67c11becf95f7b6"
@@ -1405,8 +1421,8 @@
       "sha256": "378c68ac7ae75a4a7941de33eb62da349f4f9558d9e954b77fa523bcb36b76a4"
     },
     "scripts/generate_chat_main_runbooks.py": {
-      "bytes": 12475,
-      "sha256": "238e9d6fda0c2fa0ad206ead7837ee856c477afd4a621c3062951d9fc19db21a"
+      "bytes": 13265,
+      "sha256": "81bf762be7a329bda9cde5322dbf7d382f4ec487da6d359caa02d43afa2a4e08"
     },
     "scripts/generate_package_manifest.py": {
       "bytes": 1710,
@@ -1425,12 +1441,12 @@
       "sha256": "4ae29873605b735a85926b41481cd54fc8b8c9574e4f9d1f01fb2044de192ab5"
     },
     "scripts/launch_direct_goal.py": {
-      "bytes": 8394,
-      "sha256": "4de231da1d9c5ff2e2b4ada44f0dafd264e28d24c7b05fde7295cb13eff5706c"
+      "bytes": 8597,
+      "sha256": "29129a1bb7f438db78b4b3e27d0cd68d9f76adcd2b0b364bf4f072d64f1128ca"
     },
     "scripts/launch_executor.py": {
-      "bytes": 32769,
-      "sha256": "47369ec163bdcebfc8a6623f4a8741bd366a9cda41cbb2e8d69dbf752aa56611"
+      "bytes": 33076,
+      "sha256": "a4ed2a6686532a59071414645a5c8738b9af8f1c8f40b64244286f445c9c4151"
     },
     "scripts/prepare_run.py": {
       "bytes": 5686,
@@ -1445,8 +1461,8 @@
       "sha256": "e97ccbb5716cb0fb4ff88ef3c90e50f941d97b4acb4b3d45e90f850768fe15b2"
     },
     "scripts/start_run.py": {
-      "bytes": 26631,
-      "sha256": "0341250e8337a8063ccdb51dbeee6ab49b5e122ab596fc67174002c61cb5a064"
+      "bytes": 30756,
+      "sha256": "abf3f48400d9779318cb35fe62c43c493cf848f3f6442cdec8011d2906f11680"
     },
     "scripts/sync_ai_workflow.py": {
       "bytes": 12395,
@@ -1463,6 +1479,10 @@
     "scripts/tests/test_run_infrastructure.py": {
       "bytes": 3170,
       "sha256": "8eb1088d8a7d6f202e793459783267a24b3f7ae7f43023a580c044fd39fdd1f0"
+    },
+    "scripts/tests/test_t06_route.py": {
+      "bytes": 3412,
+      "sha256": "f0eef037ec8cd2d84550ca659df46c36cb0dd722181703027657705fbbdfd1df"
     },
     "scripts/update_ai_workflow.py": {
       "bytes": 7396,
@@ -7305,8 +7325,8 @@
       "sha256": "33a5d952fb0bad519f37149f180ae71d9861b5d12f94a3a44219138cd23b6261"
     },
     "tasks/T06_corebench_4252248/RESOURCE_POLICY.md": {
-      "bytes": 588,
-      "sha256": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe"
+      "bytes": 816,
+      "sha256": "7f6b122dcddbd0d1f7be645966b79ea4abd373c63a2bfe9d56ad42ce6d85500f"
     },
     "tasks/T06_corebench_4252248/TASK.md": {
       "bytes": 1168,
@@ -7317,12 +7337,16 @@
       "sha256": "0b1ca83c247a8abd444f913fda615edcde45f4dae026623a45946338b89eeeab"
     },
     "tasks/T06_corebench_4252248/TASK_LOCK.json": {
-      "bytes": 2362,
-      "sha256": "b35364ee90b60a1a32f80129bed39d8d5c151fe086a6439cdcc8c74f19c84411"
+      "bytes": 2359,
+      "sha256": "934882e3059be09bc59f158a3cd26cfd656a43382b3d7eb67de4cac7fafc62a2"
     },
     "tasks/T06_corebench_4252248/TASK_SOURCE.json": {
       "bytes": 1344,
       "sha256": "4b4ffce1e59bd711ec73a56d0b97638c24a62664437e9f87a9115281f6d441f2"
+    },
+    "tasks/T06_corebench_4252248/TESTING_STEPS.md": {
+      "bytes": 2207,
+      "sha256": "6d0a92bc0125f4b3ef6b56a4947bf7ab76d90cd6adf8884053d6896c26c7f54d"
     },
     "tasks/T06_corebench_4252248/original_task/capsule-4252248.tar.gz": {
       "bytes": 18735033,
@@ -20273,8 +20297,8 @@
       "sha256": "362b70c52c705d53ef21678ddb84911ab3b77ff388b040409eadad90be466609"
     },
     "tasks/T06_corebench_4252248/test_repo/RESOURCE_POLICY.md": {
-      "bytes": 588,
-      "sha256": "9806a11b33c78934f2b72901706083ac5c248724be5ba38d6d3b270bfe2848fe"
+      "bytes": 816,
+      "sha256": "7f6b122dcddbd0d1f7be645966b79ea4abd373c63a2bfe9d56ad42ce6d85500f"
     },
     "tasks/T06_corebench_4252248/test_repo/TASK.md": {
       "bytes": 1168,

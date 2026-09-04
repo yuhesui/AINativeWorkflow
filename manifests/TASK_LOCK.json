@@ -63,8 +63,8 @@
       "original_task_tree_sha256": "bde65a144c4620e36fa668c1a174b97505c67e58d67f73e70e1db942632c40fd",
       "qualification_status": "QUALIFIED",
       "runtime_tree_sha256": "a0bead2d09ffc58e94e5ff41d692d4cd9c8d1f513772c7ffbe9155940c375dbc",
-      "task_lock_sha256": "b35364ee90b60a1a32f80129bed39d8d5c151fe086a6439cdcc8c74f19c84411",
-      "test_repo_tree_sha256": "3a8651a77217e2e81e6fc7f3e0da6e07a6cdc27cee68cdd077253273dcedbc54"
+      "task_lock_sha256": "934882e3059be09bc59f158a3cd26cfd656a43382b3d7eb67de4cac7fafc62a2",
+      "test_repo_tree_sha256": "65c4dd434f4e44f470b432c488b5fbaca6a09013ad45d12261a173eba61a967f"
     },
     "T07": {
       "folder": "T07_sequential_neural_score_estimation",

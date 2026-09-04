@@ -397,7 +397,14 @@ def main() -> int:
             raise SystemExit("handoff condition does not match RUN.json")
         if normalize_executor(manifest.get("selected_executor")) != args.executor:
             raise SystemExit("handoff selected_executor does not match --executor")
-        required_effort = "xhigh" if args.executor == "CODEX" else "high"
+        t06_sol_route = run.get("control_route") == "T06_SOL"
+        required_effort = (
+            "medium"
+            if args.executor == "CODEX" and t06_sol_route
+            else "xhigh"
+            if args.executor == "CODEX"
+            else "high"
+        )
         if str(manifest.get("requested_effort", "")).lower() != required_effort:
             raise SystemExit(f"handoff requested_effort must be {required_effort}")
         prompt_rel = archive_relative(manifest.get("executor_prompt"), "executor_prompt")
@@ -428,9 +435,10 @@ def main() -> int:
 
         if args.executor == "CODEX":
             requested_model = str(manifest.get("requested_model", "")).lower()
-            if "gpt-5.6-terra" not in requested_model:
-                raise SystemExit("Codex handoff must request GPT-5.6 Terra")
-            executor_model = "gpt-5.6-terra"
+            required_model = "gpt-5.6-sol" if t06_sol_route else "gpt-5.6-terra"
+            if required_model not in requested_model:
+                raise SystemExit(f"Codex handoff must request {required_model}")
+            executor_model = required_model
         else:
             requested_model = str(manifest.get("requested_model", "")).lower()
             if "sonnet 5" not in requested_model and "sonnet-5" not in requested_model:
@@ -521,7 +529,7 @@ def main() -> int:
         if args.executor == "CODEX":
             command = [
                 "codex", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
+                "-c", f'model_reasoning_effort="{required_effort}"', "--approve-for-me", bootstrap,
             ]
         else:
             command = [

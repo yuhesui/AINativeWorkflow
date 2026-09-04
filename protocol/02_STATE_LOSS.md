@@ -6,6 +6,8 @@ State loss means the root Main conversation is terminated and cannot be consulte
 
 - T5m, T6m, T7m: trigger at the first stable Main↔executor handoff after 50% of the fixed run budget.
 
+T6 route revision: AI-Native applies the rule above to its Sol Main↔Sol-medium orchestrator handoff. Direct has no Main, so its paired loss terminates the root Sol-medium Codex controller at the first stable controller↔worker handoff after 50% of budget, or at the first stable root-controller boundary after 50% if no worker was invoked. A fresh Sol-medium controller receives only the original Goal, surviving repository, same worker pool, and frozen recovery instruction; its prior transcript is excluded.
+
 ## Optional
 
 - T3m: after checkpoint 3/5, before checkpoint 4 is revealed.

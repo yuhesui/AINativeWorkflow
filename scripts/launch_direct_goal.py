@@ -28,6 +28,8 @@ def main() -> int:
     parser.add_argument("--executor", choices=("CODEX", "CLAUDE"), required=True)
     parser.add_argument("--prompt", type=Path, required=True)
     parser.add_argument("--claude-model")
+    parser.add_argument("--codex-model")
+    parser.add_argument("--codex-effort", choices=("medium", "high", "xhigh"))
     parser.add_argument("--usage-json", type=Path)
     parser.add_argument("--skip-usage-prompt", action="store_true")
     parser.add_argument(
@@ -60,9 +62,9 @@ def main() -> int:
     if condition == "AI_NATIVE" and not (workspace / ".ai-workflow").is_dir():
         raise SystemExit("AI-Native workspace must contain .ai-workflow")
 
-    required_effort = "xhigh" if args.executor == "CODEX" else "high"
+    required_effort = (args.codex_effort or "xhigh") if args.executor == "CODEX" else "high"
     if args.executor == "CODEX":
-        executor_model = "gpt-5.6-terra"
+        executor_model = args.codex_model or "gpt-5.6-terra"
     else:
         executor_model = (args.claude_model or "").strip()
         if not executor_model and not args.dry_run:
@@ -90,12 +92,12 @@ def main() -> int:
         if args.resume_session:
             command = [
                 "codex", "resume", "--last", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
+                "-c", f'model_reasoning_effort="{required_effort}"', "--approve-for-me", bootstrap,
             ]
         else:
             command = [
                 "codex", "-C", str(workspace), "-m", executor_model,
-                "-c", 'model_reasoning_effort="xhigh"', "--approve-for-me", bootstrap,
+                "-c", f'model_reasoning_effort="{required_effort}"', "--approve-for-me", bootstrap,
             ]
     else:
         command = ["claude"]

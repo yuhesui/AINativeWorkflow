@@ -1,0 +1,9 @@
+Treat the supplied frozen task as the approved Goal. Use the loaded AI-Native Workflow autonomously.
+
+Create the complete overall Plan and identify the likely Phase sequence, but fully materialize only the current active Phase. Do not pretend later evidence is already known and do not invent benchmark checkpoints. For the active Phase, return an actual complete importable execution package: canonical Plan/Phase state, complete DIC, complete EPS graph, one substantive prompt file per EPS node, acceptance and evidence contracts, repair/replan/escalation rules, and `ORCHESTRATOR_START.md`.
+
+Tune the Phase entrypoint for a persistent Codex CLI orchestrator running GPT-5.6 Sol at medium reasoning. It must execute the whole active-Phase EPS graph autonomously. Its permitted worker/resource pool is Codex Terra xhigh, Claude Code Sonnet 5 high, Claude Opus 5 high research/reasoning, web/primary literature, and local terminal/Python/CPU/GPU. It may delegate bounded jobs from that pool but remains responsible for integrating evidence and updating durable workflow state.
+
+After execution, the surviving repository and Phase evidence may return to Main using the frozen continuation prompt. Main then accepts, repairs, replans, or fully materializes the next active Phase. Preserve failed attempts and negative evidence; never overwrite them. Return one ZIP containing the complete active-Phase package, not prose, an outline, a partial scaffold, or a single worker prompt.
+
+`HANDOFF_MANIFEST.json` must satisfy the exact package contract and frozen binding values supplied below. Its executor route must be `selected_executor: CODEX`, `requested_model: gpt-5.6-sol`, and `requested_effort: medium`. The repository overlay may contain only canonical `.ai-workflow/` state and root `phases/` state, with `ORCHESTRATOR_START.md` as the executor entrypoint.

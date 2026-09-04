@@ -20,5 +20,24 @@
       "local terminal/Python/CPU/GPU"
     ]
   },
+  "T06": {
+    "direct": {
+      "main": null,
+      "controller": "Codex GPT-5.6 Sol medium",
+      "interaction": "single complete approved-Goal prompt"
+    },
+    "ai_native": {
+      "main": "ChatGPT GPT-5.6 Sol xhigh",
+      "orchestrator": "Codex GPT-5.6 Sol medium",
+      "interaction": "complete active Phase with fixed evidence-return continuation"
+    },
+    "worker_pool": [
+      "Codex Terra xhigh",
+      "Claude Code Sonnet 5 high",
+      "Claude Opus 5 high research/reasoning",
+      "web/primary literature",
+      "local terminal/Python/CPU/GPU"
+    ]
+  },
   "record_exact_runtime_identifiers": true
 }
